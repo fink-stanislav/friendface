@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" type="text/css" href="../../css/commonstyle.css" />
+ <link rel="stylesheet" type="text/css" href="../../css/forms.css" />
+ <link type="text/javascript" href="../../js/validation.js" />
+ <title>Вход</title>
+</head>
+<body>
+ <div id="container">
+  <div id="header">
+   <div id="headertxt"><a href="../../index.html" title="главная страница">friendface</a> - вход</div>
+   <div id="headrefs">
+    <a href="../registration/registration.html" title="регистрация">регистрация</a>
+   </div>
+  </div>
+  
+  <div id="content">
+   <div id="login-form">
+   <form name="userdataform" method="POST" action="../../LogonServlet"  onsubmit="return logonFormValidation(loginEmail, password);"> 
+	
+    <div class="formLine">
+     <label for="loginEmail">Имя пользователя</label>
+    </div>
+    <div>
+     <input type="text" name="loginEmail" />
+    </div>
+	 
+    <div class="formLine">
+ 	 <label for="password">Пароль</label>
+    </div> 
+    <div> 
+	 <input type="password" name="password" />
+    </div>
+    
+    <hr/>
+	  
+    <div class="formLine">
+	 <input type="submit" name="submitbutton" value="Войти" />
+	 <input type="reset" name="resetbutton" value="Отмена" />
+    </div>
+	 
+   </form>
+   </div>
+  </div>
+ </div>
+ 
+ <div id="footer">
+  <div id="footrefs">
+   <a href="" title="english">eng</a>
+    &nbsp|&nbsp
+   <a href="" title="русский">rus</a>
+  </div>
+  <div id="footertxt">
+   cybersyphon, 2010
+  </div>
+ </div>
+ 
+</body>
+</html>

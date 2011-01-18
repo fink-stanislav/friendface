@@ -1,0 +1,32 @@
+#userpic {
+  float: left;
+  margin: 0.1em;
+  width: 250px;
+  height: 350px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+#common-info {
+  text-align: left;
+  padding: 1em 0 0 26em;
+}
+
+.common-info-line { 
+}
+
+.horizontal-block-center, .horizontal-block-normal {
+  text-align: center;
+  margin: 0;
+}
+
+.horizontal-block-normal {
+  text-align: left;
+}
+
+.horizontal-block-center div, .horizontal-block-normal div {
+  display: inline;
+}

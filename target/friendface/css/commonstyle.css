@@ -1,0 +1,114 @@
+html, body, #container { 
+  height: 100%; 
+  
+  color: black;
+  background: white;
+  font: normal medium 'Gill Sans','Gill Sans MT','Goudy Bookletter 1911','Linux Libertine O','Liberation Serif',Candara,serif;
+  
+  padding: 0;
+  margin: 0 auto;
+  width: 45em; 
+  line-height: 1.75; 
+  word-spacing: 0.1em; 
+}
+
+body > #container { 
+  height: auto; 
+  min-height: 100%; 
+}
+
+#content {
+  padding-bottom: 2em;
+}
+
+#menu-and-userdata {
+  clear: both;
+}
+
+#vertical-line {
+  border-right: 1px solid gray;
+  float: left;
+  height: 351px;
+}
+
+#header {
+  background: black;
+  color: white;
+  margin: 0; 
+  padding: 1.5em 0;
+}
+
+#headertxt {
+  text-align: center;
+  font-size: medium; 
+  line-height: 0.0em;
+  margin: 0;
+}
+
+#header a {
+  color: white;
+}
+
+#headrefs {
+  font-size: small;
+  float: right;
+  margin: 0;
+  padding: 0em 1em 0em 0em
+}
+
+#tagline {
+}
+
+#footer {
+  clear: both;
+  position: relative;
+  color: white;
+  background: black;
+  z-index: 10;
+  height: 0.3em;
+  padding: 0.9em 0;
+  margin-top: -2.05em;
+  background: black;
+  color: white;
+}
+
+#footertxt {
+  text-align: right;
+  font-size: small; 
+  line-height: 0;
+  margin: 0;
+  padding: 0em 1em 0em 0em
+}
+
+#footrefs {
+  font-size: small;
+  float: left;
+  margin: -0.8em 0 0 0;
+  padding: 0 0 0 1em
+}
+
+#footer a {
+  color: white; 
+}
+
+a {
+  background: transparent;
+  text-decoration: none;
+  border-bottom: 1px dotted
+}
+
+a:hover {
+  border-bottom: 1px solid
+}
+
+a:link {
+  color: #1b67c9
+}
+
+a:visited {
+  color: darkorchid
+}
+
+h1 a, h2 a, h3 a {
+  color:inherit !important
+}
