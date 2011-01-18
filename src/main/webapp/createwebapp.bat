@@ -1,0 +1,2 @@
+mvn archetype:generate -DgroupId=com.exadel -DartifactId=friendface -DarchetypeArtifactId=maven-archetype-webapp
+mvn eclipse:clean eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs=true -Dwtpversion=2.0
