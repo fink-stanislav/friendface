@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 qqqqqqqqqqqqqqqqqqq
+=======
+master
+>>>>>>> newbranch
