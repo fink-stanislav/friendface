@@ -1,11 +1,18 @@
+<%
+    String requestMessage = (String) request.getAttribute("message");
+    if (requestMessage != null) {
+        session.setAttribute("message", requestMessage);
+        response.sendRedirect(request.getContextPath() + "/pages/errorpages/wrongdata.jsp");
+        return;
+    }
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@page contentType="text/html" %>
-<%@page import="java.util.Date" %>
 <%@page pageEncoding="UTF-8" %>
 <html>
 <head>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <link rel="stylesheet" type="text/css" href="css/commonstyle.css" />
+ <link rel="stylesheet" type="text/css" href="../../css/commonstyle.css" />
  <title>Ошибка</title>
 </head>
 <body>
@@ -16,8 +23,7 @@
    </div>
   </div>
   <div id="content">
-   <%request.setCharacterEncoding("UTF-8"); %>
-   <%=request.getAttribute("message").toString() %>
+   <%=(String) session.getAttribute("message") %>
   </div>
  </div> 
  <div id="footer">

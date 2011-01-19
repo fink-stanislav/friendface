@@ -13,6 +13,7 @@ import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 
 import static com.exadel.friendface.servletutil.ServletUtil.forvardErrorPage;
+import static com.exadel.friendface.servletutil.ServletUtil.forvardPage;
 
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -45,7 +46,7 @@ public class RegistrationServlet extends HttpServlet {
 			response.sendRedirect("pages/errorpages/underconstruction.html");
 		}
 		catch (ValidationException ve) {
-			forvardErrorPage(this, request, response, ve.toString());
+			forvardPage(this, request, response, ve.toString(), "/pages/registration/registration.jsp");
 		}
 	}
 }
