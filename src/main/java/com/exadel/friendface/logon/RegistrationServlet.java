@@ -1,24 +1,19 @@
 package com.exadel.friendface.logon;
 
-import java.io.IOException;
+import com.exadel.friendface.validation.ValidationException;
+import com.exadel.friendface.validation.Validator;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
-import com.exadel.friendface.validation.ValidationException;
-import com.exadel.friendface.validation.Validator;
-
-import static com.exadel.friendface.servletutil.ServletUtil.forvardErrorPage;
 import static com.exadel.friendface.servletutil.ServletUtil.forvardPage;
 
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     public RegistrationServlet() {
         super();
     }
