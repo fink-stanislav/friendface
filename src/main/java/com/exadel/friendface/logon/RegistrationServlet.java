@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
@@ -42,6 +43,7 @@ public class RegistrationServlet extends HttpServlet {
 			validator.validatePassword(password);
 			validator.validatePassword(passwordConfirmation);
 			validator.validatePassword(password, passwordConfirmation);
+
 			// registration here
 			response.sendRedirect("pages/errorpages/underconstruction.html");
 		}
