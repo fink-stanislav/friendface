@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static com.exadel.friendface.servletutil.ServletUtil.forvardPage;
+import static com.exadel.friendface.servletutil.ServletUtil.forwardPage;
 
 public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,10 +40,10 @@ public class RegistrationServlet extends HttpServlet {
 			validator.validatePassword(password, passwordConfirmation);
 
 			// registration here
-			response.sendRedirect("pages/errorpages/underconstruction.html");
+			response.sendRedirect("/friendface/underconstruction");
 		}
 		catch (ValidationException ve) {
-			forvardPage(this, request, response, ve.toString(), "/pages/registration/registration.jsp");
+			forwardPage(this, request, response, ve.toString(), "/registration");
 		}
 	}
 }

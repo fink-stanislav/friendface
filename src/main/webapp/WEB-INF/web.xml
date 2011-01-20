@@ -3,28 +3,85 @@
          xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
-  <display-name>friendface</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-  </welcome-file-list>
-  <servlet>
-    <description>Servlet to perform registration</description>
-    <display-name>RegistrationServlet</display-name>
-    <servlet-name>RegistrationServlet</servlet-name>
-    <servlet-class>com.exadel.friendface.logon.RegistrationServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>RegistrationServlet</servlet-name>
-    <url-pattern>/RegistrationServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description>Servlet to perform logging on</description>
-    <display-name>LogonServlet</display-name>
-    <servlet-name>LogonServlet</servlet-name>
-    <servlet-class>com.exadel.friendface.logon.LogonServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LogonServlet</servlet-name>
-    <url-pattern>/LogonServlet</url-pattern>
-  </servlet-mapping>
+    <display-name>friendface</display-name>
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+    <!-- servlets -->
+    <servlet>
+        <description>Servlet to perform registration</description>
+        <display-name>RegistrationServlet</display-name>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <servlet-class>com.exadel.friendface.logon.RegistrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegistrationServlet</servlet-name>
+        <url-pattern>/RegistrationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Servlet to perform logging on</description>
+        <display-name>LogonServlet</display-name>
+        <servlet-name>LogonServlet</servlet-name>
+        <servlet-class>com.exadel.friendface.logon.LogonServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogonServlet</servlet-name>
+        <url-pattern>/LogonServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- jspx -->
+    <servlet>
+        <servlet-name>footer</servlet-name>
+        <jsp-file>/WEB-INF/jsps/frames/footer.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>footer</servlet-name>
+        <url-pattern>/footer.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>header</servlet-name>
+        <jsp-file>/WEB-INF/jsps/frames/header.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>header</servlet-name>
+        <url-pattern>/header.jsp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>logon</servlet-name>
+        <jsp-file>/WEB-INF/jsps/logon/logon.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>logon</servlet-name>
+        <url-pattern>/logon</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>registration</servlet-name>
+        <jsp-file>/WEB-INF/jsps/registration/registration.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>registration</servlet-name>
+        <url-pattern>/registration</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>underconstruction</servlet-name>
+        <jsp-file>/WEB-INF/jsps/errorpages/underconstruction.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>underconstruction</servlet-name>
+        <url-pattern>/underconstruction</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>wrongdata</servlet-name>
+        <jsp-file>/WEB-INF/jsps/errorpages/wrongdata.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>wrongdata</servlet-name>
+        <url-pattern>/wrongdata</url-pattern>
+    </servlet-mapping>
 </web-app>

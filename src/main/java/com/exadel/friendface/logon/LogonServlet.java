@@ -1,17 +1,15 @@
 package com.exadel.friendface.logon;
 
-import java.io.IOException;
+import com.exadel.friendface.validation.ValidationException;
+import com.exadel.friendface.validation.Validator;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
-import com.exadel.friendface.validation.ValidationException;
-import com.exadel.friendface.validation.Validator;
-import static com.exadel.friendface.servletutil.ServletUtil.forvardErrorPage;
+import static com.exadel.friendface.servletutil.ServletUtil.forwardErrorPage;
 
 public class LogonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,9 +32,9 @@ public class LogonServlet extends HttpServlet {
     		validator.validateEmail(loginEmail);
     		validator.validatePassword(password);
     		// login here
-    		response.sendRedirect("pages/errorpages/underconstruction.html");
+    		response.sendRedirect("/friendface/underconstruction");
     	} catch (ValidationException ve) {
-    		forvardErrorPage(this, request, response, ve.toString());
+    		forwardErrorPage(this, request, response, ve.toString());
     	}
 	}
 
