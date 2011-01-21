@@ -1,5 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<jsp:useBean id="logonBean" class="com.exadel.friendface.pagebeans.LogonBean" scope="session"/>
+
+<jsp:setProperty name="logonBean" property="*"/>
+<c:if test='${not empty requestScope.message}'>
+    <jsp:setProperty name="logonBean" property="errormessage" value='${requestScope.message}'/>
+    <c:redirect url="logon"/>
+</c:if>
 
 <html>
 <head>
@@ -24,26 +33,35 @@
         <div id="login-form">
             <form name="userdataform" method="POST" action="/friendface/LogonServlet">
 
-            <div class="formLine">
-                <label for="loginEmail">Имя пользователя</label>
-            </div>
-            <div>
-                <input type="text" name="loginEmail"/>
-            </div>
+                <div>
+                    <span>Имя пользователя</span>
+                </div>
+                <div>
+                    <input type="text" name="loginEmail" value='${logonBean.loginEmail}'>
+                </div>
 
-            <div class="formLine">
-                <label for="password">Пароль</label>
-            </div>
-            <div>
-                <input type="password" name="password"/>
-            </div>
+                <div class="formLine">
+                    <span>Пароль</span>
+                </div>
+                <div>
+                    <input type="password" name="password">
+                </div>
 
-            <hr/>
+                <c:choose>
+                    <c:when test='${not empty logonBean.errormessage}'>
+                        ${logonBean.errormessage}
+                    </c:when>
+                    <c:otherwise>
+                        <jsp:text>&nbsp;</jsp:text>
+                    </c:otherwise>
+                </c:choose>
 
-            <div class="formLine">
-                <input type="submit" name="submitbutton" value="Войти"/>
-                <input type="reset" name="resetbutton" value="Отмена"/>
-            </div>
+                <hr/>
+
+                <div class="formLine">
+                    <input type="submit" name="submitbutton" value="Войти">
+                    <input type="reset" name="resetbutton" value="Отмена">
+                </div>
 
             </form>
         </div>

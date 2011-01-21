@@ -1,34 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%!
-    String loginEmail;
-    String username;
-    String usersurname;
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-    public String avoidNullValue(String textString) {
-        if (textString == null) {
-            return "";
-        }
-        return textString;
-    }
-%>
+<jsp:useBean id="registrationBean" class="com.exadel.friendface.pagebeans.RegistrationBean" scope="session"/>
 
-<%
-    String requestMessage = (String) request.getAttribute("message");
-    if (requestMessage != null) {
-        session.setAttribute("message", requestMessage);
+<jsp:setProperty name="registrationBean" property="*"/>
+<c:if test='${not empty requestScope.message}'>
+    <jsp:setProperty name="registrationBean" property="errormessage" value='${requestScope.message}'/>
+    <c:redirect url="registration"/>
+</c:if>
+<c:otherwise>
+<jsp:setProperty name="registrationBean" property="errormessage" value=""/>
+    </c:otherwise>
 
-        loginEmail = (String) request.getParameter("loginEmail");
-        username = (String) request.getParameter("username");
-        usersurname = (String) request.getParameter("usersurname");
-
-        response.sendRedirect("/friendface/registration");
-        return;
-    } else {
-        requestMessage = (String) session.getAttribute("message");
-        requestMessage = avoidNullValue(requestMessage);
-    }
-%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -53,28 +37,28 @@
         <div id="reg-form">
             <form name="userdataform" method="POST" action="/friendface/RegistrationServlet">
 
-                <div class="formLine">
+                <div>
                     <span class="required-field">Логин (e-mail)</span>
                 </div>
                 <div>
-                    <input type="text" name="loginEmail" value=<%=avoidNullValue(loginEmail)%>>
+                    <input type="text" name="loginEmail" value=${registrationBean.loginEmail}>
                 </div>
 
-                <div class="formLine">
+                <div>
                     <span>Имя</span>
                 </div>
                 <div>
-                    <input type="text" name="username" value=<%=avoidNullValue(username)%>>
+                    <input type="text" name="username" value=${registrationBean.username}>
                 </div>
 
-                <div class="formLine">
+                <div>
                     <span>Фамилия</span>
                 </div>
                 <div>
-                    <input type="text" name="usersurname" value=<%=avoidNullValue(usersurname)%>>
+                    <input type="text" name="usersurname" value=${registrationBean.usersurname}>
                 </div>
 
-                <div class="formLine">
+                <div>
                     <span class="required-field">Пароль</span>
                 </div>
 
@@ -82,7 +66,7 @@
                     <input type="password" name="password">
                 </div>
 
-                <div class="formLine">
+                <div>
                     <span class="required-field">Проверка пароля</span>
                 </div>
 
@@ -90,7 +74,14 @@
                     <input type="password" name="passwordConfirmation">
                 </div>
 
-                <%=requestMessage %>
+                <c:choose>
+                    <c:when test='${not empty registrationBean.errormessage}'>
+                        ${registrationBean.errormessage}
+                    </c:when>
+                    <c:otherwise>
+                        <jsp:text>&nbsp;</jsp:text>
+                    </c:otherwise>
+                </c:choose>
 
                 <hr/>
 

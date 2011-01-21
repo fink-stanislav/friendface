@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.exadel.friendface.servletutil.ServletUtil.forwardErrorPage;
+import static com.exadel.friendface.servletutil.ServletUtil.forwardPage;
 
 public class LogonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,7 +35,8 @@ public class LogonServlet extends HttpServlet {
     		// login here
     		response.sendRedirect("/friendface/underconstruction");
     	} catch (ValidationException ve) {
-    		forwardErrorPage(this, request, response, ve.toString());
+    		//forwardErrorPage(this, request, response, ve.toString());
+            forwardPage(this, request, response, ve.toString(), "/logon");
     	}
 	}
 
