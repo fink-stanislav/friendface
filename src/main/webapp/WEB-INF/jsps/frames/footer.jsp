@@ -9,11 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div id="footer">
     <div id="footrefs">
-        <a href="../" title="english">eng</a>
+        <a href="" title="english">eng</a>
         &nbsp;|&nbsp;
-        <a href="../" title="русский">rus</a>
+        <a href="" title="русский">rus</a>
     </div>
     <div id="footertxt">
-        cybersyphon, 2010
+        friendface.com, 2010 - 2011
     </div>
 </div>

@@ -1,0 +1,22 @@
+#article-header-side {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 12em;
+    overflow: hidden;
+    /*background: #d3d3d3;*/
+    float: left;
+    margin: 2em;
+}
+
+#article-side {
+    top: 0;
+    left: 12em;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    float: left;
+    border-left: 1px solid gray;
+    margin: 2em;
+    padding: 0 0 0 1em;
+}

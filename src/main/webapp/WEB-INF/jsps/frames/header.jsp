@@ -12,7 +12,7 @@
 <c:choose>
     <c:when test='${param.headerType == "oneRef"}'>
         <div id="header">
-            <div id="headertxt"><a href="/index.jsp" title="главная страница">friendface</a> - ${param.title}</div>
+            <div id="headertxt"><a href="/friendface" title="главная страница">friendface</a> - ${param.title}</div>
             <div id="headrefs">
                 <a href=${param.rightReference} title=${param.rightReferenceName}> ${param.rightReferenceName}</a>
             </div>
@@ -21,7 +21,7 @@
 
     <c:when test='${param.headerType == "twoRefs"}'>
         <div id="header">
-            <div id="headertxt">friendface</div>
+            <div id="headertxt"><a href="/friendface" title="главная страница">friendface</a></div>
             <div id="headrefs">
                 <a href=${param.leftReference} title=${param.leftReferenceName}> ${param.leftReferenceName}</a>
                 <a href=${param.rightReference} title=${param.rightReferenceName}> ${param.rightReferenceName}</a>
@@ -31,7 +31,7 @@
 
     <c:otherwise>
         <div id="header">
-            <div id="headertxt"><a href="/index.jsp" title="главная страница">friendface</a> - ${param.title}</div>
+            <div id="headertxt"><a href="/friendface" title="главная страница">friendface</a> - ${param.title}</div>
         </div>
     </c:otherwise>
 </c:choose>
