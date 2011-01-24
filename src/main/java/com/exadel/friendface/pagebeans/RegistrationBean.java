@@ -1,7 +1,3 @@
-package com.exadel.friendface.pagebeans;
-
-import static com.exadel.friendface.stringutil.StringUtil.avoidNullValue;
-
 /**
  * Created by IntelliJ IDEA.
  * User: sfink
@@ -9,11 +5,14 @@ import static com.exadel.friendface.stringutil.StringUtil.avoidNullValue;
  * Time: 11:32 AM
  */
 
+package com.exadel.friendface.pagebeans;
+
+import static com.exadel.friendface.util.stringutil.StringUtil.avoidNullValue;
+
 public class RegistrationBean {
     private String loginEmail;
     private String username;
     private String usersurname;
-    private String errormessage;
 
     public String getLoginEmail() {
         return avoidNullValue(loginEmail);
@@ -27,23 +26,15 @@ public class RegistrationBean {
         return avoidNullValue(usersurname);
     }
 
-    public String getErrormessage() {
-        return avoidNullValue(errormessage);
-    }
-
     public void setLoginEmail(String loginEmail) {
         this.loginEmail = loginEmail;
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = avoidNullValue(username);
     }
 
     public void setUsersurname(String usersurname) {
         this.usersurname = usersurname;
-    }
-
-    public void setErrormessage(String errormessage) {
-        this.errormessage = errormessage;
     }
 }

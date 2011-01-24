@@ -11,7 +11,7 @@
 <div id="container">
 
     <div id="header">
-        <div id="headertxt"><a href="../../index.jsp" title="главная страница">friendface</a> - альбомы</div>
+        <div id="headertxt"><a href="../../WEB-INF/welcomepage.jsp" title="главная страница">friendface</a> - альбомы</div>
         <div id="headrefs">
             <a href="" title="настройки">настройки</a>
             <a href="" title="выход">выход</a>

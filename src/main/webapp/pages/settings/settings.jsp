@@ -10,7 +10,7 @@
 <div id="container">
 
     <div id="header">
-        <div id="headertxt"><a href="../../index.jsp" title="главная страница">friendface</a> - настройки</div>
+        <div id="headertxt"><a href="../../WEB-INF/welcomepage.jsp" title="главная страница">friendface</a> - настройки</div>
         <div id="headrefs">
             <a href="" title="выход">выход</a>
         </div>

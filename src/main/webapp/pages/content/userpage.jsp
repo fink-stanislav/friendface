@@ -13,7 +13,6 @@
 </head>
 <body>
 <div id="container">
-
     <f:requestEncoding value="UTF-8"/>
     <jsp:include page="/header.jsp">
         <jsp:param name="headerType" value="twoRef"/>

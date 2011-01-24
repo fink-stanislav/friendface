@@ -21,6 +21,10 @@ body > #container {
   padding-bottom: 2em;
 }
 
+.margined-layer {
+    margin: 1em 2em;
+}
+
 #menu-and-userdata {
   clear: both;
 }

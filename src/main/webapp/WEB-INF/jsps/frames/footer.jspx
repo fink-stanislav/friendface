@@ -1,0 +1,14 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <div id="footer">
+        <div id="footrefs">
+            <a href="" title="english">eng</a>
+            &#160;|&#160;
+            <a href="" title="русский">rus</a>
+        </div>
+        <div id="footertxt">
+            friendface.com, 2010 - 2011
+        </div>
+    </div>
+</jsp:root>

@@ -25,7 +25,7 @@ public class Validator {
     }
 
     public boolean isTextStringMatch(String textString) {
-        Pattern p = Pattern.compile("([a-z]){1,20}");
+        Pattern p = Pattern.compile("([a-zа-я]){1,20}");
 		Matcher m = p.matcher(textString.toLowerCase());
 		return m.matches();
     }

@@ -5,14 +5,26 @@
          id="WebApp_ID" version="2.5">
     <display-name>friendface</display-name>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>friendface</welcome-file>
     </welcome-file-list>
+
+    <!-- front controller -->
+    <servlet>
+        <display-name>friendface</display-name>
+        <servlet-name>friendface</servlet-name>
+        <servlet-class>com.exadel.friendface.controllers.FrontController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>friendface</servlet-name>
+        <url-pattern>/friendface</url-pattern>
+    </servlet-mapping>
+
     <!-- servlets -->
     <servlet>
         <description>Servlet to perform registration</description>
         <display-name>RegistrationServlet</display-name>
         <servlet-name>RegistrationServlet</servlet-name>
-        <servlet-class>com.exadel.friendface.logon.RegistrationServlet</servlet-class>
+        <servlet-class>com.exadel.friendface.controllers.RegistrationServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationServlet</servlet-name>
@@ -23,35 +35,26 @@
         <description>Servlet to perform logging on</description>
         <display-name>LogonServlet</display-name>
         <servlet-name>LogonServlet</servlet-name>
-        <servlet-class>com.exadel.friendface.logon.LogonServlet</servlet-class>
+        <servlet-class>com.exadel.friendface.controllers.LogonServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LogonServlet</servlet-name>
         <url-pattern>/LogonServlet</url-pattern>
     </servlet-mapping>
 
-    <!-- jspx -->
+    <!-- jsps -->
     <servlet>
-        <servlet-name>footer</servlet-name>
-        <jsp-file>/WEB-INF/jsps/frames/footer.jsp</jsp-file>
+        <servlet-name>welcomepage</servlet-name>
+        <jsp-file>/WEB-INF/welcomepage.jspx</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>footer</servlet-name>
-        <url-pattern>/footer.jsp</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>header</servlet-name>
-        <jsp-file>/WEB-INF/jsps/frames/header.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>header</servlet-name>
-        <url-pattern>/header.jsp</url-pattern>
+        <servlet-name>welcomepage</servlet-name>
+        <url-pattern>/welcomepage</url-pattern>
     </servlet-mapping>
 
     <servlet>
         <servlet-name>logon</servlet-name>
-        <jsp-file>/WEB-INF/jsps/logon/logon.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsps/logon/logon.jspx</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>logon</servlet-name>
@@ -60,28 +63,32 @@
 
     <servlet>
         <servlet-name>registration</servlet-name>
-        <jsp-file>/WEB-INF/jsps/registration/registration.jsp</jsp-file>
+        <jsp-file>/WEB-INF/jsps/registration/registration.jspx</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 
+    <!-- temp -->
     <servlet>
-        <servlet-name>underconstruction</servlet-name>
-        <jsp-file>/WEB-INF/jsps/errorpages/underconstruction.jsp</jsp-file>
+        <servlet-name>infopage</servlet-name>
+        <jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>underconstruction</servlet-name>
-        <url-pattern>/underconstruction</url-pattern>
+        <servlet-name>infopage</servlet-name>
+        <url-pattern>/infopage</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>wrongdata</servlet-name>
-        <jsp-file>/WEB-INF/jsps/errorpages/wrongdata.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>wrongdata</servlet-name>
-        <url-pattern>/wrongdata</url-pattern>
-    </servlet-mapping>
+    <!-- filters -->
+    <filter>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>com.exadel.friendface.logging.LoggingFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>LoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
