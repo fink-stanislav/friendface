@@ -14,12 +14,5 @@
 
 <tiles:insertDefinition name="friendface.logon"/>
 
-<!--<f:requestEncoding value="UTF-8"/>-->
-<!--<jsp:include page="/WEB-INF/jsps/frames/header.jspx">-->
-<!--<jsp:param name="headerText" value=" - вход"/>-->
-<!--<jsp:param name="referenceToReg" value="registration"/>-->
-<!--<jsp:param name="reftitleToReg" value="регистрация"/>-->
-<!--</jsp:include>-->
-
 </body>
 </html>

@@ -20,6 +20,6 @@ public class RequestHelper {
     }
 
     public Command getCommand() {
-        return CommandFactory.create(request.getParameter("activity"));
+        return CommandFactory.getInstance().create(request.getParameter("activity"));
     }
 }

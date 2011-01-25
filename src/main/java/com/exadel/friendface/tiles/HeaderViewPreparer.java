@@ -18,7 +18,8 @@ public class HeaderViewPreparer implements ViewPreparer {
     public void execute(TilesRequestContext tilesRequestContext, AttributeContext attributeContext) {
         ArrayList<HeaderViewPreparer.HeaderItem> headerParams = new ArrayList<HeaderViewPreparer.HeaderItem>();
 
-        String servletName = "fail";
+        // this voodoo stuff must be replaced by reading parameters from configuration or request
+        String servletName = "";
         Object[] requestObjects = tilesRequestContext.getRequestObjects();
         for (Object o : requestObjects) {
             if (o instanceof PageContext) {
@@ -27,15 +28,16 @@ public class HeaderViewPreparer implements ViewPreparer {
             }
         }
         if (servletName.equals("welcomepage")) {
-            headerParams.add(new HeaderItem("registration", "регистрация", "регистрация"));
-            headerParams.add(new HeaderItem("logon", "вход", "вход"));
+            headerParams.add(new HeaderItem("/friendface?activity=registration", "регистрация", "регистрация"));
+            headerParams.add(new HeaderItem("/friendface?activity=logon", "вход", "вход"));
         } else if (servletName.equals("logon")) {
-            headerParams.add(new HeaderItem("registration", "регистрация", "регистрация"));
+            headerParams.add(new HeaderItem("/friendface?activity=registration", "регистрация", "регистрация"));
         } else if (servletName.equals("registration")) {
-            headerParams.add(new HeaderItem("logon", "вход", "вход"));
+            headerParams.add(new HeaderItem("/friendface?activity=logon", "вход", "вход"));
         } else {
             headerParams.add(new HeaderItem());
         }
+        // end
         tilesRequestContext.getRequestScope().put("headerParams", headerParams);
     }
 

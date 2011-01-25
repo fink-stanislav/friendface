@@ -10,10 +10,6 @@
 <body>
 
 <tiles:insertDefinition name="friendface.infopage"/>
-<!--<f:requestEncoding value="UTF-8"/>-->
-<!--<jsp:include page="/WEB-INF/jsps/frames/header.jspx">-->
-<!--<jsp:param name="headerText" value=" - в разработке"/>-->
-<!--</jsp:include>-->
 
 </body>
 
