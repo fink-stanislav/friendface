@@ -1,25 +1,69 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:c="http://java.sun.com/jsp/jstl/core"
-          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+          xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+
+    <!--<div id="header">-->
+        <!--<tiles:useAttribute id="list" name="items" classname="java.util.Map"/>-->
+        <!--<c:forEach var='item' items='${list}'>-->
+            <!--<tiles:insertAttribute value="${item}" flush="true"/>-->
+            <!--<c:if test='${item.key eq "headerText"}'>-->
+                <!--<div id="headertxt"><a href="/friendface" title="friendface">friendface</a>${item.value}</div>-->
+            <!--</c:if>-->
+            <!--<c:if test='${fn:contains(item.key, "reference")}'>-->
+                <!--<c:set var="reference" value="${item.value}"/>-->
+            <!--</c:if>-->
+            <!--<c:if test='${fn:contains(item.key, "reftitle")}'>-->
+                <!--<c:set var="reftitle" value="${item.value}"/>-->
+            <!--</c:if>-->
+            <!--<c:if test='${not empty reference and not empty reftitle}'>-->
+                <!--<div id="headrefs">-->
+                    <!--<a href='${reference}' title='${reftitle}'> ${reftitle}</a>-->
+                <!--</div>-->
+                <!--<c:set var="reference" value=""/>-->
+                <!--<c:set var="reftitle" value=""/>-->
+            <!--</c:if>-->
+        <!--</c:forEach>-->
+    <!--</div>-->
+
+
+    <!--<tiles:useAttribute id="list" name="items" classname="java.util.Map"/>-->
+    <!--<c:forEach var="item" items="${list}">-->
+        <!--<tiles:insertAttribute value="${item}" flush="true"/>-->
+        <!--<br/>-->
+    <!--</c:forEach>-->
+
+    <!--<div id="header">-->
+
+    <!--<div id="headertxt"><a href="/friendface" title="friendface">friendface</a>${param.headerText}</div>-->
+    <!--<c:forEach var='item' items='${param}'>-->
+    <!--<c:if test='${fn:contains(item.key, "reference")}'>-->
+    <!--<c:set var="reference" value="${item.value}"/>-->
+    <!--</c:if>-->
+    <!--<c:if test='${fn:contains(item.key, "reftitle")}'>-->
+    <!--<c:set var="reftitle" value="${item.value}"/>-->
+    <!--</c:if>-->
+    <!--<c:if test='${not empty reference and not empty reftitle}'>-->
+
+    <!--<div id="headrefs">-->
+    <!--<a href='${reference}' title='${reftitle}'> ${reftitle}</a>-->
+    <!--</div>-->
+    <!--<c:set var="reference" value=""/>-->
+    <!--<c:set var="reftitle" value=""/>-->
+    <!--</c:if>-->
+    <!--</c:forEach>-->
+    <!--</div>-->
 
     <div id="header">
-        <div id="headertxt"><a href="/friendface" title="friendface">friendface</a>${param.headerText}</div>
-        <c:forEach var='item' items='${param}'>
-            <c:if test='${fn:contains(item.key, "reference")}'>
-                <c:set var="reference" value="${item.value}"/>
-            </c:if>
-            <c:if test='${fn:contains(item.key, "reftitle")}'>
-                <c:set var="reftitle" value="${item.value}"/>
-            </c:if>
-            <c:if test='${not empty reference and not empty reftitle}'>
-
-                <div id="headrefs">
-                    <a href='${reference}' title='${reftitle}'> ${reftitle}</a>
-                </div>
-                <c:set var="reference" value=""/>
-                <c:set var="reftitle" value=""/>
-            </c:if>
-        </c:forEach>
+        <div id="headertxt">
+            <a href="/friendface" title="friendface">friendface</a>
+            <tiles:getAsString name="headerText"/>
+        </div>
+        <div id="headrefs">
+            <a href='${param.firstReference}' title='${param.firstReferenceTitle}'> ${param.firstReferenceTitle}</a>
+            <a href='${param.secondReference}' title='${param.secondReferenceTitle}'> ${param.secondReferenceTitle}</a>
+        </div>
     </div>
 </jsp:root>

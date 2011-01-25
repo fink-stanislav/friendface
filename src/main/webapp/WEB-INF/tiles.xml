@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition name="parametrized.header" template="/WEB-INF/jsps/frames/header.jspx">
+        <put-attribute name="headerText" value=""/>
+        <put-attribute name="firstReference" value=""/>
+        <put-attribute name="firstReferenceTitle" value=""/>
+        <put-attribute name="secondReference" value=""/>
+        <put-attribute name="secondReferenceTitle" value=""/>
+    </definition>
+
+    <definition name="friendface.welcomepage" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx">
+        <put-attribute name="title" value="Welcome"/>
+        <put-attribute name="header" value="/WEB-INF/jsps/frames/header.jspx">
+            <definition template="/WEB-INF/jsps/frames/header.jspx" extends="parametrized.header">
+                <put-attribute name="firstReference" value="registration"/>
+                <put-attribute name="firstReferenceTitle" value="регистрация"/>
+                <put-attribute name="secondReference" value="logon"/>
+                <put-attribute name="secondReferenceTitle" value="вход"/>
+            </definition>
+        </put-attribute>
+        <put-attribute name="content" value="/WEB-INF/jsps/welcomepage/welcomepage.cnt.jspx"/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
+    </definition>
+
+    <definition name="friendface.registration" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
+                extends="friendface.welcomepage">
+        <put-attribute name="title" value="Registration"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/registration/registration.cnt.jspx"/>
+    </definition>
+
+    <definition name="friendface.logon" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
+                extends="friendface.welcomepage">
+        <put-attribute name="title" value="Logon"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/logon/logon.cnt.jspx"/>
+    </definition>
+
+    <definition name="friendface.infopage" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
+                extends="friendface.welcomepage">
+        <put-attribute name="title" value="Info"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/infopages/infopage.cnt.jspx"/>
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="css/doublecontainer.css"/>
+</head>
+<body>
+
+    <tiles:insertDefinition name="friendface.welcomepage"/>
+
+</body>
+</html>

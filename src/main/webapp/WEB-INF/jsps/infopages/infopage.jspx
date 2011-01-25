@@ -6,31 +6,15 @@
   Time: 2:11 PM
 -->
 
-        <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:jsp="http://java.sun.com/JSP/Page"
-      xmlns:f="http://java.sun.com/jsp/jstl/fmt">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:tiles="http://tiles.apache.org/tags-tiles">
+<body>
 
-    <head>
-        <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8"/>
-        <link rel="stylesheet" type="text/css" href="css/commonstyle.css"/>
-        <title>Under construction</title>
-    </head>
-    <body>
-    <div id="container">
+<tiles:insertDefinition name="friendface.infopage"/>
+<!--<f:requestEncoding value="UTF-8"/>-->
+<!--<jsp:include page="/WEB-INF/jsps/frames/header.jspx">-->
+<!--<jsp:param name="headerText" value=" - в разработке"/>-->
+<!--</jsp:include>-->
 
-        <f:requestEncoding value="UTF-8"/>
-        <jsp:include page="/WEB-INF/jsps/frames/header.jspx">
-            <jsp:param name="headerText" value=" - в разработке"/>
-        </jsp:include>
+</body>
 
-        <div id="content">
-            <div class="margined-layer">
-                ${param.message}
-            </div>
-        </div>
-    </div>
-
-    <jsp:include page="/WEB-INF/jsps/frames/footer.jspx"/>
-
-    </body>
-    </html>
+</html>

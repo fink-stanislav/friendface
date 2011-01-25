@@ -45,7 +45,7 @@
     <!-- jsps -->
     <servlet>
         <servlet-name>welcomepage</servlet-name>
-        <jsp-file>/WEB-INF/welcomepage.jspx</jsp-file>
+        <jsp-file>/WEB-INF/jsps/welcomepage/welcomepage.jspx</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>welcomepage</servlet-name>
@@ -69,6 +69,11 @@
         <servlet-name>registration</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
+
+    <!-- tiles -->
+    <listener>
+        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
+    </listener>
 
     <!-- temp -->
     <servlet>

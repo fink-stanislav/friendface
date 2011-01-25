@@ -1,64 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:jsp="http://java.sun.com/JSP/Page"
-      xmlns:f="http://java.sun.com/jsp/jstl/fmt">
+      xmlns:tiles="http://tiles.apache.org/tags-tiles">
 
 <jsp:useBean id="logonBean" class="com.exadel.friendface.pagebeans.LogonBean" scope="request"/>
-
 <jsp:setProperty name="logonBean" property="*"/>
 
-
 <head>
-    <meta http-equiv="Content-Type" content="text/xml; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="css/commonstyle.css"/>
     <link rel="stylesheet" type="text/css" href="css/forms.css"/>
     <link type="text/javascript" href="js/validation.js"/>
-    <title>Вход</title>
 </head>
 <body>
-<div id="container">
 
-    <f:requestEncoding value="UTF-8"/>
-    <jsp:include page="/WEB-INF/jsps/frames/header.jspx">
-        <jsp:param name="headerText" value=" - вход"/>
-        <jsp:param name="referenceToReg" value="registration"/>
-        <jsp:param name="reftitleToReg" value="регистрация"/>
-    </jsp:include>
+<tiles:insertDefinition name="friendface.logon"/>
 
-    <div id="content">
-        <div id="login-form">
-            <form name="userdataform" method="POST" action="/friendface/LogonServlet">
-
-                <div>
-                    <span>Имя пользователя</span>
-                </div>
-                <div>
-                    <input type="text" name="loginEmail" value='${logonBean.loginEmail}'/>
-                </div>
-
-                <div class="formLine">
-                    <span>Пароль</span>
-                </div>
-                <div>
-                    <input type="password" name="password"/>
-                </div>
-
-                ${not empty param.errormessage ?
-                        param.errormessage : " "}
-
-                <hr/>
-
-                <div class="formLine">
-                    <input type="submit" name="submitbutton" value="Войти"/>
-                    <input type="reset" name="resetbutton" value="Отмена"/>
-                </div>
-
-            </form>
-        </div>
-    </div>
-</div>
-
-<jsp:include page="/WEB-INF/jsps/frames/footer.jspx"/>
+<!--<f:requestEncoding value="UTF-8"/>-->
+<!--<jsp:include page="/WEB-INF/jsps/frames/header.jspx">-->
+<!--<jsp:param name="headerText" value=" - вход"/>-->
+<!--<jsp:param name="referenceToReg" value="registration"/>-->
+<!--<jsp:param name="reftitleToReg" value="регистрация"/>-->
+<!--</jsp:include>-->
 
 </body>
 </html>
