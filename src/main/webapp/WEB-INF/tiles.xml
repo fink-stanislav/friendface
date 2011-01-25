@@ -4,24 +4,10 @@
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-    <definition name="parametrized.header" template="/WEB-INF/jsps/frames/header.jspx">
-        <put-attribute name="headerText" value=""/>
-        <put-attribute name="firstReference" value=""/>
-        <put-attribute name="firstReferenceTitle" value=""/>
-        <put-attribute name="secondReference" value=""/>
-        <put-attribute name="secondReferenceTitle" value=""/>
-    </definition>
-
-    <definition name="friendface.welcomepage" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx">
+    <definition name="friendface.welcomepage" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
+                preparer="com.exadel.friendface.tiles.HeaderViewPreparer">
         <put-attribute name="title" value="Welcome"/>
-        <put-attribute name="header" value="/WEB-INF/jsps/frames/header.jspx">
-            <definition template="/WEB-INF/jsps/frames/header.jspx" extends="parametrized.header">
-                <put-attribute name="firstReference" value="registration"/>
-                <put-attribute name="firstReferenceTitle" value="регистрация"/>
-                <put-attribute name="secondReference" value="logon"/>
-                <put-attribute name="secondReferenceTitle" value="вход"/>
-            </definition>
-        </put-attribute>
+        <put-attribute name="header" value="/WEB-INF/jsps/frames/header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/welcomepage/welcomepage.cnt.jspx"/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
