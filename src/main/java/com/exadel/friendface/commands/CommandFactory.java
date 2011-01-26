@@ -39,8 +39,8 @@ public class CommandFactory {
 
     private void configure() {
         try {
-            Enumeration<URL> enumeration = getClass().getClassLoader().getResources("");
-            File configuration = new File("C:/javadev/workspace/friendface/src/main/resources/activities.xml");
+            URL resUrl = getClass().getClassLoader().getResource("activities.xml");
+            File configuration = new File(resUrl.getFile());
             DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = builder.parse(configuration);
             doc.getDocumentElement().normalize();

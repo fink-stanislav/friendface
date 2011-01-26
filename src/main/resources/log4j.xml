@@ -13,7 +13,7 @@
     <appender name="file-appender" class="org.apache.log4j.FileAppender">
         <param name="file" value="log"/>
         <layout class="org.apache.log4j.PatternLayout">
-            <param name="ConversionPattern" value="%d{ISO8601} [%5p] %c %m at %l%n"/>
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p %c{1} - %m%n"/>
         </layout>
     </appender>
 

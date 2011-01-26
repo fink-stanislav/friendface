@@ -7,14 +7,13 @@
 
 package com.exadel.friendface.commands;
 
-import com.exadel.friendface.util.stringutil.StringUtil;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.exadel.friendface.util.stringutil.StringUtil.buildUrl;
 
 /**
  * Command class.
@@ -31,11 +30,7 @@ public class Entrance implements Command {
         if (loginEmail != null) {
             Map<String, String> params = new HashMap<String, String>();
             params.put("message", (String) loginEmail);
-            try {
-                return StringUtil.buildUrl("/friendface/infopage", params);
-            } catch (UnsupportedEncodingException e) {
-                return "/friendface/welcomepage";
-            }
+            return buildUrl("/friendface/infopage", params);
         }
         return "/friendface/welcomepage";
     }

@@ -1,13 +1,12 @@
 package com.exadel.friendface.commands;
 
-import com.exadel.friendface.util.stringutil.StringUtil;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.exadel.friendface.util.stringutil.StringUtil.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,6 +14,7 @@ import java.util.Map;
  * Date: 1/25/11
  * Time: 12:59 PM
  */
+
 public class Logon implements Command {
 
     public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -23,11 +23,7 @@ public class Logon implements Command {
         if (loginEmail != null) {
             Map<String, String> params = new HashMap<String, String>();
             params.put("message", (String) loginEmail);
-            try {
-                return StringUtil.buildUrl("/friendface/infopage", params);
-            } catch (UnsupportedEncodingException e) {
-                return "/friendface/welcomepage";
-            }
+            return buildUrl("/friendface/infopage", params);
         }
         return "/friendface/logon";
     }
