@@ -23,7 +23,12 @@ public class StringUtil {
 
     public static String buildUrl(String host, Map<String, String> params) {
         StringBuilder urlBuilder = new StringBuilder();
-        urlBuilder.append(host).append("?");
+        urlBuilder.append(host);
+        if (host.indexOf("?") == -1)
+            urlBuilder.append("?");
+        else {
+            urlBuilder.append("&");
+        }
         try {
             for (Map.Entry<String, String> param : params.entrySet()) {
                 urlBuilder.append(param.getKey())

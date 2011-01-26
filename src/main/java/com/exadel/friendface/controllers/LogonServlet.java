@@ -40,9 +40,7 @@ public class LogonServlet extends HttpServlet {
 
             // login here
             HttpSession session = request.getSession();
-            if (session.getAttribute("loginEmail") == null) {
-                session.setAttribute("loginEmail", loginEmail);
-            }
+            session.setAttribute("loginEmail", loginEmail);
             response.sendRedirect("/friendface/LogonServlet");
 
         } catch (ValidationException ve) {
@@ -57,12 +55,6 @@ public class LogonServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Object atribute = session.getAttribute("loginEmail");
-        if (atribute != null) {
-            Map<String, String> atributes = new HashMap<String, String>();
-            atributes.put("message", (String) atribute);
-            redirectToUrl(this, request, response, "/friendface/infopage", atributes);
-        }
+        redirectToUrl(this, request, response, "/friendface?activity=entrance");
     }
 }

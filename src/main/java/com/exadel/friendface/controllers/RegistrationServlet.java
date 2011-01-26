@@ -47,10 +47,17 @@ public class RegistrationServlet extends HttpServlet {
             validator.validatePassword(password, passwordConfirmation);
 
             // registration here
-            response.sendRedirect("/friendface/RegistrationServlet");
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("message", "Registration succeeded.");
+            redirectToUrl(this, request, response, "/friendface/infopage", params);
 
         } catch (ValidationException ve) {
             logger.error(ve);
+//            RegistrationBean registrationBean = new RegistrationBean();
+//            registrationBean.setLoginEmail(loginEmail);
+//            registrationBean.setUsername(username);
+//            registrationBean.setUsersurname(usersurname);
+//            forwardToUrl(this, request, response, "/registration", "registrationBean", registrationBean);
             Map<String, String> params = new HashMap<String, String>();
             params.put("loginEmail", loginEmail);
             params.put("username", username);
@@ -63,8 +70,5 @@ public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("message", "Registration succeeded.");
-        redirectToUrl(this, request, response, "/friendface/infopage", params);
     }
 }

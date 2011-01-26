@@ -38,6 +38,15 @@ public class ServletUtil {
         rd.forward(request, response);
     }
 
+    public static void forwardToUrl(HttpServlet servlet, HttpServletRequest request, HttpServletResponse response,
+                                    String url, String name, Object value)
+            throws ServletException, IOException {
+        ServletContext sc = servlet.getServletContext();
+        RequestDispatcher rd = sc.getRequestDispatcher(url);
+        request.setAttribute(name, value);
+        rd.forward(request, response);
+    }
+
     public static void redirectToUrl(HttpServlet servlet, HttpServletRequest request, HttpServletResponse response, String url)
             throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
