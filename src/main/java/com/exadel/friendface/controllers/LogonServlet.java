@@ -44,7 +44,7 @@ public class LogonServlet extends HttpServlet {
             response.sendRedirect("/friendface/LogonServlet");
 
         } catch (ValidationException ve) {
-            logger.error(ve);
+            logger.error("Logon servlet. POST-params validation failed. " + ve.toString());
             Map<String, String> params = new HashMap<String, String>();
             params.put("loginEmail", loginEmail);
             params.put("errormessage", ve.toString());

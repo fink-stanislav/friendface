@@ -94,6 +94,9 @@
     <filter-mapping>
         <filter-name>LoggingFilter</filter-name>
         <url-pattern>/*</url-pattern>
+        <!--<dispatcher>INCLUDE</dispatcher>-->
+        <!--<dispatcher>REQUEST</dispatcher>-->
+        <!--<dispatcher>FORWARD</dispatcher>-->
     </filter-mapping>
 
 </web-app>

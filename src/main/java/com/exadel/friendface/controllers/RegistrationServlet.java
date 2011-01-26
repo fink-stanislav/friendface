@@ -52,12 +52,7 @@ public class RegistrationServlet extends HttpServlet {
             redirectToUrl(this, request, response, "/friendface/infopage", params);
 
         } catch (ValidationException ve) {
-            logger.error(ve);
-//            RegistrationBean registrationBean = new RegistrationBean();
-//            registrationBean.setLoginEmail(loginEmail);
-//            registrationBean.setUsername(username);
-//            registrationBean.setUsersurname(usersurname);
-//            forwardToUrl(this, request, response, "/registration", "registrationBean", registrationBean);
+            logger.error("Registration servlet. POST-params validation failed. " + ve.toString());
             Map<String, String> params = new HashMap<String, String>();
             params.put("loginEmail", loginEmail);
             params.put("username", username);
