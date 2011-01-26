@@ -29,4 +29,5 @@
         <put-attribute name="title" value="Info"/>
         <put-attribute name="content" value="/WEB-INF/jsps/infopages/infopage.cnt.jspx"/>
     </definition>
+
 </tiles-definitions>

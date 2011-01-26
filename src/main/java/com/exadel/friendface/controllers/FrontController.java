@@ -8,18 +8,28 @@
 package com.exadel.friendface.controllers;
 
 import com.exadel.friendface.commands.Command;
+import com.exadel.friendface.commands.CommandCreationException;
 import com.exadel.friendface.util.servletutil.ServletUtil;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.exadel.friendface.util.servletutil.ServletUtil.forwardToUrl;
 
 public class FrontController extends HttpServlet {
 
-    public FrontController() {
-        super();
+    private Logger logger;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        logger = Logger.getLogger("logger");
     }
 
     protected void dispatch(HttpServletRequest request, HttpServletResponse response, String url)
@@ -33,21 +43,25 @@ public class FrontController extends HttpServlet {
         String resultPage;
         RequestHelper helper = new RequestHelper(request);
 
-        Command command = helper.getCommand();
-
-        resultPage = command.execute(request, response);
-
-        dispatch(request, response, resultPage);
+        Command command;
+        try {
+            command = helper.getCommand();
+            resultPage = command.execute(request, response);
+            dispatch(request, response, resultPage);
+        } catch (CommandCreationException e) {
+            logger.error(e);
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("message", e.toString());
+            forwardToUrl(this, request, response, "/infopage", map);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         try {
             processRequest(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error(e);
         }
     }
 
@@ -55,10 +69,8 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
             processRequest(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            logger.error(e);
         }
     }
 }

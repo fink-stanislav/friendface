@@ -12,13 +12,11 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-import org.xml.sax.SAXException;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.IOException;
+import java.net.URL;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -41,10 +39,10 @@ public class CommandFactory {
 
     private void configure() {
         try {
-            File configuration = new File("C:\\javadev\\workspace\\friendface\\src\\main\\resources\\activities.xml");
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-            Document doc = dBuilder.parse(configuration);
+            Enumeration<URL> enumeration = getClass().getClassLoader().getResources("");
+            File configuration = new File("C:/javadev/workspace/friendface/src/main/resources/activities.xml");
+            DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc = builder.parse(configuration);
             doc.getDocumentElement().normalize();
             NodeList activities = doc.getElementsByTagName("activities");
 
@@ -58,16 +56,12 @@ public class CommandFactory {
                     }
                 }
             }
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new RuntimeException("Front controller configuration file error. ", e);
         }
     }
 
-    public Command create(String name) {
+    public Command create(String name) throws CommandCreationException {
 
         // weak place
         if (name == null) {
@@ -75,17 +69,11 @@ public class CommandFactory {
         }
         // end
 
-        Class clazz = null;
         try {
-            clazz = Class.forName(mapping.get(name));
+            Class clazz = Class.forName(mapping.get(name));
             return (Command) clazz.newInstance();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            throw new CommandCreationException(e);
         }
-        return null;
     }
 }

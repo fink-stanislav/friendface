@@ -2,6 +2,7 @@ package com.exadel.friendface.controllers;
 
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
+import org.apache.log4j.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +16,12 @@ import java.util.Map;
 import static com.exadel.friendface.util.servletutil.ServletUtil.redirectToUrl;
 
 public class LogonServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
 
-    public LogonServlet() {
-        super();
+    private Logger logger;
+
+    @Override
+    public void init() {
+        logger = Logger.getLogger("logger");
     }
 
     @Override
@@ -43,6 +46,7 @@ public class LogonServlet extends HttpServlet {
             response.sendRedirect("/friendface/LogonServlet");
 
         } catch (ValidationException ve) {
+            logger.error(ve);
             Map<String, String> params = new HashMap<String, String>();
             params.put("loginEmail", loginEmail);
             params.put("errormessage", ve.toString());

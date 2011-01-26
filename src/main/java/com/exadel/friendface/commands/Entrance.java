@@ -24,6 +24,7 @@ import java.util.Map;
  */
 
 public class Entrance implements Command {
+
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         Object loginEmail = session.getAttribute("loginEmail");
@@ -31,12 +32,12 @@ public class Entrance implements Command {
             Map<String, String> params = new HashMap<String, String>();
             params.put("message", (String) loginEmail);
             try {
-                String url = StringUtil.buildUrl("/friendface/infopage", params);
-                return url;
+                return StringUtil.buildUrl("/friendface/infopage", params);
             } catch (UnsupportedEncodingException e) {
                 return "/friendface/welcomepage";
             }
         }
         return "/friendface/welcomepage";
     }
+
 }

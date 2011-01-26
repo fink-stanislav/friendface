@@ -1,6 +1,7 @@
 package com.exadel.friendface.controllers;
 
 import com.exadel.friendface.commands.Command;
+import com.exadel.friendface.commands.CommandCreationException;
 import com.exadel.friendface.commands.CommandFactory;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ public class RequestHelper {
         this.request = request;
     }
 
-    public Command getCommand() {
+    public Command getCommand() throws CommandCreationException {
         return CommandFactory.getInstance().create(request.getParameter("activity"));
     }
 }

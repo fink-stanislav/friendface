@@ -1,4 +1,4 @@
-package com.exadel.friendface.logging;
+package com.exadel.friendface.filters;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +27,7 @@ public class LoggingFilter implements Filter {
             return;
         }
 
-        Logger fileLogger = Logger.getLogger("filelogger");
-        Logger consoleLogger = Logger.getLogger("consolelogger");
+        Logger logger = Logger.getLogger("logger");
 
         HttpServletRequest httpServletRequest;
         HttpServletResponse httpServletResponse;
@@ -44,6 +43,10 @@ public class LoggingFilter implements Filter {
             requestStringBuilder.append("[Logger error]");
         }
 
+        logger.info(requestStringBuilder.toString());
+
+        filterChain.doFilter(servletRequest, servletResponse);
+
         StringBuilder responseStringBuilder = new StringBuilder();
         if (servletResponse instanceof HttpServletResponse) {
             httpServletResponse = (HttpServletResponse) servletResponse;
@@ -54,12 +57,7 @@ public class LoggingFilter implements Filter {
             responseStringBuilder.append("[Logger error]");
         }
 
-        consoleLogger.info(requestStringBuilder.toString());
-        consoleLogger.info(responseStringBuilder.toString());
-        fileLogger.info(requestStringBuilder.toString());
-        fileLogger.info(responseStringBuilder.toString());
-
-        filterChain.doFilter(servletRequest, servletResponse);
+        logger.info(responseStringBuilder.toString());
     }
 
     public void destroy() {
