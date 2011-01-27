@@ -1,46 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
+
     <display-name>friendface</display-name>
     <welcome-file-list>
-        <welcome-file>friendface</welcome-file>
+        <welcome-file>welcome.action</welcome-file>
     </welcome-file-list>
 
-    <!-- front controller -->
-    <servlet>
-        <display-name>friendface</display-name>
-        <servlet-name>friendface</servlet-name>
-        <servlet-class>com.exadel.friendface.controllers.FrontController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>friendface</servlet-name>
-        <url-pattern>/friendface</url-pattern>
-    </servlet-mapping>
-
-    <!-- servlets -->
-    <servlet>
-        <description>Servlet to perform registration</description>
-        <display-name>RegistrationServlet</display-name>
-        <servlet-name>RegistrationServlet</servlet-name>
-        <servlet-class>com.exadel.friendface.controllers.RegistrationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>RegistrationServlet</servlet-name>
-        <url-pattern>/RegistrationServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <description>Servlet to perform logging on</description>
-        <display-name>LogonServlet</display-name>
-        <servlet-name>LogonServlet</servlet-name>
-        <servlet-class>com.exadel.friendface.controllers.LogonServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>LogonServlet</servlet-name>
-        <url-pattern>/LogonServlet</url-pattern>
-    </servlet-mapping>
+    <!-- struts 2 -->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <!-- jsps -->
     <servlet>
@@ -53,15 +32,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>logon</servlet-name>
-        <jsp-file>/WEB-INF/jsps/logon/logon.jspx</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>logon</servlet-name>
-        <url-pattern>/logon</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>registration</servlet-name>
         <jsp-file>/WEB-INF/jsps/registration/registration.jspx</jsp-file>
     </servlet>
@@ -70,33 +40,81 @@
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>entrance</servlet-name>
+        <jsp-file>/WEB-INF/jsps/logon/entrance.jspx</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>entrance</servlet-name>
+        <url-pattern>/entrance</url-pattern>
+    </servlet-mapping>
+
     <!-- tiles -->
     <listener>
         <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
     </listener>
 
-    <!-- temp -->
-    <servlet>
-        <servlet-name>infopage</servlet-name>
-        <jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>infopage</servlet-name>
-        <url-pattern>/infopage</url-pattern>
-    </servlet-mapping>
+    <!--&lt;!&ndash; front controller &ndash;&gt;-->
+    <!--<servlet>-->
+    <!--<display-name>friendface</display-name>-->
+    <!--<servlet-name>friendface</servlet-name>-->
+    <!--<servlet-class>com.exadel.friendface.controllers.FrontController</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>friendface</servlet-name>-->
+    <!--<url-pattern>/friendface</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <!-- filters -->
-    <filter>
-        <filter-name>LoggingFilter</filter-name>
-        <filter-class>com.exadel.friendface.filters.LoggingFilter</filter-class>
-    </filter>
+    <!--&lt;!&ndash; servlets &ndash;&gt;-->
+    <!--<servlet>-->
+    <!--<description>Servlet to perform registration</description>-->
+    <!--<display-name>RegistrationServlet</display-name>-->
+    <!--<servlet-name>RegistrationServlet</servlet-name>-->
+    <!--<servlet-class>com.exadel.friendface.controllers.RegistrationServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>RegistrationServlet</servlet-name>-->
+    <!--<url-pattern>/RegistrationServlet</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <filter-mapping>
-        <filter-name>LoggingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <!--<dispatcher>INCLUDE</dispatcher>-->
-        <!--<dispatcher>REQUEST</dispatcher>-->
-        <!--<dispatcher>FORWARD</dispatcher>-->
-    </filter-mapping>
+    <!--<servlet>-->
+    <!--<description>Servlet to perform logging on</description>-->
+    <!--<display-name>LogonServlet</display-name>-->
+    <!--<servlet-name>LogonServlet</servlet-name>-->
+    <!--<servlet-class>com.exadel.friendface.controllers.LogonServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>LogonServlet</servlet-name>-->
+    <!--<url-pattern>/LogonServlet</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+
+
+
+
+    <!--&lt;!&ndash; temp &ndash;&gt;-->
+    <!--<servlet>-->
+    <!--<servlet-name>infopage</servlet-name>-->
+    <!--<jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>infopage</servlet-name>-->
+    <!--<url-pattern>/infopage</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--&lt;!&ndash; filters &ndash;&gt;-->
+    <!--<filter>-->
+    <!--<filter-name>LoggingFilter</filter-name>-->
+    <!--<filter-class>com.exadel.friendface.filters.LoggingFilter</filter-class>-->
+    <!--</filter>-->
+
+    <!--<filter-mapping>-->
+    <!--<filter-name>LoggingFilter</filter-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+    <!--<dispatcher>INCLUDE</dispatcher>-->
+    <!--<dispatcher>REQUEST</dispatcher>-->
+    <!--<dispatcher>FORWARD</dispatcher>-->
+    <!--</filter-mapping>-->
 
 </web-app>

@@ -4,30 +4,30 @@
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-    <definition name="friendface.welcomepage" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
+    <definition name="base.page.header" template="/WEB-INF/jsps/frames/template-header.jspx"
                 preparer="com.exadel.friendface.tiles.HeaderViewPreparer">
-        <put-attribute name="title" value="Welcome"/>
+        <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/welcomepage/welcomepage.cnt.jspx"/>
+    </definition>
+
+    <definition name="base.page.footer" template="/WEB-INF/jsps/frames/template-footer.jspx">
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
 
-    <definition name="friendface.registration" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
-                extends="friendface.welcomepage">
+    <definition name="friendface.welcomepage" extends="base.page.header">
+        <put-attribute name="title" value="Welcome"/>
+    </definition>
+
+    <definition name="friendface.registration" extends="base.page.header">
         <put-attribute name="title" value="Registration"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/registration/registration.cnt.jspx"/>
     </definition>
 
-    <definition name="friendface.logon" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
-                extends="friendface.welcomepage">
+    <definition name="friendface.logon" extends="base.page.header">
         <put-attribute name="title" value="Logon"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/logon/logon.cnt.jspx"/>
     </definition>
 
-    <definition name="friendface.infopage" template="/WEB-INF/jsps/frames/templateAuxiliary.jspx"
-                extends="friendface.welcomepage">
+    <definition name="friendface.infopage" extends="base.page.header">
         <put-attribute name="title" value="Info"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/infopages/infopage.cnt.jspx"/>
     </definition>
 
 </tiles-definitions>

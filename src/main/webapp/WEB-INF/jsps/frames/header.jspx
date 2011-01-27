@@ -4,7 +4,7 @@
 
     <div id="header">
         <div id="headertxt">
-            <a href="/friendface" title="friendface">friendface</a>
+            <a href="/welcomepage" title="friendface">friendface</a>
         </div>
         <div id="headrefs">
             <c:forEach var="item" items='${requestScope.headerParams}'>

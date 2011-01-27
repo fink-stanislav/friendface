@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="root" namespace="/" extends="struts-default">
+        <action name="welcome">
+            <result>welcomepage</result>
+        </action>
+
+        <action name="registration">
+            <result>registration</result>
+        </action>
+
+        <action name="entrance">
+            <result>entrance</result>
+        </action>
+
+        <action name="register" class="">
+            <result name="success">infopage</result>
+            <result name="error">registration</result>
+        </action>
+
+        <action name="login" class="">
+            <result name="success">infopage</result>
+            <result name="error">entrance</result>
+        </action>
+    </package>
+
+</struts>

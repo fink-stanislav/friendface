@@ -8,9 +8,15 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:tiles="http://tiles.apache.org/tags-tiles">
 <body>
-
-<tiles:insertDefinition name="friendface.infopage"/>
-
+<div id="container">
+    <tiles:insertDefinition name="friendface.infopage"/>
+    <div id="content">
+        <div class="margined-layer">
+            ${param.message}
+            ${requestScope.message}
+        </div>
+    </div>
+    <tiles:insertDefinition name="base.page.footer"/>
+</div>
 </body>
-
 </html>

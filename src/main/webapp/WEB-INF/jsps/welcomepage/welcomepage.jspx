@@ -1,13 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:tiles="http://tiles.apache.org/tags-tiles">
+      xmlns:tiles="http://tiles.apache.org/tags-tiles"
+      xmlns:jsp="http://java.sun.com/JSP/Page">
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/doublecontainer.css"/>
 </head>
 <body>
-
+<div id="container">
     <tiles:insertDefinition name="friendface.welcomepage"/>
+
+    <div id="content">
+        <div id="article-header-side">
+            <jsp:text>Welcome!</jsp:text>
+        </div>
+        <div id="article-side">
+            <jsp:text>Hi, username! Here is a place, where you can meet friends and get their pages flooded beyond all
+                recognition! Time to try!
+            </jsp:text>
+        </div>
+    </div>
+</div>
+
+<tiles:insertDefinition name="base.page.footer"/>
 
 </body>
 </html>

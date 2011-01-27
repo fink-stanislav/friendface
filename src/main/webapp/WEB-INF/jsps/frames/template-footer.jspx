@@ -1,0 +1,12 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: sfink
+  Date: 1/27/11
+  Time: 5:43 PM
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0"
+          xmlns:tiles="http://tiles.apache.org/tags-tiles">
+
+    <tiles:insertAttribute name="footer"/>
+
+</jsp:root>
