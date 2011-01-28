@@ -30,7 +30,7 @@ public class HeaderViewPreparer implements ViewPreparer {
         if (servletName.equals("welcomepage")) {
             headerParams.add(new HeaderItem("/friendface/registration.action", "регистрация", "регистрация"));
             headerParams.add(new HeaderItem("/friendface/entrance.action", "вход", "вход"));
-        } else if (servletName.equals("logon")) {
+        } else if (servletName.equals("entrance")) {
             headerParams.add(new HeaderItem("/friendface/registration.action", "регистрация", "регистрация"));
         } else if (servletName.equals("registration")) {
             headerParams.add(new HeaderItem("/friendface/entrance.action", "вход", "вход"));

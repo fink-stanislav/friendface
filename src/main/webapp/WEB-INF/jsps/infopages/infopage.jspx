@@ -10,13 +10,15 @@
 <body>
 <div id="container">
     <tiles:insertDefinition name="friendface.infopage"/>
+
     <div id="content">
         <div class="margined-layer">
             ${param.message}
             ${requestScope.message}
         </div>
     </div>
-    <tiles:insertDefinition name="base.page.footer"/>
 </div>
+<tiles:insertDefinition name="base.page.footer"/>
+
 </body>
 </html>

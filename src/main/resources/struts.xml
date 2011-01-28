@@ -5,25 +5,44 @@
 
 <struts>
 
+    <!--<package name="tiles" extends="tiles-default">-->
+        <!--<action name="*Link" method="{1}" class="com.exadel.friendface.actions.Link">-->
+            <!--<result name="welcome" type="tiles">friendface.welcomepage</result>-->
+            <!--<result name="logon" type="tiles">friendface.logon</result>-->
+            <!--<result name="registration" type="tiles">friendface.registration</result>-->
+            <!--<result name="infopage" type="tiles">friendface.infopage</result>-->
+        <!--</action>-->
+    <!--</package>-->
+
     <package name="root" namespace="/" extends="struts-default">
+
+        <!-- application welcome page -->
         <action name="welcome">
             <result>welcomepage</result>
         </action>
 
+        <!-- registration input page -->
         <action name="registration">
             <result>registration</result>
         </action>
 
-        <action name="entrance">
-            <result>entrance</result>
+        <!-- user is not logged in: entrance -->
+        <!-- user is logged in: userpage  -->
+        <action name="entrance" class="com.exadel.friendface.actions.Entrance">
+            <result name="success">entrance</result>
+            <result name="error">infopage</result>
         </action>
 
-        <action name="register" class="">
+        <!-- there were no errors during registration: registration succeed page -->
+        <!-- there were some errors (validation): back to input page -->
+        <action name="register" class="com.exadel.friendface.actions.Register">
             <result name="success">infopage</result>
             <result name="error">registration</result>
         </action>
 
-        <action name="login" class="">
+        <!-- no errors: userpage -->
+        <!-- otherwise: back to input page -->
+        <action name="login" class="com.exadel.friendface.actions.Login">
             <result name="success">infopage</result>
             <result name="error">entrance</result>
         </action>

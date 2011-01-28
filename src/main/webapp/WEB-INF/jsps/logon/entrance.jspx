@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:jsp="http://java.sun.com/JSP/Page"
-      xmlns:tiles="http://tiles.apache.org/tags-tiles">
+      xmlns:tiles="http://tiles.apache.org/tags-tiles"
+      xmlns:s="/struts-tags">
 
 <jsp:useBean id="logonBean" class="com.exadel.friendface.pagebeans.LogonBean" scope="request"/>
 <jsp:setProperty name="logonBean" property="*"/>
 
 <head>
     <link rel="stylesheet" type="text/css" href="css/forms.css"/>
+    <link rel="stylesheet" type="text/css" href="css/userdata.css"/>
     <link type="text/javascript" href="js/validation.js"/>
 </head>
 <body>
@@ -19,30 +21,23 @@
     <div id="content">
 
         <div id="login-form">
-            <form name="userdataform" method="POST" action="/friendface/LogonServlet">
+            <form action="login.action">
 
-                <div>
-                    <span>Имя пользователя</span>
-                </div>
-                <div>
-                    <input type="text" name="loginEmail" value='${logonBean.loginEmail}'/>
-                </div>
+                <div>Имя пользователя</div>
+                <div><input type="text" name="loginEmail"/></div>
 
-                <div class="formLine">
-                    <span>Пароль</span>
-                </div>
-                <div>
-                    <input type="password" name="password"/>
-                </div>
+                <div>Пароль</div>
+                <div><input type="password" name="password"/></div>
 
                 ${not empty param.errormessage ?
                         param.errormessage : " "}
 
                 <hr/>
-
-                <div class="formLine">
-                    <input type="submit" name="submitbutton" value="Войти"/>
-                    <input type="reset" name="resetbutton" value="Отмена"/>
+                <div class="horizontal-block-normal">
+                    <div>
+                        <input type="submit" value="Войти"/>
+                        <input type="reset" value="Отмена"/>
+                    </div>
                 </div>
 
             </form>

@@ -7,6 +7,17 @@
          id="WebApp_ID" version="2.5">
 
     <display-name>friendface</display-name>
+
+    <!--<context-param>-->
+        <!--<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>-->
+        <!--<param-value>/WEB-INF/tiles.xml</param-value>-->
+    <!--</context-param>-->
+
+    <listener>
+        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
+        <!--<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>-->
+    </listener>
+
     <welcome-file-list>
         <welcome-file>welcome.action</welcome-file>
     </welcome-file-list>
@@ -49,10 +60,15 @@
         <url-pattern>/entrance</url-pattern>
     </servlet-mapping>
 
-    <!-- tiles -->
-    <listener>
-        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
-    </listener>
+    <!-- temp -->
+    <servlet>
+        <servlet-name>infopage</servlet-name>
+        <jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>infopage</servlet-name>
+        <url-pattern>/infopage</url-pattern>
+    </servlet-mapping>
 
     <!--&lt;!&ndash; front controller &ndash;&gt;-->
     <!--<servlet>-->
@@ -89,32 +105,18 @@
     <!--</servlet-mapping>-->
 
 
+    <!--filters -->
+    <filter>
+        <filter-name>LoggingFilter</filter-name>
+        <filter-class>com.exadel.friendface.filters.LoggingFilter</filter-class>
+    </filter>
 
-
-
-
-    <!--&lt;!&ndash; temp &ndash;&gt;-->
-    <!--<servlet>-->
-    <!--<servlet-name>infopage</servlet-name>-->
-    <!--<jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>infopage</servlet-name>-->
-    <!--<url-pattern>/infopage</url-pattern>-->
-    <!--</servlet-mapping>-->
-
-    <!--&lt;!&ndash; filters &ndash;&gt;-->
-    <!--<filter>-->
-    <!--<filter-name>LoggingFilter</filter-name>-->
-    <!--<filter-class>com.exadel.friendface.filters.LoggingFilter</filter-class>-->
-    <!--</filter>-->
-
-    <!--<filter-mapping>-->
-    <!--<filter-name>LoggingFilter</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--<dispatcher>INCLUDE</dispatcher>-->
-    <!--<dispatcher>REQUEST</dispatcher>-->
-    <!--<dispatcher>FORWARD</dispatcher>-->
-    <!--</filter-mapping>-->
+    <filter-mapping>
+        <filter-name>LoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
 
 </web-app>
