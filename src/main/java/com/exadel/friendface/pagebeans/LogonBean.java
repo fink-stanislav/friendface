@@ -9,6 +9,15 @@ package com.exadel.friendface.pagebeans;
 
 public class LogonBean {
     private String loginEmail;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getLoginEmail() {
         return loginEmail;

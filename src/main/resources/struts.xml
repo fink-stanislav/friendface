@@ -5,48 +5,48 @@
 
 <struts>
 
-    <!--<package name="tiles" extends="tiles-default">-->
-        <!--<action name="*Link" method="{1}" class="com.exadel.friendface.actions.Link">-->
-            <!--<result name="welcome" type="tiles">friendface.welcomepage</result>-->
-            <!--<result name="logon" type="tiles">friendface.logon</result>-->
-            <!--<result name="registration" type="tiles">friendface.registration</result>-->
-            <!--<result name="infopage" type="tiles">friendface.infopage</result>-->
-        <!--</action>-->
-    <!--</package>-->
+    <package name="render" namespace="/" extends="tiles-default">
+        <action name="*Link" method="{1}" class="com.exadel.friendface.actions.Link">
+            <result name="friendface.welcomepage" type="tiles">friendface.welcomepage</result>
+            <result name="friendface.entrance" type="tiles">friendface.entrance</result>
+            <result name="friendface.registration" type="tiles">friendface.registration</result>
+            <result name="friendface.infopage" type="tiles">friendface.infopage</result>
+        </action>
+    </package>
 
-    <package name="root" namespace="/" extends="struts-default">
+    <package name="root" namespace="/" extends="render">
 
         <!-- application welcome page -->
         <action name="welcome">
-            <result>welcomepage</result>
+            <result>welcomeLink.action</result>
         </action>
 
         <!-- registration input page -->
         <action name="registration">
-            <result>registration</result>
+            <result>/WEB-INF/jsps/registration/registration.jspx</result>
         </action>
 
         <!-- user is not logged in: entrance -->
         <!-- user is logged in: userpage  -->
         <action name="entrance" class="com.exadel.friendface.actions.Entrance">
-            <result name="success">entrance</result>
-            <result name="error">infopage</result>
+            <result name="success">/WEB-INF/jsps/entrance/entrance.jspx</result>
+            <result name="error">/WEB-INF/jsps/infopages/infopage.jspx</result>
         </action>
 
         <!-- there were no errors during registration: registration succeed page -->
         <!-- there were some errors (validation): back to input page -->
         <action name="register" class="com.exadel.friendface.actions.Register">
-            <result name="success">infopage</result>
-            <result name="input">registration</result>
-            <result name="error">welcome</result>
+            <result name="success">/WEB-INF/jsps/infopages/infopage.jspx</result>
+            <result name="input">/WEB-INF/jsps/registration/registration.jspx</result>
+            <result name="error">/WEB-INF/jsps/welcomepage/welcomepage.jspx</result>
         </action>
 
         <!-- no errors: userpage -->
         <!-- otherwise: back to input page or to registration -->
         <action name="login" class="com.exadel.friendface.actions.Login">
-            <result name="success">infopage</result>
-            <result name="input">entrance</result>
-            <result name="error">registration</result>
+            <result name="success">/WEB-INF/jsps/infopages/infopage.jspx</result>
+            <result name="input">/WEB-INF/jsps/entrance/entrance.jspx</result>
+            <result name="error">/WEB-INF/jsps/welcomepage/welcomepage.jspx</result>
         </action>
     </package>
 

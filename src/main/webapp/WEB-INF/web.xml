@@ -8,14 +8,14 @@
 
     <display-name>friendface</display-name>
 
-    <!--<context-param>-->
-        <!--<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>-->
-        <!--<param-value>/WEB-INF/tiles.xml</param-value>-->
-    <!--</context-param>-->
+    <context-param>
+        <param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
+        <param-value>/WEB-INF/tiles.xml</param-value>
+    </context-param>
 
     <listener>
-        <listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>
-        <!--<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>-->
+        <!--<listener-class>org.apache.tiles.web.startup.simple.SimpleTilesListener</listener-class>-->
+        <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
     </listener>
 
     <welcome-file-list>
@@ -33,42 +33,42 @@
     </filter-mapping>
 
     <!-- jsps -->
-    <servlet>
-        <servlet-name>welcomepage</servlet-name>
-        <jsp-file>/WEB-INF/jsps/welcomepage/welcomepage.jspx</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>welcomepage</servlet-name>
-        <url-pattern>/welcomepage</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>welcomepage</servlet-name>-->
+        <!--<jsp-file>/WEB-INF/jsps/welcomepage/welcomepage.jspx</jsp-file>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>welcomepage</servlet-name>-->
+        <!--<url-pattern>/welcomepage</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <servlet>
-        <servlet-name>registration</servlet-name>
-        <jsp-file>/WEB-INF/jsps/registration/registration.jspx</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>registration</servlet-name>
-        <url-pattern>/registration</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>registration</servlet-name>-->
+        <!--<jsp-file>/WEB-INF/jsps/registration/registration.jspx</jsp-file>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>registration</servlet-name>-->
+        <!--<url-pattern>/registration</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <servlet>
-        <servlet-name>entrance</servlet-name>
-        <jsp-file>/WEB-INF/jsps/entrance/entrance.jspx</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>entrance</servlet-name>
-        <url-pattern>/entrance</url-pattern>
-    </servlet-mapping>
+    <!--<servlet>-->
+        <!--<servlet-name>entrance</servlet-name>-->
+        <!--<jsp-file>/WEB-INF/jsps/entrance/entrance.jspx</jsp-file>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>entrance</servlet-name>-->
+        <!--<url-pattern>/entrance</url-pattern>-->
+    <!--</servlet-mapping>-->
 
-    <!-- temp -->
-    <servlet>
-        <servlet-name>infopage</servlet-name>
-        <jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>infopage</servlet-name>
-        <url-pattern>/infopage</url-pattern>
-    </servlet-mapping>
+    <!--&lt;!&ndash; temp &ndash;&gt;-->
+    <!--<servlet>-->
+        <!--<servlet-name>infopage</servlet-name>-->
+        <!--<jsp-file>/WEB-INF/jsps/infopages/infopage.jspx</jsp-file>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>infopage</servlet-name>-->
+        <!--<url-pattern>/infopage</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <!--&lt;!&ndash; front controller &ndash;&gt;-->
     <!--<servlet>-->

@@ -1,9 +1,11 @@
 package com.exadel.friendface.actions;
 
 import com.exadel.friendface.beans.User;
+import com.exadel.friendface.pagebeans.RegistrationBean;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 import static com.exadel.friendface.business.Authentication.isUserExists;
 
@@ -14,62 +16,18 @@ import static com.exadel.friendface.business.Authentication.isUserExists;
  * Time: 6:17 PM
  */
 
-public class Register extends ActionSupport {
-    private String loginEmail;
-    private String username;
-    private String userSurname;
-    private String password;
-    private String passwordConfirmation;
-
-    public String getLoginEmail() {
-        return loginEmail;
-    }
-
-    public void setLoginEmail(String loginEmail) {
-        this.loginEmail = loginEmail;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUserSurname() {
-        return userSurname;
-    }
-
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPasswordConfirmation() {
-        return passwordConfirmation;
-    }
-
-    public void setPasswordConfirmation(String passwordConfirmation) {
-        this.passwordConfirmation = passwordConfirmation;
-    }
+public class Register extends ActionSupport implements ModelDriven {
+    private RegistrationBean registrationBean = new RegistrationBean();
 
     public void validate() {
         Validator validator = new Validator();
         try {
-            validator.validateEmail(getLoginEmail());
-            validator.validateTextString(getUsername());
-            validator.validateTextString(getUserSurname());
-            validator.validatePassword(getPassword());
-            validator.validatePassword(getPasswordConfirmation());
-            validator.validatePassword(getPassword(), getPasswordConfirmation());
+            validator.validateEmail(registrationBean.getLoginEmail());
+            validator.validateTextString(registrationBean.getUsername());
+            validator.validateTextString(registrationBean.getUserSurname());
+            validator.validatePassword(registrationBean.getPassword());
+            validator.validatePassword(registrationBean.getPasswordConfirmation());
+            validator.validatePassword(registrationBean.getPassword(), registrationBean.getPasswordConfirmation());
         } catch (ValidationException e) {
             addActionError(e.toString());
         }
@@ -77,13 +35,17 @@ public class Register extends ActionSupport {
 
     public String execute() {
         User user = new User();
-        user.setLoginEmail(getLoginEmail());
-        user.setPasswordHash(getPassword().hashCode());
+        user.setLoginEmail(registrationBean.getLoginEmail());
+        user.setPasswordHash(registrationBean.getPassword().hashCode());
 
         if (!isUserExists(user)) {
             // perform registration
             return SUCCESS;
         }
         return ERROR;
+    }
+
+    public Object getModel() {
+        return registrationBean;
     }
 }

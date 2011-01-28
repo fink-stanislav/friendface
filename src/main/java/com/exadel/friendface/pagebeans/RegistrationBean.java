@@ -12,7 +12,9 @@ import static com.exadel.friendface.util.stringutil.StringUtil.avoidNullValue;
 public class RegistrationBean {
     private String loginEmail;
     private String username;
-    private String usersurname;
+    private String userSurname;
+    private String password;
+    private String passwordConfirmation;
 
     public String getLoginEmail() {
         return avoidNullValue(loginEmail);
@@ -22,8 +24,8 @@ public class RegistrationBean {
         return avoidNullValue(username);
     }
 
-    public String getUsersurname() {
-        return avoidNullValue(usersurname);
+    public String getUserSurname() {
+        return avoidNullValue(userSurname);
     }
 
     public void setLoginEmail(String loginEmail) {
@@ -35,6 +37,22 @@ public class RegistrationBean {
     }
 
     public void setUsersurname(String usersurname) {
-        this.usersurname = usersurname;
+        this.userSurname = usersurname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
     }
 }

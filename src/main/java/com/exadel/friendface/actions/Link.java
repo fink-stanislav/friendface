@@ -18,8 +18,8 @@ public class Link extends ActionSupport {
         return "friendface.registration";
     }
 
-    public String logon() {
-        return "friendface.logon";
+    public String entrance() {
+        return "friendface.entrance";
     }
 
     public String infopage() {

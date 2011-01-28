@@ -1,9 +1,11 @@
 package com.exadel.friendface.actions;
 
 import com.exadel.friendface.beans.User;
+import com.exadel.friendface.pagebeans.LogonBean;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
 import static com.exadel.friendface.business.Authentication.isUserExists;
 
@@ -14,31 +16,14 @@ import static com.exadel.friendface.business.Authentication.isUserExists;
  * Time: 6:28 PM
  */
 
-public class Login extends ActionSupport {
-    private String password;
-    private String loginEmail;
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getLoginEmail() {
-        return loginEmail;
-    }
-
-    public void setLoginEmail(String loginEmail) {
-        this.loginEmail = loginEmail;
-    }
+public class Login extends ActionSupport implements ModelDriven {
+    private LogonBean logonBean = new LogonBean();
 
     public void validate() {
         Validator validator = new Validator();
         try {
-            validator.validateEmail(getLoginEmail());
-            validator.validatePassword(getPassword());
+            validator.validateEmail(logonBean.getLoginEmail());
+            validator.validatePassword(logonBean.getPassword());
         } catch (ValidationException e) {
             addActionError(e.toString());
         }
@@ -46,13 +31,17 @@ public class Login extends ActionSupport {
 
     public String execute() throws Exception {
         User user = new User();
-        user.setLoginEmail(getLoginEmail());
-        user.setPasswordHash(getPassword().hashCode());
+        user.setLoginEmail(logonBean.getLoginEmail());
+        user.setPasswordHash(logonBean.getPassword().hashCode());
 
         if (isUserExists(user)) {
             // perform login
             return SUCCESS;
         }
         return ERROR;
+    }
+
+    public Object getModel() {
+        return logonBean;
     }
 }
