@@ -53,7 +53,7 @@
 
     <servlet>
         <servlet-name>entrance</servlet-name>
-        <jsp-file>/WEB-INF/jsps/logon/entrance.jspx</jsp-file>
+        <jsp-file>/WEB-INF/jsps/entrance/entrance.jspx</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>entrance</servlet-name>

@@ -38,7 +38,7 @@
                     <span>Фамилия</span>
                 </div>
                 <div>
-                    <input type="text" name="usersurname" value='${registrationBean.usersurname}'/>
+                    <input type="text" name="userSurname" value='${registrationBean.usersurname}'/>
                 </div>
 
                 <div>

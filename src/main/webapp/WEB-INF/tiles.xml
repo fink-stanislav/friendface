@@ -22,8 +22,8 @@
         <put-attribute name="title" value="Registration"/>
     </definition>
 
-    <definition name="friendface.logon" extends="base.page.header">
-        <put-attribute name="title" value="Logon"/>
+    <definition name="friendface.entrance" extends="base.page.header">
+        <put-attribute name="title" value="Entrance"/>
     </definition>
 
     <definition name="friendface.infopage" extends="base.page.header">

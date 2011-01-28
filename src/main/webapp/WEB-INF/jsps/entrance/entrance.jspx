@@ -16,12 +16,12 @@
 
 <div id="container">
 
-    <tiles:insertDefinition name="friendface.logon"/>
+    <tiles:insertDefinition name="friendface.entrance"/>
 
     <div id="content">
 
         <div id="login-form">
-            <form action="login.action">
+            <form action="login.action" method="POST">
 
                 <div>Имя пользователя</div>
                 <div><input type="text" name="loginEmail"/></div>

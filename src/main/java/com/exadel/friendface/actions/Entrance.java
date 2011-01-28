@@ -1,5 +1,6 @@
 package com.exadel.friendface.actions;
 
+import com.exadel.friendface.business.Authentication;
 import com.opensymphony.xwork2.Action;
 
 /**
@@ -11,9 +12,9 @@ import com.opensymphony.xwork2.Action;
 
 public class Entrance implements Action {
     public String execute() {
-        if (true) {
-            return SUCCESS;
+        if (Authentication.isUserAlreadyLogged()) {
+            return ERROR;
         }
-        return ERROR;
+        return SUCCESS;
     }
 }
