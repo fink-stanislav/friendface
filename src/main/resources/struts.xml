@@ -4,7 +4,16 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
-    <package name="private" namespace="/" extends="tiles-default">
+    <package name="root" namespace="/" extends="tiles-default">
+        <interceptors>
+            <interceptor-stack name="myTokenStack">
+                <interceptor-ref name="tokenSession"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+    </package>
+
+    <package name="private" namespace="/" extends="root">
         <interceptors>
             <interceptor name="authenticationInterceptor"
                          class="com.exadel.friendface.interceptors.AuthenticationInterceptor"/>
@@ -40,7 +49,7 @@
         </action>
     </package>
 
-    <package name="public" namespace="/" extends="tiles-default">
+    <package name="public" namespace="/" extends="root">
         <!-- registration input page -->
         <action name="registration">
             <result name="success" type="tiles">registration.tiles</result>
@@ -55,9 +64,11 @@
         <!-- there were no errors during registration: registration succeed page -->
         <!-- there were some errors (validation): back to input page -->
         <action name="register" class="com.exadel.friendface.actions.Register">
+            <interceptor-ref name="myTokenStack"/>
             <result name="success" type="redirectAction">infopage</result>
-            <result name="input" type="tiles">registration.tiles</result>
+            <result name="input">registration.action</result>
             <result name="error" type="redirectAction">infopage</result>
+            <result name="invalid.token" type="redirectAction">infopage</result>
         </action>
 
         <!-- login -->
@@ -65,9 +76,11 @@
         <!-- validation error (input): back to input page or to registration -->
         <!-- no user in model or user in session: error -->
         <action name="login" class="com.exadel.friendface.actions.Login">
+            <interceptor-ref name="myTokenStack"/>
             <result name="success" type="redirectAction">userpage</result>
-            <result name="input" type="tiles">entrance.tiles</result>
+            <result name="input">entrance.action</result>
             <result name="error" type="redirectAction">infopage</result>
+            <result name="invalid.token" type="redirectAction">userpage</result>
         </action>
     </package>
 </struts>

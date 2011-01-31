@@ -14,7 +14,7 @@
 
     <div id="reg-form">
         <form name="userdataform" method="POST" action="register.action">
-
+            <s:token/>
             <div><label for="loginEmail" class="required-field">Логин (e-mail)</label></div>
             <div><input type="text" id="loginEmail" name="loginEmail"
                         value="${registrationBean.loginEmail}"/></div>

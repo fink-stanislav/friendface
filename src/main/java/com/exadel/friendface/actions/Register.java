@@ -2,6 +2,7 @@ package com.exadel.friendface.actions;
 
 import com.exadel.friendface.beans.business.User;
 import com.exadel.friendface.beans.pagebeans.RegistrationBean;
+import com.exadel.friendface.model.TestConnection;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
@@ -39,6 +40,9 @@ public class Register extends ActionSupport implements ModelDriven {
 
         if (!isUserExists(user)) {
             // perform registration
+            TestConnection testConnection = new TestConnection();
+            testConnection.insertMethod();
+            int res = testConnection.countNotApprovedFriends();
             return SUCCESS;
         }
         return ERROR;

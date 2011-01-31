@@ -14,7 +14,7 @@
 
     <div id="login-form">
         <form action="login.action" method="POST">
-
+            <s:token/>
             <div><label for="loginEmail">Имя пользователя</label></div>
             <div><input type="text" id="loginEmail" name="loginEmail"
                         value="${logonBean.loginEmail}"/></div>

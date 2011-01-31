@@ -6,7 +6,9 @@
 
 package com.exadel.friendface.beans.pagebeans;
 
-public class RegistrationBean {
+import java.io.Serializable;
+
+public class RegistrationBean implements Serializable {
     private String loginEmail;
     private String username;
     private String userSurname;

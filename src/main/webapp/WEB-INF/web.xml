@@ -17,6 +17,10 @@
         <listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
     </listener>
 
+    <listener>
+        <listener-class>com.exadel.friendface.model.Initializer</listener-class>
+    </listener>
+
     <welcome-file-list>
         <welcome-file>welcome.action</welcome-file>
     </welcome-file-list>
@@ -40,7 +44,7 @@
     <filter-mapping>
         <filter-name>LoggingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-        <dispatcher>INCLUDE</dispatcher>
+        <!--<dispatcher>INCLUDE</dispatcher>-->
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

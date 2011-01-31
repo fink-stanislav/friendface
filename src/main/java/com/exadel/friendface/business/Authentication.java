@@ -10,6 +10,6 @@ import com.exadel.friendface.beans.business.User;
 
 public class Authentication {
     public static boolean isUserExists(User user) {
-        return true;
+        return false;
     }
 }
