@@ -7,11 +7,16 @@
         <link type="text/javascript" href="js/validation.js"/>
     </head>
 
+    <jsp:useBean id="logonBean" class="com.exadel.friendface.beans.pagebeans.LogonBean" scope="request">
+        <jsp:setProperty name="logonBean" property="*"/>
+    </jsp:useBean>
+
     <div id="login-form">
         <form action="login.action" method="POST">
 
             <div>Имя пользователя</div>
-            <div><input type="text" name="loginEmail"/></div>
+            <div><input type="text" name="loginEmail"
+                        value="${logonBean.loginEmail}"/></div>
 
             <div>Пароль</div>
             <div><input type="password" name="password"/></div>

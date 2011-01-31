@@ -1,51 +1,37 @@
-﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
+﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
 
-<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="css/commonstyle.css"/>
     <link rel="stylesheet" type="text/css" href="css/menu.css"/>
     <link rel="stylesheet" type="text/css" href="css/userdata.css"/>
     <link rel="stylesheet" type="text/css" href="css/wall.css"/>
     <link type="text/javascript" href="js/validation.js"/>
-    <title>Username</title>
 </head>
-<body>
-<div id="container">
-    <f:requestEncoding value="UTF-8"/>
-    <jsp:include page="/header.jsp">
-        <jsp:param name="headerType" value="twoRef"/>
-        <jsp:param name="leftReference" value=""/>
-        <jsp:param name="leftReferenceName" value="настройки"/>
-        <jsp:param name="rightReference" value=""/>
-        <jsp:param name="rightReferenceName" value="выход"/>
-    </jsp:include>
 
     <div id="menu-and-userdata">
         <div id="content">
             <div id="menu">
                 <div class="menuitem"><a href="" title="моя страница">
-                    <div class="ref">моя страница</div>
+                    <span class="ref">моя страница</span>
                 </a></div>
                 <div class="menuitem"><a href="" title="друзья">
-                    <div class="ref">друзья</div>
+                    <span class="ref">друзья</span>
                 </a></div>
                 <div class="menuitem"><a href="" title="сообщения">
-                    <div class="ref">сообщения</div>
+                    <span class="ref">сообщения</span>
                 </a></div>
                 <div class="menuitem"><a href="" title="фото">
-                    <div class="ref">фото</div>
+                    <span class="ref">фото</span>
                 </a></div>
                 <div class="menuitem"><a href="" title="видео">
-                    <div class="ref">видео</div>
+                    <span class="ref">видео</span>
                 </a></div>
             </div>
             <div id="vertical-line"></div>
 
             <div id="userdata">
                 <div id="userpic">
-                    <img class="image" src="../../images/image.png"/>
+                    <img class="image" src="" alt=""/>
                 </div>
                 <div id="common-info">
                     <div class="horizontal-block-center">
@@ -69,7 +55,7 @@
         <div class="wall-message">
             <div class="wall-message-head">
                 <a href="" title="имя отправителя">имя отправителя</a>
-                &nbsp|&nbsp
+                &#160;|&#160;
                 <a href="" title="удалить">удалить</a>
             </div>
             <div class="wall-message-text">
@@ -90,7 +76,7 @@
         <div class="wall-message">
             <div class="wall-message-head">
                 <a href="" title="имя отправителя">имя отправителя</a>
-                &nbsp|&nbsp
+                &#160;|&#160;
                 <a href="" title="удалить">удалить</a>
             </div>
             <div class="wall-message-text">
@@ -111,7 +97,7 @@
         <div class="wall-message">
             <div class="wall-message-head">
                 <a href="" title="имя отправителя">имя отправителя</a>
-                &nbsp|&nbsp
+                &#160;|&#160;
                 <a href="" title="удалить">удалить</a>
             </div>
             <div class="wall-message-text">
@@ -130,7 +116,7 @@
         <div class="wall-message">
             <div class="wall-message-head">
                 <a href="" title="имя отправителя">имя отправителя</a>
-                &nbsp|&nbsp
+                &#160;|&#160;
                 <a href="" title="удалить">удалить</a>
             </div>
             <div class="wall-message-text">
@@ -145,7 +131,7 @@
         <div class="wall-message">
             <div class="wall-message-head">
                 <a href="" title="имя отправителя">имя отправителя</a>
-                &nbsp|&nbsp
+                &#160;|&#160;
                 <a href="" title="удалить">удалить</a>
             </div>
             <div class="wall-message-text">
@@ -162,10 +148,4 @@
         </div>
 
     </div>
-
-</div>
-
-<jsp:include page="footer.jsp"/>
-
-</body>
-</html>
+</jsp:root>

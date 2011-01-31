@@ -1,6 +1,6 @@
 package com.exadel.friendface.business;
 
-import com.exadel.friendface.beans.User;
+import com.exadel.friendface.beans.business.User;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,7 +1,6 @@
-package com.exadel.friendface.pagebeans;
+package com.exadel.friendface.beans.pagebeans;
 
 /**
- * Created by IntelliJ IDEA.
  * User: sfink
  * Date: 1/21/11
  * Time: 1:56 PM

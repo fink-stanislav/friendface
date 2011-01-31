@@ -1,7 +1,7 @@
 package com.exadel.friendface.actions;
 
-import com.exadel.friendface.beans.User;
-import com.exadel.friendface.pagebeans.RegistrationBean;
+import com.exadel.friendface.beans.business.User;
+import com.exadel.friendface.beans.pagebeans.RegistrationBean;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
@@ -10,8 +10,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import static com.exadel.friendface.business.Authentication.isUserExists;
 
 /**
- * Created by IntelliJ IDEA.
- * User: sfink
+ * Author: sfink
  * Date: 1/27/11
  * Time: 6:17 PM
  */

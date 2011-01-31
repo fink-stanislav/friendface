@@ -1,7 +1,6 @@
-package com.exadel.friendface.beans;
+package com.exadel.friendface.beans.business;
 
 /**
- * Created by IntelliJ IDEA.
  * User: sfink
  * Date: 1/28/11
  * Time: 2:50 PM

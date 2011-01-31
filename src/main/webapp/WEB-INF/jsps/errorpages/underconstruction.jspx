@@ -19,7 +19,7 @@
 <div id="container">
 
     <f:requestEncoding value="UTF-8"/>
-    <jsp:include page="/WEB-INF/jsps/frames/header.jspx">
+    <jsp:include page="/WEB-INF/jsps/frames/headers/base.header.jspx">
         <jsp:param name="headerText" value=" - under construction"/>
     </jsp:include>
 
