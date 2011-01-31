@@ -8,8 +8,7 @@ import java.io.IOException;
 import org.apache.log4j.*;
 
 /**
- * Created by IntelliJ IDEA.
- * User: sfink
+ * Author: sfink
  * Date: 1/21/11
  * Time: 4:15 PM
  */

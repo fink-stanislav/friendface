@@ -55,9 +55,9 @@
         <!-- there were no errors during registration: registration succeed page -->
         <!-- there were some errors (validation): back to input page -->
         <action name="register" class="com.exadel.friendface.actions.Register">
-            <result name="success" type="tiles">infopage.tiles</result>
+            <result name="success" type="redirectAction">infopage</result>
             <result name="input" type="tiles">registration.tiles</result>
-            <result name="error" type="tiles">infopage.tiles</result>
+            <result name="error" type="redirectAction">infopage</result>
         </action>
 
         <!-- login -->
@@ -67,7 +67,7 @@
         <action name="login" class="com.exadel.friendface.actions.Login">
             <result name="success" type="redirectAction">userpage</result>
             <result name="input" type="tiles">entrance.tiles</result>
-            <result name="error" type="tiles">infopage.tiles</result>
+            <result name="error" type="redirectAction">infopage</result>
         </action>
     </package>
 </struts>
