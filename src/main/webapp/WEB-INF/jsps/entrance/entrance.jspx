@@ -1,5 +1,6 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
 
     <head>
         <link rel="stylesheet" type="text/css" href="css/forms.css"/>
@@ -14,12 +15,14 @@
     <div id="login-form">
         <form action="login.action" method="POST">
 
-            <div>Имя пользователя</div>
-            <div><input type="text" name="loginEmail"
+            <div><label for="loginEmail">Имя пользователя</label></div>
+            <div><input type="text" id="loginEmail" name="loginEmail"
                         value="${logonBean.loginEmail}"/></div>
 
-            <div>Пароль</div>
-            <div><input type="password" name="password"/></div>
+            <div><label for="password">Пароль</label></div>
+            <div><input type="password" id="password" name="password"/></div>
+
+            <s:actionerror />
 
             <hr/>
 
