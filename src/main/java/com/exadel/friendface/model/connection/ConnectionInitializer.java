@@ -1,5 +1,6 @@
-package com.exadel.friendface.model;
+package com.exadel.friendface.model.connection;
 
+import com.exadel.friendface.system.ApplicationPropertyManager;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContextEvent;
@@ -11,15 +12,14 @@ import javax.servlet.ServletContextListener;
  * Time: 4:30 PM
  */
 
-public class Initializer implements ServletContextListener {
-    private static Logger logger = Logger.getLogger("logger");
+public class ConnectionInitializer implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        logger.info("context initialized");
-        ConnectionManager.getInstance().initConnection();
+        ConnectionManager.getInstance();
+        ApplicationPropertyManager.getInstance();
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        logger.info("context destroyed");
+        ConnectionManager.getInstance().closeConnection();
     }
 }

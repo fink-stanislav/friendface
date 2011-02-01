@@ -1,14 +1,17 @@
 package com.exadel.friendface.actions;
 
-import com.exadel.friendface.beans.business.User;
+import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.beans.pagebeans.RegistrationBean;
-import com.exadel.friendface.model.TestConnection;
+import com.exadel.friendface.model.dao.UserDAO;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import static com.exadel.friendface.business.Authentication.isUserExists;
+import java.sql.SQLException;
+
+import static com.exadel.friendface.model.util.ModelUtils.getUser;
+import static com.exadel.friendface.model.util.ModelUtils.isUserExists;
 
 /**
  * Author: sfink
@@ -34,18 +37,21 @@ public class Register extends ActionSupport implements ModelDriven {
     }
 
     public String execute() {
-        User user = new User();
-        user.setLoginEmail(registrationBean.getLoginEmail());
-        user.setPasswordHash(registrationBean.getPassword().hashCode());
-
-        if (!isUserExists(user)) {
-            // perform registration
-            TestConnection testConnection = new TestConnection();
-            testConnection.insertMethod();
-            int res = testConnection.countNotApprovedFriends();
-            return SUCCESS;
+        try {
+            User user = getUser(registrationBean);
+            if (!isUserExists(user)) {
+                // perform registration
+                new UserDAO().insertUser(user);
+                addActionMessage("Registration succeed. ");
+                return SUCCESS;
+            } else {
+                addActionError("Such user already exists. ");
+                return INPUT;
+            }
+        } catch (SQLException e) {
+            addActionError("Internal application error. " + e.getMessage());
+            return ERROR;
         }
-        return ERROR;
     }
 
     public Object getModel() {

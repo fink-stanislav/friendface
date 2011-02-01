@@ -25,24 +25,24 @@
         <default-interceptor-ref name="secureStack"/>
 
         <!-- application welcome page -->
-        <!-- user is not logged in: error (welcome) -->
-        <!-- user is logged in: success (userpage) -->
         <action name="welcome">
             <result name="login" type="tiles">welcomepage.tiles</result>
             <result name="success" type="redirectAction">userpage</result>
         </action>
 
         <!-- login input page -->
-        <!-- user is not logged in: entrance -->
-        <!-- user is logged in: userpage  -->
         <action name="entrance">
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="success" type="redirectAction">userpage</result>
         </action>
 
+        <!-- registration input page -->
+        <action name="registration">
+            <result name="success" type="redirectAction">userpage</result>
+            <result name="login" type="tiles">registration.tiles</result>
+        </action>
+
         <!-- userpage -->
-        <!-- user is not logged in: error -->
-        <!-- user is logged in: success -->
         <action name="userpage">
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="login" type="tiles">infopage.tiles</result>
@@ -50,37 +50,25 @@
     </package>
 
     <package name="public" namespace="/" extends="root">
-        <!-- registration input page -->
-        <action name="registration">
-            <result name="success" type="tiles">registration.tiles</result>
-        </action>
-
         <!-- some information / error page -->
         <action name="infopage">
             <result name="success" type="tiles">infopage.tiles</result>
         </action>
 
         <!-- registration -->
-        <!-- there were no errors during registration: registration succeed page -->
-        <!-- there were some errors (validation): back to input page -->
         <action name="register" class="com.exadel.friendface.actions.Register">
-            <interceptor-ref name="myTokenStack"/>
-            <result name="success" type="redirectAction">infopage</result>
-            <result name="input">registration.action</result>
-            <result name="error" type="redirectAction">infopage</result>
-            <result name="invalid.token" type="redirectAction">infopage</result>
+            <result name="success" type="tiles">infopage.tiles</result>
+            <result name="input" type="tiles">registration.tiles</result>
+            <result name="error" type="tiles">infopage.tiles</result>
         </action>
 
         <!-- login -->
-        <!-- no errors: userpage -->
-        <!-- validation error (input): back to input page or to registration -->
-        <!-- no user in model or user in session: error -->
         <action name="login" class="com.exadel.friendface.actions.Login">
             <interceptor-ref name="myTokenStack"/>
             <result name="success" type="redirectAction">userpage</result>
-            <result name="input">entrance.action</result>
-            <result name="error" type="redirectAction">infopage</result>
-            <result name="invalid.token" type="redirectAction">userpage</result>
+            <result name="input" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">infopage.tiles</result>
+            <result name="invalid.token" type="tiles">entrance.tiles</result>
         </action>
     </package>
 </struts>

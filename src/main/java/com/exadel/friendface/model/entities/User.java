@@ -1,4 +1,4 @@
-package com.exadel.friendface.beans.business;
+package com.exadel.friendface.model.entities;
 
 /**
  * User: sfink
@@ -8,7 +8,25 @@ package com.exadel.friendface.beans.business;
 
 public class User {
     private String loginEmail;
+    private String username;
+    private String userSurname;
     private int passwordHash;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUserSurname() {
+        return userSurname;
+    }
+
+    public void setUserSurname(String userSurname) {
+        this.userSurname = userSurname;
+    }
 
     public String getLoginEmail() {
         return loginEmail;

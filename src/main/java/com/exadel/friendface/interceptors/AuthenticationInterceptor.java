@@ -1,6 +1,6 @@
 package com.exadel.friendface.interceptors;
 
-import com.exadel.friendface.beans.business.User;
+import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.system.FriendfaceConstants;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;
