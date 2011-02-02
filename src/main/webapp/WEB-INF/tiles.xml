@@ -13,8 +13,8 @@
 
     <definition name="content.page.template" template="/WEB-INF/jsps/templates/content.page.template.jspx">
         <put-attribute name="title" value=""/>
-        <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/base.header.jspx"/>
-        <put-attribute name="menu" value=""/>
+        <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/userpage.header.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/jsps/frames/menu.jspx"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
@@ -44,9 +44,33 @@
 
     <definition name="userpage.tiles" extends="content.page.template">
         <put-attribute name="title" value="Userpage"/>
-        <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/userpage.header.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/jsps/frames/menu.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/userpage.jspx"/>
+    </definition>
+
+    <definition name="albumlist.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Albums"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/albumlist.jspx"/>
+    </definition>
+
+    <definition name="photos.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Photos"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/photos.jspx"/>
+    </definition>
+
+    <definition name="friends.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Friends"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/friends.jspx"/>
+    </definition>
+
+    <definition name="settings.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Settings"/>
+        <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/settings.header.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/settings.jspx"/>
+    </definition>
+
+    <definition name="video.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Videos"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/settings.jspx"/>
     </definition>
 
 </tiles-definitions>

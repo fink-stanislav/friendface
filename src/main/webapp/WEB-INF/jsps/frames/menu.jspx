@@ -22,4 +22,5 @@
             <span class="ref">видео</span>
         </a></div>
     </div>
+    <div id="vertical-line"></div>
 </jsp:root>
