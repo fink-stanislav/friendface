@@ -4,40 +4,49 @@
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-    <definition name="base.template" template="/WEB-INF/jsps/frames/base.template.jspx">
+    <definition name="service.page.template" template="/WEB-INF/jsps/templates/service.page.template.jspx">
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/base.header.jspx"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
 
-    <definition name="welcomepage.tiles" extends="base.template">
+    <definition name="content.page.template" template="/WEB-INF/jsps/templates/content.page.template.jspx">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/base.header.jspx"/>
+        <put-attribute name="menu" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
+    </definition>
+
+    <definition name="welcomepage.tiles" extends="service.page.template">
         <put-attribute name="title" value="Welcome"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/welcome.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/welcomepage/welcomepage.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/welcomepage.jspx"/>
     </definition>
 
-    <definition name="registration.tiles" extends="base.template">
+    <definition name="registration.tiles" extends="service.page.template">
         <put-attribute name="title" value="Registration"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/registration.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/registration/registration.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/registration.jspx"/>
     </definition>
 
-    <definition name="entrance.tiles" extends="base.template">
+    <definition name="entrance.tiles" extends="service.page.template">
         <put-attribute name="title" value="Entrance"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/entrance.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/entrance/entrance.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/entrance.jspx"/>
     </definition>
 
-    <definition name="infopage.tiles" extends="base.template">
+    <definition name="infopage.tiles" extends="service.page.template">
         <put-attribute name="title" value="Info"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/infopages/infopage.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/infopage.jspx"/>
     </definition>
 
-    <definition name="userpage.tiles" extends="base.template">
+    <definition name="userpage.tiles" extends="content.page.template">
         <put-attribute name="title" value="Userpage"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/userpage.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/userpage.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/jsps/frames/menu.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/userpage.jspx"/>
     </definition>
 
 </tiles-definitions>

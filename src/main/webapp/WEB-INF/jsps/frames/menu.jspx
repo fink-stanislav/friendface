@@ -1,0 +1,25 @@
+<!--
+  Created by IntelliJ IDEA.
+  User: sfink
+  Date: 2/2/11
+  Time: 4:32 PM
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+    <div id="menu">
+        <div class="menuitem"><a href="" title="моя страница">
+            <span class="ref">моя страница</span>
+        </a></div>
+        <div class="menuitem"><a href="" title="друзья">
+            <span class="ref">друзья</span>
+        </a></div>
+        <div class="menuitem"><a href="" title="сообщения">
+            <span class="ref">сообщения</span>
+        </a></div>
+        <div class="menuitem"><a href="" title="фото">
+            <span class="ref">фото</span>
+        </a></div>
+        <div class="menuitem"><a href="" title="видео">
+            <span class="ref">видео</span>
+        </a></div>
+    </div>
+</jsp:root>
