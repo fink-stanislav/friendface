@@ -1,8 +1,9 @@
 package com.exadel.friendface.actions;
 
+import com.exadel.friendface.model.dao.DAOFactory;
+import com.exadel.friendface.model.dao.MySQLUserDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.beans.pagebeans.RegistrationBean;
-import com.exadel.friendface.model.dao.UserDAO;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
@@ -41,14 +42,14 @@ public class Register extends ActionSupport implements ModelDriven {
             User user = getUser(registrationBean);
             if (!isUserExists(user)) {
                 // perform registration
-                new UserDAO().insertUser(user);
+                DAOFactory.getDAOFactory().getUserDAO().createUser(user);
                 addActionMessage("Registration succeed. ");
                 return SUCCESS;
             } else {
                 addActionError("Such user already exists. ");
                 return INPUT;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             addActionError("Internal application error. " + e.getMessage());
             return ERROR;
         }

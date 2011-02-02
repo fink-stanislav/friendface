@@ -1,14 +1,11 @@
 package com.exadel.friendface.validation;
 
-import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.apache.commons.lang.StringUtils.isBlank;
-import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class Validator {
-		
-	public Validator() {}
 
     public boolean isEmailMatch(String email) {
         String name = "[a-z][a-z[0-9]\u005F\u002E\u002D]*[a-z||0-9]";

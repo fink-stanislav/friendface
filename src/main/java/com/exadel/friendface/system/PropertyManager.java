@@ -6,19 +6,16 @@ import java.util.Properties;
 
 /**
  * User: sfink
- * Date: 2/1/11
- * Time: 6:45 PM
+ * Date: 2/2/11
+ * Time: 1:23 PM
  */
 
-@Deprecated
-public class ApplicationPropertyManager {
-
-    private static ApplicationPropertyManager instance = new ApplicationPropertyManager();
+public class PropertyManager {
     private Properties properties;
 
-    private ApplicationPropertyManager() {
+    public PropertyManager(String resourceName) {
         try {
-            URL resUrl = getClass().getClassLoader().getResource("mysql.properties");
+            URL resUrl = getClass().getClassLoader().getResource(resourceName);
             FileInputStream inputStream = new FileInputStream(resUrl.getFile());
             properties = new Properties();
             properties.load(inputStream);
@@ -28,10 +25,6 @@ public class ApplicationPropertyManager {
     }
 
     public String getProperty(String key) {
-        return properties.getProperty(key);
-    }
-
-    public static ApplicationPropertyManager getInstance() {
-        return instance;
+        return properties.getProperty(key.toLowerCase());
     }
 }

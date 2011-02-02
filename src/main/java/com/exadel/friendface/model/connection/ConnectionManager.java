@@ -1,12 +1,12 @@
 package com.exadel.friendface.model.connection;
 
-import com.exadel.friendface.system.ApplicationPropertyManager;
-import com.exadel.friendface.util.Pair;
+import com.exadel.friendface.system.PropertyManager;
 import com.exadel.friendface.util.StringUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.jar.Pack200;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * User: sfink
@@ -18,13 +18,20 @@ public class ConnectionManager {
 
     private static ConnectionManager instance = new ConnectionManager();
     private Connection connection;
+
     private ConnectionManager() {
         try {
-            ApplicationPropertyManager apm = ApplicationPropertyManager.getInstance();
-            Class.forName(apm.getProperty("db.driver.name"));
-            String url = StringUtils.buildUrl(apm.getProperty("db.url"),
-                    new Pair("user", apm.getProperty("db.user")),
-                    new Pair("password", apm.getProperty("db.password")));
+            PropertyManager appPropertyManager = new PropertyManager("application.properties");
+            PropertyManager propertyManager =
+                    new PropertyManager(appPropertyManager.getProperty("database.engine") + ".properties");
+
+            Class.forName(propertyManager.getProperty("db.driver.name"));
+
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("user", propertyManager.getProperty("db.user"));
+            params.put("password", propertyManager.getProperty("db.password"));
+
+            String url = StringUtils.buildUrl(propertyManager.getProperty("db.url"), params);
             connection = DriverManager.getConnection(url);
         } catch (Exception e) {
             throw new RuntimeException(e);
