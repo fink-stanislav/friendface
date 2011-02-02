@@ -1,55 +1,27 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
 
-<!--<head>-->
-    <!--<link rel="stylesheet" type="text/css" href="css/menu.css"/>-->
-    <!--<link rel="stylesheet" type="text/css" href="css/userdata.css"/>-->
-    <!--<link rel="stylesheet" type="text/css" href="css/wall.css"/>-->
-    <!--<link type="text/javascript" href="js/validation.js"/>-->
-<!--</head>-->
+    <div id="vertical-line"></div>
 
-    <!--<div id="menu-and-userdata">-->
-        <!--<div id="content">-->
-            <!--<div id="menu">-->
-                <!--<div class="menuitem"><a href="" title="моя страница">-->
-                    <!--<span class="ref">моя страница</span>-->
-                <!--</a></div>-->
-                <!--<div class="menuitem"><a href="" title="друзья">-->
-                    <!--<span class="ref">друзья</span>-->
-                <!--</a></div>-->
-                <!--<div class="menuitem"><a href="" title="сообщения">-->
-                    <!--<span class="ref">сообщения</span>-->
-                <!--</a></div>-->
-                <!--<div class="menuitem"><a href="" title="фото">-->
-                    <!--<span class="ref">фото</span>-->
-                <!--</a></div>-->
-                <!--<div class="menuitem"><a href="" title="видео">-->
-                    <!--<span class="ref">видео</span>-->
-                <!--</a></div>-->
-            <!--</div>-->
-            <div id="vertical-line"></div>
-
-            <div id="userdata">
-                <div id="userpic">
-                    <img class="image" src="" alt=""/>
-                </div>
-                <div id="common-info">
-                    <div class="horizontal-block-center">
-                        <div class="common-info-line">Финк</div>
-                        <div class="common-info-line">Станислав</div>
-                    </div>
-                    <div class="horizontal-block-normal">
-                        <div class="common-info-line">Имя параметра:</div>
-                        <div class="common-info-line">Значение параметра</div>
-                    </div>
-                    <div class="horizontal-block-normal">
-                        <div class="common-info-line">Номер аськи:</div>
-                        <div class="common-info-line">395-446-281</div>
-                    </div>
-                </div>
+    <div id="userdata">
+        <div id="userpic">
+            <img class="image" src="" alt=""/>
+        </div>
+        <div id="common-info">
+            <div class="horizontal-block-center">
+                <div class="common-info-line">Финк</div>
+                <div class="common-info-line">Станислав</div>
             </div>
-        <!--</div>-->
-    <!--</div>-->
+            <div class="horizontal-block-normal">
+                <div class="common-info-line">Имя параметра:</div>
+                <div class="common-info-line">Значение параметра</div>
+            </div>
+            <div class="horizontal-block-normal">
+                <div class="common-info-line">Номер аськи:</div>
+                <div class="common-info-line">395-446-281</div>
+            </div>
+        </div>
+    </div>
 
     <div id="wall">
         <div class="wall-message">

@@ -2,12 +2,6 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/forms.css"/>
-        <link rel="stylesheet" type="text/css" href="css/inputs.css"/>
-        <link type="text/javascript" href="js/validation.js"/>
-    </head>
-
     <jsp:useBean id="registrationBean" class="com.exadel.friendface.beans.pagebeans.RegistrationBean" scope="request">
         <jsp:setProperty name="registrationBean" property="*"/>
     </jsp:useBean>

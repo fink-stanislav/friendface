@@ -2,12 +2,6 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="css/forms.css"/>
-        <link rel="stylesheet" type="text/css" href="css/userdata.css"/>
-        <link type="text/javascript" href="js/validation.js"/>
-    </head>
-
     <jsp:useBean id="logonBean" class="com.exadel.friendface.beans.pagebeans.LogonBean" scope="request">
         <jsp:setProperty name="logonBean" property="*"/>
     </jsp:useBean>
