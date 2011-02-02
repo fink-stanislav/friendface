@@ -15,8 +15,8 @@ public abstract class DAOFactory {
 
     public static DAOFactory getDAOFactory() throws Exception {
         PropertyManager appPropertyManager = new PropertyManager("application.properties");
-        PropertyManager propertyManager = new PropertyManager("daofactory.properties");
-        String className = propertyManager.getProperty(appPropertyManager.getProperty("database.engine"));
+        PropertyManager daoPropertyManager = new PropertyManager("daofactory.properties");
+        String className = daoPropertyManager.getProperty(appPropertyManager.getProperty("database.engine"));
         return (DAOFactory) Class.forName(className).newInstance();
     }
 }

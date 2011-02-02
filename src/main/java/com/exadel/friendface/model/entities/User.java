@@ -11,7 +11,7 @@ public class User {
     private String username;
     private String userSurname;
     private int userId;
-    private int passwordHash;
+    private String passwordHash;
 
     public String getUsername() {
         return username;
@@ -37,11 +37,11 @@ public class User {
         this.loginEmail = loginEmail;
     }
 
-    public int getPasswordHash() {
+    public String getPasswordHash() {
         return passwordHash;
     }
 
-    public void setPasswordHash(int passwordHash) {
+    public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 

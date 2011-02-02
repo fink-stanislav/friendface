@@ -1,7 +1,9 @@
 package com.exadel.friendface.actions;
 
-import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.beans.pagebeans.LogonBean;
+import com.exadel.friendface.model.dao.DAOFactory;
+import com.exadel.friendface.model.entities.User;
+import com.exadel.friendface.model.util.UserUtils;
 import com.exadel.friendface.system.FriendfaceConstants;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
@@ -9,11 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.interceptor.SessionAware;
 
-import java.sql.SQLException;
 import java.util.Map;
-
-import static com.exadel.friendface.model.util.ModelUtils.isPasswordRight;
-import static com.exadel.friendface.model.util.ModelUtils.isUserExists;
 
 /**
  * User: sfink
@@ -36,20 +34,18 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
     }
 
     public String execute() {
-        User user = new User();
-        user.setLoginEmail(logonBean.getLoginEmail());
-        user.setPasswordHash(logonBean.getPassword().hashCode());
-
         try {
-            if (isUserExists(user) && isPasswordRight(user)) {
+            User user = UserUtils.getUser(logonBean);
+            if (DAOFactory.getDAOFactory().getUserDAO().checkCredentials(user)) {
                 session.put(FriendfaceConstants.FriendfaceUser, user);
                 return SUCCESS;
+            } else {
+                return ERROR;
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             addActionError("Internal application error. " + e.getMessage());
             return ERROR;
         }
-        return ERROR;
     }
 
     public Object getModel() {

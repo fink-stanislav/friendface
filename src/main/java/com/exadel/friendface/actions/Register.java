@@ -1,18 +1,15 @@
 package com.exadel.friendface.actions;
 
-import com.exadel.friendface.model.dao.DAOFactory;
-import com.exadel.friendface.model.dao.MySQLUserDAO;
-import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.beans.pagebeans.RegistrationBean;
+import com.exadel.friendface.model.dao.DAOFactory;
+import com.exadel.friendface.model.dao.UserDAO;
+import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-import java.sql.SQLException;
-
-import static com.exadel.friendface.model.util.ModelUtils.getUser;
-import static com.exadel.friendface.model.util.ModelUtils.isUserExists;
+import static com.exadel.friendface.model.util.UserUtils.getUser;
 
 /**
  * Author: sfink
@@ -40,9 +37,9 @@ public class Register extends ActionSupport implements ModelDriven {
     public String execute() {
         try {
             User user = getUser(registrationBean);
-            if (!isUserExists(user)) {
-                // perform registration
-                DAOFactory.getDAOFactory().getUserDAO().createUser(user);
+            UserDAO userDAO = DAOFactory.getDAOFactory().getUserDAO();
+            if (!userDAO.isUserExists(user)) {
+                userDAO.createUser(user);
                 addActionMessage("Registration succeed. ");
                 return SUCCESS;
             } else {
