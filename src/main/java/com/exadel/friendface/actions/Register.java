@@ -44,7 +44,7 @@ public class Register extends ActionSupport implements ModelDriven {
                 addActionMessage("Registration succeed. ");
                 return SUCCESS;
             } else {
-                addActionError("Such user already exists. ");
+                addActionError("Such user is already exists. ");
                 return INPUT;
             }
         } catch (Exception e) {

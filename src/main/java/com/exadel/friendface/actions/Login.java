@@ -13,6 +13,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
+import static com.exadel.friendface.model.dao.DAOFactory.StorageEngineType.mysql;
+
 /**
  * User: sfink
  * Date: 1/27/11
@@ -36,11 +38,12 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
     public String execute() {
         try {
             User user = UserUtils.getUser(logonBean);
-            if (DAOFactory.getDAOFactory(DAOFactory.StorageEngineType.mysql).getUserDAO().checkCredentials(user)) {
+            if (DAOFactory.getDAOFactory(mysql).getUserDAO().checkCredentials(user)) {
                 session.put(FriendfaceConstants.FriendfaceUser, user);
                 return SUCCESS;
             } else {
-                return ERROR;
+                addActionError("Login or password is wrong.");
+                return INPUT;
             }
         } catch (Exception e) {
             addActionError("Internal application error. " + e.getMessage());
