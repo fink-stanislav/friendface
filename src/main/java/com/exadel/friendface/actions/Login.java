@@ -36,7 +36,7 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
     public String execute() {
         try {
             User user = UserUtils.getUser(logonBean);
-            if (DAOFactory.getDAOFactory().getUserDAO().checkCredentials(user)) {
+            if (DAOFactory.getDAOFactory(DAOFactory.StorageEngineType.mysql).getUserDAO().checkCredentials(user)) {
                 session.put(FriendfaceConstants.FriendfaceUser, user);
                 return SUCCESS;
             } else {

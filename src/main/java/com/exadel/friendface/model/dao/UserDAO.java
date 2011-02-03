@@ -12,8 +12,8 @@ public interface UserDAO {
     int createUser(User user);
     int deleteUser(User user);
     int updateUser(User user);
-    User getUser(int userId);
+    User getUser(Integer userId);
     User getUser(String loginEmail);
     boolean checkCredentials(User user);
-    boolean isUserExists(User user);
+    Boolean isUserExists(User user);
 }

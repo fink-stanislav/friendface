@@ -1,12 +1,13 @@
 package com.exadel.friendface.model.connection;
 
 import com.exadel.friendface.system.PropertyManager;
-import com.exadel.friendface.util.StringUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.exadel.friendface.util.StringUtils.buildUrl;
 
 /**
  * User: sfink
@@ -19,19 +20,22 @@ public class ConnectionManager {
     private static ConnectionManager instance = new ConnectionManager();
     private Connection connection;
 
+    private PropertyManager getDatabaseProperties() {
+        PropertyManager propertyManager = new PropertyManager("application.properties");
+        String databaseEngineName = propertyManager.getProperty("database.engine");
+        return new PropertyManager(databaseEngineName + ".properties");
+    }
+
     private ConnectionManager() {
         try {
-            PropertyManager appPropertyManager = new PropertyManager("application.properties");
-            PropertyManager propertyManager =
-                    new PropertyManager(appPropertyManager.getProperty("database.engine") + ".properties");
-
-            Class.forName(propertyManager.getProperty("db.driver.name"));
+            PropertyManager dbProperties = getDatabaseProperties();
+            Class.forName(dbProperties.getProperty("db.driver.name"));
 
             Map<String, String> params = new HashMap<String, String>();
-            params.put("user", propertyManager.getProperty("db.user"));
-            params.put("password", propertyManager.getProperty("db.password"));
+            params.put("user", dbProperties.getProperty("db.user"));
+            params.put("password", dbProperties.getProperty("db.password"));
 
-            String url = StringUtils.buildUrl(propertyManager.getProperty("db.url"), params);
+            String url = buildUrl(dbProperties.getProperty("db.url"), params);
             connection = DriverManager.getConnection(url);
         } catch (Exception e) {
             throw new RuntimeException(e);

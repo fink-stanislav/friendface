@@ -1,6 +1,5 @@
 package com.exadel.friendface.model.dao;
 
-import com.exadel.friendface.model.connection.ConnectionManager;
 import com.exadel.friendface.system.PropertyManager;
 
 /**
@@ -13,10 +12,15 @@ public abstract class DAOFactory {
 
     public abstract UserDAO getUserDAO();
 
-    public static DAOFactory getDAOFactory() throws Exception {
-        PropertyManager appPropertyManager = new PropertyManager("application.properties");
-        PropertyManager daoPropertyManager = new PropertyManager("daofactory.properties");
-        String className = daoPropertyManager.getProperty(appPropertyManager.getProperty("database.engine"));
+    private static PropertyManager classNames = new PropertyManager("application.properties");
+
+    public enum StorageEngineType {
+        mysql,
+        filesystem
+    }
+
+    public static DAOFactory getDAOFactory(StorageEngineType type) throws Exception {
+        String className = classNames.getProperty(type.name());
         return (DAOFactory) Class.forName(className).newInstance();
     }
 }

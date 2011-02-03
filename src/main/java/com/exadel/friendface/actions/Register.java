@@ -9,6 +9,7 @@ import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import static com.exadel.friendface.model.dao.DAOFactory.StorageEngineType.*;
 import static com.exadel.friendface.model.util.UserUtils.getUser;
 
 /**
@@ -37,7 +38,7 @@ public class Register extends ActionSupport implements ModelDriven {
     public String execute() {
         try {
             User user = getUser(registrationBean);
-            UserDAO userDAO = DAOFactory.getDAOFactory().getUserDAO();
+            UserDAO userDAO = DAOFactory.getDAOFactory(mysql).getUserDAO();
             if (!userDAO.isUserExists(user)) {
                 userDAO.createUser(user);
                 addActionMessage("Registration succeed. ");
