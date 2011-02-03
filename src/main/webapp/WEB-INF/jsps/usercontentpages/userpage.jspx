@@ -1,5 +1,8 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+
+    <jsp:useBean class="com.exadel.friendface.model.entities.User" id="user" scope="request"/>
 
     <div id="userdata">
         <div id="userpic">
@@ -7,8 +10,10 @@
         </div>
         <div id="common-info">
             <div class="horizontal-block-center">
-                <div class="common-info-line">Финк</div>
-                <div class="common-info-line">Станислав</div>
+                <div class="common-info-line">
+                    ${user.username}
+                </div>
+                <div class="common-info-line"></div>
             </div>
             <div class="horizontal-block-normal">
                 <div class="common-info-line">Имя параметра:</div>

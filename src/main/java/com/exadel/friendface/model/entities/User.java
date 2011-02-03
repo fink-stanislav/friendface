@@ -10,7 +10,7 @@ public class User {
     private String loginEmail;
     private String username;
     private String userSurname;
-    private int userId;
+    private Integer id;
     private String passwordHash;
 
     public String getUsername() {
@@ -45,11 +45,11 @@ public class User {
         this.passwordHash = passwordHash;
     }
 
-    public int getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -2,16 +2,12 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <jsp:useBean id="logonBean" class="com.exadel.friendface.beans.pagebeans.LogonBean" scope="request">
-        <jsp:setProperty name="logonBean" property="*"/>
-    </jsp:useBean>
-
     <div id="login-form">
         <form action="login.action" method="POST">
             <s:token/>
             <div><label for="loginEmail">Имя пользователя</label></div>
             <div><input type="text" id="loginEmail" name="loginEmail"
-                        value="${logonBean.loginEmail}"/></div>
+                        value="#{loginEmail}"/></div>
 
             <div><label for="password">Пароль</label></div>
             <div><input type="password" id="password" name="password"/></div>

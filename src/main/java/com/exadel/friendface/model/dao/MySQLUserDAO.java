@@ -1,7 +1,11 @@
 package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.entities.User;
-import com.healthmarketscience.sqlbuilder.*;
+import com.healthmarketscience.sqlbuilder.BinaryCondition;
+import com.healthmarketscience.sqlbuilder.DeleteQuery;
+import com.healthmarketscience.sqlbuilder.InsertQuery;
+import com.healthmarketscience.sqlbuilder.SelectQuery;
+import com.healthmarketscience.sqlbuilder.UpdateQuery;
 import com.healthmarketscience.sqlbuilder.dbspec.basic.DbColumn;
 import com.healthmarketscience.sqlbuilder.dbspec.basic.DbSchema;
 import com.healthmarketscience.sqlbuilder.dbspec.basic.DbSpec;
@@ -16,7 +20,6 @@ import java.sql.SQLException;
  */
 
 public class MySQLUserDAO extends AbstractDatabaseDAO implements UserDAO {
-
     private DbTable userTable;
     private DbColumn id;
     private DbColumn loginEmail;

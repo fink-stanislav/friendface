@@ -2,24 +2,21 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <jsp:useBean id="registrationBean" class="com.exadel.friendface.beans.pagebeans.RegistrationBean" scope="request">
-        <jsp:setProperty name="registrationBean" property="*"/>
-    </jsp:useBean>
-
     <div id="reg-form">
         <form name="userdataform" method="POST" action="register.action">
             <s:token/>
+
             <div><label for="loginEmail" class="required-field">Логин (e-mail)</label></div>
             <div><input type="text" id="loginEmail" name="loginEmail"
-                        value="${registrationBean.loginEmail}"/></div>
+                        value="#{loginEmail}"/></div>
 
             <div><label for="username">Имя</label></div>
             <div><input type="text" id="username" name="username"
-                        value="${registrationBean.username}"/></div>
+                        value="#{username}"/></div>
 
             <div><label for="userSurname">Фамилия</label></div>
             <div><input type="text" id="userSurname" name="userSurname"
-                        value="${registrationBean.userSurname}"/></div>
+                        value="#{userSurname}"/></div>
 
             <div><label for="password" class="required-field">Пароль</label></div>
             <div><input type="password" id="password" name="password"/></div>

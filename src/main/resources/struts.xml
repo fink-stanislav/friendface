@@ -33,17 +33,17 @@
         <!-- login input page -->
         <action name="entrance">
             <result name="login" type="tiles">entrance.tiles</result>
-            <result name="success" type="redirectAction">userpage</result>
+            <result name="success" type="tiles">userpage.tiles</result>
         </action>
 
         <!-- registration input page -->
         <action name="registration">
-            <result name="success" type="redirectAction">userpage</result>
+            <result name="success" type="tiles">userpage.tiles</result>
             <result name="login" type="tiles">registration.tiles</result>
         </action>
 
         <!-- userpage -->
-        <action name="userpage">
+        <action name="userpage" class="com.exadel.friendface.actions.UserPage">
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="login" type="tiles">infopage.tiles</result>
         </action>
@@ -65,7 +65,7 @@
         <!-- login -->
         <action name="login" class="com.exadel.friendface.actions.Login">
             <interceptor-ref name="myTokenStack"/>
-            <result name="success" type="redirectAction">userpage</result>
+            <result name="success" type="redirect">userpage.action</result>
             <result name="input" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">infopage.tiles</result>
             <result name="invalid.token" type="tiles">entrance.tiles</result>
