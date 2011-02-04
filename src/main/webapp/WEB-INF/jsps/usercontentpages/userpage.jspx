@@ -2,26 +2,22 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <jsp:useBean class="com.exadel.friendface.model.entities.User" id="user" scope="request"/>
-
     <div id="userdata">
         <div id="userpic">
             <img class="image" src="" alt=""/>
         </div>
         <div id="common-info">
-            <div class="horizontal-block-center">
-                <div class="common-info-line">
-                    ${user.username}
-                </div>
-                <div class="common-info-line"></div>
+            <div class="horizontal-block-normal">
+                <div class="common-info-line">Имя:&#160;</div>
+                <div class="common-info-line"><s:property value="user.username"/></div>
             </div>
             <div class="horizontal-block-normal">
-                <div class="common-info-line">Имя параметра:</div>
-                <div class="common-info-line">Значение параметра</div>
+                <div class="common-info-line">Фамилия:&#160;</div>
+                <div class="common-info-line"><s:property value="user.userSurname"/></div>
             </div>
             <div class="horizontal-block-normal">
-                <div class="common-info-line">Номер аськи:</div>
-                <div class="common-info-line">395-446-281</div>
+                <div class="common-info-line">Логин:&#160;</div>
+                <div class="common-info-line"><s:property value="user.loginEmail"/></div>
             </div>
         </div>
     </div>
