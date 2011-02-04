@@ -4,7 +4,6 @@ import com.exadel.friendface.beans.pagebeans.LogonBean;
 import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.util.UserUtils;
-import com.exadel.friendface.system.FriendfaceConstants;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
@@ -13,7 +12,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-import static com.exadel.friendface.model.dao.DAOFactory.StorageEngineType.mysql;
+import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
 
 /**
  * User: sfink
@@ -35,16 +34,42 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
         }
     }
 
-    public String execute() {
-        try {
-            User user = UserUtils.getUser(logonBean);
-            if (DAOFactory.getDAOFactory(mysql).getUserDAO().checkCredentials(user)) {
-                session.put(FriendfaceConstants.FriendfaceUser, user);
+    private boolean isUserLoggedIn(User user) throws Exception {
+        return DAOFactory.getDAOFactory().getAuthorizationDAO().isUserLoggedIn(user);
+    }
+
+    private Boolean checkCredentials(User user) throws Exception {
+        return DAOFactory.getDAOFactory().getAuthorizationDAO().checkCredentials(user);
+    }
+
+    private User getUser(LogonBean logonBean) throws Exception {
+        return DAOFactory.getDAOFactory().getUserDAO().getUser(UserUtils.getUser(logonBean).getLoginEmail());
+    }
+
+    private String login() throws Exception {
+        User user = getUser(logonBean);
+        if (user == null) {
+            addActionError("Login or password is wrong.");
+            return INPUT;
+        } else {
+            if (isUserLoggedIn(user)) {
+                addActionError("User is already logged in.");
+                return ERROR;
+            }
+            if (checkCredentials(user)) {
+                session.put(getUserSessionKey(), user);
+                DAOFactory.getDAOFactory().getAuthorizationDAO().loginUser(user);
                 return SUCCESS;
             } else {
                 addActionError("Login or password is wrong.");
                 return INPUT;
             }
+        }
+    }
+
+    public String execute() {
+        try {
+            return login();
         } catch (Exception e) {
             addActionError("Internal application error. " + e.getMessage());
             return ERROR;

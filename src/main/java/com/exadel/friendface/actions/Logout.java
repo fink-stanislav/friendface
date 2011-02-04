@@ -1,5 +1,6 @@
 package com.exadel.friendface.actions;
 
+import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.User;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
@@ -10,33 +11,31 @@ import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
 
 /**
  * User: sfink
- * Date: 2/3/11
- * Time: 5:50 PM
+ * Date: 2/4/11
+ * Time: 1:53 PM
  */
 
-public class UserPage extends ActionSupport implements SessionAware {
+public class Logout extends ActionSupport implements SessionAware {
     private Map session;
-    private User user;
+
+    private void logout() throws Exception {
+        User user = (User) session.get(getUserSessionKey());
+        DAOFactory.getDAOFactory().getAuthorizationDAO().logoutUser(user);
+        session.put(getUserSessionKey(), null);
+    }
 
     @Override
     public String execute() {
         try {
-            setUser((User) session.get(getUserSessionKey()));
+            logout();
             return SUCCESS;
         } catch (Exception e) {
+            addActionError("Internal application error. " + e.getMessage());
             return ERROR;
         }
     }
 
     public void setSession(Map session) {
         this.session = session;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

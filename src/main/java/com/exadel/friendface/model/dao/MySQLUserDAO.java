@@ -115,9 +115,4 @@ public class MySQLUserDAO extends AbstractDatabaseDAO implements UserDAO {
             return false;
         }
     }
-
-    public boolean checkCredentials(User user) {
-        User checkedUser = getUser(user.getLoginEmail());
-        return checkedUser != null && checkedUser.getPasswordHash().equals(user.getPasswordHash());
-    }
 }

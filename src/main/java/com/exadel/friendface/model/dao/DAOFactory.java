@@ -11,12 +11,17 @@ import com.exadel.friendface.system.PropertyManager;
 public abstract class DAOFactory {
 
     public abstract UserDAO getUserDAO();
+    public abstract AuthorizationDAO getAuthorizationDAO();
 
     private static PropertyManager classNames = new PropertyManager("application.properties");
 
     public enum StorageEngineType {
         mysql,
         filesystem
+    }
+
+    public static DAOFactory getDAOFactory() throws Exception {
+        return getDAOFactory(DAOFactory.StorageEngineType.mysql);
     }
 
     public static DAOFactory getDAOFactory(StorageEngineType type) throws Exception {

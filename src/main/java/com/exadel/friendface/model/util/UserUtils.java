@@ -3,6 +3,7 @@ package com.exadel.friendface.model.util;
 import com.exadel.friendface.beans.pagebeans.LogonBean;
 import com.exadel.friendface.beans.pagebeans.RegistrationBean;
 import com.exadel.friendface.model.entities.User;
+import com.exadel.friendface.system.FriendfaceConstants;
 import org.apache.commons.codec.binary.Hex;
 
 import java.security.MessageDigest;
@@ -41,5 +42,9 @@ public class UserUtils {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static String getUserSessionKey() {
+        return FriendfaceConstants.FriendfaceUser.name();
     }
 }

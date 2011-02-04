@@ -11,4 +11,8 @@ public class MySQLDAOFactory extends DAOFactory {
     public UserDAO getUserDAO() {
         return new MySQLUserDAO();
     }
+
+    public AuthorizationDAO getAuthorizationDAO() {
+        return new MySQLAuthorizationDAO();
+    }
 }

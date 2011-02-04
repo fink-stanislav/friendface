@@ -47,6 +47,12 @@
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="login" type="tiles">infopage.tiles</result>
         </action>
+
+        <!--logout-->
+        <action name="logout" class="com.exadel.friendface.actions.Logout">
+            <result name="success" type="tiles">welcomepage.tiles</result>
+            <result name="login" type="tiles">infopage.tiles</result>
+        </action>
     </package>
 
     <package name="public" namespace="/" extends="root">

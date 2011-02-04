@@ -5,7 +5,7 @@
         </div>
         <div id="headrefs">
             <a href="" title="настройки">настройки</a>&#160;
-            <a href="" title="выход">выход</a>
+            <a href="logout.action" title="выход">выход</a>
         </div>
     </div>
 </jsp:root>
