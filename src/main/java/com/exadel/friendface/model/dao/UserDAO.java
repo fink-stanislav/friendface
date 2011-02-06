@@ -9,10 +9,10 @@ import com.exadel.friendface.model.entities.User;
  */
 
 public interface UserDAO {
-    int createUser(User user);
-    int deleteUser(User user);
-    int updateUser(User user);
-    User getUser(Integer userId);
-    User getUser(String loginEmail);
-    Boolean isUserExists(User user);
+    int createUser(User user) throws Exception;
+    int deleteUser(User user) throws Exception;
+    int updateUser(User user) throws Exception;
+    User getUser(Integer userId) throws Exception;
+    User getUser(String loginEmail) throws Exception;
+    Boolean isUserExists(User user) throws Exception;
 }

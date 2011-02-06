@@ -9,7 +9,7 @@
         <div class="menuitem"><a href="" title="моя страница">
             <span class="ref">моя страница</span>
         </a></div>
-        <div class="menuitem"><a href="" title="друзья">
+        <div class="menuitem"><a href="friends.action" title="друзья">
             <span class="ref">друзья</span>
         </a></div>
         <div class="menuitem"><a href="" title="сообщения">

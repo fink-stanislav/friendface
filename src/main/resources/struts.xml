@@ -36,22 +36,27 @@
             <result name="success" type="redirect">userpage.action</result>
         </action>
 
-        <!-- registration input page -->
-        <action name="registration">
-            <result name="success" type="redirect">userpage.action</result>
-            <result name="login" type="tiles">registration.tiles</result>
-        </action>
-
         <!-- userpage -->
         <action name="userpage" class="com.exadel.friendface.actions.UserPage">
             <result name="success" type="tiles">userpage.tiles</result>
-            <result name="login" type="tiles">infopage.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
 
-        <!--logout-->
+        <!-- logout -->
         <action name="logout" class="com.exadel.friendface.actions.Logout">
             <result name="success" type="tiles">welcomepage.tiles</result>
-            <result name="login" type="tiles">infopage.tiles</result>
+            <result name="login" type="tiles">welcomepage.tiles</result>
+        </action>
+
+        <!-- coming soon! -->
+        <action name="comingsoon">
+            <result name="success" type="tiles">welcomepage.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+
+        <action name="friends">
+            <result name="success" type="tiles">comingsoon.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
     </package>
 
@@ -59,6 +64,11 @@
         <!-- some information / error page -->
         <action name="infopage">
             <result name="success" type="tiles">infopage.tiles</result>
+        </action>
+
+        <!-- registration input page -->
+        <action name="registration">
+            <result name="success" type="tiles">registration.tiles</result>
         </action>
 
         <!-- registration -->

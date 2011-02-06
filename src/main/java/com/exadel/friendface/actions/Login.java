@@ -1,9 +1,7 @@
 package com.exadel.friendface.actions;
 
 import com.exadel.friendface.beans.pagebeans.LogonBean;
-import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.User;
-import com.exadel.friendface.model.util.UserUtils;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,7 +10,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
+import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
+import static com.exadel.friendface.model.util.UserUtils.*;
 
 /**
  * User: sfink
@@ -24,6 +23,46 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
     private Map session;
     private LogonBean logonBean = new LogonBean();
 
+    public String execute() {
+        try {
+            return login();
+        } catch (Exception e) {
+            return resultAndErrorMessage(ERROR, "Internal application error. " + e.getMessage());
+        }
+    }
+
+    private String login() throws Exception {
+        User userFromRequest = getUserFromBean(logonBean);
+        User userFromStorage = getUserFromStorage(userFromRequest);
+
+        if (userFromStorage == null) {
+            return resultAndErrorMessage(INPUT, "No such user.");
+        }
+        if (isUserLoggedIn(userFromRequest)) {
+            return resultAndErrorMessage(ERROR, "User is already logged in.");
+        }
+        if (checkCredentials(userFromRequest, userFromStorage)) {
+            session.put(getUserSessionKey(), userFromStorage);
+            getDAOFactory().getAuthorizationDAO().loginUser(userFromStorage);
+            return SUCCESS;
+        } else {
+            return resultAndErrorMessage(INPUT, "Wrong password.");
+        }
+    }
+
+    private String resultAndErrorMessage(String result, String errorMessage) {
+        addActionError(errorMessage);
+        return result;
+    }
+
+    private User getUserFromStorage(User user) throws Exception {
+        return getDAOFactory().getUserDAO().getUser(user.getLoginEmail());
+    }
+
+    private boolean isUserLoggedIn(User user) throws Exception {
+        return getDAOFactory().getAuthorizationDAO().isUserLoggedIn(user);
+    }
+
     public void validate() {
         Validator validator = new Validator();
         try {
@@ -31,48 +70,6 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
             validator.validatePassword(logonBean.getPassword());
         } catch (ValidationException e) {
             addActionError(e.toString());
-        }
-    }
-
-    private boolean isUserLoggedIn(User user) throws Exception {
-        return DAOFactory.getDAOFactory().getAuthorizationDAO().isUserLoggedIn(user);
-    }
-
-    private Boolean checkCredentials(User user) throws Exception {
-        return DAOFactory.getDAOFactory().getAuthorizationDAO().checkCredentials(user);
-    }
-
-    private User getUser(LogonBean logonBean) throws Exception {
-        return DAOFactory.getDAOFactory().getUserDAO().getUser(UserUtils.getUser(logonBean).getLoginEmail());
-    }
-
-    private String login() throws Exception {
-        User user = getUser(logonBean);
-        if (user == null) {
-            addActionError("Login or password is wrong.");
-            return INPUT;
-        } else {
-            if (isUserLoggedIn(user)) {
-                addActionError("User is already logged in.");
-                return ERROR;
-            }
-            if (checkCredentials(user)) {
-                session.put(getUserSessionKey(), user);
-                DAOFactory.getDAOFactory().getAuthorizationDAO().loginUser(user);
-                return SUCCESS;
-            } else {
-                addActionError("Login or password is wrong.");
-                return INPUT;
-            }
-        }
-    }
-
-    public String execute() {
-        try {
-            return login();
-        } catch (Exception e) {
-            addActionError("Internal application error. " + e.getMessage());
-            return ERROR;
         }
     }
 

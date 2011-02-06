@@ -5,9 +5,8 @@
         <jsp:text>Welcome!</jsp:text>
     </div>
     <div id="article-side">
-        <jsp:text>Hi, username! Here is a place, where you can meet friends and get their pages flooded beyond all
-            recognition! Time to try!
-        </jsp:text>
+        Hi, username! Here is a place, where you can meet friends and get their
+        pages flooded beyond any recognition! Time to try!
     </div>
 
 </jsp:root>

@@ -33,45 +33,29 @@ public class MySQLAuthorizationDAO extends AbstractDatabaseDAO implements Author
         authData = authTable.addColumn("authData");
     }
 
-    public Boolean checkCredentials(User user) {
-        return user.getPasswordHash().equals(user.getPasswordHash());
+    public int loginUser(User user) throws SQLException {
+        String insertStatement = new InsertQuery(authTable)
+                .addColumn(userId, user.getId())
+                .addColumn(authData, user.getLoginEmail())
+                .toString();
+        createPreparedStatement(insertStatement);
+        return executeUpdate();
     }
 
-    public int loginUser(User user) {
-        try {
-            String insertStatement = new InsertQuery(authTable)
-                    .addColumn(userId, user.getId())
-                    .addColumn(authData, user.getLoginEmail())
-                    .toString();
-            createPreparedStatement(insertStatement);
-            return executeUpdate();
-        } catch (SQLException e) {
-            return 0;
-        }
+    public int logoutUser(User user) throws SQLException {
+        String deleteStatement = new DeleteQuery(authTable)
+                .addCondition(BinaryCondition.equalTo(userId, user.getId()))
+                .toString();
+        createPreparedStatement(deleteStatement);
+        return executeUpdate();
     }
 
-    public int logoutUser(User user) {
-        try {
-            String deleteStatement = new DeleteQuery(authTable)
-                    .addCondition(BinaryCondition.equalTo(userId, user.getId()))
-                    .toString();
-            createPreparedStatement(deleteStatement);
-            return executeUpdate();
-        } catch (SQLException e) {
-            return 0;
-        }
-    }
-
-    public Boolean isUserLoggedIn(User user) {
-        try {
-            String selectStatement = new SelectQuery()
-                    .addAllTableColumns(authTable)
-                    .addCondition(BinaryCondition.equalTo(userId, user.getId()))
-                    .toString();
-            createPreparedStatement(selectStatement);
-            return null != executeSelect(Authorization.class).getUserId();
-        } catch (SQLException e) {
-            return false;
-        }
+    public Boolean isUserLoggedIn(User user) throws SQLException {
+        String selectStatement = new SelectQuery()
+                .addAllTableColumns(authTable)
+                .addCondition(BinaryCondition.equalTo(userId, user.getId()))
+                .toString();
+        createPreparedStatement(selectStatement);
+        return null != executeSelect(Authorization.class);
     }
 }

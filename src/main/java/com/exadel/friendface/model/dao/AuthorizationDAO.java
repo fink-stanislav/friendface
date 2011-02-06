@@ -9,8 +9,7 @@ import com.exadel.friendface.model.entities.User;
  */
 
 public interface AuthorizationDAO {
-    public Boolean checkCredentials(User user);
-    public Boolean isUserLoggedIn(User user);
-    public int loginUser(User user);
-    public int logoutUser(User user);
+    public Boolean isUserLoggedIn(User user) throws Exception;
+    public int loginUser(User user) throws Exception;
+    public int logoutUser(User user) throws Exception;
 }

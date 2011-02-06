@@ -16,19 +16,12 @@ import java.security.MessageDigest;
 
 public class UserUtils {
 
-    public static User getUser(RegistrationBean registrationBean) {
+    public static User getUserFromBean(RegistrationBean registrationBean) {
         User user = new User();
         user.setLoginEmail(registrationBean.getLoginEmail());
         user.setUsername(registrationBean.getUsername());
         user.setUserSurname(registrationBean.getUserSurname());
         user.setPasswordHash(getPasswordHash(registrationBean.getPassword()));
-        return user;
-    }
-
-    public static User getUser(LogonBean logonBean) {
-        User user = new User();
-        user.setLoginEmail(logonBean.getLoginEmail());
-        user.setPasswordHash(getPasswordHash(logonBean.getPassword()));
         return user;
     }
 
@@ -44,7 +37,19 @@ public class UserUtils {
         }
     }
 
+    public static boolean checkCredentials(User userFromRequest, User userFromDb) {
+        return userFromDb.getLoginEmail().equals(userFromRequest.getLoginEmail()) &&
+               userFromDb.getPasswordHash().equals(userFromRequest.getPasswordHash());
+    }
+
     public static String getUserSessionKey() {
         return FriendfaceConstants.FriendfaceUser.name();
+    }
+
+    public static User getUserFromBean(LogonBean logonBean) {
+        User user = new User();
+        user.setLoginEmail(logonBean.getLoginEmail());
+        user.setPasswordHash(getPasswordHash(logonBean.getPassword()));
+        return user;
     }
 }

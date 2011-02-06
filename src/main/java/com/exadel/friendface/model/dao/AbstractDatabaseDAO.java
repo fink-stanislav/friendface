@@ -43,9 +43,12 @@ public abstract class AbstractDatabaseDAO {
 
     public <T> T executeSelect(Class<T> beanType) throws SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();
-        resultSet.next();
-        BeanProcessor beanProcessor = new BeanProcessor();
-        return beanProcessor.toBean(resultSet, beanType);
+        if (resultSet.next()) {
+            BeanProcessor beanProcessor = new BeanProcessor();
+            return beanProcessor.toBean(resultSet, beanType);
+        } else {
+            return null;
+        }
     }
 
     public void createCallable(String sql) throws SQLException {

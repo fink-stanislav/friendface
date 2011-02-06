@@ -1,12 +1,12 @@
 package com.exadel.friendface.actions;
 
-import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.User;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
+import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
 import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
 
 /**
@@ -18,13 +18,6 @@ import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
 public class Logout extends ActionSupport implements SessionAware {
     private Map session;
 
-    private void logout() throws Exception {
-        User user = (User) session.get(getUserSessionKey());
-        DAOFactory.getDAOFactory().getAuthorizationDAO().logoutUser(user);
-        session.put(getUserSessionKey(), null);
-    }
-
-    @Override
     public String execute() {
         try {
             logout();
@@ -33,6 +26,12 @@ public class Logout extends ActionSupport implements SessionAware {
             addActionError("Internal application error. " + e.getMessage());
             return ERROR;
         }
+    }
+
+    private void logout() throws Exception {
+        User user = (User) session.get(getUserSessionKey());
+        getDAOFactory().getAuthorizationDAO().logoutUser(user);
+        session.put(getUserSessionKey(), null);
     }
 
     public void setSession(Map session) {

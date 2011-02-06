@@ -30,7 +30,7 @@ public class MySQLUserDAO extends AbstractDatabaseDAO implements UserDAO {
     public MySQLUserDAO() {
         DbSpec spec = new DbSpec();
         DbSchema schema = spec.addDefaultSchema();
-        userTable = schema.addTable("user");
+        userTable = schema.addTable("users");
         id = userTable.addColumn("id");
         loginEmail = userTable.addColumn("loginEmail");
         passwordHash = userTable.addColumn("passwordHash");
@@ -38,81 +38,57 @@ public class MySQLUserDAO extends AbstractDatabaseDAO implements UserDAO {
         userSurname = userTable.addColumn("userSurname");
     }
 
-    public int createUser(User user) {
-        try {
-            String insertStatement = new InsertQuery(userTable)
-                    .addColumn(loginEmail, user.getLoginEmail())
-                    .addColumn(passwordHash, user.getPasswordHash())
-                    .addColumn(username, user.getUsername())
-                    .addColumn(userSurname, user.getUserSurname())
-                    .toString();
-            createPreparedStatement(insertStatement);
-            return executeUpdate();
-        } catch (SQLException e) {
-            return 0;
-        }
+    public int createUser(User user) throws SQLException {
+        String insertStatement = new InsertQuery(userTable)
+                .addColumn(loginEmail, user.getLoginEmail())
+                .addColumn(passwordHash, user.getPasswordHash())
+                .addColumn(username, user.getUsername())
+                .addColumn(userSurname, user.getUserSurname())
+                .toString();
+        createPreparedStatement(insertStatement);
+        return executeUpdate();
     }
 
-    public int updateUser(User user) {
-        try {
-            String updateStatement = new UpdateQuery(userTable)
-                    .addSetClause(passwordHash, user.getPasswordHash())
-                    .addSetClause(username, user.getUsername())
-                    .addSetClause(userSurname, user.getUserSurname())
-                    .addCondition(BinaryCondition.equalTo(loginEmail, user.getLoginEmail()))
-                    .toString();
-            createPreparedStatement(updateStatement);
-            return executeUpdate();
-        } catch (SQLException e) {
-            return 0;
-        }
+    public int updateUser(User user) throws SQLException {
+        String updateStatement = new UpdateQuery(userTable)
+                .addSetClause(passwordHash, user.getPasswordHash())
+                .addSetClause(username, user.getUsername())
+                .addSetClause(userSurname, user.getUserSurname())
+                .addCondition(BinaryCondition.equalTo(loginEmail, user.getLoginEmail()))
+                .toString();
+        createPreparedStatement(updateStatement);
+        return executeUpdate();
     }
 
-    public int deleteUser(User user) {
-        try {
-            String deleteStatement = new DeleteQuery(userTable)
-                    .addCondition(BinaryCondition.equalTo(loginEmail, user.getLoginEmail()))
-                    .toString();
-            createPreparedStatement(deleteStatement);
-            return executeUpdate();
-        } catch (SQLException e) {
-            return 0;
-        }
+    public int deleteUser(User user) throws SQLException {
+        String deleteStatement = new DeleteQuery(userTable)
+                .addCondition(BinaryCondition.equalTo(loginEmail, user.getLoginEmail()))
+                .toString();
+        createPreparedStatement(deleteStatement);
+        return executeUpdate();
     }
 
-    public User getUser(Integer userId) {
-        try {
-            String selectStatement = new SelectQuery()
-                    .addAllTableColumns(userTable)
-                    .addCondition(BinaryCondition.equalTo(id, userId))
-                    .toString();
-            createPreparedStatement(selectStatement);
-            return executeSelect(User.class);
-        } catch (SQLException e) {
-            return null;
-        }
+    public User getUser(Integer userId) throws SQLException {
+        String selectStatement = new SelectQuery()
+                .addAllTableColumns(userTable)
+                .addCondition(BinaryCondition.equalTo(id, userId))
+                .toString();
+        createPreparedStatement(selectStatement);
+        return executeSelect(User.class);
     }
 
-    public User getUser(String loginEmail) {
-        try {
-            String selectStatement = new SelectQuery()
-                    .addAllTableColumns(userTable)
-                    .addCondition(BinaryCondition.equalTo(this.loginEmail, loginEmail))
-                    .toString();
-            createPreparedStatement(selectStatement);
-            return executeSelect(User.class);
-        } catch (SQLException e) {
-            return null;
-        }
+    public User getUser(String loginEmail) throws SQLException {
+        String selectStatement = new SelectQuery()
+                .addAllTableColumns(userTable)
+                .addCondition(BinaryCondition.equalTo(this.loginEmail, loginEmail))
+                .toString();
+        createPreparedStatement(selectStatement);
+        return executeSelect(User.class);
     }
 
-    public Boolean isUserExists(User user) {
-        try {
-            createCallable("{ call isUserExists (?, ?) }");
-            callableSetParam(1, user.getLoginEmail());
-            return (Boolean) callableExecute(2, java.sql.Types.BOOLEAN);
-        } catch (SQLException e) {
-            return false;
-        }
+    public Boolean isUserExists(User user) throws SQLException {
+        createCallable("{ call isUserExists (?, ?) }");
+        callableSetParam(1, user.getLoginEmail());
+        return (Boolean) callableExecute(2, java.sql.Types.BOOLEAN);
     }
 }
