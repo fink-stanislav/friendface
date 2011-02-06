@@ -43,11 +43,6 @@
         <put-attribute name="content" value="/WEB-INF/jsps/servicepages/infopage.jspx"/>
     </definition>
 
-    <definition name="comingsoon.tiles" extends="service.page.template">
-        <put-attribute name="title" value="Coming soon!"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/comingsoon.jspx"/>
-    </definition>
-
     <!-- user's content -->
     <definition name="userpage.tiles" extends="content.page.template">
         <put-attribute name="title" value="Userpage"/>

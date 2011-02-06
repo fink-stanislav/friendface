@@ -55,7 +55,7 @@
         </action>
 
         <action name="friends">
-            <result name="success" type="tiles">comingsoon.tiles</result>
+            <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
     </package>

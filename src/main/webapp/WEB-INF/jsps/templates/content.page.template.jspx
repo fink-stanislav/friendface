@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/menu.css"/>
     <link rel="stylesheet" type="text/css" href="css/userdata.css"/>
     <link rel="stylesheet" type="text/css" href="css/wall.css"/>
+    <link rel="stylesheet" type="text/css" href="css/userlist.css"/>
     <link type="text/javascript" href="js/validation.js"/>
     <title><tiles:getAsString name="title"/></title>
 </head>
@@ -23,7 +24,7 @@
     <tiles:insertAttribute name="header"/>
 
     <div id="content">
-        <div id="menu-and-userdata">
+        <div id="clean">
             <tiles:insertAttribute name="menu"/>
             <tiles:insertAttribute name="content"/>
         </div>

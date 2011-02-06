@@ -38,12 +38,8 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
         if (userFromStorage == null) {
             return resultAndErrorMessage(INPUT, "No such user.");
         }
-        if (isUserLoggedIn(userFromRequest)) {
-            return resultAndErrorMessage(ERROR, "User is already logged in.");
-        }
         if (checkCredentials(userFromRequest, userFromStorage)) {
             session.put(getUserSessionKey(), userFromStorage);
-            getDAOFactory().getAuthorizationDAO().loginUser(userFromStorage);
             return SUCCESS;
         } else {
             return resultAndErrorMessage(INPUT, "Wrong password.");
@@ -57,10 +53,6 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
 
     private User getUserFromStorage(User user) throws Exception {
         return getDAOFactory().getUserDAO().getUser(user.getLoginEmail());
-    }
-
-    private boolean isUserLoggedIn(User user) throws Exception {
-        return getDAOFactory().getAuthorizationDAO().isUserLoggedIn(user);
     }
 
     public void validate() {

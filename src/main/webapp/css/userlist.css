@@ -1,0 +1,35 @@
+#userlist {
+    width: 32em;
+    float: left;
+    padding: 1em 1em 2em 1em;
+}
+
+.userlistitem {
+    clear: both;
+    margin: 0.5em 2em;
+    padding: 0 0 2em 0;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.itemheader {
+    height: 1em;
+    text-align: right;
+    background: #d3d3d3;
+    padding: 0 0 0.7em 0;
+}
+
+.itemheader a {
+    font-size: small;
+    color: black;
+}
+
+.itemcontent {
+}
+
+.itemimagelittle {
+    float: left;
+}
+
+.itemtextinfo {
+    float: left;
+}
