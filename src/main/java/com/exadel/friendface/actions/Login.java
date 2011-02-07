@@ -1,6 +1,7 @@
 package com.exadel.friendface.actions;
 
 import com.exadel.friendface.beans.pagebeans.LogonBean;
+import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
@@ -8,6 +9,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;

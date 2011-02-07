@@ -49,7 +49,7 @@
         </action>
 
         <!-- menu -->
-        <action name="friends">
+        <action name="friends" class="com.exadel.friendface.actions.Friends">
             <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>

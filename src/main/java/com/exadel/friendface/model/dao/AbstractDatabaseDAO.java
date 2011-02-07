@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 
 /**
  * User: sfink
@@ -49,6 +50,12 @@ public abstract class AbstractDatabaseDAO {
         } else {
             return null;
         }
+    }
+
+    public <T> Collection executeMultipleSelect(Class<T> beanType) throws SQLException {
+        ResultSet resultSet = preparedStatement.executeQuery();
+        BeanProcessor beanProcessor = new BeanProcessor();
+        return beanProcessor.toBeanList(resultSet, beanType);
     }
 
     public void createCallable(String sql) throws SQLException {

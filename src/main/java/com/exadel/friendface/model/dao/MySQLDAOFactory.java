@@ -7,7 +7,13 @@ package com.exadel.friendface.model.dao;
  */
 
 public class MySQLDAOFactory extends DAOFactory {
+    @Override
     public UserDAO getUserDAO() {
         return new MySQLUserDAO();
+    }
+
+    @Override
+    public FriendsDAO getFriendsDAO() {
+        return new MySQLFriendsDAO();
     }
 }

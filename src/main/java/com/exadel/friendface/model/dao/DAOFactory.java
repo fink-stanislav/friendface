@@ -11,6 +11,7 @@ import com.exadel.friendface.system.PropertyManager;
 public abstract class DAOFactory {
 
     public abstract UserDAO getUserDAO();
+    public abstract FriendsDAO getFriendsDAO();
 
     private static PropertyManager classNames = new PropertyManager("application.properties");
 
