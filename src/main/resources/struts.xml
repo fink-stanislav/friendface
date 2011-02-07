@@ -48,14 +48,43 @@
             <result name="login" type="tiles">welcomepage.tiles</result>
         </action>
 
-        <!-- coming soon! -->
-        <action name="comingsoon">
-            <result name="success" type="tiles">welcomepage.tiles</result>
+        <!-- menu -->
+        <action name="friends">
+            <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
 
-        <action name="friends">
-            <result name="success" type="tiles">friends.tiles</result>
+        <!-- dummies -->
+        <action name="messages">
+            <result name="success" type="tiles">messages.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+
+        <action name="alumlist">
+            <result name="success" type="tiles">albumlist.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+
+        <action name="videos">
+            <result name="success" type="tiles">video.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+
+        <action name="search">
+            <result name="success" type="tiles">search.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+        <!-- end dummies -->
+        <!-- end menu -->
+
+        <!-- dummies -->
+        <action name="photos">
+            <result name="success" type="tiles">photos.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+
+        <action name="settings">
+            <result name="success" type="tiles">settings.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
     </package>

@@ -35,6 +35,9 @@
                 &#160;|&#160;
                 <a href="" title="удалить">удалить</a>
             </div>
+            <a href="">
+                <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+            </a>
             <div class="wall-message-text">
                 какоето сообщение
             </div>

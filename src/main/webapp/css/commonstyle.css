@@ -116,3 +116,11 @@ a:visited {
 h1 a, h2 a, h3 a {
   color:inherit !important
 }
+
+.imagelittle {
+    float: left;
+    width: 56px;
+    height: 66px;
+    margin: 0.5em;
+    border: 0;
+}

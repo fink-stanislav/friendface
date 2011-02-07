@@ -1,25 +1,26 @@
 #menu {
-  float: left;
-  width: 9em;
-  margin: 0.1em;
+    float: left;
+    width: 9em;
+    margin: 0.1em;
 }
 
 .menuitem {
 }
 
 .menuitem:hover {
-  color: white;
-  background: gray;
+    color: white;
+    background: gray;
 }
 
 .menuitem a {
-  color: black;
+    color: black;
 }
 
 .menuitem a:hover {
-  color: white;
+    color: white;
 }
 
 .ref {
-  margin: 0 0 0 1em;
+    display: block;
+    text-align: center;
 }

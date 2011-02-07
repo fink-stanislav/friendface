@@ -9,7 +9,7 @@
             <a href="welcome.action" title="friendface">friendface</a>
         </div>
         <div id="headrefs">
-            <a href="" title="выход">выход</a>
+            <a href="logout.action" title="выход">выход</a>
         </div>
     </div>
 </jsp:root>

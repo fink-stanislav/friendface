@@ -4,7 +4,7 @@
             <a href="welcome.action" title="friendface">friendface</a>
         </div>
         <div id="headrefs">
-            <a href="" title="настройки">настройки</a>&#160;
+            <a href="settings.action" title="настройки">настройки</a>&#160;
             <a href="logout.action" title="выход">выход</a>
         </div>
     </div>

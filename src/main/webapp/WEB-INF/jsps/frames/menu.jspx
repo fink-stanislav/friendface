@@ -1,27 +1,26 @@
 <!--
-  Created by IntelliJ IDEA.
   User: sfink
   Date: 2/2/11
   Time: 4:32 PM
 -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
     <div id="menu">
-        <div class="menuitem"><a href="" title="моя страница">
+        <div class="menuitem"><a href="userpage.action" title="моя страница">
             <span class="ref">моя страница</span>
         </a></div>
         <div class="menuitem"><a href="friends.action" title="друзья">
             <span class="ref">друзья</span>
         </a></div>
-        <div class="menuitem"><a href="" title="сообщения">
+        <div class="menuitem"><a href="messages.action" title="сообщения">
             <span class="ref">сообщения</span>
         </a></div>
-        <div class="menuitem"><a href="" title="фото">
+        <div class="menuitem"><a href="alumlist.action" title="фото">
             <span class="ref">фото</span>
         </a></div>
-        <div class="menuitem"><a href="" title="видео">
+        <div class="menuitem"><a href="videos.action" title="видео">
             <span class="ref">видео</span>
         </a></div>
-        <div class="menuitem"><a href="" title="поиск">
+        <div class="menuitem"><a href="search.action" title="поиск">
             <span class="ref">поиск</span>
         </a></div>
     </div>
