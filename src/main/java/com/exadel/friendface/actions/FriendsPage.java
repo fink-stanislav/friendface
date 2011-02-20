@@ -15,16 +15,17 @@ import java.util.Map;
  * Time: 2:24 PM
  */
 
-public class Friends extends ActionSupport implements SessionAware {
+public class FriendsPage extends ActionSupport implements SessionAware {
     private Map session;
     private Collection friends;
+    private Boolean hasFriends;
 
     public Collection getFriends() {
         return friends;
     }
 
-    public void setFriends(Collection friends) {
-        this.friends = friends;
+    public Boolean getHasFriends() {
+        return hasFriends;
     }
 
     @Override
@@ -39,7 +40,8 @@ public class Friends extends ActionSupport implements SessionAware {
 
     private String showFriends() throws Exception {
         User user = (User) session.get(UserUtils.getUserSessionKey());
-        setFriends(DAOFactory.getDAOFactory().getFriendsDAO().getFriends(user));
+        friends = DAOFactory.getDAOFactory().getFriendsDAO().getFriends(user);
+        hasFriends = friends.size() > 0;
         return SUCCESS;
     }
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="menu" extends="private">
+        <action name="friends" class="com.exadel.friendface.actions.FriendsPage">
+            <result name="success" type="tiles">friends.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+        <action name="messages">
+            <result name="success" type="tiles">messages.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+        <action name="alumlist">
+            <result name="success" type="tiles">albumlist.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+        <action name="videos">
+            <result name="success" type="tiles">video.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+        <action name="search">
+            <result name="success" type="tiles">search.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+    </package>
+</struts>

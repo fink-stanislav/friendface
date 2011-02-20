@@ -3,20 +3,54 @@
           xmlns:s="/struts-tags">
 
     <div id="userlist">
+        <s:if test="hasFriends">
+            <s:iterator value="friends" status="status">
+                <s:div cssClass="userlistitem">
+                    <div class="itemheader">
+                        <!-- version 1 -->
+                        <!--
+                        <s:url id="delUrl" action="deleteFriend">
+                            <s:param name="friendId" value="[0].friendId"/>
+                            <s:param name="userId" value="[0].userId"/>
+                        </s:url>
+                        <s:a href="%{delUrl}">
+                            удалить из друзей
+                        </s:a>
+                        -->
 
-        <div class="userlistitem">
-            <div class="itemheader">
-                <a href="">удалить из друзей</a>
-            </div>
-            <div class="itemcontent">
-                <a href="">
-                    <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
-                </a>
-                <div class="itemtextinfo">
-                    <a href="">имя и фамилия</a>
+                        <!-- version 2 -->
+                        <form action="deleteFriend.action" method="POST" name="deleteForm">
+                            <s:hidden name="friendId" value="%{[0].friendId}"/>
+                            <s:hidden name="userId" value="%{[0].userId}"/>
+                            <a href="#" onclick="document.forms['deleteForm'].submit()">
+                                удалить из друзей
+                            </a>
+                        </form>
+                    </div>
+                    <div class="itemcontent">
+                        <a href="">
+                            <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+                        </a>
+
+                        <div class="itemtextinfo">
+                            <a href="">
+                                <s:property value="username"/>&#160;
+                                <s:property value="userSurname"/>
+                            </a>
+                        </div>
+                    </div>
+                </s:div>
+            </s:iterator>
+        </s:if>
+        <s:else>
+            <div class="userlistitem">
+                <div class="itemheader">&#160;</div>
+                <div class="itemcontent">
+                    <div class="itemtextinfo">
+                        У вас пока нет друзей.
+                    </div>
                 </div>
             </div>
-        </div>
+        </s:else>
     </div>
-
 </jsp:root>

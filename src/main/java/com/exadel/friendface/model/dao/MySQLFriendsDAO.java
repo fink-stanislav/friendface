@@ -56,7 +56,7 @@ public class MySQLFriendsDAO extends AbstractDatabaseDAO implements FriendsDAO {
     }
 
     public int deleteFriend(Friend friend) throws Exception {
-        String deleteStatement = new DeleteQuery(userTable)
+        String deleteStatement = new DeleteQuery(friendsTable)
                 .addCondition(BinaryCondition.equalTo(friendId, friend.getFriendId()))
                 .addCondition(BinaryCondition.equalTo(userId, friend.getUserId()))
                 .toString();
