@@ -11,7 +11,7 @@
 
             <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
 
-            <s:i18n name="com.exadel.friendface.actions.Registration">
+            <s:i18n name="com.exadel.friendface.actions.Register">
                 <div><s:text name="name"/></div>
 
                 <div><s:textfield name="username" value="%{username}"/></div>

@@ -6,12 +6,12 @@
 <struts>
     <package name="common-private" extends="private">
         <!-- application welcome page -->
-        <action name="welcome">
+        <action name="welcome" class="com.exadel.friendface.actions.Welcome">
             <result name="login" type="tiles">welcomepage.tiles</result>
             <result name="success" type="redirect">userpage.action</result>
         </action>
         <!-- login input page -->
-        <action name="entrance">
+        <action name="entrance" class="com.exadel.friendface.actions.Entrance">
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="success" type="redirect">userpage.action</result>
         </action>
@@ -32,7 +32,7 @@
             <result name="success" type="tiles">infopage.tiles</result>
         </action>
         <!-- registration input page -->
-        <action name="registration">
+        <action name="registration" class="com.exadel.friendface.actions.Registration">
             <result name="success" type="tiles">registration.tiles</result>
         </action>
         <!-- registration -->

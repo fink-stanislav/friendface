@@ -1,12 +1,14 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
 
-    <div id="article-header-side">
-        <jsp:text>Welcome!</jsp:text>
-    </div>
-    <div id="article-side">
-        Hi, username! Here is a place, where you can meet friends and get their
-        pages flooded beyond any recognition! Time to try!
-    </div>
+    <s:i18n name="com.exadel.friendface.actions.Welcome">
+        <div id="article-header-side">
+            <s:text name="welcome"/>
+        </div>
+        <div id="article-side">
+            <s:text name="welcome.message"/>
+        </div>
+    </s:i18n>
 
 </jsp:root>
