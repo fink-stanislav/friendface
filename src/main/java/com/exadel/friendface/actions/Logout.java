@@ -21,7 +21,7 @@ public class Logout extends ActionSupport implements SessionAware {
             logout();
             return SUCCESS;
         } catch (Exception e) {
-            addActionError("Internal application error. " + e.getMessage());
+            addActionError(getText("internal.app.error") + e.getMessage());
             return ERROR;
         }
     }

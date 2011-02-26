@@ -38,7 +38,7 @@ public class Register extends ActionSupport implements ModelDriven {
         try {
             return register();
         } catch (Exception e) {
-            return resultAndErrorMessage(ERROR, "Internal application error. " + e.getMessage());
+            return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
         }
     }
 
@@ -48,10 +48,10 @@ public class Register extends ActionSupport implements ModelDriven {
 
         if (!userDAO.isUserExists(user)) {
             userDAO.createUser(user);
-            addActionMessage("Registration succeed. ");
+            addActionMessage(getText("registration.succeed"));
             return SUCCESS;
         } else {
-            return resultAndErrorMessage(INPUT, "Such user is already exists. ");
+            return resultAndErrorMessage(INPUT, getText("user.already.exists"));
         }
     }
 
