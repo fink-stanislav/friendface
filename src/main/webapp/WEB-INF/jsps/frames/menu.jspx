@@ -3,26 +3,30 @@
   Date: 2/2/11
   Time: 4:32 PM
 -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
-    <div id="menu">
-        <div class="menuitem"><a href="userpage.action" title="моя страница">
-            <span class="ref">моя страница</span>
-        </a></div>
-        <div class="menuitem"><a href="friendList.action" title="друзья">
-            <span class="ref">друзья</span>
-        </a></div>
-        <div class="menuitem"><a href="messages.action" title="сообщения">
-            <span class="ref">сообщения</span>
-        </a></div>
-        <div class="menuitem"><a href="alumlist.action" title="фото">
-            <span class="ref">фото</span>
-        </a></div>
-        <div class="menuitem"><a href="videos.action" title="видео">
-            <span class="ref">видео</span>
-        </a></div>
-        <div class="menuitem"><a href="search.action" title="поиск">
-            <span class="ref">поиск</span>
-        </a></div>
-    </div>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0"
+          xmlns:s="/struts-tags">
+    <s:i18n name="viewbundles.menu">
+        <div id="menu">
+            <div class="menuitem"><s:a href="userpage.action" title="%{getText('title.mypage')}">
+                <span class="ref"><s:text name="item.mypage"/></span>
+            </s:a></div>
+            <div class="menuitem"><s:a href="friendList.action" title="%{getText('title.friends')}">
+                <span class="ref"><s:text name="item.friends"/></span>
+            </s:a></div>
+            <div class="menuitem"><s:a href="messages.action" title="%{getText('title.messages')}">
+                <span class="ref"><s:text name="item.messages"/></span>
+            </s:a></div>
+            <div class="menuitem"><s:a href="alumlist.action" title="%{getText('title.photos')}">
+                <span class="ref"><s:text name="item.photos"/></span>
+            </s:a></div>
+            <div class="menuitem"><s:a href="videos.action" title="%{getText('title.videos')}">
+                <span class="ref"><s:text name="item.videos"/></span>
+            </s:a></div>
+            <div class="menuitem"><s:a href="search.action" title="%{getText('title.search')}">
+                <span class="ref"><s:text name="item.search"/></span>
+            </s:a></div>
+        </div>
+    </s:i18n>
     <div id="vertical-line"></div>
 </jsp:root>
