@@ -4,7 +4,7 @@ public class ValidationException extends Exception {
 	private String message;
 	
 	public ValidationException() {
-		message = "Unknown validation exception. ";
+		message = "unknown.exc";
 	}
 	
 	public ValidationException(String message) {

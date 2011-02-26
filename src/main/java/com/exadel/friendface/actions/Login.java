@@ -61,7 +61,7 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
             validator.validateEmail(logonBean.getLoginEmail());
             validator.validatePassword(logonBean.getPassword());
         } catch (ValidationException e) {
-            addActionError(e.toString());
+            addActionError(getText(e.toString()));
         }
     }
 

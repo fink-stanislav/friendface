@@ -30,7 +30,7 @@ public class Register extends ActionSupport implements ModelDriven {
             validator.validatePassword(registrationBean.getPasswordConfirmation());
             validator.validatePassword(registrationBean.getPassword(), registrationBean.getPasswordConfirmation());
         } catch (ValidationException e) {
-            addActionError(e.toString());
+            addActionError(getText(e.toString()));
         }
     }
 

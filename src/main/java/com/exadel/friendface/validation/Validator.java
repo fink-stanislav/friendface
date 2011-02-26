@@ -35,11 +35,11 @@ public class Validator {
 	    throws ValidationException {
 		
 		if (isBlank(email)) {
-			throw new ValidationException("No email.");
+			throw new ValidationException("no.email");
 		}
 
         if (!isEmailMatch(email)) {
-        	throw new ValidationException("Specified email does not match.");
+        	throw new ValidationException("email.doesnt.match");
         }
 	}
 	
@@ -47,15 +47,15 @@ public class Validator {
 	    throws ValidationException {
 
 		if (isBlank(password)) {
-			throw new ValidationException("No password.");
+			throw new ValidationException("no.password");
 		} 
 
         if (!isPasswordLongEnough(password)) {
-            throw new ValidationException("Specified password is too short");
+            throw new ValidationException("password.too.short");
         }
 
         if (!isPasswordMatch(password)) {
-            throw new ValidationException("Specified password does not match.");
+            throw new ValidationException("password.doesnt.match");
         }
 	}
 
@@ -63,15 +63,15 @@ public class Validator {
 	    throws ValidationException {
 
 		if (isBlank(password)) {
-			throw new ValidationException("No password.");
+			throw new ValidationException("no.password");
 		}
 
         if (isBlank(passwordConfirmation)) {
-			throw new ValidationException("No confirmation password.");
+			throw new ValidationException("no.confirmation.password");
 		}
 
         if (!password.equals(passwordConfirmation)) {
-			throw new ValidationException("First password is not equal to second.");
+			throw new ValidationException("password.not.equals.to.conf");
 		}
 	}
 
@@ -79,11 +79,11 @@ public class Validator {
 	    throws ValidationException {
 
 		if (isBlank(textString)) {
-			throw new ValidationException("No text.");
+			throw new ValidationException("no.name");
 		}
 
 		if (!isTextStringMatch(textString)) {
-			throw new ValidationException("Specified string does not match.");
+			throw new ValidationException("name.doesnt.match");
 		}
 	}
 }
