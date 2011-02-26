@@ -5,30 +5,34 @@
     <div id="reg-form">
         <form name="userdataform" method="POST" action="register.action">
             <s:token/>
+            <s:i18n name="com.exadel.friendface.actions.Login">
+                <div><s:text name="login.email"/></div>
+            </s:i18n>
 
-            <div><s:label for="loginEmail" value="Логин (e-mail)"/></div>
-            <div><s:textfield id="loginEmail" name="loginEmail" value="%{loginEmail}"/></div>
+            <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
 
-            <div><s:label for="username" value="Имя"/></div>
-            <div><s:textfield id="username" name="username" value="%{username}"/></div>
+            <s:i18n name="com.exadel.friendface.actions.Registration">
+                <div><s:text name="name"/></div>
 
-            <div><s:label for="userSurname" value="Фамилия"/></div>
-            <div><s:textfield id="userSurname" name="userSurname" value="%{userSurname}"/></div>
+                <div><s:textfield name="username" value="%{username}"/></div>
 
-            <div><s:label for="password" value="Пароль"/></div>
-            <div><s:password id="password" name="password"/></div>
+                <div><s:text name="surname"/></div>
+                <div><s:textfield name="userSurname" value="%{userSurname}"/></div>
 
-            <div><s:label for="passwordConfirmation" value="Проверка пароля"/></div>
-            <div><s:password id="passwordConfirmation" name="passwordConfirmation"/></div>
+                <div><s:text name="password"/></div>
+                <div><s:password name="password"/></div>
 
-            <s:actionerror/>
-            <hr/>
+                <div><s:text name="confirmation"/></div>
+                <div><s:password name="passwordConfirmation"/></div>
 
-            <div class="formLine">
-                <input type="submit" name="submitbutton" value="Зарегистрироваться"/>
-                <input type="reset" name="resetbutton" value="Отмена"/>
-            </div>
+                <s:actionerror/>
+                <hr/>
 
+                <div class="formLine">
+                    <s:submit value="%{getText('register')}"/>
+                    <s:reset value="%{getText('cancel')}"/>
+                </div>
+            </s:i18n>
         </form>
     </div>
 </jsp:root>

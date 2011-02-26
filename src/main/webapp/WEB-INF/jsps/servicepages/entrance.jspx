@@ -5,26 +5,26 @@
     <div id="login-form">
         <form action="login.action" method="POST">
             <s:token/>
-
             <s:i18n name="com.exadel.friendface.actions.Login">
                 <div><s:text name="login.email"/></div>
-                <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
-
-                <div><s:text name="password"/></div>
-                <div><s:password name="password"/></div>
-
-                <s:actionerror/>
-
-                <hr/>
-
-                <div class="horizontal-block-normal">
-                    <div>
-                        <s:submit value="%{getText('login')}"/>
-                        <s:reset value="%{getText('cancel')}"/>
-                    </div>
-                </div>
             </s:i18n>
 
+            <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
+
+            <div><s:text name="password"/></div>
+            <div><s:password name="password"/></div>
+
+            <s:actionerror/>
+
+            <hr/>
+            <div class="horizontal-block-normal">
+                <div>
+                    <s:i18n name="com.exadel.friendface.actions.Login">
+                        <s:submit value="%{getText('login')}"/>
+                    </s:i18n>
+                    <s:reset value="%{getText('cancel')}"/>
+                </div>
+            </div>
         </form>
     </div>
 </jsp:root>
