@@ -2,34 +2,23 @@ package com.exadel.friendface.actions;
 
 import com.exadel.friendface.model.entities.User;
 import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.interceptor.SessionAware;
-
-import java.util.Map;
-
-import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
 
 /**
- * User: S. Fink
- * Date: 2/3/11
- * Time: 5:50 PM
+ * Author: S. Fink
+ * Date: 20.02.11
+ * Time: 14:48
  */
 
-public class UserPage extends ActionSupport implements SessionAware {
-    private Map session;
+public class FriendPage extends ActionSupport {
     private User user;
 
     @Override
     public String execute() {
         try {
-            setUser((User) session.get(getUserSessionKey()));
             return SUCCESS;
         } catch (Exception e) {
             return ERROR;
         }
-    }
-
-    public void setSession(Map session) {
-        this.session = session;
     }
 
     public User getUser() {

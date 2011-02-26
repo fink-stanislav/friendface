@@ -10,8 +10,11 @@
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
         <action name="deleteFriend" class="com.exadel.friendface.actions.DeleteFriend">
-            <result name="success" type="redirect">friends.action</result>
+            <result name="success" type="redirect">friendList.action</result>
             <result name="error" type="tiles">infopage.tiles</result>
+        </action>
+        <action name="friendPage" class="com.exadel.friendface.actions.FriendPage">
+            <result name="success" type="redirect">userpage.action</result>
         </action>
         <action name="photos">
             <result name="success" type="tiles">photos.tiles</result>

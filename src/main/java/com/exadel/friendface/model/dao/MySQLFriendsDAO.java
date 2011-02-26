@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/7/11
  * Time: 1:12 PM
  */

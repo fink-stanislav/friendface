@@ -8,7 +8,7 @@ import java.util.Map;
 import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/4/11
  * Time: 1:53 PM
  */

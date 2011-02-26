@@ -14,7 +14,7 @@ import com.healthmarketscience.sqlbuilder.dbspec.basic.DbTable;
 import java.sql.SQLException;
 
 /**
- * Author: sfink
+ * Author: S. Fink
  * Date: 31.01.11
  * Time: 23:25
  */

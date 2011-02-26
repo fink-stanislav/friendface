@@ -6,7 +6,7 @@ import com.exadel.friendface.model.entities.User;
 import java.util.Collection;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/7/11
  * Time: 1:05 PM
  */

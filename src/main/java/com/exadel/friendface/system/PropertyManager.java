@@ -5,7 +5,7 @@ import java.net.URL;
 import java.util.Properties;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/2/11
  * Time: 1:23 PM
  */

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/2/11
  * Time: 12:10 PM
  */

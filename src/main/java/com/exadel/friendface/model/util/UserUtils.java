@@ -9,7 +9,7 @@ import org.apache.commons.codec.binary.Hex;
 import java.security.MessageDigest;
 
 /**
- * Author: sfink
+ * Author: S. Fink
  * Date: 1/28/11
  * Time: 2:52 PM
  */

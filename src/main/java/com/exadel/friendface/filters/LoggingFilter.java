@@ -8,7 +8,7 @@ import java.io.IOException;
 import org.apache.log4j.*;
 
 /**
- * Author: sfink
+ * Author: S. Fink
  * Date: 1/21/11
  * Time: 4:15 PM
  */

@@ -3,7 +3,7 @@ package com.exadel.friendface.model.dao;
 import com.exadel.friendface.system.PropertyManager;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/2/11
  * Time: 1:08 PM
  */

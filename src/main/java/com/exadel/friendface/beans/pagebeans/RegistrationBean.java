@@ -1,5 +1,5 @@
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 1/21/11
  * Time: 11:32 AM
  */

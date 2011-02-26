@@ -7,18 +7,6 @@
             <s:iterator value="friends" status="status">
                 <s:div cssClass="userlistitem">
                     <div class="itemheader">
-                        <!-- version 1 -->
-                        <!--
-                        <s:url id="delUrl" action="deleteFriend">
-                            <s:param name="friendId" value="[0].friendId"/>
-                            <s:param name="userId" value="[0].userId"/>
-                        </s:url>
-                        <s:a href="%{delUrl}">
-                            удалить из друзей
-                        </s:a>
-                        -->
-
-                        <!-- version 2 -->
                         <form action="deleteFriend.action" method="POST" name="deleteForm">
                             <s:hidden name="friendId" value="%{[0].friendId}"/>
                             <s:hidden name="userId" value="%{[0].userId}"/>
@@ -33,10 +21,13 @@
                         </a>
 
                         <div class="itemtextinfo">
-                            <a href="">
-                                <s:property value="username"/>&#160;
-                                <s:property value="userSurname"/>
-                            </a>
+                            <form action="friendPage.action" method="POST" name="friendPageForm">
+                                <s:hidden name="friendId" value="%{[0].friendId}"/>
+                                <a href="#" onclick="document.forms['friendPageForm'].submit()">
+                                    <s:property value="username"/>&#160;
+                                    <s:property value="userSurname"/>
+                                </a>
+                            </form>
                         </div>
                     </div>
                 </s:div>

@@ -7,7 +7,7 @@ import java.util.Map;
 import static org.apache.commons.lang.StringUtils.contains;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/1/11
  * Time: 7:07 PM
  */

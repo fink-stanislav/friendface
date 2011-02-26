@@ -1,7 +1,7 @@
 package com.exadel.friendface.model.dao;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/2/11
  * Time: 1:11 PM
  */

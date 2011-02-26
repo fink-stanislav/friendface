@@ -10,12 +10,12 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/7/11
  * Time: 2:24 PM
  */
 
-public class FriendsPage extends ActionSupport implements SessionAware {
+public class FriendListPage extends ActionSupport implements SessionAware {
     private Map session;
     private Collection friends;
     private Boolean hasFriends;

@@ -4,7 +4,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 1/31/11
  * Time: 4:30 PM
  */

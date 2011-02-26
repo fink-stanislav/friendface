@@ -12,7 +12,7 @@ import com.opensymphony.xwork2.ModelDriven;
 import static com.exadel.friendface.model.util.UserUtils.getUserFromBean;
 
 /**
- * Author: sfink
+ * Author: S. Fink
  * Date: 1/27/11
  * Time: 6:17 PM
  */

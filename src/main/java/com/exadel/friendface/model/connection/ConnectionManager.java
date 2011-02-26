@@ -10,7 +10,7 @@ import java.util.Map;
 import static com.exadel.friendface.util.StringUtils.buildUrl;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 1/31/11
  * Time: 4:43 PM
  */

@@ -9,7 +9,7 @@ import com.opensymphony.xwork2.interceptor.Interceptor;
 import java.util.Map;
 
 /**
- * Author: sfink
+ * Author: S. Fink
  * Date: 30.01.11
  * Time: 20:50
  */

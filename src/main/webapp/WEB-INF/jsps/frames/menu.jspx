@@ -1,5 +1,5 @@
 <!--
-  User: sfink
+  User: S. Fink
   Date: 2/2/11
   Time: 4:32 PM
 -->
@@ -8,7 +8,7 @@
         <div class="menuitem"><a href="userpage.action" title="моя страница">
             <span class="ref">моя страница</span>
         </a></div>
-        <div class="menuitem"><a href="friends.action" title="друзья">
+        <div class="menuitem"><a href="friendList.action" title="друзья">
             <span class="ref">друзья</span>
         </a></div>
         <div class="menuitem"><a href="messages.action" title="сообщения">

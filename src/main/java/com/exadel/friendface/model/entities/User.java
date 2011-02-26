@@ -1,7 +1,7 @@
 package com.exadel.friendface.model.entities;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 1/28/11
  * Time: 2:50 PM
  */

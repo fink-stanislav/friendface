@@ -5,7 +5,7 @@
 
 <struts>
     <package name="menu" extends="private">
-        <action name="friends" class="com.exadel.friendface.actions.FriendsPage">
+        <action name="friendList" class="com.exadel.friendface.actions.FriendListPage">
             <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>

@@ -1,7 +1,7 @@
 package com.exadel.friendface.system;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 30.01.11
  * Time: 20:01
  */

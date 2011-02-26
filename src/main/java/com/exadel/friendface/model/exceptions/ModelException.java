@@ -1,7 +1,7 @@
 package com.exadel.friendface.model.exceptions;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 2/1/11
  * Time: 2:31 PM
  */

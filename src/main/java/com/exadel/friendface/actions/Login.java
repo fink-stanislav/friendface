@@ -1,7 +1,6 @@
 package com.exadel.friendface.actions;
 
 import com.exadel.friendface.beans.pagebeans.LogonBean;
-import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.validation.ValidationException;
 import com.exadel.friendface.validation.Validator;
@@ -9,15 +8,13 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.interceptor.SessionAware;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
 import static com.exadel.friendface.model.util.UserUtils.*;
 
 /**
- * User: sfink
+ * User: S. Fink
  * Date: 1/27/11
  * Time: 6:28 PM
  */
@@ -30,7 +27,7 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
         try {
             return login();
         } catch (Exception e) {
-            return resultAndErrorMessage(ERROR, "Internal application error. " + e.getMessage());
+            return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
         }
     }
 
@@ -39,13 +36,13 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
         User userFromStorage = getUserFromStorage(userFromRequest);
 
         if (userFromStorage == null) {
-            return resultAndErrorMessage(INPUT, "No such user.");
+            return resultAndErrorMessage(INPUT, getText("no.user"));
         }
         if (checkCredentials(userFromRequest, userFromStorage)) {
             session.put(getUserSessionKey(), userFromStorage);
             return SUCCESS;
         } else {
-            return resultAndErrorMessage(INPUT, "Wrong password.");
+            return resultAndErrorMessage(INPUT, getText("wrong.password"));
         }
     }
 
