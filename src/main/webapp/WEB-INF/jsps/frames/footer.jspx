@@ -1,10 +1,17 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
     <div id="footer">
         <div id="footrefs">
-            <a href="" title="english">eng</a>
-            &#160;|&#160;
-            <a href="" title="русский">rus</a>
+            <s:url id="localeEn">
+                <s:param name="request_locale">en</s:param>
+            </s:url>
+            <s:url id="localeRu">
+                <s:param name="request_locale">ru</s:param>
+            </s:url>
+            <s:a href="%{localeEn}">eng</s:a>
+            &#160; | &#160;
+            <s:a href="%{localeRu}">rus</s:a>
         </div>
         <div id="footertxt">
             friendface.com, 2010 - 2011

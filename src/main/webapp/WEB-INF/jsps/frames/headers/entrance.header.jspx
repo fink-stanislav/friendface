@@ -1,10 +1,16 @@
-<jsp:root xmlns="http://www.w3.org/1999/xhtml" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-    <div id="header">
-        <div id="headertxt">
-            <a href="welcome.action" title="friendface">friendface</a>
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+    <s:i18n name="jsps.frames.headers.welcome">
+        <div id="header">
+            <div id="headertxt">
+                <a href="welcome.action" title="friendface">friendface</a>
+            </div>
+            <div id="headrefs">
+                <s:a href="registration.action" title="%{getText('title.registration')}">
+                    <s:text name="item.registration"/>&#160;
+                </s:a>
+            </div>
         </div>
-        <div id="headrefs">
-            <a href="registration.action" title="регистрация">регистрация</a>&#160;
-        </div>
-    </div>
+    </s:i18n>
 </jsp:root>

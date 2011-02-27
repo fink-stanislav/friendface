@@ -1,11 +1,19 @@
-<jsp:root xmlns="http://www.w3.org/1999/xhtml" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-    <div id="header">
-        <div id="headertxt">
-            <a href="welcome.action" title="friendface">friendface</a>
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+    <s:i18n name="jsps.frames.headers.userpage">
+        <div id="header">
+            <div id="headertxt">
+                <a href="welcome.action" title="friendface">friendface</a>
+            </div>
+            <div id="headrefs">
+                <s:a href="settings.action" title="%{getText('title.settings')}">
+                    <s:text name="item.settings"/>
+                </s:a> &#160;
+                <s:a href="logout.action" title="%{getText('title.logout')}">
+                    <s:text name="item.logout"/>
+                </s:a>
+            </div>
         </div>
-        <div id="headrefs">
-            <a href="settings.action" title="настройки">настройки</a>&#160;
-            <a href="logout.action" title="выход">выход</a>
-        </div>
-    </div>
+    </s:i18n>
 </jsp:root>
