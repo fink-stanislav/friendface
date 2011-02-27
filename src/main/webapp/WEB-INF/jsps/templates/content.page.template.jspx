@@ -18,7 +18,16 @@
     <link rel="stylesheet" type="text/css" href="css/userlist.css"/>
     <link type="text/javascript" href="js/validation.js"/>
     <s:head/>
-    <title><tiles:getAsString name="title"/></title>
+    <title>
+        <s:bean name="com.exadel.friendface.beans.pagebeans.PageTitle">
+            <s:param name="bundleName">
+                <tiles:getAsString name="title"/>
+            </s:param>
+            <s:i18n name="%{bundleName}">
+                <s:text name="title"/>
+            </s:i18n>
+        </s:bean>
+    </title>
 </head>
 
 <body>

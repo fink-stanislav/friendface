@@ -21,70 +21,69 @@
 
     <!-- service pages -->
     <definition name="welcomepage.tiles" extends="service.page.template">
-        <put-attribute name="title" value="Welcome"/>
+        <put-attribute name="title" value="jsps.service.welcomepage"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/welcome.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/welcomepage.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/service/welcomepage.jspx"/>
     </definition>
 
     <definition name="registration.tiles" extends="service.page.template">
-        <put-attribute name="title" value="Registration"/>
+        <put-attribute name="title" value="jsps.service.registration"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/registration.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/registration.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/service/registration.jspx"/>
     </definition>
 
     <definition name="entrance.tiles" extends="service.page.template">
-        <put-attribute name="title" value="Entrance"/>
+        <put-attribute name="title" value="jsps.service.entrance"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/entrance.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/entrance.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/service/entrance.jspx"/>
     </definition>
 
     <definition name="infopage.tiles" extends="service.page.template">
-        <put-attribute name="title" value="Info"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/servicepages/infopage.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/service/infopage.jspx"/>
     </definition>
 
     <!-- user's content -->
     <definition name="userpage.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Userpage"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/userpage.jspx"/>
+        <put-attribute name="title" value="jsps.content.userpage"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/userpage.jspx"/>
     </definition>
 
     <!-- menu -->
     <definition name="friends.tiles" extends="content.page.template">
         <put-attribute name="title" value="Friends"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/friends.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/friends.jspx"/>
     </definition>
 
     <definition name="messages.tiles" extends="content.page.template">
         <put-attribute name="title" value="Messages"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/messages.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/messages.jspx"/>
     </definition>
 
     <definition name="albumlist.tiles" extends="content.page.template">
         <put-attribute name="title" value="Albums"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/albumlist.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/albumlist.jspx"/>
     </definition>
 
     <definition name="video.tiles" extends="content.page.template">
         <put-attribute name="title" value="Videos"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/settings.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
 
     <definition name="search.tiles" extends="content.page.template">
         <put-attribute name="title" value="Videos"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/search.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/search.jspx"/>
     </definition>
     <!-- end menu -->
 
     <definition name="settings.tiles" extends="content.page.template">
         <put-attribute name="title" value="Settings"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/settings.header.jspx"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/settings.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
 
     <definition name="photos.tiles" extends="content.page.template">
         <put-attribute name="title" value="Photos"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/usercontentpages/photos.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/photos.jspx"/>
     </definition>
 
 </tiles-definitions>

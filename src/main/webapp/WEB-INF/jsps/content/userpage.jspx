@@ -1,26 +1,32 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
-
+    <s:i18n name="jsps.content.userpage">
     <div id="userdata">
         <div id="userpic">
             <img class="image" src="" alt=""/>
         </div>
         <div id="common-info">
             <div class="horizontal-block-normal">
-                <div class="common-info-line">Имя:&#160;</div>
+                <div class="common-info-line">
+                    <s:text name="name"/>:&#160;
+                </div>
                 <div class="common-info-line">
                     <s:property value="user.username"/>
                 </div>
             </div>
             <div class="horizontal-block-normal">
-                <div class="common-info-line">Фамилия:&#160;</div>
+                <div class="common-info-line">
+                    <s:text name="surname"/>:&#160;
+                </div>
                 <div class="common-info-line">
                     <s:property value="user.userSurname"/>
                 </div>
             </div>
             <div class="horizontal-block-normal">
-                <div class="common-info-line">Логин:&#160;</div>
+                <div class="common-info-line">
+                    <s:text name="login"/>:&#160;
+                </div>
                 <div class="common-info-line">
                     <s:property value="user.loginEmail"/>
                 </div>
@@ -31,9 +37,11 @@
     <div id="wall">
         <div class="wall-message">
             <div class="wall-message-head">
-                <a href="" title="имя отправителя">имя отправителя</a>
+                <s:a href="" title="имя отправителя">имя отправителя</s:a>
                 &#160;|&#160;
-                <a href="" title="удалить">удалить</a>
+                <s:a href="" title="%{getText('link.delete.title')}">
+                    <s:text name="link.delete.value"/>
+                </s:a>
             </div>
             <a href="">
                 <img class="imagelittle" alt="" src="images/littleuserpic.png"/>

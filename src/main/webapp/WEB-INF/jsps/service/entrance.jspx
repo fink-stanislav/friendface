@@ -5,7 +5,7 @@
     <div id="login-form">
         <form action="login.action" method="POST">
             <s:token/>
-            <s:i18n name="jsps.servicepages.entrance">
+            <s:i18n name="jsps.service.entrance">
                 <div><s:text name="login.email"/></div>
                 <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
 

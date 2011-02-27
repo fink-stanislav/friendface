@@ -2,7 +2,7 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <s:i18n name="jsps.servicepages.welcomepage">
+    <s:i18n name="jsps.service.welcomepage">
         <div id="article-header-side">
             <s:text name="welcome"/>
         </div>
