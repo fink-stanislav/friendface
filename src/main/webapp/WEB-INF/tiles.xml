@@ -48,9 +48,8 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/userpage.jspx"/>
     </definition>
 
-    <!-- menu -->
     <definition name="friends.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Friends"/>
+        <put-attribute name="title" value="jsps.content.friends"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/friends.jspx"/>
     </definition>
 

@@ -2,53 +2,55 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
     <s:i18n name="jsps.content.userpage">
-    <div id="userdata">
-        <div id="userpic">
-            <img class="image" src="" alt=""/>
+        <div id="userdata">
+            <div id="userpic">
+                <img class="image" src="" alt=""/>
+            </div>
+            <div id="common-info">
+                <div class="horizontal-block-normal">
+                    <div class="common-info-line">
+                        <s:text name="name"/>:&#160;
+                    </div>
+                    <div class="common-info-line">
+                        <s:property value="user.username"/>
+                    </div>
+                </div>
+                <div class="horizontal-block-normal">
+                    <div class="common-info-line">
+                        <s:text name="surname"/>:&#160;
+                    </div>
+                    <div class="common-info-line">
+                        <s:property value="user.userSurname"/>
+                    </div>
+                </div>
+                <div class="horizontal-block-normal">
+                    <div class="common-info-line">
+                        <s:text name="login"/>:&#160;
+                    </div>
+                    <div class="common-info-line">
+                        <s:property value="user.loginEmail"/>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="common-info">
-            <div class="horizontal-block-normal">
-                <div class="common-info-line">
-                    <s:text name="name"/>:&#160;
-                </div>
-                <div class="common-info-line">
-                    <s:property value="user.username"/>
-                </div>
-            </div>
-            <div class="horizontal-block-normal">
-                <div class="common-info-line">
-                    <s:text name="surname"/>:&#160;
-                </div>
-                <div class="common-info-line">
-                    <s:property value="user.userSurname"/>
-                </div>
-            </div>
-            <div class="horizontal-block-normal">
-                <div class="common-info-line">
-                    <s:text name="login"/>:&#160;
-                </div>
-                <div class="common-info-line">
-                    <s:property value="user.loginEmail"/>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div id="wall">
-        <div class="wall-message">
-            <div class="wall-message-head">
-                <s:a href="" title="имя отправителя">имя отправителя</s:a>
-                &#160;|&#160;
-                <s:a href="" title="%{getText('link.delete.title')}">
-                    <s:text name="link.delete.value"/>
-                </s:a>
-            </div>
-            <a href="">
-                <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
-            </a>
-            <div class="wall-message-text">
-                какоето сообщение
+        <div id="wall">
+            <div class="wall-message">
+                <div class="wall-message-head">
+                    <s:a href="" title="имя отправителя">имя отправителя</s:a>
+                    &#160;|&#160;
+                    <s:a href="" title="%{getText('link.delete.title')}">
+                        <s:text name="link.delete.value"/>
+                    </s:a>
+                </div>
+                <a href="">
+                    <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+                </a>
+
+                <div class="wall-message-text">
+                    какоето сообщение
+                </div>
             </div>
         </div>
-    </div>
+    </s:i18n>
 </jsp:root>

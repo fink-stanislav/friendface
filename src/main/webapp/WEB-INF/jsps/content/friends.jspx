@@ -1,47 +1,49 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
-
-    <div id="userlist">
-        <s:if test="hasFriends">
-            <s:iterator value="friends" status="status">
-                <s:div cssClass="userlistitem">
-                    <div class="itemheader">
-                        <form action="deleteFriend.action" method="POST" name="deleteForm">
-                            <s:hidden name="friendId" value="%{[0].friendId}"/>
-                            <s:hidden name="userId" value="%{[0].userId}"/>
-                            <a href="#" onclick="document.forms['deleteForm'].submit()">
-                                удалить из друзей
-                            </a>
-                        </form>
-                    </div>
-                    <div class="itemcontent">
-                        <a href="">
-                            <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
-                        </a>
-
-                        <div class="itemtextinfo">
-                            <form action="friendPage.action" method="POST" name="friendPageForm">
+    <s:i18n name="jsps.content.friends">
+        <div id="userlist">
+            <s:if test="hasFriends">
+                <s:iterator value="friends" status="status">
+                    <s:div cssClass="userlistitem">
+                        <div class="itemheader">
+                            <form action="deleteFriend.action" method="POST" name="deleteForm">
                                 <s:hidden name="friendId" value="%{[0].friendId}"/>
-                                <a href="#" onclick="document.forms['friendPageForm'].submit()">
-                                    <s:property value="username"/>&#160;
-                                    <s:property value="userSurname"/>
-                                </a>
+                                <s:hidden name="userId" value="%{[0].userId}"/>
+                                <s:a href="#" onclick="document.forms['deleteForm'].submit()"
+                                     title="%{getText('link.delete.title')}">
+                                    <s:text name="link.delete.value"/>
+                                </s:a>
                             </form>
                         </div>
-                    </div>
-                </s:div>
-            </s:iterator>
-        </s:if>
-        <s:else>
-            <div class="userlistitem">
-                <div class="itemheader">&#160;</div>
-                <div class="itemcontent">
-                    <div class="itemtextinfo">
-                        У вас пока нет друзей.
+                        <div class="itemcontent">
+                            <a href="">
+                                <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+                            </a>
+
+                            <div class="itemtextinfo">
+                                <form action="friendPage.action" method="POST" name="friendPageForm">
+                                    <s:hidden name="friendId" value="%{[0].friendId}"/>
+                                    <a href="#" onclick="document.forms['friendPageForm'].submit()">
+                                        <s:property value="username"/>&#160;
+                                        <s:property value="userSurname"/>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </s:div>
+                </s:iterator>
+            </s:if>
+            <s:else>
+                <div class="userlistitem">
+                    <div class="itemheader">&#160;</div>
+                    <div class="itemcontent">
+                        <div class="itemtextinfo">
+                            <s:text name="msg.no.friends"/>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </s:else>
-    </div>
+            </s:else>
+        </div>
+    </s:i18n>
 </jsp:root>
