@@ -5,15 +5,12 @@
     <div id="reg-form">
         <form name="userdataform" method="POST" action="register.action">
             <s:token/>
-            <s:i18n name="com.exadel.friendface.actions.Login">
+            <s:i18n name="jsps.servicepages.registration">
+
                 <div><s:text name="login.email"/></div>
-            </s:i18n>
+                <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
 
-            <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
-
-            <s:i18n name="com.exadel.friendface.actions.Register">
                 <div><s:text name="name"/></div>
-
                 <div><s:textfield name="username" value="%{username}"/></div>
 
                 <div><s:text name="surname"/></div>
