@@ -123,7 +123,6 @@
             <artifactId>sqlbuilder</artifactId>
             <version>${sql-builder-version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -141,5 +140,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -21,15 +21,15 @@ public class AuthenticationInterceptor implements Interceptor {
     public void init() {
     }
 
-    public String intercept(ActionInvocation actionInvocation) throws Exception {
-        Map session = actionInvocation.getInvocationContext().getSession();
+    public String intercept(ActionInvocation invocation) throws Exception {
+        Map session = invocation.getInvocationContext().getSession();
         User user = (User) session.get(FriendfaceConstants.FriendfaceUser);
 
         // user is not stored in session
         if (user == null) {
             return Action.LOGIN;
         } else {
-            return actionInvocation.invoke();
+            return invocation.invoke();
         }
     }
 }

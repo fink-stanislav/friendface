@@ -17,7 +17,10 @@
         <interceptors>
             <interceptor name="authenticationInterceptor"
                          class="com.exadel.friendface.interceptors.AuthenticationInterceptor"/>
+            <interceptor name="i18nInterceptor"
+                         class="com.exadel.friendface.interceptors.I18nInterceptor"/>
             <interceptor-stack name="secureStack">
+                <interceptor-ref name="i18nInterceptor"/>
                 <interceptor-ref name="authenticationInterceptor"/>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
