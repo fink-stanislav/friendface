@@ -12,15 +12,14 @@ import com.opensymphony.xwork2.ActionSupport;
  */
 
 public class DeleteFriend extends ActionSupport {
-    private Integer friendId;
-    private Integer userId;
+    private Integer id;
 
-    public void setFriendId(Integer friendId) {
-        this.friendId = friendId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String execute() {
@@ -33,9 +32,7 @@ public class DeleteFriend extends ActionSupport {
 
     private String deleteFriend() throws Exception {
         FriendsDAO friendsDAO = DAOFactory.getDAOFactory().getFriendsDAO();
-        Friend friend = new Friend();
-        friend.setFriendId(friendId);
-        friend.setUserId(userId);
+        Friend friend = friendsDAO.getFriend(id);
         friendsDAO.deleteFriend(friend);
         return SUCCESS;
     }

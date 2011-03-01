@@ -16,12 +16,12 @@ public abstract class DAOFactory {
     private static PropertyManager classNames = new PropertyManager("application.properties");
 
     public enum StorageEngineType {
-        mysql,
+        jpa,
         filesystem
     }
 
     public static DAOFactory getDAOFactory() throws Exception {
-        return getDAOFactory(DAOFactory.StorageEngineType.mysql);
+        return getDAOFactory(DAOFactory.StorageEngineType.jpa);
     }
 
     public static DAOFactory getDAOFactory(StorageEngineType type) throws Exception {

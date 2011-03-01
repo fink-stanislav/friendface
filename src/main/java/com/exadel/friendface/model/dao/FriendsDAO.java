@@ -3,7 +3,7 @@ package com.exadel.friendface.model.dao;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * User: S. Fink
@@ -12,7 +12,8 @@ import java.util.Collection;
  */
 
 public interface FriendsDAO {
-    int addFriend(Friend friend) throws Exception;
-    int deleteFriend(Friend friend) throws Exception;
-    Collection getFriends(User user) throws Exception;
+    void addFriend(Friend friend) throws Exception;
+    void deleteFriend(Friend friend) throws Exception;
+    Friend getFriend(Integer recordId) throws Exception;
+    List<Friend> getFriends(User user) throws Exception;
 }

@@ -1,48 +1,53 @@
 package com.exadel.friendface.model.entities;
 
+import javax.persistence.*;
+
 /**
  * User: S. Fink
  * Date: 2/7/11
  * Time: 1:25 PM
  */
 
+@Entity
+@Table(name = "friends")
+@NamedQueries(value = {
+        @NamedQuery(name = "getFriendById", query = "select f from Friend f where f.id = :recordId"),
+        @NamedQuery(name = "getUserFriends", query = "select f from Friend f where f.user.id = :userId")
+})
 public class Friend {
-    private String username;
-    private String userSurname;
-    private Integer userId;
-    private Integer friendId;
+    @Id
+    @GeneratedValue
+    private Integer id;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "userId")
+    private User user;
+    @OneToOne
+    @JoinColumn(name = "friendId")
+    private User friend;
     private Boolean isApproved;
 
-    public String getUsername() {
-        return username;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getUserSurname() {
-        return userSurname;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public User getFriend() {
+        return friend;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getFriendId() {
-        return friendId;
-    }
-
-    public void setFriendId(Integer friendId) {
-        this.friendId = friendId;
+    public void setFriend(User friend) {
+        this.friend = friend;
     }
 
     public Boolean getApproved() {

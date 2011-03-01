@@ -21,10 +21,14 @@ public class I18nInterceptor implements Interceptor {
 
     private Locale getLocaleFromParams(ActionInvocation invocation) {
         Map<String, String[]> params = invocation.getInvocationContext().getParameters();
-        if (params.size() == 0) {
+        if (params != null && params.size() == 0) {
             return null;
         }
-        return new Locale(params.get("request_locale")[0]);
+        try {
+            return new Locale(params.get("request_locale")[0]);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     private Locale getLocaleFromSession(ActionInvocation invocation) {

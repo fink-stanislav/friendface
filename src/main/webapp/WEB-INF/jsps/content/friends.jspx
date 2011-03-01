@@ -8,8 +8,7 @@
                     <s:div cssClass="userlistitem">
                         <div class="itemheader">
                             <form action="deleteFriend.action" method="POST" name="deleteForm">
-                                <s:hidden name="friendId" value="%{[0].friendId}"/>
-                                <s:hidden name="userId" value="%{[0].userId}"/>
+                                <s:hidden name="id" value="%{[0].id}"/>
                                 <s:a href="#" onclick="document.forms['deleteForm'].submit()"
                                      title="%{getText('link.delete.title')}">
                                     <s:text name="link.delete.value"/>
@@ -23,10 +22,10 @@
 
                             <div class="itemtextinfo">
                                 <form action="friendPage.action" method="POST" name="friendPageForm">
-                                    <s:hidden name="friendId" value="%{[0].friendId}"/>
+                                    <s:hidden name="friend" value="%{[0]}"/>
                                     <a href="#" onclick="document.forms['friendPageForm'].submit()">
-                                        <s:property value="username"/>&#160;
-                                        <s:property value="userSurname"/>
+                                        <s:property value="friend.username"/>&#160;
+                                        <s:property value="friend.userSurname"/>
                                     </a>
                                 </form>
                             </div>

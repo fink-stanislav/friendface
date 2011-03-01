@@ -1,12 +1,14 @@
 package com.exadel.friendface.actions;
 
 import com.exadel.friendface.model.dao.DAOFactory;
+import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.util.UserUtils;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +19,7 @@ import java.util.Map;
 
 public class FriendListPage extends ActionSupport implements SessionAware {
     private Map session;
-    private Collection friends;
+    private List<Friend> friends;
     private Boolean hasFriends;
 
     public Collection getFriends() {

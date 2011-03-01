@@ -6,14 +6,14 @@ package com.exadel.friendface.model.dao;
  * Time: 1:11 PM
  */
 
-public class MySQLDAOFactory extends DAOFactory {
+public class JpaDAOFactory extends DAOFactory {
     @Override
     public UserDAO getUserDAO() {
-        return new MySQLUserDAO();
+        return new JpaUserDAO();
     }
 
     @Override
     public FriendsDAO getFriendsDAO() {
-        return new MySQLFriendsDAO();
+        return new JpaFriendsDAO();
     }
 }
