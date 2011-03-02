@@ -2,6 +2,8 @@ package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.entities.User;
 
+import javax.persistence.NoResultException;
+
 /**
  * Author: S. Fink
  * Date: 31.01.11
@@ -34,6 +36,11 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
     }
 
     public Boolean isUserExists(User user) throws Exception {
-        return getUser(user.getLoginEmail()) != null;
+        try {
+            getUser(user.getLoginEmail());
+            return true;
+        } catch (NoResultException e) {
+            return false;
+        }
     }
 }

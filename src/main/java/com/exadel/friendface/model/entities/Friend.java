@@ -18,10 +18,10 @@ public class Friend {
     @Id
     @GeneratedValue
     private Integer id;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "friendId")
     private User friend;
     private Boolean isApproved;

@@ -11,7 +11,7 @@
         </action>
         <action name="deleteFriend" class="com.exadel.friendface.actions.DeleteFriend">
             <result name="success" type="redirect">friendList.action</result>
-            <result name="error" type="tiles">infopage.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="friendPage" class="com.exadel.friendface.actions.FriendPage">
             <result name="success" type="redirect">userpage.action</result>

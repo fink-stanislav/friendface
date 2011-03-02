@@ -27,9 +27,9 @@
         </action>
     </package>
     <package name="common-public" extends="public">
-        <!-- some information / error page -->
+        <!-- error page -->
         <action name="infopage">
-            <result name="success" type="tiles">infopage.tiles</result>
+            <result name="success" type="tiles">errorpage.tiles</result>
         </action>
         <!-- registration input page -->
         <action name="registration" class="com.exadel.friendface.actions.Registration">
@@ -37,17 +37,17 @@
         </action>
         <!-- registration -->
         <action name="register" class="com.exadel.friendface.actions.Register">
-            <result name="success" type="tiles">infopage.tiles</result>
+            <result name="success" type="tiles">success.tiles</result>
             <result name="input" type="tiles">registration.tiles</result>
-            <result name="error" type="tiles">infopage.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <!-- login -->
         <action name="login" class="com.exadel.friendface.actions.Login">
             <interceptor-ref name="myTokenStack"/>
             <result name="success" type="redirect">userpage.action</result>
             <result name="input" type="tiles">entrance.tiles</result>
-            <result name="error" type="tiles">infopage.tiles</result>
-            <result name="invalid.token" type="tiles">infopage.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="invalid.token" type="tiles">welcomepage.tiles</result>
         </action>
     </package>
 </struts>

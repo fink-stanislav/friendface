@@ -6,7 +6,7 @@
 
     <definition name="service.page.template" template="/WEB-INF/jsps/templates/service.page.template.jspx">
         <put-attribute name="title" value=""/>
-        <put-attribute name="header" value=""/>
+        <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/default.header.jspx"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
@@ -38,8 +38,12 @@
         <put-attribute name="content" value="/WEB-INF/jsps/service/entrance.jspx"/>
     </definition>
 
-    <definition name="infopage.tiles" extends="service.page.template">
-        <put-attribute name="content" value="/WEB-INF/jsps/service/infopage.jspx"/>
+    <definition name="errorpage.tiles" extends="service.page.template">
+        <put-attribute name="content" value="/WEB-INF/jsps/service/errorpage.jspx"/>
+    </definition>
+
+    <definition name="success.tiles" extends="service.page.template">
+        <put-attribute name="content" value="/WEB-INF/jsps/service/success.jspx"/>
     </definition>
 
     <!-- user's content -->

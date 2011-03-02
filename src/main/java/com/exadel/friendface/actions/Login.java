@@ -8,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.interceptor.SessionAware;
 
+import javax.persistence.NoResultException;
 import java.util.Map;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
@@ -26,6 +27,8 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
     public String execute() {
         try {
             return login();
+        } catch (NoResultException e) {
+            return resultAndErrorMessage(INPUT, getText("no.user"));
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
         }
