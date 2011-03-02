@@ -13,7 +13,7 @@
             <result name="success" type="tiles">messages.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="alumlist">
+        <action name="albumlist">
             <result name="success" type="tiles">albumlist.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>

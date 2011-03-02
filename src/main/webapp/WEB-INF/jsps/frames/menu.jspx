@@ -17,7 +17,7 @@
             <div class="menuitem"><s:a href="messages.action" title="%{getText('title.messages')}">
                 <span class="ref"><s:text name="item.messages"/></span>
             </s:a></div>
-            <div class="menuitem"><s:a href="alumlist.action" title="%{getText('title.photos')}">
+            <div class="menuitem"><s:a href="albumlist.action" title="%{getText('title.photos')}">
                 <span class="ref"><s:text name="item.photos"/></span>
             </s:a></div>
             <div class="menuitem"><s:a href="videos.action" title="%{getText('title.videos')}">

@@ -22,7 +22,7 @@
 
                             <div class="itemtextinfo">
                                 <form action="friendPage.action" method="POST" name="friendPageForm">
-                                    <s:hidden name="friend" value="%{[0]}"/>
+                                    <s:hidden name="id" value="%{[0].friend.id}"/>
                                     <a href="#" onclick="document.forms['friendPageForm'].submit()">
                                         <s:property value="friend.username"/>&#160;
                                         <s:property value="friend.userSurname"/>

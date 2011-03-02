@@ -14,11 +14,15 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="friendPage" class="com.exadel.friendface.actions.FriendPage">
-            <result name="success" type="redirect">userpage.action</result>
+            <result name="success" type="tiles">userpage.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="photos">
             <result name="success" type="tiles">photos.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+        <action name="searchPeople" class="com.exadel.friendface.actions.SearchPeople">
+            <result name="success" type="tiles">search.tiles</result>
         </action>
     </package>
 </struts>

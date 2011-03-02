@@ -3,6 +3,7 @@ package com.exadel.friendface.model.dao;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 
+import javax.persistence.NoResultException;
 import java.util.List;
 
 /**
@@ -25,10 +26,18 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
     }
 
     public Friend getFriend(Integer recordId) throws Exception {
-        return executeNamedQuery("getFriendById", Friend.class, "recordId", recordId);
+        try {
+            return executeNamedQuery("getFriendById", Friend.class, "recordId", recordId);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public List<Friend> getFriends(User user) throws Exception {
-        return executeNamedQueryList("getUserFriends", Friend.class, "userId", user.getId());
+        try {
+            return executeNamedQueryList("getUserFriends", Friend.class, "userId", user.getId());
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }

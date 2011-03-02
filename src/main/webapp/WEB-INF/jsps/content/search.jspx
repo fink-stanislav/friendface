@@ -3,6 +3,29 @@
   Date: 2/7/11
   Time: 12:53 PM
 -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
-    Coming soon!
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0"
+          xmlns:s="/struts-tags">
+
+    <div>
+        <label for="searchType">Search for:</label>
+        <select id="searchType">
+            <option selected="true" value="people">People</option>
+            <option value="pictures">Pictures</option>
+            <option value="posts">Posts</option>
+            <option value="videos">Videos</option>
+        </select>
+    </div>
+
+    <s:form action="searchPeople">
+        <div><s:text name="login.email"/></div>
+        <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
+
+        <div><s:text name="name"/></div>
+        <div><s:textfield name="username" value="%{username}"/></div>
+
+        <div><s:text name="surname"/></div>
+        <div><s:textfield name="userSurname" value="%{userSurname}"/></div>
+    </s:form>
+
 </jsp:root>

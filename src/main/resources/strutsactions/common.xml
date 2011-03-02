@@ -28,7 +28,7 @@
     </package>
     <package name="common-public" extends="public">
         <!-- error page -->
-        <action name="infopage">
+        <action name="errorpage">
             <result name="success" type="tiles">errorpage.tiles</result>
         </action>
         <!-- registration input page -->

@@ -38,9 +38,6 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
         User userFromRequest = getUserFromBean(logonBean);
         User userFromStorage = getUserFromStorage(userFromRequest);
 
-        if (userFromStorage == null) {
-            return resultAndErrorMessage(INPUT, getText("no.user"));
-        }
         if (checkCredentials(userFromRequest, userFromStorage)) {
             session.put(getUserSessionKey(), userFromStorage);
             return SUCCESS;
