@@ -1,16 +1,14 @@
 package com.exadel.friendface.controllers.actions;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 /**
  * Author: S. Fink
  * Date: 26.02.11
  * Time: 22:24
  */
 
-public class Registration extends ActionSupport {
+public class Registration extends StrutsAction {
     @Override
-    public String execute() throws Exception {
+    public String execute() {
         return SUCCESS;
     }
 }

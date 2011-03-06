@@ -18,7 +18,7 @@
     </listener>
 
     <listener>
-        <listener-class>com.exadel.friendface.service.Initializer</listener-class>
+        <listener-class>com.exadel.friendface.application.Initializer</listener-class>
     </listener>
 
     <welcome-file-list>
@@ -44,9 +44,14 @@
     <filter-mapping>
         <filter-name>LoggingFilter</filter-name>
         <url-pattern>/*</url-pattern>
-        <!--<dispatcher>INCLUDE</dispatcher>-->
         <dispatcher>REQUEST</dispatcher>
         <dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
+    <!-- repository (jndi) -->
+    <resource-env-ref>
+        <description>Content Repository</description>
+        <resource-env-ref-name>jcr/repository</resource-env-ref-name>
+        <resource-env-ref-type>javax.jcr.Repository</resource-env-ref-type>
+    </resource-env-ref>
 </web-app>

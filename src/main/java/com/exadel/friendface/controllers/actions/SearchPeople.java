@@ -1,7 +1,6 @@
 package com.exadel.friendface.controllers.actions;
 
 import com.exadel.friendface.view.beans.SearchPeopleBean;
-import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 /**
@@ -10,11 +9,11 @@ import com.opensymphony.xwork2.ModelDriven;
  * Time: 11:31 PM
  */
 
-public class SearchPeople extends ActionSupport implements ModelDriven {
+public class SearchPeople extends StrutsAction implements ModelDriven {
     private SearchPeopleBean searchPeopleBean = new SearchPeopleBean();
 
     @Override
-    public String execute() throws Exception {
+    public String execute() {
         return SUCCESS;
     }
 

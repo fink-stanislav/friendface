@@ -1,7 +1,6 @@
 package com.exadel.friendface.controllers.actions;
 
 import com.exadel.friendface.model.entities.User;
-import com.opensymphony.xwork2.ActionSupport;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
 
@@ -11,7 +10,7 @@ import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
  * Time: 14:48
  */
 
-public class FriendPage extends ActionSupport {
+public class FriendPage extends StrutsAction {
     private Integer id;
     private User user;
 

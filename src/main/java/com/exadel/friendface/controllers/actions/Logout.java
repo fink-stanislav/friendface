@@ -1,6 +1,5 @@
 package com.exadel.friendface.controllers.actions;
 
-import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
@@ -13,16 +12,16 @@ import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
  * Time: 1:53 PM
  */
 
-public class Logout extends ActionSupport implements SessionAware {
+public class Logout extends StrutsAction implements SessionAware {
     private Map session;
 
+    @Override
     public String execute() {
         try {
             logout();
             return SUCCESS;
         } catch (Exception e) {
-            addActionError(getText("internal.app.error") + e.getMessage());
-            return ERROR;
+            return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
         }
     }
 

@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Time: 1:56 PM
  */
 
-public class LogonBean implements Serializable {
+public class LoginBean implements Serializable {
     private String loginEmail;
     private String password;
 

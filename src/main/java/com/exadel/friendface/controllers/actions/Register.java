@@ -17,9 +17,10 @@ import static com.exadel.friendface.model.util.UserUtils.getUserFromBean;
  * Time: 6:17 PM
  */
 
-public class Register extends ActionSupport implements ModelDriven {
+public class Register extends StrutsAction implements ModelDriven {
     private RegistrationBean registrationBean = new RegistrationBean();
 
+    @Override
     public void validate() {
         Validator validator = new Validator();
         try {
@@ -34,6 +35,7 @@ public class Register extends ActionSupport implements ModelDriven {
         }
     }
 
+    @Override
     public String execute() {
         try {
             return register();
@@ -53,11 +55,6 @@ public class Register extends ActionSupport implements ModelDriven {
         } else {
             return resultAndErrorMessage(INPUT, getText("user.already.exists"));
         }
-    }
-
-    private String resultAndErrorMessage(String result, String errorMessage) {
-        addActionError(errorMessage);
-        return result;
     }
 
     public Object getModel() {

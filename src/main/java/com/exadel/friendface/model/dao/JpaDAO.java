@@ -1,6 +1,6 @@
 package com.exadel.friendface.model.dao;
 
-import com.exadel.friendface.model.provider.EntityManagerProvider;
+import com.exadel.friendface.model.providers.EntityManagerProvider;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

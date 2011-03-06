@@ -14,7 +14,7 @@ import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
  * Time: 5:50 PM
  */
 
-public class UserPage extends ActionSupport implements SessionAware {
+public class UserPage extends StrutsAction implements SessionAware {
     private Map session;
     private User user;
 

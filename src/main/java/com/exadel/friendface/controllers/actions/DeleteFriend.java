@@ -3,7 +3,6 @@ package com.exadel.friendface.controllers.actions;
 import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.dao.FriendsDAO;
 import com.exadel.friendface.model.entities.Friend;
-import com.opensymphony.xwork2.ActionSupport;
 
 /**
  * Author: S. Fink
@@ -11,7 +10,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * Time: 21:38
  */
 
-public class DeleteFriend extends ActionSupport {
+public class DeleteFriend extends StrutsAction {
     private Integer id;
 
     public Integer getId() {
@@ -22,6 +21,7 @@ public class DeleteFriend extends ActionSupport {
         this.id = id;
     }
 
+    @Override
     public String execute() {
         try {
             return deleteFriend();

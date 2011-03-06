@@ -1,4 +1,4 @@
-package com.exadel.friendface.model.provider;
+package com.exadel.friendface.model.providers;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

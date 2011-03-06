@@ -1,9 +1,9 @@
 package com.exadel.friendface.model.util;
 
-import com.exadel.friendface.view.beans.LogonBean;
-import com.exadel.friendface.view.beans.RegistrationBean;
-import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.application.FriendfaceConstants;
+import com.exadel.friendface.model.entities.User;
+import com.exadel.friendface.view.beans.LoginBean;
+import com.exadel.friendface.view.beans.RegistrationBean;
 import org.apache.commons.codec.binary.Hex;
 
 import java.security.MessageDigest;
@@ -46,10 +46,10 @@ public class UserUtils {
         return FriendfaceConstants.FriendfaceUser.name();
     }
 
-    public static User getUserFromBean(LogonBean logonBean) {
+    public static User getUserFromBean(LoginBean loginBean) {
         User user = new User();
-        user.setLoginEmail(logonBean.getLoginEmail());
-        user.setPasswordHash(getPasswordHash(logonBean.getPassword()));
+        user.setLoginEmail(loginBean.getLoginEmail());
+        user.setPasswordHash(getPasswordHash(loginBean.getPassword()));
         return user;
     }
 }

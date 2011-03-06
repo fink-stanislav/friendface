@@ -24,6 +24,8 @@
         <hibernate-core-version>3.5.4-Final</hibernate-core-version>
         <hibernate-version>3.5.4-Final</hibernate-version>
         <hibernate-jpa-api-version>1.0.0.Final</hibernate-jpa-api-version>
+        <jackrabbit-version>2.2.4</jackrabbit-version>
+        <jcr-version>2.0</jcr-version>
     </properties>
 
     <repositories>
@@ -161,6 +163,28 @@
             <groupId>com.healthmarketscience.sqlbuilder</groupId>
             <artifactId>sqlbuilder</artifactId>
             <version>${sql-builder-version}</version>
+        </dependency>
+
+        <!-- jackrabbit -->
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-api</artifactId>
+            <version>${jackrabbit-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-core</artifactId>
+            <version>${jackrabbit-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jackrabbit</groupId>
+            <artifactId>jackrabbit-jcr-rmi</artifactId>
+            <version>${jackrabbit-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.jcr</groupId>
+            <artifactId>jcr</artifactId>
+            <version>${jcr-version}</version>
         </dependency>
     </dependencies>
 

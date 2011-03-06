@@ -4,7 +4,6 @@ import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.util.UserUtils;
-import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Collection;
@@ -17,7 +16,7 @@ import java.util.Map;
  * Time: 2:24 PM
  */
 
-public class FriendListPage extends ActionSupport implements SessionAware {
+public class FriendListPage extends StrutsAction implements SessionAware {
     private Map session;
     private List<Friend> friends;
     private Boolean hasFriends;

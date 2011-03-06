@@ -1,6 +1,6 @@
-package com.exadel.friendface.service;
+package com.exadel.friendface.application;
 
-import com.exadel.friendface.model.provider.EntityManagerProvider;
+import com.exadel.friendface.service.FriendfaceService;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -13,10 +13,10 @@ import javax.servlet.ServletContextListener;
 public class Initializer implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        EntityManagerProvider.getInstance();
+        FriendfaceService.getService();
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        EntityManagerProvider.getInstance().close();
+        FriendfaceService.stop();
     }
 }

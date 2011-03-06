@@ -1,18 +1,15 @@
 package com.exadel.friendface.controllers.actions;
 
-import com.exadel.friendface.view.beans.LogonBean;
-import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
-import com.opensymphony.xwork2.ActionSupport;
+import com.exadel.friendface.view.beans.LoginBean;
 import com.opensymphony.xwork2.ModelDriven;
 import org.apache.struts2.interceptor.SessionAware;
 
 import javax.persistence.NoResultException;
 import java.util.Map;
 
-import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
-import static com.exadel.friendface.model.util.UserUtils.*;
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * User: S. Fink
@@ -20,10 +17,11 @@ import static com.exadel.friendface.model.util.UserUtils.*;
  * Time: 6:28 PM
  */
 
-public class Login extends ActionSupport implements ModelDriven, SessionAware {
+public class Login extends StrutsAction implements ModelDriven, SessionAware {
     private Map session;
-    private LogonBean logonBean = new LogonBean();
+    private LoginBean loginBean = new LoginBean();
 
+    @Override
     public String execute() {
         try {
             return login();
@@ -35,38 +33,25 @@ public class Login extends ActionSupport implements ModelDriven, SessionAware {
     }
 
     private String login() throws Exception {
-        User userFromRequest = getUserFromBean(logonBean);
-        User userFromStorage = getUserFromStorage(userFromRequest);
-
-        if (checkCredentials(userFromRequest, userFromStorage)) {
-            session.put(getUserSessionKey(), userFromStorage);
+        if (getService().getUserService().loginUser(loginBean, session)) {
             return SUCCESS;
         } else {
             return resultAndErrorMessage(INPUT, getText("wrong.password"));
         }
     }
 
-    private String resultAndErrorMessage(String result, String errorMessage) {
-        addActionError(errorMessage);
-        return result;
-    }
-
-    private User getUserFromStorage(User user) throws Exception {
-        return getDAOFactory().getUserDAO().getUser(user.getLoginEmail());
-    }
-
     public void validate() {
         Validator validator = new Validator();
         try {
-            validator.validateEmail(logonBean.getLoginEmail());
-            validator.validatePassword(logonBean.getPassword());
+            validator.validateEmail(loginBean.getLoginEmail());
+            validator.validatePassword(loginBean.getPassword());
         } catch (ValidationException e) {
             addActionError(getText(e.toString()));
         }
     }
 
     public Object getModel() {
-        return logonBean;
+        return loginBean;
     }
 
     public void setSession(Map session) {
