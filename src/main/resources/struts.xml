@@ -16,9 +16,9 @@
     <package name="private" namespace="/" extends="root">
         <interceptors>
             <interceptor name="authenticationInterceptor"
-                         class="com.exadel.friendface.interceptors.AuthenticationInterceptor"/>
+                         class="com.exadel.friendface.controllers.interceptors.AuthenticationInterceptor"/>
             <interceptor name="i18nInterceptor"
-                         class="com.exadel.friendface.interceptors.I18nInterceptor"/>
+                         class="com.exadel.friendface.controllers.interceptors.I18nInterceptor"/>
             <interceptor-stack name="secureStack">
                 <interceptor-ref name="i18nInterceptor"/>
                 <interceptor-ref name="authenticationInterceptor"/>

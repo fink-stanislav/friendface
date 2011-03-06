@@ -1,13 +1,13 @@
 package com.exadel.friendface.model.dao;
 
+import com.exadel.friendface.model.provider.EntityManagerProvider;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import static com.exadel.friendface.model.connection.EntityManagerProvider.getEntityManagerProvider;
 
 /**
  * User: S. Fink
@@ -19,7 +19,7 @@ public class JpaDAO {
     private EntityManager entityManager;
 
     public JpaDAO() {
-        entityManager = getEntityManagerProvider().getEntityManager();
+        entityManager = EntityManagerProvider.getInstance().getEntityManager();
     }
 
     public <T> void removeEntity(T entity) {

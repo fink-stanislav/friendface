@@ -1,6 +1,6 @@
 package com.exadel.friendface.model.dao;
 
-import com.exadel.friendface.system.PropertyManager;
+import com.exadel.friendface.application.PropertyManager;
 
 /**
  * User: S. Fink

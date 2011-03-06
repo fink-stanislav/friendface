@@ -9,11 +9,11 @@
             <result name="success" type="tiles">settings.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="deleteFriend" class="com.exadel.friendface.actions.DeleteFriend">
+        <action name="deleteFriend" class="com.exadel.friendface.controllers.actions.DeleteFriend">
             <result name="success" type="redirect">friendList.action</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="friendPage" class="com.exadel.friendface.actions.FriendPage">
+        <action name="friendPage" class="com.exadel.friendface.controllers.actions.FriendPage">
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
@@ -21,7 +21,7 @@
             <result name="success" type="tiles">photos.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="searchPeople" class="com.exadel.friendface.actions.SearchPeople">
+        <action name="searchPeople" class="com.exadel.friendface.controllers.actions.SearchPeople">
             <result name="success" type="tiles">search.tiles</result>
         </action>
     </package>
