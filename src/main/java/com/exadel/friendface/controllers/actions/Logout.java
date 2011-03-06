@@ -4,7 +4,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * User: S. Fink
@@ -18,15 +18,11 @@ public class Logout extends StrutsAction implements SessionAware {
     @Override
     public String execute() {
         try {
-            logout();
+            getService().getUserService().logout(session);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
         }
-    }
-
-    private void logout() throws Exception {
-        session.put(getUserSessionKey(), null);
     }
 
     public void setSession(Map session) {

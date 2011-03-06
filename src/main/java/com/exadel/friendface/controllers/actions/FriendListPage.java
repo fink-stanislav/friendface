@@ -3,7 +3,7 @@ package com.exadel.friendface.controllers.actions;
 import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
-import com.exadel.friendface.model.util.UserUtils;
+import com.exadel.friendface.service.user.UserUtils;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Collection;

@@ -2,6 +2,7 @@ package com.exadel.friendface.service;
 
 import com.exadel.friendface.model.providers.EntityManagerProvider;
 import com.exadel.friendface.model.providers.RepositoryProvider;
+import com.exadel.friendface.service.user.UserService;
 
 /**
  * Author: S. Fink

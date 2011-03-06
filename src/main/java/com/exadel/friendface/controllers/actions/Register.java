@@ -1,15 +1,11 @@
 package com.exadel.friendface.controllers.actions;
 
-import com.exadel.friendface.view.beans.RegistrationBean;
-import com.exadel.friendface.model.dao.DAOFactory;
-import com.exadel.friendface.model.dao.UserDAO;
-import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
-import com.opensymphony.xwork2.ActionSupport;
+import com.exadel.friendface.view.beans.RegistrationBean;
 import com.opensymphony.xwork2.ModelDriven;
 
-import static com.exadel.friendface.model.util.UserUtils.getUserFromBean;
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * Author: S. Fink
@@ -45,11 +41,7 @@ public class Register extends StrutsAction implements ModelDriven {
     }
 
     private String register() throws Exception {
-        User user = getUserFromBean(registrationBean);
-        UserDAO userDAO = DAOFactory.getDAOFactory().getUserDAO();
-
-        if (!userDAO.isUserExists(user)) {
-            userDAO.createUser(user);
+        if (getService().getUserService().register(registrationBean)) {
             addActionMessage(getText("registration.succeed"));
             return SUCCESS;
         } else {

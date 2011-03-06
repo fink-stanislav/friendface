@@ -33,7 +33,7 @@ public class Login extends StrutsAction implements ModelDriven, SessionAware {
     }
 
     private String login() throws Exception {
-        if (getService().getUserService().loginUser(loginBean, session)) {
+        if (getService().getUserService().login(loginBean, session)) {
             return SUCCESS;
         } else {
             return resultAndErrorMessage(INPUT, getText("wrong.password"));

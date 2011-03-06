@@ -1,12 +1,11 @@
 package com.exadel.friendface.controllers.actions;
 
 import com.exadel.friendface.model.entities.User;
-import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
-import static com.exadel.friendface.model.util.UserUtils.getUserSessionKey;
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * User: S. Fink
@@ -21,7 +20,7 @@ public class UserPage extends StrutsAction implements SessionAware {
     @Override
     public String execute() {
         try {
-            setUser((User) session.get(getUserSessionKey()));
+            user = getService().getUserService().getFromSession(session);
             return SUCCESS;
         } catch (Exception e) {
             return ERROR;

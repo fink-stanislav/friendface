@@ -1,4 +1,4 @@
-package com.exadel.friendface.model.util;
+package com.exadel.friendface.service.user;
 
 import com.exadel.friendface.application.FriendfaceConstants;
 import com.exadel.friendface.model.entities.User;

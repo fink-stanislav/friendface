@@ -2,7 +2,7 @@ package com.exadel.friendface.controllers.actions;
 
 import com.exadel.friendface.model.entities.User;
 
-import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * Author: S. Fink
@@ -17,15 +17,11 @@ public class FriendPage extends StrutsAction {
     @Override
     public String execute() {
         try {
-            findPageOwner();
+            user = getService().getUserService().find(id);
             return SUCCESS;
         } catch (Exception e) {
             return ERROR;
         }
-    }
-
-    private void findPageOwner() throws Exception {
-        user = getDAOFactory().getUserDAO().getUser(id);
     }
 
     public Integer getId() {
