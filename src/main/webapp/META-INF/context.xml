@@ -2,6 +2,6 @@
 <Context>
     <Resource name="jcr/repository" auth="Container" type="javax.jcr.Repository"
               factory="org.apache.jackrabbit.core.jndi.BindableRepositoryFactory"
-              configFilePath="C:/jackrabbit-2.2.4/content/repository.xml"
-              repHomeDir="C:/jackrabbit-2.2.4/content"/>
+              configFilePath="C:/friendface/content/repository.xml"
+              repHomeDir="C:/friendface/content"/>
 </Context>

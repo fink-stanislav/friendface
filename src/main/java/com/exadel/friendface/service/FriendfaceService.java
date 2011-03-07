@@ -1,9 +1,12 @@
 package com.exadel.friendface.service;
 
 import com.exadel.friendface.model.providers.EntityManagerProvider;
-import com.exadel.friendface.model.providers.RepositoryProvider;
 import com.exadel.friendface.service.friends.FriendsService;
 import com.exadel.friendface.service.user.UserService;
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.Search;
+
+import javax.persistence.EntityManager;
 
 /**
  * Author: S. Fink
@@ -14,8 +17,14 @@ public class FriendfaceService {
     private static FriendfaceService service;
 
     private FriendfaceService() {
-        EntityManagerProvider.getInstance();
-        //RepositoryProvider.getInstance();
+        try {
+            EntityManager entityManager = EntityManagerProvider.getInstance().getEntityManager();
+            FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+            fullTextEntityManager.createIndexer().startAndWait();
+            //RepositoryProvider.getInstance();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static void stop() {

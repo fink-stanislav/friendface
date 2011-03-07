@@ -1,5 +1,10 @@
 package com.exadel.friendface.model.entities;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+
 import javax.persistence.*;
 
 /**
@@ -13,12 +18,16 @@ import javax.persistence.*;
 @NamedQueries(value = {
         @NamedQuery(name = "getUserByLogin", query = "select u from User u where u.loginEmail = :loginEmail")
 })
+@Indexed
 public class User {
     @Id
     @GeneratedValue
     private Integer id;
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String loginEmail;
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String username;
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String userSurname;
     private String passwordHash;
 
