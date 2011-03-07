@@ -18,7 +18,7 @@ public class FriendPage extends StrutsAction {
     @Override
     public String execute() {
         try {
-            user = getService().getUserService().find(id);
+            user = getService().getUserService().getById(id);
             return SUCCESS;
         } catch (Exception e) {
             return ERROR;

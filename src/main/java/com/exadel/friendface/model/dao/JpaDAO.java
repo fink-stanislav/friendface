@@ -16,7 +16,7 @@ import java.util.Set;
  */
 
 public class JpaDAO {
-    private EntityManager entityManager;
+    protected EntityManager entityManager;
 
     public JpaDAO() {
         entityManager = EntityManagerProvider.getInstance().getEntityManager();
@@ -52,7 +52,7 @@ public class JpaDAO {
         entityTransaction.commit();
     }
 
-    public <T> T find(Object id, Class<T> entityClass) {
+    public <T> T getById(Object id, Class<T> entityClass) {
         return entityManager.find(entityClass, id);
     }
 

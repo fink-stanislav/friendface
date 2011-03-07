@@ -1,15 +1,16 @@
 package com.exadel.friendface.controllers.actions.concrete;
 
 import com.exadel.friendface.controllers.actions.StrutsAction;
-import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
-import com.exadel.friendface.service.user.UserUtils;
+import com.exadel.friendface.service.FriendfaceService;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * User: S. Fink
@@ -33,18 +34,17 @@ public class FriendListPage extends StrutsAction implements SessionAware {
     @Override
     public String execute() {
         try {
-            return showFriends();
+            getFriends(getService().getUserService().getFromSession(session));
+            return SUCCESS;
         }
         catch (Exception e) {
             return ERROR;
         }
     }
 
-    private String showFriends() throws Exception {
-        User user = (User) session.get(UserUtils.getUserSessionKey());
-        friends = DAOFactory.getDAOFactory().getFriendsDAO().getFriends(user);
+    private void getFriends(User user) throws Exception {
+        friends = getService().getFriendsService().getFriends(user);
         hasFriends = friends.size() > 0;
-        return SUCCESS;
     }
 
     public void setSession(Map session) {

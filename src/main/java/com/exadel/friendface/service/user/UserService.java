@@ -6,6 +6,7 @@ import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.view.beans.LoginBean;
 import com.exadel.friendface.view.beans.RegistrationBean;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
@@ -29,7 +30,7 @@ public class UserService {
 
     public boolean login(LoginBean bean, Map session) throws Exception {
         User userFromRequest = getUserFromBean(bean);
-        User userFromStorage = find(userFromRequest.getLoginEmail());
+        User userFromStorage = getByLogin(userFromRequest.getLoginEmail());
         if (checkCredentials(userFromRequest, userFromStorage)) {
             session.put(getUserSessionKey(), userFromStorage);
             return true;
@@ -63,11 +64,15 @@ public class UserService {
     public void updateUser(User user) {
     }
 
-    public User find(String login) throws Exception {
+    public User getByLogin(String login) throws Exception {
         return getDAOFactory().getUserDAO().getUser(login);
     }
 
-    public User find(Integer id) throws Exception {
+    public User getById(Integer id) throws Exception {
         return getDAOFactory().getUserDAO().getUser(id);
+    }
+
+    public List<User> find(String query) throws Exception {
+        return getDAOFactory().getUserDAO().findUser(query);
     }
 }

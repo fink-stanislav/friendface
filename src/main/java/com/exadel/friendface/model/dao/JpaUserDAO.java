@@ -1,8 +1,10 @@
 package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.entities.User;
+import com.exadel.friendface.model.search.JpaSearch;
 
 import javax.persistence.NoResultException;
+import java.util.List;
 
 /**
  * Author: S. Fink
@@ -28,11 +30,16 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
     }
 
     public User getUser(Integer userId) throws Exception {
-        return find(userId, User.class);
+        return getById(userId, User.class);
     }
 
     public User getUser(String loginEmail) throws Exception {
         return executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
+    }
+
+    public List<User> findUser(String query) throws Exception {
+        JpaSearch search = new JpaSearch(entityManager);
+        return search.find(query, User.class);
     }
 
     public Boolean isUserExists(User user) throws Exception {

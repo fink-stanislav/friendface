@@ -27,7 +27,7 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
 
     public Friend getFriend(Integer friendId) throws Exception {
         try {
-            return find(friendId, Friend.class);
+            return getById(friendId, Friend.class);
         } catch (NoResultException e) {
             return null;
         }
