@@ -52,6 +52,10 @@ public class JpaDAO {
         entityTransaction.commit();
     }
 
+    public <T> T find(Object id, Class<T> entityClass) {
+        return entityManager.find(entityClass, id);
+    }
+
     public <T> T executeNamedQuery(String queryName, Class<T> entityClass, String paramName, Object paramValue) {
         TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
         query.setParameter(paramName, paramValue);

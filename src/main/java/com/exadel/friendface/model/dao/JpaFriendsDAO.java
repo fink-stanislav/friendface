@@ -25,9 +25,9 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
         removeEntity(friend);
     }
 
-    public Friend getFriend(Integer recordId) throws Exception {
+    public Friend getFriend(Integer friendId) throws Exception {
         try {
-            return executeNamedQuery("getFriendById", Friend.class, "recordId", recordId);
+            return find(friendId, Friend.class);
         } catch (NoResultException e) {
             return null;
         }

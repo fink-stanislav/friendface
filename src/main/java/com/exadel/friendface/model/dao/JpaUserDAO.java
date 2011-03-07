@@ -28,7 +28,7 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
     }
 
     public User getUser(Integer userId) throws Exception {
-        return executeNamedQuery("getUserById", User.class, "userId", userId);
+        return find(userId, User.class);
     }
 
     public User getUser(String loginEmail) throws Exception {

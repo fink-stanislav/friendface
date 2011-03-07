@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "friends")
 @NamedQueries(value = {
-        @NamedQuery(name = "getFriendById", query = "select f from Friend f where f.id = :recordId"),
         @NamedQuery(name = "getUserFriends", query = "select f from Friend f where f.user.id = :userId")
 })
 public class Friend {
