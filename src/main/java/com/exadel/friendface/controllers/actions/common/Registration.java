@@ -1,4 +1,6 @@
-package com.exadel.friendface.controllers.actions;
+package com.exadel.friendface.controllers.actions.common;
+
+import com.exadel.friendface.controllers.actions.StrutsAction;
 
 /**
  * Author: S. Fink

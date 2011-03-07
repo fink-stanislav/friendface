@@ -1,5 +1,6 @@
-package com.exadel.friendface.controllers.actions;
+package com.exadel.friendface.controllers.actions.common;
 
+import com.exadel.friendface.controllers.actions.StrutsAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import com.exadel.friendface.view.beans.LoginBean;

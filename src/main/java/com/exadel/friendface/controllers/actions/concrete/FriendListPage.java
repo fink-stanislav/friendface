@@ -1,5 +1,6 @@
-package com.exadel.friendface.controllers.actions;
+package com.exadel.friendface.controllers.actions.concrete;
 
+import com.exadel.friendface.controllers.actions.StrutsAction;
 import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;

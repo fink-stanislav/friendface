@@ -2,6 +2,7 @@ package com.exadel.friendface.service;
 
 import com.exadel.friendface.model.providers.EntityManagerProvider;
 import com.exadel.friendface.model.providers.RepositoryProvider;
+import com.exadel.friendface.service.friends.FriendsService;
 import com.exadel.friendface.service.user.UserService;
 
 /**
@@ -30,5 +31,9 @@ public class FriendfaceService {
 
     public UserService getUserService() {
         return UserService.getService();
+    }
+
+    public FriendsService getFriendsService() {
+        return FriendsService.getService();
     }
 }

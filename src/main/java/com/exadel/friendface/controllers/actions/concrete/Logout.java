@@ -1,5 +1,6 @@
-package com.exadel.friendface.controllers.actions;
+package com.exadel.friendface.controllers.actions.concrete;
 
+import com.exadel.friendface.controllers.actions.StrutsAction;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
