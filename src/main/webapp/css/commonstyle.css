@@ -57,7 +57,7 @@ body > #container {
     font-size: small;
     float: right;
     margin: 0;
-    padding: 0em 1em 0em 0em
+    padding: 0 1em 0 0;
 }
 
 #tagline {
@@ -109,7 +109,7 @@ a:link {
 }
 
 a:visited {
-    color: darkorchid
+    color: #9932cc;
 }
 
 h1 a, h2 a, h3 a {

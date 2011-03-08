@@ -7,29 +7,62 @@
           xmlns="http://www.w3.org/1999/xhtml" version="2.0"
           xmlns:s="/struts-tags">
 
-    <div id="searchpage">
-        <div id="searchheader">Extended search</div>
-        <div id="searchselect">
-            <span id="searchtypelabel">Search for:</span>
-            <select id="searchType">
-                <option selected="true" value="people">People</option>
-                <option value="pictures">Pictures</option>
-                <option value="posts">Posts</option>
-                <option value="videos">Videos</option>
-            </select>
+    <s:i18n name="jsps.content.search">
+        <div id="searchpage">
+            <div id="searchheader">Extended search</div>
+            <div id="searchselect">
+                <s:form action="search" name="searchTypeForm">
+                    <span id="searchtypelabel">Search for:</span>
+                    <s:select list="searchEntries" name="searchEntry"
+                              onchange="document.forms['searchTypeForm'].submit()"/>
+                </s:form>
+            </div>
+
+            <s:if test="%{searchEntry eq 'People'}">
+                <div class="searchform">
+                    <s:form action="searchPeople" id="searchPeopleForm">
+                        <div><s:text name="login"/></div>
+                        <div><s:textfield name="loginEmail" value="%{loginEmail}" cssClass="input"/></div>
+
+                        <div><s:text name="name"/></div>
+                        <div><s:textfield name="username" value="%{username}" cssClass="input"/></div>
+
+                        <div><s:text name="surname"/></div>
+                        <div><s:textfield name="userSurname" value="%{userSurname}" cssClass="input"/></div>
+                        <s:submit value="%{getText('search')}"/>
+                    </s:form>
+                </div>
+            </s:if>
+            <s:elseif test="%{searchEntry eq 'Pictures'}">
+                <div class="searchform">
+                    <s:form id="searchPicturesForm">
+                        <div><s:text name="entrytitle"/></div>
+                        <div><s:textfield name="picTitle" value="%{picTitle}" cssClass="input"/></div>
+                        <s:submit value="%{getText('search')}"/>
+                    </s:form>
+                </div>
+            </s:elseif>
+            <s:elseif test="%{searchEntry eq 'Videos'}">
+                <div class="searchform">
+                    <s:form id="searchVideosForm">
+                        <div><s:text name="entrytitle"/></div>
+                        <div><s:textfield name="videoTitle" value="%{videoTitle}" cssClass="input"/></div>
+                        <s:submit value="%{getText('search')}"/>
+                    </s:form>
+                </div>
+            </s:elseif>
+            <s:elseif test="%{searchEntry eq 'Posts'}">
+                <div class="searchform">
+                    <s:form id="searchPostsForm">
+                        <div><s:text name="entrytitle"/></div>
+                        <div><s:textfield name="postTitle" value="%{postTitle}" cssClass="input"/></div>
+
+                        <div><s:text name="contains"/></div>
+                        <div><s:textfield name="containsText" value="%{containsText}" cssClass="input"/></div>
+                        <s:submit value="%{getText('search')}"/>
+                    </s:form>
+                </div>
+            </s:elseif>
         </div>
-        <div id="searchform">
-            <s:form action="searchPeople">
-                <div><s:text name="login"/></div>
-                <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
-
-                <div><s:text name="name"/></div>
-                <div><s:textfield name="username" value="%{username}"/></div>
-
-                <div><s:text name="surname"/></div>
-                <div><s:textfield name="userSurname" value="%{userSurname}"/></div>
-            </s:form>
-        </div>
-    </div>
-
+    </s:i18n>
 </jsp:root>

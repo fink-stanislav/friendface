@@ -5,3 +5,7 @@
 #login-form {
   margin: 1em 2em;
 }
+
+.input {
+    width: 180px;
+}

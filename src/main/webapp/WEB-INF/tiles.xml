@@ -73,7 +73,7 @@
     </definition>
 
     <definition name="search.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Videos"/>
+        <put-attribute name="title" value="jsps.content.search"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search.jspx"/>
     </definition>
     <!-- end menu -->

@@ -27,6 +27,6 @@
                 <span class="ref"><s:text name="item.search"/></span>
             </s:a></div>
         </div>
+        <div id="vertical-line"></div>
     </s:i18n>
-    <div id="vertical-line"></div>
 </jsp:root>
