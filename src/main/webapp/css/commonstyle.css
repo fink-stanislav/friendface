@@ -1,24 +1,24 @@
-html, body, #container { 
-  height: 100%; 
-  
-  color: black;
-  background: white;
-  font: normal medium 'Gill Sans','Gill Sans MT','Goudy Bookletter 1911','Linux Libertine O','Liberation Serif',Candara,serif;
-  
-  padding: 0;
-  margin: 0 auto;
-  width: 45em; 
-  line-height: 1.75; 
-  word-spacing: 0.1em; 
+html, body, #container {
+    height: 100%;
+
+    color: black;
+    background: white;
+    font: normal medium 'Gill Sans', 'Gill Sans MT', 'Goudy Bookletter 1911', 'Linux Libertine O', 'Liberation Serif', Candara, serif;
+
+    padding: 0;
+    margin: 0 auto;
+    width: 45em;
+    line-height: 1.75;
+    word-spacing: 0.1em;
 }
 
-body > #container { 
-  height: auto; 
-  min-height: 100%; 
+body > #container {
+    height: auto;
+    min-height: 100%;
 }
 
 #content {
-  padding-bottom: 2em;
+    padding-bottom: 2em;
 }
 
 .margined-layer {
@@ -26,95 +26,94 @@ body > #container {
 }
 
 #clean {
-  clear: both;
+    clear: both;
 }
 
 #vertical-line {
-  border-right: 1px solid gray;
-  float: left;
-  height: 351px;
+    border-right: 1px solid gray;
+    float: left;
+    height: 351px;
 }
 
 #header {
-  background: black;
-  color: white;
-  margin: 0; 
-  padding: 1.5em 0;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #7d7e7d), color-stop(20%, #0e0e0e));
+    color: white;
+    margin: 0;
+    padding: 1.5em 0;
 }
 
 #headertxt {
-  text-align: center;
-  font-size: medium; 
-  line-height: 0.0em;
-  margin: 0;
+    text-align: center;
+    font-size: medium;
+    line-height: 0.0em;
+    margin: 0;
 }
 
 #header a {
-  color: white;
+    color: white;
 }
 
 #headrefs {
-  font-size: small;
-  float: right;
-  margin: 0;
-  padding: 0em 1em 0em 0em
+    font-size: small;
+    float: right;
+    margin: 0;
+    padding: 0em 1em 0em 0em
 }
 
 #tagline {
 }
 
 #footer {
-  clear: both;
-  position: relative;
-  color: white;
-  background: black;
-  z-index: 10;
-  height: 0.3em;
-  padding: 0.9em 0;
-  margin-top: -2.05em;
-  background: black;
-  color: white;
+    clear: both;
+    position: relative;
+    color: white;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(20%, #7d7e7d), color-stop(100%, #0e0e0e));
+    z-index: 10;
+    height: 0.3em;
+    padding: 0.9em 0;
+    margin-top: -2.05em;
+    color: white;
 }
 
 #footertxt {
-  text-align: right;
-  font-size: small; 
-  line-height: 0;
-  margin: 0;
-  padding: 0em 1em 0em 0em
+    text-align: right;
+    font-size: small;
+    line-height: 0;
+    margin: 0;
+    padding: 0 1em 0 0;
 }
 
 #footrefs {
-  font-size: small;
-  float: left;
-  margin: -0.8em 0 0 0;
-  padding: 0 0 0 1em
+    font-size: small;
+    float: left;
+    margin: -0.8em 0 0 0;
+    padding: 0 0 0 1em
 }
 
 #footer a {
-  color: white; 
+    color: white;
 }
 
 a {
-  background: transparent;
-  text-decoration: none;
-  border-bottom: 1px dotted
+    background: transparent;
+    text-decoration: none;
+    border-bottom: 1px dotted
 }
 
 a:hover {
-  border-bottom: 1px solid
+    border-bottom: 1px solid
 }
 
 a:link {
-  color: #1b67c9
+    color: #1b67c9
 }
 
 a:visited {
-  color: darkorchid
+    color: darkorchid
 }
 
 h1 a, h2 a, h3 a {
-  color:inherit !important
+    color: inherit !important
 }
 
 .imagelittle {

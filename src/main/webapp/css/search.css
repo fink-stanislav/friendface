@@ -1,0 +1,24 @@
+#searchpage {
+    width: 31em;
+    float: left;
+    margin: 0.5em 2em;
+}
+
+#searchheader {
+    margin-bottom: 1em;
+    padding-left: 2em;
+    text-align: left;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #ffffff), color-stop(0%, #e5e5e5));
+}
+
+#searchtypelabel {
+    padding: 1em;
+}
+
+#searchselect {
+    text-align: center;
+}
+
+#searchform {
+    margin: 1em 2em;
+}

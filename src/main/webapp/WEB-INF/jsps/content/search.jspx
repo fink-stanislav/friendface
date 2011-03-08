@@ -7,25 +7,29 @@
           xmlns="http://www.w3.org/1999/xhtml" version="2.0"
           xmlns:s="/struts-tags">
 
-    <div>
-        <label for="searchType">Search for:</label>
-        <select id="searchType">
-            <option selected="true" value="people">People</option>
-            <option value="pictures">Pictures</option>
-            <option value="posts">Posts</option>
-            <option value="videos">Videos</option>
-        </select>
+    <div id="searchpage">
+        <div id="searchheader">Extended search</div>
+        <div id="searchselect">
+            <span id="searchtypelabel">Search for:</span>
+            <select id="searchType">
+                <option selected="true" value="people">People</option>
+                <option value="pictures">Pictures</option>
+                <option value="posts">Posts</option>
+                <option value="videos">Videos</option>
+            </select>
+        </div>
+        <div id="searchform">
+            <s:form action="searchPeople">
+                <div><s:text name="login"/></div>
+                <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
+
+                <div><s:text name="name"/></div>
+                <div><s:textfield name="username" value="%{username}"/></div>
+
+                <div><s:text name="surname"/></div>
+                <div><s:textfield name="userSurname" value="%{userSurname}"/></div>
+            </s:form>
+        </div>
     </div>
-
-    <s:form action="searchPeople">
-        <div><s:text name="login.email"/></div>
-        <div><s:textfield name="loginEmail" value="%{loginEmail}"/></div>
-
-        <div><s:text name="name"/></div>
-        <div><s:textfield name="username" value="%{username}"/></div>
-
-        <div><s:text name="surname"/></div>
-        <div><s:textfield name="userSurname" value="%{userSurname}"/></div>
-    </s:form>
 
 </jsp:root>
