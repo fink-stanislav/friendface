@@ -5,7 +5,7 @@
 
 <struts>
     <package name="menu" extends="private">
-        <action name="friendList" class="com.exadel.friendface.controllers.actions.concrete.FriendListPage">
+        <action name="friendList" class="com.exadel.friendface.controllers.actions.friends.FriendListPage">
             <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
@@ -21,7 +21,7 @@
             <result name="success" type="tiles">video.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="search" class="com.exadel.friendface.controllers.actions.concrete.SearchPage">
+        <action name="search" class="com.exadel.friendface.controllers.actions.search.SearchPage">
             <result name="success" type="tiles">search.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>

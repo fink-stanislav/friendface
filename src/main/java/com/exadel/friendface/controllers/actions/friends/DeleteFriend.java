@@ -1,4 +1,4 @@
-package com.exadel.friendface.controllers.actions.concrete;
+package com.exadel.friendface.controllers.actions.friends;
 
 import com.exadel.friendface.controllers.actions.StrutsAction;
 import com.exadel.friendface.model.entities.Friend;

@@ -16,12 +16,12 @@
             <result name="success" type="redirect">userpage.action</result>
         </action>
         <!-- userpage -->
-        <action name="userpage" class="com.exadel.friendface.controllers.actions.common.UserPage">
+        <action name="userpage" class="com.exadel.friendface.controllers.actions.user.UserPage">
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
         <!-- logout -->
-        <action name="logout" class="com.exadel.friendface.controllers.actions.concrete.Logout">
+        <action name="logout" class="com.exadel.friendface.controllers.actions.user.Logout">
             <result name="success" type="tiles">welcomepage.tiles</result>
             <result name="login" type="tiles">welcomepage.tiles</result>
         </action>
@@ -36,13 +36,13 @@
             <result name="success" type="tiles">registration.tiles</result>
         </action>
         <!-- registration -->
-        <action name="register" class="com.exadel.friendface.controllers.actions.common.Register">
+        <action name="register" class="com.exadel.friendface.controllers.actions.user.Register">
             <result name="success" type="tiles">success.tiles</result>
             <result name="input" type="tiles">registration.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <!-- login -->
-        <action name="login" class="com.exadel.friendface.controllers.actions.common.Login">
+        <action name="login" class="com.exadel.friendface.controllers.actions.user.Login">
             <interceptor-ref name="myTokenStack"/>
             <result name="success" type="redirect">userpage.action</result>
             <result name="input" type="tiles">entrance.tiles</result>

@@ -1,35 +1,36 @@
-package com.exadel.friendface.controllers.actions.common;
+package com.exadel.friendface.controllers.actions.friends;
 
 import com.exadel.friendface.controllers.actions.StrutsAction;
 import com.exadel.friendface.model.entities.User;
-import org.apache.struts2.interceptor.SessionAware;
-
-import java.util.Map;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
- * User: S. Fink
- * Date: 2/3/11
- * Time: 5:50 PM
+ * Author: S. Fink
+ * Date: 20.02.11
+ * Time: 14:48
  */
 
-public class UserPage extends StrutsAction implements SessionAware {
-    private Map session;
+public class FriendPage extends StrutsAction {
+    private Integer id;
     private User user;
 
     @Override
     public String execute() {
         try {
-            user = getService().getUserService().getFromSession(session);
+            user = getService().getUserService().getById(id);
             return SUCCESS;
         } catch (Exception e) {
             return ERROR;
         }
     }
 
-    public void setSession(Map session) {
-        this.session = session;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public User getUser() {

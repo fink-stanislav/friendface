@@ -13,7 +13,7 @@
             <div id="searchselect">
                 <s:form action="search" name="searchTypeForm">
                     <span id="searchtypelabel">Search for:</span>
-                    <s:select list="searchEntries" name="searchEntry"
+                    <s:select list="searchEntries" name="searchEntry" value="%{searchEntry}"
                               onchange="document.forms['searchTypeForm'].submit()"/>
                 </s:form>
             </div>
@@ -29,36 +29,44 @@
 
                         <div><s:text name="surname"/></div>
                         <div><s:textfield name="userSurname" value="%{userSurname}" cssClass="input"/></div>
+                        <s:actionmessage/>
+                        <hr/>
                         <s:submit value="%{getText('search')}"/>
                     </s:form>
                 </div>
             </s:if>
             <s:elseif test="%{searchEntry eq 'Pictures'}">
                 <div class="searchform">
-                    <s:form id="searchPicturesForm">
+                    <s:form id="searchPicturesForm" action="searchPictures">
                         <div><s:text name="entrytitle"/></div>
                         <div><s:textfield name="picTitle" value="%{picTitle}" cssClass="input"/></div>
+                        <s:actionmessage/>
+                        <hr/>
                         <s:submit value="%{getText('search')}"/>
                     </s:form>
                 </div>
             </s:elseif>
             <s:elseif test="%{searchEntry eq 'Videos'}">
                 <div class="searchform">
-                    <s:form id="searchVideosForm">
+                    <s:form id="searchVideosForm" action="searchVideos">
                         <div><s:text name="entrytitle"/></div>
                         <div><s:textfield name="videoTitle" value="%{videoTitle}" cssClass="input"/></div>
+                        <s:actionmessage/>
+                        <hr/>
                         <s:submit value="%{getText('search')}"/>
                     </s:form>
                 </div>
             </s:elseif>
             <s:elseif test="%{searchEntry eq 'Posts'}">
                 <div class="searchform">
-                    <s:form id="searchPostsForm">
+                    <s:form id="searchPostsForm" action="searchPosts">
                         <div><s:text name="entrytitle"/></div>
                         <div><s:textfield name="postTitle" value="%{postTitle}" cssClass="input"/></div>
 
                         <div><s:text name="contains"/></div>
-                        <div><s:textfield name="containsText" value="%{containsText}" cssClass="input"/></div>
+                        <div><s:textfield name="containText" value="%{containText}" cssClass="input"/></div>
+                        <s:actionmessage/>
+                        <hr/>
                         <s:submit value="%{getText('search')}"/>
                     </s:form>
                 </div>

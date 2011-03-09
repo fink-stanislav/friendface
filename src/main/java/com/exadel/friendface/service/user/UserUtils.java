@@ -1,6 +1,6 @@
 package com.exadel.friendface.service.user;
 
-import com.exadel.friendface.application.FriendfaceConstants;
+import com.exadel.friendface.controllers.actions.FriendfaceAction;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.view.beans.LoginBean;
 import com.exadel.friendface.view.beans.RegistrationBean;
@@ -43,7 +43,7 @@ public class UserUtils {
     }
 
     public static String getUserSessionKey() {
-        return FriendfaceConstants.FriendfaceUser.name();
+        return FriendfaceAction.FRIENDFACE_USER;
     }
 
     public static User getUserFromBean(LoginBean loginBean) {

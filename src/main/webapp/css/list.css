@@ -1,9 +1,9 @@
-#userlist {
+#list {
     width: 35em;
     float: left;
 }
 
-.userlistitem {
+.listitem {
     clear: both;
     margin: 0.5em 2em;
     padding: 0 0 2em 0;

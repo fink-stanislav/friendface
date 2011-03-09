@@ -1,6 +1,6 @@
-package com.exadel.friendface.controllers.actions.concrete;
+package com.exadel.friendface.controllers.actions.search;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.SessionAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * Time: 7:25 PM
  */
 
-public class SearchPage extends StrutsAction {
+public class SearchPage extends SessionAction {
     private List<String> searchEntries;
     private String searchEntry;
 
@@ -26,6 +26,20 @@ public class SearchPage extends StrutsAction {
 
     @Override
     public String execute() {
+        String sessionValue = getFromSession(SEARCH_ENTRY);
+        String errorMessage = getFromSession(ACTION_MESSAGE);
+
+        if (sessionValue == null) {
+            putToSession(SEARCH_ENTRY, searchEntry);
+            return SUCCESS;
+        }
+
+        if (errorMessage != null) {
+            searchEntry = sessionValue;
+            removeFromSession(SEARCH_ENTRY);
+            addActionMessage(errorMessage);
+            removeFromSession(ACTION_MESSAGE);
+        }
         return SUCCESS;
     }
 

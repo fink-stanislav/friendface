@@ -1,14 +1,12 @@
-package com.exadel.friendface.controllers.actions.common;
+package com.exadel.friendface.controllers.actions.user;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.SessionAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import com.exadel.friendface.view.beans.LoginBean;
 import com.opensymphony.xwork2.ModelDriven;
-import org.apache.struts2.interceptor.SessionAware;
 
 import javax.persistence.NoResultException;
-import java.util.Map;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
 
@@ -18,8 +16,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 6:28 PM
  */
 
-public class Login extends StrutsAction implements ModelDriven, SessionAware {
-    private Map session;
+public class Login extends SessionAction implements ModelDriven {
     private LoginBean loginBean = new LoginBean();
 
     @Override
@@ -34,7 +31,7 @@ public class Login extends StrutsAction implements ModelDriven, SessionAware {
     }
 
     private String login() throws Exception {
-        if (getService().getUserService().login(loginBean, session)) {
+        if (getService().getUserService().login(loginBean, getSession())) {
             return SUCCESS;
         } else {
             return resultAndErrorMessage(INPUT, getText("wrong.password"));
@@ -53,9 +50,5 @@ public class Login extends StrutsAction implements ModelDriven, SessionAware {
 
     public Object getModel() {
         return loginBean;
-    }
-
-    public void setSession(Map session) {
-        this.session = session;
     }
 }

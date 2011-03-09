@@ -1,4 +1,4 @@
-package com.exadel.friendface.controllers.actions.common;
+package com.exadel.friendface.controllers.actions.user;
 
 import com.exadel.friendface.controllers.actions.StrutsAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
@@ -22,8 +22,8 @@ public class Register extends StrutsAction implements ModelDriven {
         Validator validator = new Validator();
         try {
             validator.validateEmail(registrationBean.getLoginEmail());
-            validator.validateTextString(registrationBean.getUsername());
-            validator.validateTextString(registrationBean.getUserSurname());
+            validator.validateName(registrationBean.getUsername());
+            validator.validateName(registrationBean.getUserSurname());
             validator.validatePassword(registrationBean.getPassword());
             validator.validatePassword(registrationBean.getPasswordConfirmation());
             validator.validatePassword(registrationBean.getPassword(), registrationBean.getPasswordConfirmation());
