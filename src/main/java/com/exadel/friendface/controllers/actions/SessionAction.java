@@ -10,7 +10,7 @@ import java.util.Map;
  * Time: 10:49 PM
  */
 
-public abstract class SessionAction extends StrutsAction implements SessionAware {
+public abstract class SessionAction extends StandardAction implements SessionAware {
     private Map session;
 
     public void setSession(Map session) {

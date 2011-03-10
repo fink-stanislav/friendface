@@ -1,6 +1,6 @@
 package com.exadel.friendface.controllers.actions.user;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import com.exadel.friendface.view.beans.RegistrationBean;
@@ -14,7 +14,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 6:17 PM
  */
 
-public class Register extends StrutsAction implements ModelDriven {
+public class Register extends StandardAction implements ModelDriven {
     private RegistrationBean registrationBean = new RegistrationBean();
 
     @Override

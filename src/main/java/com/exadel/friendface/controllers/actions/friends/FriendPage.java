@@ -1,6 +1,6 @@
 package com.exadel.friendface.controllers.actions.friends;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
 import com.exadel.friendface.model.entities.User;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
@@ -11,7 +11,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 14:48
  */
 
-public class FriendPage extends StrutsAction {
+public class FriendPage extends StandardAction {
     private Integer id;
     private User user;
 

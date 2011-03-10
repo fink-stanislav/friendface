@@ -72,7 +72,7 @@ public class UserService {
         return getDAOFactory().getUserDAO().getUser(id);
     }
 
-    public List<User> find(String query) throws Exception {
-        return getDAOFactory().getUserDAO().findUser(query);
+    public List<User> find(Map<String, String> searchParams) throws Exception {
+        return getDAOFactory().getUserDAO().findUser(searchParams);
     }
 }

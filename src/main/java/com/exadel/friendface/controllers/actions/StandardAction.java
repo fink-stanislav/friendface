@@ -8,7 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
  * Time: 1:09 AM
  */
 
-public abstract class StrutsAction extends ActionSupport implements FriendfaceAction {
+public abstract class StandardAction extends ActionSupport implements FriendfaceAction {
     @Override
     public abstract String execute();
 

@@ -1,6 +1,6 @@
 package com.exadel.friendface.controllers.actions.common;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
 
 /**
  * Author: S. Fink
@@ -8,7 +8,7 @@ import com.exadel.friendface.controllers.actions.StrutsAction;
  * Time: 22:25
  */
 
-public class Welcome extends StrutsAction {
+public class Welcome extends StandardAction {
     @Override
     public String execute() {
         return SUCCESS;

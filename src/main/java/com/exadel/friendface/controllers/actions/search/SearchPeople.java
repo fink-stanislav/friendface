@@ -1,11 +1,11 @@
 package com.exadel.friendface.controllers.actions.search;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.SessionAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import com.exadel.friendface.view.beans.SearchPeopleBean;
 import com.opensymphony.xwork2.ModelDriven;
-import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.ParameterAware;
 
 import java.util.Map;
 
@@ -15,9 +15,9 @@ import java.util.Map;
  * Time: 11:31 PM
  */
 
-public class SearchPeople extends StrutsAction implements ModelDriven, SessionAware {
+public class SearchPeople extends SessionAction implements ModelDriven, ParameterAware {
     private SearchPeopleBean searchPeopleBean = new SearchPeopleBean();
-    private Map session;
+    private Map parameters;
 
     @Override
     public void validate() {
@@ -27,14 +27,15 @@ public class SearchPeople extends StrutsAction implements ModelDriven, SessionAw
             validator.increasingNotBlank(searchPeopleBean.getUsername());
             validator.increasingNotBlank(searchPeopleBean.getUserSurname());
         } catch (ValidationException e) {
-            session.put(SEARCH_ENTRY, "People");
-            session.put(ACTION_MESSAGE, getText(e.toString()));
+            putToSession(SEARCH_ENTRY, "People");
+            putToSession(ACTION_MESSAGE, getText(e.toString()));
             addActionError(getText(e.toString()));
         }
     }
 
     @Override
     public String execute() {
+        parameters.put(SEARCH_ENTRY, "People");
         return SUCCESS;
     }
 
@@ -42,7 +43,7 @@ public class SearchPeople extends StrutsAction implements ModelDriven, SessionAw
         return searchPeopleBean;
     }
 
-    public void setSession(Map session) {
-        this.session = session;
+    public void setParameters(Map parameters) {
+        this.parameters = parameters;
     }
 }

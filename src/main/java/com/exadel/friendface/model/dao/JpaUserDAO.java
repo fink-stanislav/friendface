@@ -5,6 +5,7 @@ import com.exadel.friendface.model.search.JpaSearch;
 
 import javax.persistence.NoResultException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Author: S. Fink
@@ -37,9 +38,9 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
         return executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
     }
 
-    public List<User> findUser(String query) throws Exception {
+    public List<User> findUser(Map<String, String> searchParams) throws Exception {
         JpaSearch search = new JpaSearch(entityManager);
-        return search.find(query, User.class);
+        return search.find(searchParams, User.class);
     }
 
     public Boolean isUserExists(User user) throws Exception {

@@ -1,6 +1,6 @@
 package com.exadel.friendface.controllers.actions.friends;
 
-import com.exadel.friendface.controllers.actions.StrutsAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
 import com.exadel.friendface.model.entities.Friend;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
@@ -11,7 +11,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 21:38
  */
 
-public class DeleteFriend extends StrutsAction {
+public class DeleteFriend extends StandardAction {
     private Integer id;
 
     public Integer getId() {

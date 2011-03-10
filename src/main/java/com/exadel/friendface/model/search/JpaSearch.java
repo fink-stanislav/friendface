@@ -2,7 +2,6 @@ package com.exadel.friendface.model.search;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
-import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.Version;
 import org.hibernate.search.jpa.FullTextEntityManager;
@@ -10,7 +9,12 @@ import org.hibernate.search.jpa.Search;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * Author: S. Fink
@@ -20,26 +24,42 @@ import java.util.List;
 
 public class JpaSearch {
     private EntityManager entityManager;
+    private String[] fields;
+    private String query;
 
     public JpaSearch(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public Query buildLuceneQuery(String initialQuery) throws ParseException {
-        String[] fields = new String[]{"username"};
-        MultiFieldQueryParser parser =
-                new MultiFieldQueryParser(Version.LUCENE_29, fields, new StandardAnalyzer(Version.LUCENE_29));
-
-        return parser.parse(initialQuery);
-    }
-
-    public <T> List<T> find(String query, Class<T> entityClass) throws Exception {
+    public <T> List<T> find(Map<String, String> searchParams, Class<T> entityClass) throws Exception {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
         javax.persistence.Query persistenceQuery =
-                fullTextEntityManager.createFullTextQuery(buildLuceneQuery(query), entityClass);
+                fullTextEntityManager.createFullTextQuery(buildLuceneQuery(searchParams), entityClass);
         transaction.commit();
         return persistenceQuery.getResultList();
+    }
+
+    public Query buildLuceneQuery(Map<String, String> searchParams) throws Exception {
+        queryDataFromMap(searchParams);
+        MultiFieldQueryParser parser =
+                new MultiFieldQueryParser(Version.LUCENE_29, fields, new StandardAnalyzer(Version.LUCENE_29));
+        return parser.parse(query);
+    }
+
+    private void queryDataFromMap(Map<String, String> parameters) throws Exception {
+        List<String> fields = new ArrayList<String>();
+        StringBuilder query = new StringBuilder();
+
+        Set<Map.Entry<String, String>> entrySet = parameters.entrySet();
+        for (Map.Entry<String, String> entry : entrySet) {
+            if (isNotBlank(entry.getValue())) {
+                fields.add(entry.getKey());
+                query.append(entry.getValue()).append(" ");
+            }
+        }
+        this.query = query.toString();
+        this.fields = fields.toArray(new String[fields.size()]);
     }
 }

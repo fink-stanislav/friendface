@@ -9,37 +9,9 @@
             <result name="success" type="tiles">settings.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="deleteFriend" class="com.exadel.friendface.controllers.actions.friends.DeleteFriend">
-            <result name="success" type="redirect">friendList.action</result>
-            <result name="error" type="tiles">errorpage.tiles</result>
-        </action>
-        <action name="friendPage" class="com.exadel.friendface.controllers.actions.friends.FriendPage">
-            <result name="success" type="tiles">userpage.tiles</result>
-            <result name="error" type="tiles">errorpage.tiles</result>
-        </action>
         <action name="photos">
             <result name="success" type="tiles">photos.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
-        </action>
-        <action name="searchPeople" class="com.exadel.friendface.controllers.actions.search.SearchPeople">
-            <result name="success" type="tiles">searchresults.tiles</result>
-            <result name="login" type="tiles">entrance.tiles</result>
-            <result name="input" type="redirectAction">search</result>
-        </action>
-        <action name="searchPictures" class="com.exadel.friendface.controllers.actions.search.SearchPictures">
-            <result name="success" type="tiles">searchresults.tiles</result>
-            <result name="login" type="tiles">entrance.tiles</result>
-            <result name="input" type="redirectAction">search</result>
-        </action>
-        <action name="searchVideos" class="com.exadel.friendface.controllers.actions.search.SearchVideos">
-            <result name="success" type="tiles">searchresults.tiles</result>
-            <result name="login" type="tiles">entrance.tiles</result>
-            <result name="input" type="redirectAction">search</result>
-        </action>
-        <action name="searchPosts" class="com.exadel.friendface.controllers.actions.search.SearchPosts">
-            <result name="success" type="tiles">searchresults.tiles</result>
-            <result name="login" type="tiles">entrance.tiles</result>
-            <result name="input" type="redirectAction">search</result>
         </action>
     </package>
 </struts>

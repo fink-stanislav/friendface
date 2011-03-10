@@ -33,4 +33,6 @@
     <include file="strutsactions/common.xml"/>
     <include file="strutsactions/menu.xml"/>
     <include file="strutsactions/userpage.xml"/>
+    <include file="strutsactions/friends.xml"/>
+    <include file="strutsactions/search.xml"/>
 </struts>

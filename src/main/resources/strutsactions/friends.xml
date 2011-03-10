@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="friends" extends="private">
+        <action name="deleteFriend" class="com.exadel.friendface.controllers.actions.friends.DeleteFriend">
+            <result name="success" type="redirect">friendList.action</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+        <action name="friendPage" class="com.exadel.friendface.controllers.actions.friends.FriendPage">
+            <result name="success" type="tiles">userpage.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+    </package>
+</struts>
