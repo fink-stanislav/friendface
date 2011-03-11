@@ -1,0 +1,48 @@
+﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+    <s:i18n name="jsps.content.friends">
+        <div id="list">
+            <s:if test="notEmpty">
+                <s:iterator value="resultList" status="status">
+                    <s:div cssClass="listitem">
+                        <div class="itemheader">
+                            <s:form method="POST" name="addToFriendsForm">
+                                <s:a href="#" onclick="document.forms['addToFriendsForm'].submit()">
+                                    add to friends
+                                </s:a>
+                            </s:form>
+                        </div>
+                        <div class="itemcontent">
+                            <a href="">
+                                <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+                            </a>
+
+                            <div class="itemtextinfo">
+                                <s:form method="POST" name="redirectToUserPageForm">
+                                    <a href="#" onclick="document.forms['redirectToUserPageForm'].submit()">
+                                        <s:property value="%{[0].username}"/>&#160;
+                                        <s:property value="%{[0].userSurname}"/>
+                                    </a>
+                                </s:form>
+                            </div>
+                        </div>
+                    </s:div>
+                </s:iterator>
+            </s:if>
+            <s:else>
+                <div class="listitem">
+                    <div class="itemheader">
+                        <s:url action="search" id="searchPage"/>
+                        <s:a href="%{searchPage}">back</s:a>
+                    </div>
+                    <div class="itemcontent">
+                        <div class="itemtextinfo">
+                            no results found.
+                        </div>
+                    </div>
+                </div>
+            </s:else>
+        </div>
+    </s:i18n>
+</jsp:root>

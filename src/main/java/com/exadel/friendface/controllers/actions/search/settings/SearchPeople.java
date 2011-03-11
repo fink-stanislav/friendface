@@ -1,4 +1,4 @@
-package com.exadel.friendface.controllers.actions.search;
+package com.exadel.friendface.controllers.actions.search.settings;
 
 import com.exadel.friendface.controllers.actions.SessionAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
@@ -35,6 +35,7 @@ public class SearchPeople extends SessionAction implements ModelDriven, Paramete
 
     @Override
     public String execute() {
+        putToSession(SEARCH_ENTRY, "People");
         parameters.put(SEARCH_ENTRY, "People");
         return SUCCESS;
     }

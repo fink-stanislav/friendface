@@ -1,11 +1,9 @@
-package com.exadel.friendface.controllers.actions.search;
+package com.exadel.friendface.controllers.actions.search.results;
 
 import com.exadel.friendface.controllers.actions.ParametrizedAction;
 import com.exadel.friendface.model.entities.User;
 
 import java.util.List;
-
-import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * Author: S. Fink
@@ -13,8 +11,9 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 10:20 PM
  */
 
-public class PeopleFound extends ParametrizedAction {
-    private List<User> result;
+public class VideosFound extends ParametrizedAction {
+    private List<User> resultList;
+    private Boolean notEmpty = false;
 
     @Override
     public String execute() {
@@ -31,8 +30,14 @@ public class PeopleFound extends ParametrizedAction {
     }
 
     private void performSearch(String searchEntry) throws Exception {
-        if (searchEntry.equals("People")) {
-            result = getService().getUserService().find(getDefaultParameters());
-        }
+        notEmpty = false;
+    }
+
+    public Boolean getNotEmpty() {
+        return notEmpty;
+    }
+
+    public List<User> getResultList() {
+        return resultList;
     }
 }

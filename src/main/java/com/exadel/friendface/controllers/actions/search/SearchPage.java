@@ -35,8 +35,6 @@ public class SearchPage extends SessionAction {
         }
 
         if (errorMessage != null) {
-            searchEntry = sessionValue;
-            removeFromSession(SEARCH_ENTRY);
             addActionMessage(errorMessage);
             removeFromSession(ACTION_MESSAGE);
         }
@@ -52,10 +50,10 @@ public class SearchPage extends SessionAction {
     }
 
     public String getSearchEntry() {
-        return searchEntry;
+        return getFromSession(SEARCH_ENTRY);
     }
 
     public void setSearchEntry(String searchEntry) {
-        this.searchEntry = searchEntry;
+        putToSession(SEARCH_ENTRY, searchEntry);
     }
 }
