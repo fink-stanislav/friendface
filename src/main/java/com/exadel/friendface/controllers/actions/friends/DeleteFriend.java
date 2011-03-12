@@ -1,7 +1,8 @@
 package com.exadel.friendface.controllers.actions.friends;
 
-import com.exadel.friendface.controllers.actions.StandardAction;
+import com.exadel.friendface.controllers.actions.SessionAction;
 import com.exadel.friendface.model.entities.Friend;
+import com.exadel.friendface.model.entities.User;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
 
@@ -11,7 +12,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 21:38
  */
 
-public class DeleteFriend extends StandardAction {
+public class DeleteFriend extends SessionAction {
     private Integer id;
 
     public Integer getId() {
@@ -25,11 +26,17 @@ public class DeleteFriend extends StandardAction {
     @Override
     public String execute() {
         try {
-            Friend friend = getService().getFriendsService().getById(id);
-            getService().getFriendsService().remove(friend);
+            deleteFriend();
             return SUCCESS;
         } catch (Exception e) {
-            return ERROR;
+            return resultAndErrorMessage(ERROR, getText("internal.app.error"));
         }
+    }
+
+    private void deleteFriend() throws Exception {
+        User owner = getService().getUserService().getFromSession(getSession());
+        User friend = getService().getUserService().getById(id);
+        Friend result = getService().getFriendsService().getFriend(owner, friend);
+        getService().getFriendsService().remove(result);
     }
 }

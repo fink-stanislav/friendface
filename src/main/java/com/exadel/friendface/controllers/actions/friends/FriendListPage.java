@@ -1,7 +1,6 @@
 package com.exadel.friendface.controllers.actions.friends;
 
 import com.exadel.friendface.controllers.actions.SessionAction;
-import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 
 import java.util.Collection;
@@ -16,7 +15,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  */
 
 public class FriendListPage extends SessionAction {
-    private List<Friend> friends;
+    private List<User> friends;
     private Boolean hasFriends;
 
     public Collection getFriends() {
@@ -30,16 +29,24 @@ public class FriendListPage extends SessionAction {
     @Override
     public String execute() {
         try {
-            getFriends(getService().getUserService().getFromSession(getSession()));
+            getApprovedFriends(getService().getUserService().getFromSession(getSession()));
+            hasFriends = !friends.isEmpty();
             return SUCCESS;
         }
         catch (Exception e) {
-            return ERROR;
+            return resultAndErrorMessage(ERROR, getText("internal.app.error"));
         }
     }
 
-    private void getFriends(User user) throws Exception {
-        friends = getService().getFriendsService().getFriends(user);
-        hasFriends = friends.size() > 0;
+    private void getApprovedFriends(User user) throws Exception {
+        friends = getService().getFriendsService().getApproved(user);
+    }
+
+    private void getProposedFriends(User user) throws Exception {
+        friends = getService().getFriendsService().getProposed(user);
+    }
+
+    private void getPendingFriends(User user) throws Exception {
+        friends = getService().getFriendsService().getPendings(user);
     }
 }

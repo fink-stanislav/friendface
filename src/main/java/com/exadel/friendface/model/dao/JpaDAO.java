@@ -62,6 +62,15 @@ public class JpaDAO {
         return query.getSingleResult();
     }
 
+    public <T> T executeNamedQuery(String queryName, Class<T> entityClass, Map<String, Object> params) {
+        TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
+        Set<Map.Entry<String, Object>> paramsEntrySet = params.entrySet();
+        for (Map.Entry<String, Object> entry : paramsEntrySet) {
+            query.setParameter(entry.getKey(), entry.getValue());
+        }
+        return query.getSingleResult();
+    }
+
     public <T> List<T> executeNamedQueryList(String queryName, Class<T> entityClass) {
         TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
         return query.getResultList();

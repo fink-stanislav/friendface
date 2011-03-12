@@ -12,8 +12,19 @@ import java.util.List;
  */
 
 public interface FriendsDAO {
-    void addFriend(Friend friend) throws Exception;
+    void setProposed(User sender, User receiver) throws Exception;
+
+    void approve(Friend friend) throws Exception;
+
     void deleteFriend(Friend friend) throws Exception;
-    Friend getFriend(Integer recordId) throws Exception;
-    List<Friend> getFriends(User user) throws Exception;
+
+    Friend getById(Integer recordId) throws Exception;
+
+    Friend getFriend(User receiver, User sender);
+
+    List<Friend> getApproved(User user) throws Exception;
+
+    List<Friend> getProposed(User user) throws Exception;
+
+    List<Friend> getPendings(User user) throws Exception;
 }

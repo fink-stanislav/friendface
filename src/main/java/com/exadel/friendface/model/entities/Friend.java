@@ -11,18 +11,24 @@ import javax.persistence.*;
 @Entity
 @Table(name = "friends")
 @NamedQueries(value = {
-        @NamedQuery(name = "getUserFriends", query = "select f from Friend f where f.user.id = :userId")
+        @NamedQuery(name = "getApproved",
+                query = "select f from Friend f where (f.receiver = :user or f.sender = :user) and f.isApproved = true"),
+        @NamedQuery(name = "getPending",
+                query = "select f from Friend f where f.sender = :user and f.isApproved = false"),
+        @NamedQuery(name = "getProposal",
+                query = "select f from Friend f where f.receiver = :user and f.isApproved = false"),
+        @NamedQuery(name = "getSingle", query = "select f from Friend f where f.receiver = :rec and f.sender = :sen")
 })
 public class Friend {
     @Id
     @GeneratedValue
     private Integer id;
     @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    @JoinColumn(name = "sender")
+    private User sender;
     @ManyToOne
-    @JoinColumn(name = "friendId")
-    private User friend;
+    @JoinColumn(name = "receiver")
+    private User receiver;
     private Boolean isApproved;
 
     public Integer getId() {
@@ -33,20 +39,20 @@ public class Friend {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public User getSender() {
+        return sender;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setSender(User sender) {
+        this.sender = sender;
     }
 
-    public User getFriend() {
-        return friend;
+    public User getReceiver() {
+        return receiver;
     }
 
-    public void setFriend(User friend) {
-        this.friend = friend;
+    public void setReceiver(User receiver) {
+        this.receiver = receiver;
     }
 
     public Boolean getApproved() {
