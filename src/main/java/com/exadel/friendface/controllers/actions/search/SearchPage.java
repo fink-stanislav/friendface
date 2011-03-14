@@ -26,6 +26,14 @@ public class SearchPage extends SessionAction {
 
     @Override
     public String execute() {
+        try {
+            return prepareSearch();
+        } catch (Exception e) {
+            return resultAndErrorMessage(ERROR, getText("internal.app.error"));
+        }
+    }
+
+    private String prepareSearch() throws Exception {
         String sessionValue = getFromSession(SEARCH_ENTRY);
         String errorMessage = getFromSession(ACTION_MESSAGE);
 

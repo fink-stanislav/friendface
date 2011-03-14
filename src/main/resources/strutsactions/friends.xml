@@ -13,5 +13,9 @@
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+        <action name="sendProposal" class="com.exadel.friendface.controllers.actions.friends.SendProposal">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
     </package>
 </struts>

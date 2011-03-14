@@ -34,18 +34,22 @@
         <action name="peopleFound" class="com.exadel.friendface.controllers.actions.search.results.PeopleFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="picturesFound" class="com.exadel.friendface.controllers.actions.search.results.PicturesFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="postsFound" class="com.exadel.friendface.controllers.actions.search.results.PostsFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="videosFound" class="com.exadel.friendface.controllers.actions.search.results.VideosFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
     </package>
 </struts>

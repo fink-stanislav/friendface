@@ -7,7 +7,8 @@
                 <s:iterator value="resultList" status="status">
                     <s:div cssClass="listitem">
                         <div class="itemheader">
-                            <s:form method="POST" name="addToFriendsForm">
+                            <s:form method="POST" name="addToFriendsForm" action="sendProposal">
+                                <s:hidden name="receiverId" value="%{[0].id}"/>
                                 <s:a href="#" onclick="document.forms['addToFriendsForm'].submit()">
                                     add to friends
                                 </s:a>

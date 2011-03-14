@@ -8,6 +8,7 @@
         <action name="friendList" class="com.exadel.friendface.controllers.actions.friends.FriendListPage">
             <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="messages">
             <result name="success" type="tiles">messages.tiles</result>
@@ -24,6 +25,7 @@
         <action name="search" class="com.exadel.friendface.controllers.actions.search.SearchPage">
             <result name="success" type="tiles">search.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
     </package>
 </struts>
