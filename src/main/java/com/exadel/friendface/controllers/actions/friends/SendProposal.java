@@ -1,11 +1,15 @@
 package com.exadel.friendface.controllers.actions.friends;
 
-import com.exadel.friendface.controllers.actions.SessionAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
+import com.exadel.friendface.controllers.actions.utils.SessionUtils;
 import com.exadel.friendface.model.entities.User;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.Map;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
 
@@ -15,9 +19,10 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 1:58 AM
  */
 
-public class SendProposal extends SessionAction implements ServletRequestAware {
+public class SendProposal extends StandardAction implements ServletRequestAware, SessionAware {
     private Integer receiverId;
     private String nextAction;
+    private SessionUtils session;
 
     @Override
     public String execute() {
@@ -30,7 +35,7 @@ public class SendProposal extends SessionAction implements ServletRequestAware {
     }
 
     private void sendProposal() throws Exception {
-        User sender = getService().getUserService().getFromSession(getSession());
+        User sender = getService().getUserService().getFromSession(session.getSession());
         User receiver = getService().getUserService().getById(receiverId);
         getService().getFriendsService().sendProposal(sender, receiver);
     }
@@ -51,5 +56,9 @@ public class SendProposal extends SessionAction implements ServletRequestAware {
 
     public String getNextAction() {
         return nextAction;
+    }
+
+    public void setSession(Map session) {
+        this.session = new SessionUtils(session);
     }
 }

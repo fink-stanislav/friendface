@@ -1,19 +1,17 @@
-package com.exadel.friendface.controllers.actions;
-
-import org.apache.struts2.interceptor.SessionAware;
+package com.exadel.friendface.controllers.actions.utils;
 
 import java.util.Map;
 
 /**
  * Author: S. Fink
- * Date: 3/9/11
- * Time: 10:49 PM
+ * Date: 15.03.11
+ * Time: 23:20
  */
 
-public abstract class SessionAction extends StandardAction implements SessionAware {
+public class SessionUtils {
     private Map session;
 
-    public void setSession(Map session) {
+    public SessionUtils(Map session) {
         this.session = session;
     }
 

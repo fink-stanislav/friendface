@@ -1,9 +1,12 @@
 package com.exadel.friendface.controllers.actions.search.settings;
 
-import com.exadel.friendface.controllers.actions.SessionAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
+import com.exadel.friendface.controllers.actions.utils.ParameterUtils;
+import com.exadel.friendface.controllers.actions.utils.SessionUtils;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import org.apache.struts2.interceptor.ParameterAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
@@ -13,9 +16,10 @@ import java.util.Map;
  * Time: 12:04 AM
  */
 
-public class SearchVideos extends SessionAction implements ParameterAware {
+public class SearchVideos extends StandardAction implements ParameterAware, SessionAware {
     private String videoTitle;
-    private Map parameters;
+    private SessionUtils session;
+    private ParameterUtils parameters;
 
     @Override
     public void validate() {
@@ -23,21 +27,17 @@ public class SearchVideos extends SessionAction implements ParameterAware {
             Validator validator = new Validator();
             validator.notBlank(videoTitle);
         } catch (ValidationException e) {
-            putToSession(SEARCH_ENTRY, "Videos");
-            putToSession(ACTION_MESSAGE, getText(e.toString()));
+            session.putToSession(SEARCH_ENTRY, "Videos");
+            session.putToSession(ACTION_MESSAGE, getText(e.toString()));
             addActionError(getText(e.toString()));
         }
     }
 
     @Override
     public String execute() {
-        putToSession(SEARCH_ENTRY, "Videos");
-        parameters.put(SEARCH_ENTRY, "Videos");
+        session.putToSession(SEARCH_ENTRY, "Videos");
+        parameters.setParameter(SEARCH_ENTRY, "Videos");
         return SUCCESS;
-    }
-
-    public void setParameters(Map parameters) {
-        this.parameters = parameters;
     }
 
     public String getVideoTitle() {
@@ -46,5 +46,13 @@ public class SearchVideos extends SessionAction implements ParameterAware {
 
     public void setVideoTitle(String videoTitle) {
         this.videoTitle = videoTitle;
+    }
+
+    public void setParameters(Map parameters) {
+        this.parameters = new ParameterUtils(parameters);
+    }
+
+    public void setSession(Map session) {
+        this.session = new SessionUtils(session);
     }
 }

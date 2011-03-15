@@ -17,7 +17,8 @@ import javax.persistence.*;
                 query = "select f from Friend f where f.sender = :user and f.isApproved = false"),
         @NamedQuery(name = "getProposal",
                 query = "select f from Friend f where f.receiver = :user and f.isApproved = false"),
-        @NamedQuery(name = "getSingle", query = "select f from Friend f where f.receiver = :rec and f.sender = :sen")
+        @NamedQuery(name = "getSingle",
+                query = "select f from Friend f where f.receiver = :rec and f.sender = :sen")
 })
 public class Friend {
     @Id

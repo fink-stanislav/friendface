@@ -1,6 +1,4 @@
-package com.exadel.friendface.controllers.actions;
-
-import org.apache.struts2.interceptor.ParameterAware;
+package com.exadel.friendface.controllers.actions.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,14 +6,14 @@ import java.util.Set;
 
 /**
  * Author: S. Fink
- * Date: 3/11/11
- * Time: 12:31 AM
+ * Date: 15.03.11
+ * Time: 23:19
  */
 
-public abstract class ParametrizedAction extends StandardAction implements ParameterAware {
+public class ParameterUtils {
     private Map parameters;
 
-    public void setParameters(Map parameters) {
+    public ParameterUtils(Map parameters) {
         this.parameters = parameters;
     }
 

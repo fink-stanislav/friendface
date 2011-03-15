@@ -2,6 +2,7 @@ package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
+import com.exadel.friendface.model.enums.ContactState;
 
 import javax.persistence.NoResultException;
 import java.util.HashMap;
@@ -57,24 +58,20 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
     }
 
     public List<Friend> getApproved(User user) throws Exception {
-        try {
-            return executeNamedQueryList("getApproved", Friend.class, "user", user);
-        } catch (NoResultException e) {
-            return null;
-        }
+        return getFriendList(user, "getApproved");
     }
 
     public List<Friend> getProposed(User user) throws Exception {
-        try {
-            return executeNamedQueryList("getProposal", Friend.class, "user", user);
-        } catch (NoResultException e) {
-            return null;
-        }
+        return getFriendList(user, "getProposal");
     }
 
-    public List<Friend> getPendings(User user) throws Exception {
+    public List<Friend> getPending(User user) throws Exception {
+        return getFriendList(user, "getPending");
+    }
+
+    private List<Friend> getFriendList(User user, String queryName) {
         try {
-            return executeNamedQueryList("getPending", Friend.class, "user", user);
+            return executeNamedQueryList(queryName, Friend.class, "user", user);
         } catch (NoResultException e) {
             return null;
         }

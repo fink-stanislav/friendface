@@ -17,6 +17,6 @@ public interface UserDAO {
     void updateUser(User user) throws Exception;
     User getUser(Integer userId) throws Exception;
     User getUser(String loginEmail) throws Exception;
-    List<User> findUser(Map<String, String> searchParams) throws Exception;
+    List<User> findUsers(Map<String, String> searchParams) throws Exception;
     Boolean isUserExists(User user) throws Exception;
 }

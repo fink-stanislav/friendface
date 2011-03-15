@@ -1,9 +1,12 @@
 package com.exadel.friendface.controllers.actions.search;
 
-import com.exadel.friendface.controllers.actions.SessionAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
+import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Author: S. Fink
@@ -11,9 +14,10 @@ import java.util.List;
  * Time: 7:25 PM
  */
 
-public class SearchPage extends SessionAction {
+public class SearchPage extends StandardAction implements SessionAware {
     private List<String> searchEntries;
     private String searchEntry;
+    private SessionUtils session;
 
     public SearchPage() {
         searchEntries = new ArrayList<String>();
@@ -34,17 +38,17 @@ public class SearchPage extends SessionAction {
     }
 
     private String prepareSearch() throws Exception {
-        String sessionValue = getFromSession(SEARCH_ENTRY);
-        String errorMessage = getFromSession(ACTION_MESSAGE);
+        String sessionValue = session.getFromSession(SEARCH_ENTRY);
+        String errorMessage = session.getFromSession(ACTION_MESSAGE);
 
         if (sessionValue == null) {
-            putToSession(SEARCH_ENTRY, searchEntry);
+            session.putToSession(SEARCH_ENTRY, searchEntry);
             return SUCCESS;
         }
 
         if (errorMessage != null) {
             addActionMessage(errorMessage);
-            removeFromSession(ACTION_MESSAGE);
+            session.removeFromSession(ACTION_MESSAGE);
         }
         return SUCCESS;
     }
@@ -58,10 +62,14 @@ public class SearchPage extends SessionAction {
     }
 
     public String getSearchEntry() {
-        return getFromSession(SEARCH_ENTRY);
+        return session.getFromSession(SEARCH_ENTRY);
     }
 
     public void setSearchEntry(String searchEntry) {
-        putToSession(SEARCH_ENTRY, searchEntry);
+        session.putToSession(SEARCH_ENTRY, searchEntry);
+    }
+
+    public void setSession(Map session) {
+        this.session = new SessionUtils(session);
     }
 }

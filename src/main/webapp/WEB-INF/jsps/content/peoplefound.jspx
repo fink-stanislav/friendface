@@ -8,7 +8,7 @@
                     <s:div cssClass="listitem">
                         <div class="itemheader">
                             <s:form method="POST" name="addToFriendsForm" action="sendProposal">
-                                <s:hidden name="receiverId" value="%{[0].id}"/>
+                                <s:hidden name="receiverId" value="%{[0].user.id}"/>
                                 <s:a href="#" onclick="document.forms['addToFriendsForm'].submit()">
                                     add to friends
                                 </s:a>
@@ -22,8 +22,8 @@
                             <div class="itemtextinfo">
                                 <s:form method="POST" name="redirectToUserPageForm">
                                     <a href="#" onclick="document.forms['redirectToUserPageForm'].submit()">
-                                        <s:property value="%{[0].username}"/>&#160;
-                                        <s:property value="%{[0].userSurname}"/>
+                                        <s:property value="%{[0].user.username}"/>&#160;
+                                        <s:property value="%{[0].user.userSurname}"/>
                                     </a>
                                 </s:form>
                             </div>

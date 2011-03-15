@@ -9,6 +9,7 @@ import org.hibernate.search.jpa.Search;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,11 +35,16 @@ public class JpaSearch {
     public <T> List<T> find(Map<String, String> searchParams, Class<T> entityClass) throws Exception {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-        javax.persistence.Query persistenceQuery =
-                fullTextEntityManager.createFullTextQuery(buildLuceneQuery(searchParams), entityClass);
-        transaction.commit();
-        return persistenceQuery.getResultList();
+        javax.persistence.Query persistenceQuery;
+        try {
+            transaction.begin();
+            persistenceQuery = fullTextEntityManager.createFullTextQuery(buildLuceneQuery(searchParams), entityClass);
+            transaction.commit();
+            return persistenceQuery.getResultList();
+        } catch (PersistenceException e) {
+            transaction.rollback();
+            throw new PersistenceException(e);
+        }
     }
 
     public Query buildLuceneQuery(Map<String, String> searchParams) throws Exception {

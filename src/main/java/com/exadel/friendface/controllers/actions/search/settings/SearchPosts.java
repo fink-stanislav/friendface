@@ -1,9 +1,10 @@
 package com.exadel.friendface.controllers.actions.search.settings;
 
-import com.exadel.friendface.controllers.actions.SessionAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import org.apache.struts2.interceptor.ParameterAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
@@ -13,10 +14,9 @@ import java.util.Map;
  * Time: 12:04 AM
  */
 
-public class SearchPosts extends SessionAction implements ParameterAware {
+public class SearchPosts extends SearchSettings {
     private String postTitle;
     private String containText;
-    private Map parameters;
 
     @Override
     public void validate() {
@@ -25,21 +25,14 @@ public class SearchPosts extends SessionAction implements ParameterAware {
             validator.increasingNotBlank(postTitle);
             validator.increasingNotBlank(containText);
         } catch (ValidationException e) {
-            putToSession(SEARCH_ENTRY, "Posts");
-            putToSession(ACTION_MESSAGE, getText(e.toString()));
-            addActionError(getText(e.toString()));
+            handleValidationException(e, "Posts");
         }
     }
 
     @Override
     public String execute() {
-        putToSession(SEARCH_ENTRY, "Posts");
-        parameters.put(SEARCH_ENTRY, "Posts");
+        executeDefault("Posts");
         return SUCCESS;
-    }
-
-    public void setParameters(Map parameters) {
-        this.parameters = parameters;
     }
 
     public String getPostTitle() {

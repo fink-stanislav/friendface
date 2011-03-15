@@ -3,6 +3,7 @@ package com.exadel.friendface.service.friends;
 import com.exadel.friendface.model.dao.FriendsDAO;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
+import com.exadel.friendface.model.enums.ContactState;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,20 +49,34 @@ public class FriendsService {
 
     public List<User> getApproved(User user) throws Exception {
         List<Friend> friendList = getDAOFactory().getFriendsDAO().getApproved(user);
-        return getFriendList(user, friendList);
+        return getUserList(user, friendList);
     }
 
     public List<User> getProposed(User user) throws Exception {
         List<Friend> friendList = getDAOFactory().getFriendsDAO().getProposed(user);
-        return getFriendList(user, friendList);
+        return getUserList(user, friendList);
     }
 
-    public List<User> getPendings(User user) throws Exception {
-        List<Friend> friendList = getDAOFactory().getFriendsDAO().getPendings(user);
-        return getFriendList(user, friendList);
+    public List<User> getPending(User user) throws Exception {
+        List<Friend> friendList = getDAOFactory().getFriendsDAO().getPending(user);
+        return getUserList(user, friendList);
     }
 
-    private List<User> getFriendList(User user, List<Friend> friendList) {
+    public ContactState getContactState(User currentUser, User other) throws Exception {
+        Friend friend = getDAOFactory().getFriendsDAO().getFriend(currentUser, other);
+        if (friend == null) {
+            friend = getDAOFactory().getFriendsDAO().getFriend(other, currentUser);
+        }
+        if (friend == null) {
+            return ContactState.NOT_CONNECTED;
+        } else if (friend.getApproved()) {
+            return ContactState.APPROVED;
+        } else {
+            return ContactState.PENDING;
+        }
+    }
+
+    private List<User> getUserList(User user, List<Friend> friendList) {
         List<User> result = new ArrayList<User>(friendList.size());
         for (Friend friend : friendList) {
             if (friend.getReceiver().getId().equals(user.getId())) {

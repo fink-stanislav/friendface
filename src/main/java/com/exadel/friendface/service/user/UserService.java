@@ -73,6 +73,6 @@ public class UserService {
     }
 
     public List<User> find(Map<String, String> searchParams) throws Exception {
-        return getDAOFactory().getUserDAO().findUser(searchParams);
+        return getDAOFactory().getUserDAO().findUsers(searchParams);
     }
 }

@@ -38,7 +38,7 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
         return executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
     }
 
-    public List<User> findUser(Map<String, String> searchParams) throws Exception {
+    public List<User> findUsers(Map<String, String> searchParams) throws Exception {
         JpaSearch search = new JpaSearch(entityManager);
         return search.find(searchParams, User.class);
     }

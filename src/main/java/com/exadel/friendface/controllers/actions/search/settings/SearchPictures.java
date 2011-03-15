@@ -1,9 +1,10 @@
 package com.exadel.friendface.controllers.actions.search.settings;
 
-import com.exadel.friendface.controllers.actions.SessionAction;
+import com.exadel.friendface.controllers.actions.StandardAction;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import org.apache.struts2.interceptor.ParameterAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
@@ -13,9 +14,8 @@ import java.util.Map;
  * Time: 12:04 AM
  */
 
-public class SearchPictures extends SessionAction implements ParameterAware {
+public class SearchPictures extends SearchSettings {
     private String picTitle;
-    private Map parameters;
 
     @Override
     public void validate() {
@@ -23,21 +23,14 @@ public class SearchPictures extends SessionAction implements ParameterAware {
             Validator validator = new Validator();
             validator.notBlank(picTitle);
         } catch (ValidationException e) {
-            putToSession(SEARCH_ENTRY, "Pictures");
-            putToSession(ACTION_MESSAGE, getText(e.toString()));
-            addActionError(getText(e.toString()));
+            handleValidationException(e, "Pictures");
         }
     }
 
     @Override
     public String execute() {
-        putToSession(SEARCH_ENTRY, "Pictures");
-        parameters.put(SEARCH_ENTRY, "Pictures");
+        executeDefault("Pictures");
         return SUCCESS;
-    }
-
-    public void setParameters(Map parameters) {
-        this.parameters = parameters;
     }
 
     public String getPicTitle() {
