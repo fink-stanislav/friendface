@@ -7,18 +7,27 @@
                 <s:iterator value="resultList" status="status">
                     <s:div cssClass="listitem">
                         <div class="itemheader">
+                            <s:if test="%{[0].state.name() eq 'NOT_CONNECTED'}">
                             <s:form method="POST" name="addToFriendsForm" action="sendProposal">
                                 <s:hidden name="receiverId" value="%{[0].user.id}"/>
                                 <s:a href="#" onclick="document.forms['addToFriendsForm'].submit()">
                                     add to friends
                                 </s:a>
                             </s:form>
+                            </s:if>
+                            <s:elseif test="%{[0].state.name() eq 'APPROVED'}">
+                            <s:form method="POST" name="deleteFromFriendsForm">
+                                <s:hidden name="id" value="%{[0].user.id}"/>
+                                <s:a href="#" onclick="document.forms['deleteFromFriendsForm'].submit()">
+                                    delete from friends
+                                </s:a>
+                            </s:form>
+                            </s:elseif>
                         </div>
                         <div class="itemcontent">
                             <a href="">
                                 <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
                             </a>
-
                             <div class="itemtextinfo">
                                 <s:form method="POST" name="redirectToUserPageForm">
                                     <a href="#" onclick="document.forms['redirectToUserPageForm'].submit()">

@@ -4,11 +4,14 @@ import com.exadel.friendface.controllers.actions.StandardAction;
 import com.exadel.friendface.controllers.actions.utils.SessionUtils;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
+import static org.apache.commons.lang.StringUtils.substringAfterLast;
 
 /**
  * Author: S. Fink
@@ -16,9 +19,10 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  * Time: 21:38
  */
 
-public class DeleteFriend extends StandardAction implements SessionAware {
+public class DeleteFriend extends StandardAction implements ServletRequestAware, SessionAware {
     private Integer id;
     private SessionUtils session;
+    private String nextAction;
 
     public Integer getId() {
         return id;
@@ -43,6 +47,16 @@ public class DeleteFriend extends StandardAction implements SessionAware {
         User friend = getService().getUserService().getById(id);
         Friend result = getService().getFriendsService().getFriend(owner, friend);
         getService().getFriendsService().remove(result);
+    }
+
+    public String getNextAction() {
+        return nextAction;
+    }
+
+    public void setServletRequest(HttpServletRequest request) {
+        String referer = request.getHeader("referer");
+        referer = substringAfterLast(referer, "/");
+        nextAction = referer;
     }
 
     public void setSession(Map session) {
