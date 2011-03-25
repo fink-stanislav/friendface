@@ -1,0 +1,45 @@
+﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+    <script src="js/tabs.js" type="text/javascript"></script>
+    <style type="text/css">
+        @import "css/tabs.css";
+    </style>
+    <s:i18n name="jsps.content.friends">
+        <div id="tabcontrol">
+            <div id="tabs">
+                <ul>
+                    <li class="tab" id="approvedTab"
+                        style="display: block; border-bottom: 1px solid white; background: white">
+                        <s:a href="#" onclick="switchItem('approvedTab', 'approvedPane', 'white');">
+                            <span>Approved</span>
+                        </s:a>
+                    </li>
+                    <li class="tab" id="proposedTab">
+                        <s:a href="#" onclick="switchItem('proposedTab', 'proposedPane', 'white');">
+                            <span>Proposals</span>
+                        </s:a>
+                    </li>
+                    <li class="tab" id="pendingTab">
+                        <s:a href="#" onclick="switchItem('pendingTab', 'pendingPane', 'white');">
+                            <span>Pending</span>
+                        </s:a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="panes">
+                <div id="approvedPane" class="pane"
+                     style="display: block;">
+                    <s:include value="/WEB-INF/jsps/content/friends/approved.jspx"/>
+                </div>
+                <div id="proposedPane" class="pane">
+                    <s:include value="/WEB-INF/jsps/content/friends/proposed.jspx"/>
+                </div>
+                <div id="pendingPane" class="pane">
+                    <s:include value="/WEB-INF/jsps/content/friends/pending.jspx"/>
+                </div>
+            </div>
+        </div>
+    </s:i18n>
+</jsp:root>

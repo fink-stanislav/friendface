@@ -1,0 +1,11 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+    <form action="deleteFriend.action" method="POST" name="deleteFriendForm">
+        <s:hidden name="id" value="%{[0].id}"/>
+        <s:a href="#" onclick="document.forms['deleteForm'].submit()"
+             title="%{getText('link.delete.title')}">
+            <s:text name="link.delete.value"/>
+        </s:a>
+    </form>
+</jsp:root>

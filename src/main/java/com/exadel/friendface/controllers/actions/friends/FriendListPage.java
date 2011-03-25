@@ -5,7 +5,6 @@ import com.exadel.friendface.controllers.actions.utils.SessionUtils;
 import com.exadel.friendface.model.entities.User;
 import org.apache.struts2.interceptor.SessionAware;
 
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -18,39 +17,66 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
  */
 
 public class FriendListPage extends StandardAction implements SessionAware {
-    private List<User> friends;
-    private Boolean hasFriends;
+    private List<User> approvedFriends;
+    private List<User> proposedFriends;
+    private List<User> pendingFriends;
+    private Boolean hasApprovedFriends;
+    private Boolean hasProposedFriends;
+    private Boolean hasPendingFriends;
     private SessionUtils session;
 
-    public Collection getFriends() {
-        return friends;
-    }
-
-    public Boolean getHasFriends() {
-        return hasFriends;
-    }
+    // something like active tab needed
 
     @Override
     public String execute() {
         try {
-            getApprovedFriends(getService().getUserService().getFromSession(session.getSession()));
-            hasFriends = !friends.isEmpty();
+            User user = getService().getUserService().getFromSession(session.getSession());
+            setApprovedFriends(user);
+            setProposedFriends(user);
+            setPendingFriends(user);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error"));
         }
     }
 
-    private void getApprovedFriends(User user) throws Exception {
-        friends = getService().getFriendsService().getApproved(user);
+    private void setApprovedFriends(User user) throws Exception {
+        approvedFriends = getService().getFriendsService().getApproved(user);
+        hasApprovedFriends = !approvedFriends.isEmpty();
     }
 
-    private void getProposedFriends(User user) throws Exception {
-        friends = getService().getFriendsService().getProposed(user);
+    private void setProposedFriends(User user) throws Exception {
+        proposedFriends = getService().getFriendsService().getProposed(user);
+        hasProposedFriends = !proposedFriends.isEmpty();
     }
 
-    private void getPendingFriends(User user) throws Exception {
-        friends = getService().getFriendsService().getPending(user);
+    private void setPendingFriends(User user) throws Exception {
+        pendingFriends = getService().getFriendsService().getPending(user);
+        hasPendingFriends = !pendingFriends.isEmpty();
+    }
+
+    public Boolean getHasApprovedFriends() {
+        return hasApprovedFriends;
+    }
+
+    public Boolean getHasProposedFriends() {
+        return hasProposedFriends;
+    }
+
+    public Boolean getHasPendingFriends() {
+        return hasPendingFriends;
+    }
+
+    public List<User> getApprovedFriends() {
+        return approvedFriends;
+    }
+
+    public List<User> getProposedFriends() {
+        return proposedFriends;
+    }
+
+    public List<User> getPendingFriends() {
+        return pendingFriends;
     }
 
     public void setSession(Map session) {

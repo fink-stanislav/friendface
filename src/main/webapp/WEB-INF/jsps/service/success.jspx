@@ -1,8 +1,10 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
-
-     <s:i18n name="jsps.service.success">
+    <style type="text/css">
+        @import "css/doublecontainer.css";
+    </style>
+    <s:i18n name="jsps.service.success">
         <div id="article-header-side">
             <s:text name="congrat"/>
         </div>

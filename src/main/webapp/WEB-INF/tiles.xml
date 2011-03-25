@@ -54,7 +54,7 @@
 
     <definition name="friends.tiles" extends="content.page.template">
         <put-attribute name="title" value="jsps.content.friends"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/friends.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/friends/friends.jspx"/>
     </definition>
 
     <definition name="messages.tiles" extends="content.page.template">

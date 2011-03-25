@@ -1,8 +1,6 @@
-<!--
-  User: S. Fink
-  Date: 2/7/11
-  Time: 12:52 PM
--->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0">
+
     Coming soon!
+
 </jsp:root>
