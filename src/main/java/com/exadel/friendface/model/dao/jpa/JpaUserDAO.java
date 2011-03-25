@@ -1,5 +1,6 @@
-package com.exadel.friendface.model.dao;
+package com.exadel.friendface.model.dao.jpa;
 
+import com.exadel.friendface.model.dao.UserDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.search.JpaSearch;
 

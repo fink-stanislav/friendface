@@ -9,7 +9,6 @@ import com.exadel.friendface.view.beans.RegistrationBean;
 import java.util.List;
 import java.util.Map;
 
-import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
 import static com.exadel.friendface.service.user.UserUtils.*;
 
 /**
@@ -20,12 +19,21 @@ import static com.exadel.friendface.service.user.UserUtils.*;
 
 public class UserService {
     private static UserService service;
+    private UserDAO dao;
 
     public static UserService getService() {
         if (service == null) {
             service = new UserService();
         }
         return service;
+    }
+
+    private UserService() {
+        try {
+            dao = DAOFactory.getDAOFactory().getUserDAO();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean login(LoginBean bean, Map session) throws Exception {
@@ -40,10 +48,9 @@ public class UserService {
 
     public boolean register(RegistrationBean bean) throws Exception {
         User user = getUserFromBean(bean);
-        UserDAO userDAO = DAOFactory.getDAOFactory().getUserDAO();
 
-        if (!userDAO.isUserExists(user)) {
-            userDAO.createUser(user);
+        if (!dao.isUserExists(user)) {
+            dao.createUser(user);
             // send mail
             return true;
         }
@@ -65,14 +72,14 @@ public class UserService {
     }
 
     public User getByLogin(String login) throws Exception {
-        return getDAOFactory().getUserDAO().getUser(login);
+        return dao.getUser(login);
     }
 
     public User getById(Integer id) throws Exception {
-        return getDAOFactory().getUserDAO().getUser(id);
+        return dao.getUser(id);
     }
 
     public List<User> find(Map<String, String> searchParams) throws Exception {
-        return getDAOFactory().getUserDAO().findUsers(searchParams);
+        return dao.findUsers(searchParams);
     }
 }

@@ -18,6 +18,7 @@ import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
 
 public class FriendsService {
     private static FriendsService service;
+    private FriendsDAO dao;
 
     public static FriendsService getService() {
         if (service == null) {
@@ -26,46 +27,53 @@ public class FriendsService {
         return service;
     }
 
+    public FriendsService() {
+        try {
+            dao = getDAOFactory().getFriendsDAO();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Friend getFriend(User owner, User friend) throws Exception {
-        FriendsDAO friendsDAO = getDAOFactory().getFriendsDAO();
-        Friend result = friendsDAO.getFriend(owner, friend);
+        Friend result = dao.getFriend(owner, friend);
         if (result == null) {
-            result = friendsDAO.getFriend(friend, owner);
+            result = dao.getFriend(friend, owner);
         }
         return result;
     }
 
     public void remove(Friend friend) throws Exception {
-        getDAOFactory().getFriendsDAO().deleteFriend(friend);
+        dao.deleteFriend(friend);
     }
 
     public void sendProposal(User sender, User receiver) throws Exception {
-        getDAOFactory().getFriendsDAO().setProposed(sender, receiver);
+        dao.setProposed(sender, receiver);
     }
 
     public Friend getById(Integer id) throws Exception {
-        return getDAOFactory().getFriendsDAO().getById(id);
+        return dao.getById(id);
     }
 
     public List<User> getApproved(User user) throws Exception {
-        List<Friend> friendList = getDAOFactory().getFriendsDAO().getApproved(user);
+        List<Friend> friendList = dao.getApproved(user);
         return getUserList(user, friendList);
     }
 
     public List<User> getProposed(User user) throws Exception {
-        List<Friend> friendList = getDAOFactory().getFriendsDAO().getProposed(user);
+        List<Friend> friendList = dao.getProposed(user);
         return getUserList(user, friendList);
     }
 
     public List<User> getPending(User user) throws Exception {
-        List<Friend> friendList = getDAOFactory().getFriendsDAO().getPending(user);
+        List<Friend> friendList = dao.getPending(user);
         return getUserList(user, friendList);
     }
 
     public ContactState getContactState(User currentUser, User other) throws Exception {
-        Friend friend = getDAOFactory().getFriendsDAO().getFriend(currentUser, other);
+        Friend friend = dao.getFriend(currentUser, other);
         if (friend == null) {
-            friend = getDAOFactory().getFriendsDAO().getFriend(other, currentUser);
+            friend = dao.getFriend(other, currentUser);
         }
         if (friend == null) {
             return ContactState.NOT_CONNECTED;

@@ -1,15 +1,10 @@
 package com.exadel.friendface.controllers.actions.search.results;
 
-import com.exadel.friendface.controllers.actions.utils.ParameterUtils;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.view.beans.DisplayUserBean;
-import org.apache.struts2.interceptor.ParameterAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
 

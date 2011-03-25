@@ -27,6 +27,13 @@
                                     </s:a>
                                 </s:form>
                             </s:elseif>
+                            <s:elseif test="%{[0].state.name() eq 'PENDING'}">
+                                <s:form>
+                                    <s:a href="#">
+                                        reject proposal
+                                    </s:a>
+                                </s:form>
+                            </s:elseif>
                         </div>
                         <div class="itemcontent">
                             <a href="">

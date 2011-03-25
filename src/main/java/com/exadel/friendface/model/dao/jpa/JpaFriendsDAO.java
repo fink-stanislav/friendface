@@ -1,8 +1,8 @@
-package com.exadel.friendface.model.dao;
+package com.exadel.friendface.model.dao.jpa;
 
+import com.exadel.friendface.model.dao.FriendsDAO;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
-import com.exadel.friendface.model.enums.ContactState;
 
 import javax.persistence.NoResultException;
 import java.util.HashMap;
