@@ -19,23 +19,23 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
         super();
     }
 
-    public void createUser(User user) throws Exception {
+    public void createUser(User user) {
         persistEntity(user);
     }
 
-    public void deleteUser(User user) throws Exception {
+    public void deleteUser(User user) {
         removeEntity(user);
     }
 
-    public void updateUser(User user) throws Exception {
+    public void updateUser(User user) {
         updateEntity(user);
     }
 
-    public User getUser(Integer userId) throws Exception {
+    public User getUser(Integer userId) {
         return getById(userId, User.class);
     }
 
-    public User getUser(String loginEmail) throws Exception {
+    public User getUser(String loginEmail) {
         return executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
     }
 
@@ -44,7 +44,7 @@ public class JpaUserDAO extends JpaDAO implements UserDAO {
         return search.find(searchParams, User.class);
     }
 
-    public Boolean isUserExists(User user) throws Exception {
+    public Boolean isUserExists(User user) {
         try {
             getUser(user.getLoginEmail());
             return true;

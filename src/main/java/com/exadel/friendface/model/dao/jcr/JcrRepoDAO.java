@@ -4,6 +4,7 @@ import com.exadel.friendface.model.dao.RepoDAO;
 import com.exadel.friendface.model.entities.User;
 
 import javax.jcr.Node;
+import javax.jcr.PathNotFoundException;
 import javax.jcr.RepositoryException;
 
 /**
@@ -26,8 +27,10 @@ public class JcrRepoDAO extends JcrDAO implements RepoDAO {
     }
 
     private Node addNodeIfNotExists(Node parent, String name) throws RepositoryException {
-        Node node = parent.getNode(name);
-        if (node == null) {
+        Node node;
+        try {
+            node = parent.getNode(name);
+        } catch (PathNotFoundException e) {
             return parent.addNode(name);
         }
         return node;

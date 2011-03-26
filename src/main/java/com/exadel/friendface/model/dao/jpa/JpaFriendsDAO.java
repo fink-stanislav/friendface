@@ -20,7 +20,7 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
         super();
     }
 
-    public void setProposed(User sender, User receiver) throws Exception {
+    public void setProposed(User sender, User receiver) {
         Friend friend = new Friend();
         friend.setSender(sender);
         friend.setReceiver(receiver);
@@ -28,17 +28,17 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
         persistEntity(friend);
     }
 
-    public void approve(Friend friend) throws Exception {
+    public void approve(Friend friend) {
         Friend f = getById(friend.getId());
         f.setApproved(true);
         persistEntity(f);
     }
 
-    public void deleteFriend(Friend friend) throws Exception {
+    public void deleteFriend(Friend friend) {
         removeEntity(friend);
     }
 
-    public Friend getById(Integer recordId) throws Exception {
+    public Friend getById(Integer recordId) {
         try {
             return getById(recordId, Friend.class);
         } catch (NoResultException e) {
@@ -57,15 +57,15 @@ public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
         }
     }
 
-    public List<Friend> getApproved(User user) throws Exception {
+    public List<Friend> getApproved(User user) {
         return getFriendList(user, "getApproved");
     }
 
-    public List<Friend> getProposed(User user) throws Exception {
+    public List<Friend> getProposed(User user) {
         return getFriendList(user, "getProposal");
     }
 
-    public List<Friend> getPending(User user) throws Exception {
+    public List<Friend> getPending(User user) {
         return getFriendList(user, "getPending");
     }
 

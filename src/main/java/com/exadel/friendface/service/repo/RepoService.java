@@ -7,6 +7,8 @@ import com.exadel.friendface.model.entities.User;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
+import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
+
 /**
  * Author: S. Fink
  * Date: 3/25/11
@@ -14,12 +16,12 @@ import javax.jcr.RepositoryException;
  */
 
 public class RepoService {
-    private static RepoService service = new RepoService();
+    private static RepoService service;
     private RepoDAO dao;
 
     private RepoService() {
         try {
-            dao = DAOFactory.getDAOFactory().getRepoDAO();
+            dao = getDAOFactory(DAOFactory.StorageEngineType.jcr).getRepoDAO();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -30,10 +32,5 @@ public class RepoService {
             service = new RepoService();
         }
         return service;
-    }
-
-    public Node getUserNode(User user) throws RepositoryException {
-        dao.setupRepository(user);
-        return dao.getUserNode(user);
     }
 }

@@ -12,11 +12,17 @@ import java.util.Map;
  */
 
 public interface UserDAO {
-    void createUser(User user) throws Exception;
-    void deleteUser(User user) throws Exception;
-    void updateUser(User user) throws Exception;
-    User getUser(Integer userId) throws Exception;
-    User getUser(String loginEmail) throws Exception;
+    void createUser(User user);
+
+    void deleteUser(User user);
+
+    void updateUser(User user);
+
+    User getUser(Integer userId);
+
+    User getUser(String loginEmail);
+
     List<User> findUsers(Map<String, String> searchParams) throws Exception;
-    Boolean isUserExists(User user) throws Exception;
+
+    Boolean isUserExists(User user);
 }
