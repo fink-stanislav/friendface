@@ -3,7 +3,6 @@
           xmlns:s="/struts-tags">
     <style type="text/css">
         @import "css/list.css";
-        @import "css/search.css";
     </style>
     <s:i18n name="jsps.content.friends">
         <div id="list">
@@ -15,7 +14,7 @@
                                 <s:form method="POST" name="addToFriendsForm" action="sendProposal">
                                     <s:hidden name="receiverId" value="%{[0].user.id}"/>
                                     <s:a href="#" onclick="document.forms['addToFriendsForm'].submit()">
-                                        add to friends
+                                        send proposal
                                     </s:a>
                                 </s:form>
                             </s:if>
@@ -28,6 +27,13 @@
                                 </s:form>
                             </s:elseif>
                             <s:elseif test="%{[0].state.name() eq 'PENDING'}">
+                                <s:form>
+                                    <s:a href="#">
+                                        reject proposal
+                                    </s:a>
+                                </s:form>
+                            </s:elseif>
+                            <s:elseif test="%{[0].state.name() eq 'PROPOSED'}">
                                 <s:form>
                                     <s:a href="#">
                                         reject proposal

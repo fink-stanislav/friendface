@@ -74,13 +74,14 @@ public class FriendsService {
         Friend friend = dao.getFriend(currentUser, other);
         if (friend == null) {
             friend = dao.getFriend(other, currentUser);
+        } else {
+            return friend.getApproved() ? ContactState.APPROVED : ContactState.PROPOSED;
         }
+
         if (friend == null) {
             return ContactState.NOT_CONNECTED;
-        } else if (friend.getApproved()) {
-            return ContactState.APPROVED;
         } else {
-            return ContactState.PENDING;
+            return friend.getApproved() ? ContactState.APPROVED : ContactState.PENDING;
         }
     }
 
