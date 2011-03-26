@@ -1,7 +1,7 @@
 package com.exadel.friendface.controllers.actions.friends;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.model.entities.User;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -23,14 +23,14 @@ public class FriendListPage extends StandardAction implements SessionAware {
     private Boolean hasApprovedFriends;
     private Boolean hasProposedFriends;
     private Boolean hasPendingFriends;
-    private SessionUtils session;
+    private SessionHelper session;
 
     // something like active tab needed
 
     @Override
     public String execute() {
         try {
-            User user = getService().getUserService().getFromSession(session.getSession());
+            User user = getService().getUserService().getFromSession(session);
             setApprovedFriends(user);
             setProposedFriends(user);
             setPendingFriends(user);
@@ -80,6 +80,6 @@ public class FriendListPage extends StandardAction implements SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionUtils(session);
+        this.session = new SessionHelper(session);
     }
 }

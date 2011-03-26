@@ -1,7 +1,7 @@
 package com.exadel.friendface.controllers.actions.user;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import com.exadel.friendface.view.beans.LoginBean;
@@ -22,7 +22,7 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
 
 public class Login extends StandardAction implements ModelDriven, SessionAware {
     private LoginBean loginBean = new LoginBean();
-    private SessionUtils session;
+    private SessionHelper session;
 
     @Override
     public String execute() {
@@ -36,13 +36,14 @@ public class Login extends StandardAction implements ModelDriven, SessionAware {
     }
 
     private String login() throws Exception {
-        if (getService().getUserService().login(loginBean, session.getSession())) {
+        if (getService().getUserService().login(loginBean, session)) {
             return SUCCESS;
         } else {
             return resultAndErrorMessage(INPUT, getText("wrong.password"));
         }
     }
 
+    @Override
     public void validate() {
         Validator validator = new Validator();
         try {
@@ -58,6 +59,6 @@ public class Login extends StandardAction implements ModelDriven, SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionUtils(session);
+        this.session = new SessionHelper(session);
     }
 }

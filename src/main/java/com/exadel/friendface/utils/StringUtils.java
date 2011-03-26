@@ -1,4 +1,4 @@
-package com.exadel.friendface.util;
+package com.exadel.friendface.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

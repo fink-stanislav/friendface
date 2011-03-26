@@ -1,7 +1,7 @@
 package com.exadel.friendface.controllers.actions.search;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.Map;
 public class SearchPage extends StandardAction implements SessionAware {
     private List<String> searchEntries;
     private String searchEntry;
-    private SessionUtils session;
+    private SessionHelper session;
 
     public SearchPage() {
         searchEntries = new ArrayList<String>();
@@ -70,6 +70,6 @@ public class SearchPage extends StandardAction implements SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionUtils(session);
+        this.session = new SessionHelper(session);
     }
 }

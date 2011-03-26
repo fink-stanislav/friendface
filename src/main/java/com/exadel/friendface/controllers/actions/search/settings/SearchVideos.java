@@ -1,8 +1,8 @@
 package com.exadel.friendface.controllers.actions.search.settings;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
-import com.exadel.friendface.controllers.actions.utils.ParameterUtils;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import com.exadel.friendface.controllers.actions.helpers.ParameterHelper;
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import com.exadel.friendface.controllers.validation.Validator;
 import org.apache.struts2.interceptor.ParameterAware;
@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class SearchVideos extends StandardAction implements ParameterAware, SessionAware {
     private String videoTitle;
-    private SessionUtils session;
-    private ParameterUtils parameters;
+    private SessionHelper session;
+    private ParameterHelper parameters;
 
     @Override
     public void validate() {
@@ -49,10 +49,10 @@ public class SearchVideos extends StandardAction implements ParameterAware, Sess
     }
 
     public void setParameters(Map parameters) {
-        this.parameters = new ParameterUtils(parameters);
+        this.parameters = new ParameterHelper(parameters);
     }
 
     public void setSession(Map session) {
-        this.session = new SessionUtils(session);
+        this.session = new SessionHelper(session);
     }
 }

@@ -1,4 +1,4 @@
-package com.exadel.friendface.controllers.actions.utils;
+package com.exadel.friendface.controllers.actions.helpers;
 
 import java.util.Map;
 
@@ -8,23 +8,16 @@ import java.util.Map;
  * Time: 23:20
  */
 
-public class SessionUtils {
+public class SessionHelper {
     private Map session;
 
-    public SessionUtils(Map session) {
+    public SessionHelper(Map session) {
         this.session = session;
-    }
-
-    public Map getSession() {
-        return session;
     }
 
     public <T> T getFromSession(String key) {
         Object object = session.get(key);
-        if (object != null && object instanceof String) {
-            return (T) object;
-        }
-        return null;
+        return (T) object;
     }
 
     public <T> void putToSession(String key, T value) {

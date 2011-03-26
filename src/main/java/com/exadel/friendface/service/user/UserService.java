@@ -1,5 +1,6 @@
 package com.exadel.friendface.service.user;
 
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.model.dao.DAOFactory;
 import com.exadel.friendface.model.dao.UserDAO;
 import com.exadel.friendface.model.entities.User;
@@ -36,11 +37,11 @@ public class UserService {
         }
     }
 
-    public boolean login(LoginBean bean, Map session) throws Exception {
+    public boolean login(LoginBean bean, SessionHelper session) throws Exception {
         User userFromRequest = getUserFromBean(bean);
         User userFromStorage = getByLogin(userFromRequest.getLoginEmail());
         if (checkCredentials(userFromRequest, userFromStorage)) {
-            session.put(getUserSessionKey(), userFromStorage);
+            session.putToSession(getUserSessionKey(), userFromStorage);
             return true;
         }
         return false;
@@ -48,7 +49,6 @@ public class UserService {
 
     public boolean register(RegistrationBean bean) throws Exception {
         User user = getUserFromBean(bean);
-
         if (!dao.isUserExists(user)) {
             dao.createUser(user);
             // send mail
@@ -57,12 +57,12 @@ public class UserService {
         return false;
     }
 
-    public void logout(Map session) throws Exception {
-        session.put(getUserSessionKey(), null);
+    public void logout(SessionHelper session) throws Exception {
+        session.putToSession(getUserSessionKey(), null);
     }
 
-    public User getFromSession(Map session) {
-        return (User) session.get(getUserSessionKey());
+    public User getFromSession(SessionHelper session) {
+        return (User) session.getFromSession(getUserSessionKey());
     }
 
     public void removeUser(User user) {

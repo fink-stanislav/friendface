@@ -1,7 +1,7 @@
 package com.exadel.friendface.controllers.actions.friends;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -21,7 +21,7 @@ import static org.apache.commons.lang.StringUtils.substringAfterLast;
 
 public class DeleteFriend extends StandardAction implements ServletRequestAware, SessionAware {
     private Integer id;
-    private SessionUtils session;
+    private SessionHelper session;
     private String nextAction;
 
     public Integer getId() {
@@ -43,7 +43,7 @@ public class DeleteFriend extends StandardAction implements ServletRequestAware,
     }
 
     private void deleteFriend() throws Exception {
-        User owner = getService().getUserService().getFromSession(session.getSession());
+        User owner = getService().getUserService().getFromSession(session);
         User friend = getService().getUserService().getById(id);
         Friend result = getService().getFriendsService().getFriend(owner, friend);
         getService().getFriendsService().remove(result);
@@ -60,6 +60,6 @@ public class DeleteFriend extends StandardAction implements ServletRequestAware,
     }
 
     public void setSession(Map session) {
-        this.session = new SessionUtils(session);
+        this.session = new SessionHelper(session);
     }
 }

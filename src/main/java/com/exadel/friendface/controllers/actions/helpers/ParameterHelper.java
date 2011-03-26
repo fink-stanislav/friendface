@@ -1,4 +1,4 @@
-package com.exadel.friendface.controllers.actions.utils;
+package com.exadel.friendface.controllers.actions.helpers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,10 +10,10 @@ import java.util.Set;
  * Time: 23:19
  */
 
-public class ParameterUtils {
+public class ParameterHelper {
     private Map parameters;
 
-    public ParameterUtils(Map parameters) {
+    public ParameterHelper(Map parameters) {
         this.parameters = parameters;
     }
 

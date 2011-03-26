@@ -1,8 +1,8 @@
 package com.exadel.friendface.controllers.actions.search.settings;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
-import com.exadel.friendface.controllers.actions.utils.ParameterUtils;
-import com.exadel.friendface.controllers.actions.utils.SessionUtils;
+import com.exadel.friendface.controllers.actions.helpers.ParameterHelper;
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.controllers.validation.ValidationException;
 import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -16,8 +16,8 @@ import java.util.Map;
  */
 
 public abstract class SearchSettings extends StandardAction implements ParameterAware, SessionAware {
-    protected ParameterUtils parameters;
-    protected SessionUtils session;
+    protected ParameterHelper parameters;
+    protected SessionHelper session;
 
     public void handleValidationException(ValidationException exception, String searchEntry) {
         session.putToSession(SEARCH_ENTRY, searchEntry);
@@ -31,10 +31,10 @@ public abstract class SearchSettings extends StandardAction implements Parameter
     }
 
     public void setParameters(Map parameters) {
-        this.parameters = new ParameterUtils(parameters);
+        this.parameters = new ParameterHelper(parameters);
     }
 
     public void setSession(Map session) {
-        this.session = new SessionUtils(session);
+        this.session = new SessionHelper(session);
     }
 }
