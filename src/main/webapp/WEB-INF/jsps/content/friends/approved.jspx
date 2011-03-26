@@ -9,7 +9,12 @@
             <s:iterator value="approvedFriends" status="status">
                 <s:div cssClass="listitem">
                     <div class="itemheader">
-                        header
+                        <s:form method="POST" name="deleteFromFriendsForm" action="deleteFriend">
+                            <s:hidden name="id" value="%{[0].id}"/>
+                            <s:a href="#" onclick="document.forms['deleteFromFriendsForm'].submit()">
+                                delete from friends
+                            </s:a>
+                        </s:form>
                     </div>
                     <div class="itemcontent">
                         <a href="">
@@ -17,7 +22,12 @@
                         </a>
 
                         <div class="itemtextinfo">
-                            item text
+                            <s:form method="POST" name="redirectToUserPageForm">
+                                <a href="#" onclick="document.forms['redirectToUserPageForm'].submit()">
+                                    <s:property value="%{[0].username}"/>&#160;
+                                    <s:property value="%{[0].userSurname}"/>
+                                </a>
+                            </s:form>
                         </div>
                     </div>
                 </s:div>

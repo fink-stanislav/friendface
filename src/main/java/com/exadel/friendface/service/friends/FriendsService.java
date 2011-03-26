@@ -1,14 +1,17 @@
 package com.exadel.friendface.service.friends;
 
+import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
 import com.exadel.friendface.model.dao.FriendsDAO;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.enums.ContactState;
+import com.exadel.friendface.service.user.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
+import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * Author: S. Fink
@@ -43,16 +46,19 @@ public class FriendsService {
         return result;
     }
 
-    public void remove(Friend friend) throws Exception {
-        dao.deleteFriend(friend);
+    public Friend getFriend(Integer id) throws Exception {
+        return dao.getById(id);
+    }
+
+    public void remove(SessionHelper session, Integer userToDelete) throws Exception {
+        User owner = UserService.getService().getFromSession(session);
+        User friend = UserService.getService().getById(userToDelete);
+        Friend result = getFriend(owner, friend);
+        dao.deleteFriend(result);
     }
 
     public void sendProposal(User sender, User receiver) throws Exception {
         dao.setProposed(sender, receiver);
-    }
-
-    public Friend getById(Integer id) throws Exception {
-        return dao.getById(id);
     }
 
     public List<User> getApproved(User user) throws Exception {

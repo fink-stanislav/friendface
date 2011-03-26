@@ -16,7 +16,7 @@ public class FriendfaceService {
 
     private FriendfaceService() {
         EntityManagerProvider.getInstance();
-        RepositoryProvider.getInstance();
+        // RepositoryProvider.getInstance();
     }
 
     public static void stop() {

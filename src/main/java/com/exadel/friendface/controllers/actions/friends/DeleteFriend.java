@@ -35,18 +35,11 @@ public class DeleteFriend extends StandardAction implements ServletRequestAware,
     @Override
     public String execute() {
         try {
-            deleteFriend();
+            getService().getFriendsService().remove(session, id);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error"));
         }
-    }
-
-    private void deleteFriend() throws Exception {
-        User owner = getService().getUserService().getFromSession(session);
-        User friend = getService().getUserService().getById(id);
-        Friend result = getService().getFriendsService().getFriend(owner, friend);
-        getService().getFriendsService().remove(result);
     }
 
     public String getNextAction() {

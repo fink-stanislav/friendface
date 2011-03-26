@@ -19,7 +19,7 @@
                                 </s:form>
                             </s:if>
                             <s:elseif test="%{[0].state.name() eq 'APPROVED'}">
-                                <s:form method="POST" name="deleteFromFriendsForm">
+                                <s:form method="POST" name="deleteFromFriendsForm" action="deleteFriend">
                                     <s:hidden name="id" value="%{[0].user.id}"/>
                                     <s:a href="#" onclick="document.forms['deleteFromFriendsForm'].submit()">
                                         delete from friends
