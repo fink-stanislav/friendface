@@ -13,7 +13,7 @@ import javax.jcr.SimpleCredentials;
  * Time: 11:06 PM
  */
 
-class RepositoryInitializer {
+public class RepositoryInitializer {
     private String repositoryHome = "C:\\friendface\\content\\";
     private String repositoryConfig = repositoryHome + "repository.xml";
 

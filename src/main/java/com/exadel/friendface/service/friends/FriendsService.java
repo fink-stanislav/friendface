@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
-import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * Author: S. Fink
@@ -38,7 +37,7 @@ public class FriendsService {
         }
     }
 
-    public Friend getFriend(User owner, User friend) throws Exception {
+    public Friend getFriend(User owner, User friend) {
         Friend result = dao.getFriend(owner, friend);
         if (result == null) {
             result = dao.getFriend(friend, owner);
@@ -46,37 +45,46 @@ public class FriendsService {
         return result;
     }
 
-    public Friend getFriend(Integer id) throws Exception {
+    public Friend getFriend(Integer id) {
         return dao.getById(id);
     }
 
-    public void remove(SessionHelper session, Integer userToDelete) throws Exception {
+    public void remove(SessionHelper session, Integer userToDelete) {
         User owner = UserService.getService().getFromSession(session);
         User friend = UserService.getService().getById(userToDelete);
         Friend result = getFriend(owner, friend);
         dao.deleteFriend(result);
     }
 
-    public void sendProposal(User sender, User receiver) throws Exception {
+    public void sendProposal(SessionHelper session, Integer receiverId) {
+        User sender = UserService.getService().getFromSession(session);
+        User receiver = UserService.getService().getById(receiverId);
         dao.setProposed(sender, receiver);
     }
 
-    public List<User> getApproved(User user) throws Exception {
+    public void approve(SessionHelper session, Integer userToApprove) {
+        User owner = UserService.getService().getFromSession(session);
+        User friend = UserService.getService().getById(userToApprove);
+        Friend result = getFriend(owner, friend);
+        dao.approve(result);
+    }
+
+    public List<User> getApproved(User user) {
         List<Friend> friendList = dao.getApproved(user);
         return getUserList(user, friendList);
     }
 
-    public List<User> getProposed(User user) throws Exception {
+    public List<User> getProposed(User user) {
         List<Friend> friendList = dao.getProposed(user);
         return getUserList(user, friendList);
     }
 
-    public List<User> getPending(User user) throws Exception {
+    public List<User> getPending(User user) {
         List<Friend> friendList = dao.getPending(user);
         return getUserList(user, friendList);
     }
 
-    public ContactState getContactState(User currentUser, User other) throws Exception {
+    public ContactState getContactState(User currentUser, User other) {
         Friend friend = dao.getFriend(currentUser, other);
         if (friend == null) {
             friend = dao.getFriend(other, currentUser);

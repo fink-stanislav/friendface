@@ -37,7 +37,7 @@ public class UserService {
         }
     }
 
-    public boolean login(LoginBean bean, SessionHelper session) throws Exception {
+    public boolean login(LoginBean bean, SessionHelper session) {
         User userFromRequest = getUserFromBean(bean);
         User userFromStorage = getByLogin(userFromRequest.getLoginEmail());
         if (checkCredentials(userFromRequest, userFromStorage)) {
@@ -47,7 +47,7 @@ public class UserService {
         return false;
     }
 
-    public boolean register(RegistrationBean bean) throws Exception {
+    public boolean register(RegistrationBean bean) {
         User user = getUserFromBean(bean);
         if (!dao.isUserExists(user)) {
             dao.createUser(user);
@@ -57,7 +57,7 @@ public class UserService {
         return false;
     }
 
-    public void logout(SessionHelper session) throws Exception {
+    public void logout(SessionHelper session) {
         session.putToSession(getUserSessionKey(), null);
     }
 
@@ -71,11 +71,11 @@ public class UserService {
     public void updateUser(User user) {
     }
 
-    public User getByLogin(String login) throws Exception {
+    public User getByLogin(String login) {
         return dao.getUser(login);
     }
 
-    public User getById(Integer id) throws Exception {
+    public User getById(Integer id) {
         return dao.getUser(id);
     }
 

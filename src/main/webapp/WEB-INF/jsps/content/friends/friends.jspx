@@ -10,7 +10,7 @@
             <div id="tabs">
                 <ul>
                     <li class="tab" id="approvedTab"
-                        style="display: block; border-bottom: 1px solid white; background: white">
+                        style="border-bottom: 1px solid #d3d3d3; background: white">
                         <s:a href="#" onclick="switchItem('approvedTab', 'approvedPane', 'white');">
                             <span>Approved</span>
                         </s:a>

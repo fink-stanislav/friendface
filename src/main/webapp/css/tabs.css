@@ -15,12 +15,16 @@
     float: left;
     border: 1px solid;
     margin: 0 0.5em 0 0;
+    background: #d3d3d3;
 }
 
 #tabs a {
     border-bottom: none;
     color: black;
     padding: 0 1em;
+}
+
+.tab {
 }
 
 .panes {

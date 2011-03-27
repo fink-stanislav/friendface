@@ -10,7 +10,7 @@ import javax.jcr.*;
  * Time: 7:40 PM
  */
 
-public class JcrDAO {
+public abstract class JcrDAO {
     protected Repository repository;
     private Session session;
 

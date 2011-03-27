@@ -3,9 +3,9 @@ function switchItem(tabId, paneId, color) {
     for (var i = 0; i < tabs.length; i++) {
         if (tabs[i].id == tabId) {
             tabs[i].style.background = color;
-            tabs[i].style.borderBottom = '1px solid ' + color;
+            tabs[i].style.borderBottom = '1px solid #d3d3d3';
         } else {
-            tabs[i].style.background = 'white';
+            tabs[i].style.background = '#d3d3d3';
             tabs[i].style.borderBottom = '1px solid black';
         }
     }

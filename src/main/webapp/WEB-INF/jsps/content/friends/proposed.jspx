@@ -9,7 +9,18 @@
             <s:iterator value="proposedFriends" status="status">
                 <s:div cssClass="listitem">
                     <div class="itemheader">
-                        header
+                        <s:form method="POST" name="rejectProposalForm" action="deleteFriend">
+                            <s:hidden name="id" value="%{[0].id}"/>
+                        </s:form>
+                        <s:form method="POST" name="approveForm" action="approveFriend">
+                            <s:hidden name="id" value="%{[0].id}"/>
+                        </s:form>
+                        <s:a href="#" onclick="document.forms['rejectProposalForm'].submit()">
+                            reject
+                        </s:a>
+                        <s:a href="#" onclick="document.forms['approveForm'].submit()">
+                            approve
+                        </s:a>
                     </div>
                     <div class="itemcontent">
                         <a href="">
@@ -17,7 +28,12 @@
                         </a>
 
                         <div class="itemtextinfo">
-                            item text
+                            <s:form method="POST" name="redirectToUserPageForm">
+                                <a href="#" onclick="document.forms['redirectToUserPageForm'].submit()">
+                                    <s:property value="%{[0].username}"/>&#160;
+                                    <s:property value="%{[0].userSurname}"/>
+                                </a>
+                            </s:form>
                         </div>
                     </div>
                 </s:div>

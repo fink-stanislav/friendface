@@ -13,14 +13,24 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
 
 /**
  * Author: S. Fink
- * Date: 19.02.11
- * Time: 21:38
+ * Date: 3/27/11
+ * Time: 11:17 PM
  */
 
-public class DeleteFriend extends StandardAction implements ServletRequestAware, SessionAware {
-    private HttpServletRequestHelper requestHelper;
-    private SessionHelper session;
+public class ApproveFriend extends StandardAction implements ServletRequestAware, SessionAware {
     private Integer id;
+    private SessionHelper session;
+    private HttpServletRequestHelper requestHelper;
+
+    @Override
+    public String execute() {
+        try {
+            getService().getFriendsService().approve(session, id);
+            return SUCCESS;
+        } catch (Exception e) {
+            return resultAndErrorMessage(ERROR, e.getMessage());
+        }
+    }
 
     public Integer getId() {
         return id;
@@ -28,16 +38,6 @@ public class DeleteFriend extends StandardAction implements ServletRequestAware,
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Override
-    public String execute() {
-        try {
-            getService().getFriendsService().remove(session, id);
-            return SUCCESS;
-        } catch (Exception e) {
-            return resultAndErrorMessage(ERROR, getText("internal.app.error"));
-        }
     }
 
     public String getNextAction() {

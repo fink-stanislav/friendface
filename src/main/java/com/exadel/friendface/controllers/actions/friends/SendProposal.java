@@ -1,14 +1,12 @@
 package com.exadel.friendface.controllers.actions.friends;
 
 import com.exadel.friendface.controllers.actions.StandardAction;
+import com.exadel.friendface.controllers.actions.helpers.HttpServletRequestHelper;
 import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
-import com.exadel.friendface.model.entities.User;
-import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import javax.servlet.http.HttpServletRequest;
-
 import java.util.Map;
 
 import static com.exadel.friendface.service.FriendfaceService.getService;
@@ -21,29 +19,17 @@ import static com.exadel.friendface.service.FriendfaceService.getService;
 
 public class SendProposal extends StandardAction implements ServletRequestAware, SessionAware {
     private Integer receiverId;
-    private String nextAction;
     private SessionHelper session;
+    private HttpServletRequestHelper requestHelper;
 
     @Override
     public String execute() {
         try {
-            sendProposal();
+            getService().getFriendsService().sendProposal(session, receiverId);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error"));
         }
-    }
-
-    private void sendProposal() throws Exception {
-        User sender = getService().getUserService().getFromSession(session);
-        User receiver = getService().getUserService().getById(receiverId);
-        getService().getFriendsService().sendProposal(sender, receiver);
-    }
-
-    public void setServletRequest(HttpServletRequest request) {
-        String referer = request.getHeader("referer");
-        referer = StringUtils.substringAfterLast(referer, "/");
-        nextAction = referer;
     }
 
     public Integer getReceiverId() {
@@ -55,7 +41,11 @@ public class SendProposal extends StandardAction implements ServletRequestAware,
     }
 
     public String getNextAction() {
-        return nextAction;
+        return requestHelper.getPreviousAction();
+    }
+
+    public void setServletRequest(HttpServletRequest request) {
+        requestHelper = new HttpServletRequestHelper(request);
     }
 
     public void setSession(Map session) {

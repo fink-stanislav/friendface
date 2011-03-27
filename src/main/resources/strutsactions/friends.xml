@@ -17,5 +17,9 @@
             <result name="success" type="redirect">${nextAction}</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+        <action name="approveFriend" class="com.exadel.friendface.controllers.actions.friends.ApproveFriend">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
     </package>
 </struts>

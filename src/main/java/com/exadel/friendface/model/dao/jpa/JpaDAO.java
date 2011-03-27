@@ -16,7 +16,7 @@ import java.util.Set;
  * Time: 12:10 PM
  */
 
-public class JpaDAO {
+public abstract class JpaDAO {
     protected EntityManager entityManager;
 
     public JpaDAO() {
