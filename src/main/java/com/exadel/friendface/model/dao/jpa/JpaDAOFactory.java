@@ -1,6 +1,9 @@
 package com.exadel.friendface.model.dao.jpa;
 
-import com.exadel.friendface.model.dao.*;
+import com.exadel.friendface.model.dao.DAOFactory;
+import com.exadel.friendface.model.dao.FriendsDAO;
+import com.exadel.friendface.model.dao.UserDAO;
+import com.exadel.friendface.model.dao.WallMessageDAO;
 
 /**
  * User: S. Fink
@@ -10,17 +13,17 @@ import com.exadel.friendface.model.dao.*;
 
 public class JpaDAOFactory extends DAOFactory {
     @Override
-    public UserDAO getUserDAO() {
-        return new JpaUserDAO();
-    }
-
-    @Override
     public FriendsDAO getFriendsDAO() {
         return new JpaFriendsDAO();
     }
 
     @Override
-    public RepoDAO getRepoDAO() {
-        throw new UnsupportedOperationException("Non-JPA operation.");
+    public UserDAO getUserDAO() {
+        throw new UnsupportedOperationException("Non-JPA operation");
+    }
+
+    @Override
+    public WallMessageDAO getMessageDAO() {
+        throw new UnsupportedOperationException("Non-JPA operation");
     }
 }

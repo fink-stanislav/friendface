@@ -5,7 +5,7 @@ public class Main {
         RepositoryInitializer tr = new RepositoryInitializer();
         try {
             tr.setUp();
-            // tr.testRepositoryConnection();
+            tr.testRepositoryConnection();
             tr.tearDown();
         } catch (Exception e) {
             e.printStackTrace();

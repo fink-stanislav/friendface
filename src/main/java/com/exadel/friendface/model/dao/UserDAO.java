@@ -22,7 +22,7 @@ public interface UserDAO {
 
     User getUser(String loginEmail);
 
-    List<User> findUsers(Map<String, String> searchParams) throws Exception;
+    List<User> findUsers(Map<String, String> searchParams);
 
     Boolean isUserExists(User user);
 }

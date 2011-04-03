@@ -9,16 +9,14 @@ import com.exadel.friendface.application.PropertyManager;
  */
 
 public abstract class DAOFactory {
-
     public abstract UserDAO getUserDAO();
     public abstract FriendsDAO getFriendsDAO();
-    public abstract RepoDAO getRepoDAO();
+    public abstract WallMessageDAO getMessageDAO();
 
     private static PropertyManager classNames = new PropertyManager("application.properties");
 
     public enum StorageEngineType {
-        jpa,
-        jcr
+        jpa, jcr, mixed
     }
 
     public static DAOFactory getDAOFactory() throws Exception {

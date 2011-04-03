@@ -16,11 +16,15 @@ import java.util.Set;
  * Time: 12:10 PM
  */
 
-public abstract class JpaDAO {
-    protected EntityManager entityManager;
+public class JpaDAO {
+    private EntityManager entityManager;
 
     public JpaDAO() {
         entityManager = EntityManagerProvider.getInstance().getEntityManager();
+    }
+
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 
     public <T> void removeEntity(T entity) {

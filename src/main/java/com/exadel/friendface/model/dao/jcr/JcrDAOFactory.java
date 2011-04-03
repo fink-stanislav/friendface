@@ -10,17 +10,17 @@ import com.exadel.friendface.model.dao.*;
 
 public class JcrDAOFactory extends DAOFactory {
     @Override
-    public RepoDAO getRepoDAO() {
-        return new JcrRepoDAO();
-    }
-
-    @Override
     public UserDAO getUserDAO() {
         throw new UnsupportedOperationException("Non-JCR operation.");
     }
 
     @Override
     public FriendsDAO getFriendsDAO() {
+        throw new UnsupportedOperationException("Non-JCR operation.");
+    }
+
+    @Override
+    public WallMessageDAO getMessageDAO() {
         throw new UnsupportedOperationException("Non-JCR operation.");
     }
 }

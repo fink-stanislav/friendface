@@ -1,6 +1,8 @@
-package com.exadel.friendface.model.dao.jpa;
+package com.exadel.friendface.model.dao.mixed;
 
 import com.exadel.friendface.model.dao.UserDAO;
+import com.exadel.friendface.model.dao.jcr.JcrDAO;
+import com.exadel.friendface.model.dao.jpa.JpaDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.search.JpaSearch;
 
@@ -14,33 +16,38 @@ import java.util.Map;
  * Time: 23:25
  */
 
-public class JpaUserDAO extends JpaDAO implements UserDAO {
-    public JpaUserDAO() {
-        super();
+public class MixedUserDAO implements UserDAO {
+    private JpaDAO jpaDAO;
+    private JcrDAO jcrDAO;
+
+    public MixedUserDAO() {
+        jpaDAO = new JpaDAO();
+        jcrDAO = new JcrDAO();
     }
 
     public void createUser(User user) {
-        persistEntity(user);
+        jpaDAO.persistEntity(user);
+        jcrDAO.setupRepository(user);
     }
 
     public void deleteUser(User user) {
-        removeEntity(user);
+        jpaDAO.removeEntity(user);
     }
 
     public void updateUser(User user) {
-        updateEntity(user);
+        jpaDAO.updateEntity(user);
     }
 
     public User getUser(Integer userId) {
-        return getById(userId, User.class);
+        return jpaDAO.getById(userId, User.class);
     }
 
     public User getUser(String loginEmail) {
-        return executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
+        return jpaDAO.executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
     }
 
-    public List<User> findUsers(Map<String, String> searchParams) throws Exception {
-        JpaSearch search = new JpaSearch(entityManager);
+    public List<User> findUsers(Map<String, String> searchParams) {
+        JpaSearch search = new JpaSearch(jpaDAO.getEntityManager());
         return search.find(searchParams, User.class);
     }
 
