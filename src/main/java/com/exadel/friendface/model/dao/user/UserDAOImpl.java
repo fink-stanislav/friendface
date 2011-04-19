@@ -1,8 +1,7 @@
-package com.exadel.friendface.model.dao.mixed;
+package com.exadel.friendface.model.dao.user;
 
-import com.exadel.friendface.model.dao.UserDAO;
-import com.exadel.friendface.model.dao.jcr.JcrDAO;
-import com.exadel.friendface.model.dao.jpa.JpaDAO;
+import com.exadel.friendface.model.dao.JcrDAO;
+import com.exadel.friendface.model.dao.JpaDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.search.JpaSearch;
 
@@ -16,11 +15,11 @@ import java.util.Map;
  * Time: 23:25
  */
 
-public class MixedUserDAO implements UserDAO {
+public class UserDAOImpl implements UserDAO {
     private JpaDAO jpaDAO;
     private JcrDAO jcrDAO;
 
-    public MixedUserDAO() {
+    public UserDAOImpl() {
         jpaDAO = new JpaDAO();
         jcrDAO = new JcrDAO();
     }

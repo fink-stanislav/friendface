@@ -1,4 +1,4 @@
-package com.exadel.friendface.model.dao;
+package com.exadel.friendface.model.dao.user;
 
 import com.exadel.friendface.model.entities.User;
 

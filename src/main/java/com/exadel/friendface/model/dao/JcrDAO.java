@@ -1,4 +1,4 @@
-package com.exadel.friendface.model.dao.jcr;
+package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.providers.RepositoryProvider;

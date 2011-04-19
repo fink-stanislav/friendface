@@ -1,8 +1,7 @@
 package com.exadel.friendface.service.messages;
 
 import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
-import com.exadel.friendface.model.dao.DAOFactory;
-import com.exadel.friendface.model.dao.WallMessageDAO;
+import com.exadel.friendface.model.dao.wallmessage.WallMessageDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.entities.WallMessage;
 import com.exadel.friendface.service.user.UserService;
@@ -24,7 +23,7 @@ public class MessagesService {
 
     private MessagesService() {
         try {
-            dao = getDAOFactory(DAOFactory.StorageEngineType.mixed).getMessageDAO();
+            dao = getDAOFactory().getMessageDAO();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

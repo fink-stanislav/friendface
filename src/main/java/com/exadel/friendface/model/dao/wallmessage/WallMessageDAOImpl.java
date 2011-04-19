@@ -1,8 +1,7 @@
-package com.exadel.friendface.model.dao.mixed;
+package com.exadel.friendface.model.dao.wallmessage;
 
-import com.exadel.friendface.model.dao.WallMessageDAO;
-import com.exadel.friendface.model.dao.jcr.JcrDAO;
-import com.exadel.friendface.model.dao.jpa.JpaDAO;
+import com.exadel.friendface.model.dao.JpaDAO;
+import com.exadel.friendface.model.dao.JcrDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.entities.WallMessage;
 
@@ -19,11 +18,11 @@ import java.util.Map;
  * Time: 20:29
  */
 
-public class MixedWallMessageDAO implements WallMessageDAO {
+public class WallMessageDAOImpl implements WallMessageDAO {
     private JpaDAO jpaDAO;
     private JcrDAO jcrDAO;
 
-    public MixedWallMessageDAO() {
+    public WallMessageDAOImpl() {
         jpaDAO = new JpaDAO();
         jcrDAO = new JcrDAO();
     }

@@ -1,4 +1,4 @@
-package com.exadel.friendface.model.dao.jpa;
+package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.providers.EntityManagerProvider;
 

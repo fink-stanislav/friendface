@@ -1,7 +1,7 @@
 package com.exadel.friendface.service.user;
 
 import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
-import com.exadel.friendface.model.dao.UserDAO;
+import com.exadel.friendface.model.dao.user.UserDAO;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.view.beans.LoginBean;
 import com.exadel.friendface.view.beans.RegistrationBean;
@@ -9,7 +9,6 @@ import com.exadel.friendface.view.beans.RegistrationBean;
 import java.util.List;
 import java.util.Map;
 
-import static com.exadel.friendface.model.dao.DAOFactory.StorageEngineType;
 import static com.exadel.friendface.model.dao.DAOFactory.getDAOFactory;
 import static com.exadel.friendface.service.user.UserUtils.*;
 
@@ -32,7 +31,7 @@ public class UserService {
 
     private UserService() {
         try {
-            dao = getDAOFactory(StorageEngineType.mixed).getUserDAO();
+            dao = getDAOFactory().getUserDAO();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
