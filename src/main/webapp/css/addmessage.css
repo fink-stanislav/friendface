@@ -1,27 +1,15 @@
 .add-message-control {
-    position: fixed;
     margin: 0 2em;
-}
-
-.add-message-link {
     text-align: right;
 }
 
-.add-message-link a {
-    font-size: small;
-    color: black;
+.add-message-form-line {
+    display: inline;
 }
 
-.add-msg-btn {
-    text-align: right;
-}
-
-.add-msg-form {
-    display: none;
-    width: 15.5em;
-}
-
-#area {
-    width: 18em;
-    height: 5em;
+.add-message-textarea {
+    height: 50px;
+    border: 3px solid #cccccc;
+    padding: 5px;
+    width: 400px;
 }

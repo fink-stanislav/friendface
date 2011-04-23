@@ -5,10 +5,8 @@
         @import "css/userdata.css";
         @import "css/wall.css";
         @import "css/addmessage.css";
-        @import "css/modal.css";
     </style>
-    <script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
-    <script type="text/javascript" src="js/overlay.js"></script>
+    <script type="text/javascript" src="js/addmessage.js"></script>
 
     <s:i18n name="jsps.content.userpage">
         <div id="userdata">
@@ -61,26 +59,20 @@
                 </div>
             </div>
             <div class="add-message-control">
-                <div class="add-message-link">
-                    <a href="" class="modalInput" rel="#prompt">
-                        <img src="images/plus.jpg" alt="" width="15px" height="15px"/>
-                    </a>
+                <div>
+                    <form action="#">
+                        <div class="add-message-form-line">
+                            <textarea id="messageTextArea" class="add-message-textarea" cols="" rows=""
+                                      onfocus="focusTextArea('messageTextArea');"
+                                      onblur="blurTextArea('messageTextArea', 'Enter your message')">
+                                Enter your message
+                            </textarea>
+                        </div>
+                        <div>
+                            <s:submit/><s:reset/>
+                        </div>
+                    </form>
                 </div>
-            </div>
-        </div>
-
-        <div class="modal" id="prompt">
-            <div>
-                <form action="#">
-                    <div>Message text</div>
-                    <div>
-                        <textarea cols="" rows=""/>
-                    </div>
-                    <hr/>
-                    <div>
-                        <s:submit cssClass="close"/>
-                    </div>
-                </form>
             </div>
         </div>
     </s:i18n>
