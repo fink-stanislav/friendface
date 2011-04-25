@@ -1,4 +1,4 @@
-package com.exadel.friendface.model.dao;
+package com.exadel.friendface.model.dao.user;
 
 import com.exadel.friendface.model.entities.User;
 
@@ -22,7 +22,7 @@ public interface UserDAO {
 
     User getUser(String loginEmail);
 
-    List<User> findUsers(Map<String, String> searchParams) throws Exception;
+    List<User> findUsers(Map<String, String> searchParams);
 
     Boolean isUserExists(User user);
 }

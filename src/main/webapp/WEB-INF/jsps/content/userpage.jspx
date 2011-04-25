@@ -4,7 +4,10 @@
     <style type="text/css">
         @import "css/userdata.css";
         @import "css/wall.css";
+        @import "css/addmessage.css";
     </style>
+    <script type="text/javascript" src="js/addmessage.js"></script>
+
     <s:i18n name="jsps.content.userpage">
         <div id="userdata">
             <div id="userpic">
@@ -53,6 +56,22 @@
 
                 <div class="wall-message-text">
                     какоето сообщение
+                </div>
+            </div>
+            <div class="add-message-control">
+                <div>
+                    <form action="#">
+                        <div class="add-message-form-line">
+                            <textarea id="messageTextArea" class="add-message-textarea" cols="" rows=""
+                                      onfocus="focusTextArea('messageTextArea');"
+                                      onblur="blurTextArea('messageTextArea', 'Enter your message')">
+                                Enter your message
+                            </textarea>
+                        </div>
+                        <div>
+                            <s:submit/><s:reset/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

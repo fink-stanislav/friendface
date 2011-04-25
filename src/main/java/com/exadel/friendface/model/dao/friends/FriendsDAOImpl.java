@@ -1,6 +1,6 @@
-package com.exadel.friendface.model.dao.jpa;
+package com.exadel.friendface.model.dao.friends;
 
-import com.exadel.friendface.model.dao.FriendsDAO;
+import com.exadel.friendface.model.dao.JpaDAO;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 
@@ -15,8 +15,8 @@ import java.util.Map;
  * Time: 1:12 PM
  */
 
-public class JpaFriendsDAO extends JpaDAO implements FriendsDAO {
-    public JpaFriendsDAO() {
+public class FriendsDAOImpl extends JpaDAO implements FriendsDAO {
+    public FriendsDAOImpl() {
         super();
     }
 

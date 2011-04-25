@@ -2,6 +2,7 @@ package com.exadel.friendface.model.search;
 
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.queryParser.MultiFieldQueryParser;
+import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.Version;
 import org.hibernate.search.jpa.FullTextEntityManager;
@@ -10,10 +11,7 @@ import org.hibernate.search.jpa.Search;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
@@ -32,7 +30,7 @@ public class JpaSearch {
         this.entityManager = entityManager;
     }
 
-    public <T> List<T> find(Map<String, String> searchParams, Class<T> entityClass) throws Exception {
+    public <T> List<T> find(Map<String, String> searchParams, Class<T> entityClass) {
         FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
         EntityTransaction transaction = entityManager.getTransaction();
         javax.persistence.Query persistenceQuery;
@@ -43,18 +41,21 @@ public class JpaSearch {
             return persistenceQuery.getResultList();
         } catch (PersistenceException e) {
             transaction.rollback();
-            throw new PersistenceException(e);
+            return Collections.emptyList();
+        } catch (ParseException e) {
+            transaction.rollback();
+            return Collections.emptyList();
         }
     }
 
-    public Query buildLuceneQuery(Map<String, String> searchParams) throws Exception {
+    public Query buildLuceneQuery(Map<String, String> searchParams) throws ParseException {
         queryDataFromMap(searchParams);
         MultiFieldQueryParser parser =
                 new MultiFieldQueryParser(Version.LUCENE_29, fields, new StandardAnalyzer(Version.LUCENE_29));
         return parser.parse(query);
     }
 
-    private void queryDataFromMap(Map<String, String> parameters) throws Exception {
+    private void queryDataFromMap(Map<String, String> parameters) {
         List<String> fields = new ArrayList<String>();
         StringBuilder query = new StringBuilder();
 

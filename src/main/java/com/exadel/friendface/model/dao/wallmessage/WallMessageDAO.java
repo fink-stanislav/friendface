@@ -1,7 +1,10 @@
-package com.exadel.friendface.model.dao;
+package com.exadel.friendface.model.dao.wallmessage;
 
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.entities.WallMessage;
+
+import javax.jcr.Binary;
+import javax.jcr.RepositoryException;
 
 /**
  * Author: S. Fink
@@ -14,7 +17,7 @@ public interface WallMessageDAO {
 
     WallMessage getMessage(Integer id);
 
-    void addMessage(User sender, User receiver /*, binary parameter*/);
+    void addMessage(User sender, User receiver, Binary message) throws RepositoryException;
 
     void removeMessage(Integer id);
 }

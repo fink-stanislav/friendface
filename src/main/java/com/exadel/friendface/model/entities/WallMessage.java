@@ -1,5 +1,6 @@
 package com.exadel.friendface.model.entities;
 
+import javax.jcr.Binary;
 import javax.persistence.*;
 
 /**
@@ -24,6 +25,8 @@ public class WallMessage {
     @ManyToOne
     @JoinColumn(name = "sender")
     private User sender;
+    @Transient
+    private Binary message;
 
     public Integer getId() {
         return id;
@@ -47,5 +50,13 @@ public class WallMessage {
 
     public void setSender(User sender) {
         this.sender = sender;
+    }
+
+    public Binary getMessage() {
+        return message;
+    }
+
+    public void setMessage(Binary message) {
+        this.message = message;
     }
 }

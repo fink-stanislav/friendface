@@ -1,7 +1,7 @@
 package com.exadel.friendface.service.friends;
 
 import com.exadel.friendface.controllers.actions.helpers.SessionHelper;
-import com.exadel.friendface.model.dao.FriendsDAO;
+import com.exadel.friendface.model.dao.friends.FriendsDAO;
 import com.exadel.friendface.model.entities.Friend;
 import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.model.enums.ContactState;

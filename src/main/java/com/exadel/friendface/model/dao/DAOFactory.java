@@ -1,6 +1,8 @@
 package com.exadel.friendface.model.dao;
 
-import com.exadel.friendface.application.PropertyManager;
+import com.exadel.friendface.model.dao.friends.FriendsDAO;
+import com.exadel.friendface.model.dao.user.UserDAO;
+import com.exadel.friendface.model.dao.wallmessage.WallMessageDAO;
 
 /**
  * User: S. Fink
@@ -9,24 +11,11 @@ import com.exadel.friendface.application.PropertyManager;
  */
 
 public abstract class DAOFactory {
-
     public abstract UserDAO getUserDAO();
     public abstract FriendsDAO getFriendsDAO();
-    public abstract RepoDAO getRepoDAO();
-
-    private static PropertyManager classNames = new PropertyManager("application.properties");
-
-    public enum StorageEngineType {
-        jpa,
-        jcr
-    }
+    public abstract WallMessageDAO getMessageDAO();
 
     public static DAOFactory getDAOFactory() throws Exception {
-        return getDAOFactory(DAOFactory.StorageEngineType.jpa);
-    }
-
-    public static DAOFactory getDAOFactory(StorageEngineType type) throws Exception {
-        String className = classNames.getProperty(type.name());
-        return (DAOFactory) Class.forName(className).newInstance();
+        return new DAOFactoryImpl();
     }
 }
