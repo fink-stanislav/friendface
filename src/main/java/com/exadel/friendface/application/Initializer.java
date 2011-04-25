@@ -1,7 +1,5 @@
 package com.exadel.friendface.application;
 
-import com.exadel.friendface.model.dao.RepoDAO;
-import com.exadel.friendface.model.entities.User;
 import com.exadel.friendface.service.FriendfaceService;
 
 import javax.servlet.ServletContextEvent;
