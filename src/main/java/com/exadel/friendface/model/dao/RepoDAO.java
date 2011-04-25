@@ -2,6 +2,7 @@ package com.exadel.friendface.model.dao;
 
 import com.exadel.friendface.model.entities.User;
 
+import javax.jcr.Binary;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 
@@ -21,4 +22,6 @@ public interface RepoDAO {
     public Node addUserNode(User user) throws RepositoryException;
 
     public Node addAlbumNode(User user, String albumTitle) throws RepositoryException;
+
+    public void addPicture(User user, String albumTitle, Binary picture) throws RepositoryException;
 }

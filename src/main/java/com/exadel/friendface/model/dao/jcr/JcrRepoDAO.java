@@ -3,9 +3,7 @@ package com.exadel.friendface.model.dao.jcr;
 import com.exadel.friendface.model.dao.RepoDAO;
 import com.exadel.friendface.model.entities.User;
 
-import javax.jcr.Node;
-import javax.jcr.PathNotFoundException;
-import javax.jcr.RepositoryException;
+import javax.jcr.*;
 
 /**
  * Author: S. Fink
@@ -20,36 +18,45 @@ public class JcrRepoDAO extends JcrDAO implements RepoDAO {
 
     public void setupRepository(User user) throws RepositoryException {
         Node userNode = addUserNode(user);
-        addNodeIfNotExists(userNode, "albums");
-        addNodeIfNotExists(userNode, "videos");
-        addNodeIfNotExists(userNode, "posts");
-        addNodeIfNotExists(userNode, "messages");
+        getNode(userNode, "albums");
+        getNode(userNode, "videos");
+        getNode(userNode, "posts");
+        getNode(userNode, "messages");
     }
 
-    private Node addNodeIfNotExists(Node parent, String name) throws RepositoryException {
-        Node node;
+    private Node getNode(Node parent, String name) throws RepositoryException {
         try {
-            node = parent.getNode(name);
+            return parent.getNode(name);
         } catch (PathNotFoundException e) {
-            return parent.addNode(name);
+            return null;
         }
-        return node;
+    }
+
+    private Node addNode(Node parent, String name) throws RepositoryException {
+        return parent.addNode(name);
     }
 
     public Node getUserNode(User user) throws RepositoryException {
-        return getRootNode().getNode(user.getLoginEmail());
+        Node root = getRootNode();
+        String name = user.getLoginEmail();
+        return getNode(root, name);
     }
 
     public Node getAlbumNode(User user, String albumTitle) throws RepositoryException {
-        return getRootNode().getNode(user.getLoginEmail())
-                .getNode("albums").getNode(albumTitle);
+        Node albums = getUserNode(user).getNode("albums");
+        return getNode(albums, albumTitle);
     }
 
     public Node addUserNode(User user) throws RepositoryException {
-        return addNodeIfNotExists(getRootNode(), user.getLoginEmail());
+        return addNode(getRootNode(), user.getLoginEmail());
     }
 
     public Node addAlbumNode(User user, String albumTitle) throws RepositoryException {
-        return addNodeIfNotExists(getUserNode(user).getNode("albums"), albumTitle);
+        return addNode(getUserNode(user).getNode("albums"), albumTitle);
+    }
+
+    public void addPicture(User user, String albumTitle, Binary picture) throws RepositoryException {
+        Node node = getAlbumNode(user, albumTitle);
+        node.setProperty("randomname", picture);
     }
 }

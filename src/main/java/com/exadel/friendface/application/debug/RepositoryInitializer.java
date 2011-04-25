@@ -1,4 +1,4 @@
-package com.exadel.friendface.application;
+package com.exadel.friendface.application.debug;
 
 import org.apache.jackrabbit.core.TransientRepository;
 
@@ -24,8 +24,7 @@ public class RepositoryInitializer {
     protected void setUp() throws Exception {
         Repository repository = new TransientRepository(repositoryConfig,
                 repositoryHome);
-        session = repository.login(new SimpleCredentials("testUserName",
-                "testPassword".toCharArray()));
+        session = repository.login(new SimpleCredentials("admin", "".toCharArray()));
     }
 
     protected void tearDown() throws Exception {

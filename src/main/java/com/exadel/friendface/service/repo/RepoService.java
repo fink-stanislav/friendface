@@ -33,4 +33,10 @@ public class RepoService {
         }
         return service;
     }
+    /**
+     * temporary
+     */
+    public RepoDAO getDao() {
+        return dao;
+    }
 }
