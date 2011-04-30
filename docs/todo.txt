@@ -1,0 +1,26 @@
+DONE
+1. JPA 2.0 migration
+2. Adding friends
+3. Tabs for showing all kinds of friends (regular, pending, proposed)
+4. Approving/Rejecting friends.
+TODO
+1. Implement pagination
+2. Inaccurate search
+3. Continue internationalization
+4. Edit bundles which already exists
+5. Refactor view:
+    - reduce duplication in html
+    - improve css
+6. Implement model for tabs (if tabs used more than once)
+7. Reimplement double container style.
+8. Implement user settings (extend domain model)
+9. Implement wall message handling
+10. Registration mail
+11. Upload and display images
+12. Upload and display videos
+
+------------------------
+
+It is worth implement some notification when
+one user rejects friendship proposal from another one.
+(deferred: no notification mechanism implemented)
