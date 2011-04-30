@@ -3,8 +3,7 @@
     bottom: 0;
     left: 0;
     width: 12em;
-    overflow: hidden;
-    /*background: #d3d3d3;*/
+    overflow: hidden; /*background: #d3d3d3;*/
     float: left;
     margin: 2em;
 }

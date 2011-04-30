@@ -5,19 +5,19 @@
 
 <struts>
     <package name="friends" extends="private">
-        <action name="deleteFriend" class="com.exadel.friendface.controllers.actions.friends.DeleteFriend">
+        <action name="deleteFriend" class="net.friendface.friendface.controllers.actions.friends.DeleteFriend">
             <result name="success" type="redirect">${nextAction}</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="friendPage" class="com.exadel.friendface.controllers.actions.friends.FriendPage">
+        <action name="friendPage" class="net.friendface.friendface.controllers.actions.friends.FriendPage">
             <result name="success" type="tiles">userpage.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="sendProposal" class="com.exadel.friendface.controllers.actions.friends.SendProposal">
+        <action name="sendProposal" class="net.friendface.friendface.controllers.actions.friends.SendProposal">
             <result name="success" type="redirect">${nextAction}</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="approveFriend" class="com.exadel.friendface.controllers.actions.friends.ApproveFriend">
+        <action name="approveFriend" class="net.friendface.friendface.controllers.actions.friends.ApproveFriend">
             <result name="success" type="redirect">${nextAction}</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

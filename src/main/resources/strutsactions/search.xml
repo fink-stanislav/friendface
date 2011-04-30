@@ -6,47 +6,48 @@
 <struts>
     <package name="search" extends="private">
         <!-- search settings -->
-        <action name="searchPeople" class="com.exadel.friendface.controllers.actions.search.settings.SearchPeople">
+        <action name="searchPeople" class="net.friendface.friendface.controllers.actions.search.settings.SearchPeople">
             <result name="success" type="chain">peopleFound</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="input" type="redirectAction">search</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="searchPictures" class="com.exadel.friendface.controllers.actions.search.settings.SearchPictures">
+        <action name="searchPictures"
+                class="net.friendface.friendface.controllers.actions.search.settings.SearchPictures">
             <result name="success" type="chain">picturesFound</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="input" type="redirectAction">search</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="searchVideos" class="com.exadel.friendface.controllers.actions.search.settings.SearchVideos">
+        <action name="searchVideos" class="net.friendface.friendface.controllers.actions.search.settings.SearchVideos">
             <result name="success" type="chain">videosFound</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="input" type="redirectAction">search</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="searchPosts" class="com.exadel.friendface.controllers.actions.search.settings.SearchPosts">
+        <action name="searchPosts" class="net.friendface.friendface.controllers.actions.search.settings.SearchPosts">
             <result name="success" type="chain">postsFound</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="input" type="redirectAction">search</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <!-- search results -->
-        <action name="peopleFound" class="com.exadel.friendface.controllers.actions.search.results.PeopleFound">
+        <action name="peopleFound" class="net.friendface.friendface.controllers.actions.search.results.PeopleFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="picturesFound" class="com.exadel.friendface.controllers.actions.search.results.PicturesFound">
+        <action name="picturesFound" class="net.friendface.friendface.controllers.actions.search.results.PicturesFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="postsFound" class="com.exadel.friendface.controllers.actions.search.results.PostsFound">
+        <action name="postsFound" class="net.friendface.friendface.controllers.actions.search.results.PostsFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="videosFound" class="com.exadel.friendface.controllers.actions.search.results.VideosFound">
+        <action name="videosFound" class="net.friendface.friendface.controllers.actions.search.results.VideosFound">
             <result name="success" type="tiles">searchresults.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
