@@ -15,16 +15,18 @@ public class EntityManagerProvider {
     private EntityManagerFactory entityManagerFactory;
     private EntityManager entityManager;
     private CriteriaBuilder criteriaBuilder;
+    private static EntityManagerProvider instance;
 
-    private static EntityManagerProvider instance = new EntityManagerProvider();
-
-    private EntityManagerProvider() {
+    public void initialize() {
         entityManagerFactory = Persistence.createEntityManagerFactory("friendface");
         entityManager = entityManagerFactory.createEntityManager();
         criteriaBuilder = entityManagerFactory.getCriteriaBuilder();
     }
 
     public static EntityManagerProvider getInstance() {
+        if (instance == null) {
+            instance = new EntityManagerProvider();
+        }
         return instance;
     }
 

@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
  * Time: 11:26 PM
  */
 
-public class HttpServletRequestHelper {
+public class RequestHelper {
     private HttpServletRequest request;
 
-    public HttpServletRequestHelper(HttpServletRequest request) {
+    public RequestHelper(HttpServletRequest request) {
         this.request = request;
     }
 

@@ -13,10 +13,14 @@ import javax.servlet.ServletContextListener;
 public class Initializer implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        FriendfaceService.getService();
+        try {
+            FriendfaceService.getService().start();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        FriendfaceService.stop();
+        FriendfaceService.getService().stop();
     }
 }

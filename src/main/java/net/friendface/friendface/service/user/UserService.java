@@ -1,15 +1,17 @@
 package net.friendface.friendface.service.user;
 
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
-import net.friendface.friendface.model.dao.DAOFactory;
+import net.friendface.friendface.model.dao.JcrHelper;
 import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.view.beans.LoginBean;
 import net.friendface.friendface.view.beans.RegistrationBean;
 
+import javax.jcr.RepositoryException;
 import java.util.List;
 import java.util.Map;
 
+import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 import static net.friendface.friendface.service.user.UserUtils.*;
 
 /**
@@ -21,20 +23,21 @@ import static net.friendface.friendface.service.user.UserUtils.*;
 public class UserService {
     private static UserService service;
     private UserDAO dao;
+    private JcrHelper jcrHelper;
 
-    public static UserService getService() {
+    public static UserService getService() throws RepositoryException {
         if (service == null) {
             service = new UserService();
         }
         return service;
     }
 
-    private UserService() {
-        try {
-            dao = DAOFactory.getDAOFactory().getUserDAO();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    private UserService() throws RepositoryException {
+        dao = getDAOFactory().getUserDAO();
+    }
+
+    public void setJcrHelper(JcrHelper jcrHelper) {
+        this.jcrHelper = jcrHelper;
     }
 
     public boolean login(LoginBean bean, SessionHelper session) {
@@ -47,10 +50,11 @@ public class UserService {
         return false;
     }
 
-    public boolean register(RegistrationBean bean) {
+    public boolean register(RegistrationBean bean) throws RepositoryException {
         User user = getUserFromBean(bean);
         if (!dao.isUserExists(user)) {
             dao.createUser(user);
+            jcrHelper.setupRepository(user);
             // send mail
             return true;
         }
@@ -65,7 +69,9 @@ public class UserService {
         return (User) session.getFromSession(getUserSessionKey());
     }
 
-    public void removeUser(User user) {
+    public void removeUser(User user) throws RepositoryException {
+        dao.deleteUser(user);
+        jcrHelper.removeRepository(user);
     }
 
     public void updateUser(User user) {

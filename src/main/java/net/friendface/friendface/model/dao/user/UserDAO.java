@@ -2,6 +2,7 @@ package net.friendface.friendface.model.dao.user;
 
 import net.friendface.friendface.model.entities.User;
 
+import javax.jcr.RepositoryException;
 import java.util.List;
 import java.util.Map;
 
@@ -12,9 +13,9 @@ import java.util.Map;
  */
 
 public interface UserDAO {
-    void createUser(User user);
+    void createUser(User user) throws RepositoryException;
 
-    void deleteUser(User user);
+    void deleteUser(User user) throws RepositoryException;
 
     void updateUser(User user);
 

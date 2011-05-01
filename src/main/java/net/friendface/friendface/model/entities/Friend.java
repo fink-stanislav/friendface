@@ -20,7 +20,7 @@ import javax.persistence.*;
         @NamedQuery(name = "getSingle",
                 query = "select f from Friend f where f.receiver = :rec and f.sender = :sen")
 })
-public class Friend {
+public class Friend implements Identifiable {
     @Id
     @GeneratedValue
     private Integer id;

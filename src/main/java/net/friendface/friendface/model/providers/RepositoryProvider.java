@@ -1,6 +1,11 @@
 package net.friendface.friendface.model.providers;
 
+import org.apache.jackrabbit.core.RepositoryImpl;
+
 import javax.jcr.Repository;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import javax.jcr.SimpleCredentials;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
@@ -12,15 +17,23 @@ import javax.naming.InitialContext;
 
 public class RepositoryProvider {
     private static RepositoryProvider instance;
-    private Repository repository;
+    protected Repository repository;
+    protected Session session;
 
-    private RepositoryProvider() throws Exception {
+    public void initialize() throws Exception {
         InitialContext initialContext = new InitialContext();
         Context localContext = (Context) initialContext.lookup("java:comp/env");
         Object repository = localContext.lookup("jcr/repository");
         if (repository instanceof Repository) {
             this.repository = (Repository) repository;
+            startSession();
         }
+    }
+
+    protected void startSession() throws RepositoryException {
+        session = repository.login(
+                new SimpleCredentials("username", "password".toCharArray())
+        );
     }
 
     public static RepositoryProvider getInstance() {
@@ -34,8 +47,16 @@ public class RepositoryProvider {
         }
     }
 
+    public Session getSession() {
+        return session;
+    }
+
     public Repository getRepository() {
         return repository;
     }
-}
 
+    public void close() {
+        session.logout();
+        ((RepositoryImpl) repository).shutdown();
+    }
+}

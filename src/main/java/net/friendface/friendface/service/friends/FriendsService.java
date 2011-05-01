@@ -8,6 +8,7 @@ import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.enums.ContactState;
 import net.friendface.friendface.service.user.UserService;
 
+import javax.jcr.RepositoryException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,11 +30,7 @@ public class FriendsService {
     }
 
     public FriendsService() {
-        try {
-            dao = DAOFactory.getDAOFactory().getFriendsDAO();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        dao = DAOFactory.getDAOFactory().getFriendsDAO();
     }
 
     public Friend getFriend(User owner, User friend) {
@@ -48,20 +45,20 @@ public class FriendsService {
         return dao.getById(id);
     }
 
-    public void remove(SessionHelper session, Integer userToDelete) {
+    public void remove(SessionHelper session, Integer userToDelete) throws RepositoryException {
         User owner = UserService.getService().getFromSession(session);
         User friend = UserService.getService().getById(userToDelete);
         Friend result = getFriend(owner, friend);
         dao.deleteFriend(result);
     }
 
-    public void sendProposal(SessionHelper session, Integer receiverId) {
+    public void sendProposal(SessionHelper session, Integer receiverId) throws RepositoryException {
         User sender = UserService.getService().getFromSession(session);
         User receiver = UserService.getService().getById(receiverId);
         dao.setProposed(sender, receiver);
     }
 
-    public void approve(SessionHelper session, Integer userToApprove) {
+    public void approve(SessionHelper session, Integer userToApprove) throws RepositoryException {
         User owner = UserService.getService().getFromSession(session);
         User friend = UserService.getService().getById(userToApprove);
         Friend result = getFriend(owner, friend);

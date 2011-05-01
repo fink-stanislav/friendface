@@ -1,10 +1,13 @@
 package net.friendface.friendface.service;
 
+import net.friendface.friendface.model.dao.JcrHelper;
 import net.friendface.friendface.model.providers.EntityManagerProvider;
 import net.friendface.friendface.model.providers.RepositoryProvider;
 import net.friendface.friendface.service.friends.FriendsService;
 import net.friendface.friendface.service.messages.MessagesService;
 import net.friendface.friendface.service.user.UserService;
+
+import javax.jcr.RepositoryException;
 
 /**
  * Author: S. Fink
@@ -14,13 +17,14 @@ import net.friendface.friendface.service.user.UserService;
 public class FriendfaceService {
     private static FriendfaceService service;
 
-    private FriendfaceService() {
-        EntityManagerProvider.getInstance();
-        RepositoryProvider.getInstance();
+    public void start() throws Exception {
+        EntityManagerProvider.getInstance().initialize();
+        RepositoryProvider.getInstance().initialize();
     }
 
-    public static void stop() {
+    public void stop() {
         EntityManagerProvider.getInstance().close();
+        RepositoryProvider.getInstance().close();
     }
 
     public static FriendfaceService getService() {
@@ -30,15 +34,19 @@ public class FriendfaceService {
         return service;
     }
 
-    public UserService getUserService() {
-        return UserService.getService();
+    public UserService getUserService() throws RepositoryException {
+        UserService service = UserService.getService();
+        service.setJcrHelper(new JcrHelper(RepositoryProvider.getInstance().getSession()));
+        return service;
     }
 
     public FriendsService getFriendsService() {
         return FriendsService.getService();
     }
 
-    public MessagesService getMessagesService() {
-        return MessagesService.getService();
+    public MessagesService getMessagesService() throws RepositoryException {
+        MessagesService messagesService = MessagesService.getService();
+        messagesService.setJcrHelper(new JcrHelper(RepositoryProvider.getInstance().getSession()));
+        return messagesService;
     }
 }

@@ -1,7 +1,7 @@
 package net.friendface.friendface.controllers.actions.friends;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
-import net.friendface.friendface.controllers.actions.helpers.HttpServletRequestHelper;
+import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.service.FriendfaceService;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class SendProposal extends StandardAction implements ServletRequestAware, SessionAware {
     private Integer receiverId;
     private SessionHelper session;
-    private HttpServletRequestHelper requestHelper;
+    private RequestHelper requestHelper;
 
     @Override
     public String execute() {
@@ -44,7 +44,7 @@ public class SendProposal extends StandardAction implements ServletRequestAware,
     }
 
     public void setServletRequest(HttpServletRequest request) {
-        requestHelper = new HttpServletRequestHelper(request);
+        requestHelper = new RequestHelper(request);
     }
 
     public void setSession(Map session) {

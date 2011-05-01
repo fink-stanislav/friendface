@@ -1,16 +1,14 @@
 package net.friendface.friendface.model.dao.wallmessage;
 
-import net.friendface.friendface.model.dao.JcrDAO;
-import net.friendface.friendface.model.dao.JpaDAO;
+import net.friendface.friendface.model.dao.EntityDAO;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
+import net.friendface.friendface.model.providers.EntityManagerProvider;
 
-import javax.jcr.Binary;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.persistence.NoResultException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Author: S. Fink
@@ -18,66 +16,32 @@ import java.util.Map;
  * Time: 20:29
  */
 
-public class WallMessageDAOImpl implements WallMessageDAO {
-    private JpaDAO jpaDAO;
-    private JcrDAO jcrDAO;
-
-    public WallMessageDAOImpl() {
-        jpaDAO = new JpaDAO();
-        jcrDAO = new JcrDAO();
+public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
+    public WallMessageDAOImpl(EntityManagerProvider provider) {
+        super(provider);
     }
 
-    public WallMessage getMessage(User sender, User receiver) {
+    public WallMessage getMessage(User receiver, Node messageNode) throws RepositoryException {
         try {
-            Map<String, Object> params = new HashMap<String, Object>();
-            params.put("rec", receiver);
-            params.put("sen", sender);
-            return getMessage(
-                    jpaDAO.executeNamedQuery("getMessageByUsers", WallMessage.class, params)
-            );
+            WallMessage result =
+                    getQueryExecutor().executeNamedQuery("getMessageByUser", WallMessage.class, "rec", receiver);
+            return retrieveContent(result, messageNode);
         } catch (NoResultException e) {
-            return null;
-        } catch (RepositoryException e) {
             return null;
         }
     }
 
-    public WallMessage getMessage(Integer id) {
-        try {
-            return getMessage(
-                    jpaDAO.getById(id, WallMessage.class)
-            );
-        } catch (NoResultException e) {
-            return null;
-        } catch (RepositoryException e) {
-            return null;
-        }
+    public List<WallMessage> getMessages(User receiver) {
+        return null;
     }
 
-    public void addMessage(User sender, User receiver, Binary message) throws RepositoryException {
-        WallMessage msg = new WallMessage();
-        msg.setReceiver(receiver);
-        msg.setSender(sender);
-        msg.setMessage(message);
-        jpaDAO.persistEntity(msg);
-        addMessage(msg);
+    public void addMessage(WallMessage message, Node messageNode) throws RepositoryException {
+        persistEntity(message);
+        storeContent(message, messageNode);
     }
 
-    public void removeMessage(Integer id) {
-        WallMessage message = getMessage(id);
-        jpaDAO.removeEntity(message);
-    }
-
-    private WallMessage getMessage(WallMessage message) throws RepositoryException {
-        Node messages = jcrDAO.getNode(jcrDAO.getUserNode(message.getReceiver()), "messages");
-        Node messageNode = messages.getNode(Integer.toString(message.getId()));
-        message.setMessage(messageNode.getProperty("message").getBinary());
-        return message;
-    }
-
-    private void addMessage(WallMessage message) throws RepositoryException {
-        Node messages = jcrDAO.getNode(jcrDAO.getUserNode(message.getReceiver()), "messages");
-        Node messageNode = messages.addNode(Integer.toString(message.getId()));
-        messageNode.setProperty("message", message.getMessage());
+    public void removeMessage(WallMessage message, Node messageNode) throws RepositoryException {
+        removeContent(message, messageNode);
+        removeEntity(message);
     }
 }

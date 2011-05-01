@@ -19,7 +19,7 @@ import javax.persistence.*;
         @NamedQuery(name = "getUserByLogin", query = "select u from User u where u.loginEmail = :loginEmail")
 })
 @Indexed
-public class User {
+public class User implements Identifiable {
     @Id
     @GeneratedValue
     private Integer id;

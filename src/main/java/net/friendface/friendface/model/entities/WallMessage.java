@@ -1,7 +1,14 @@
 package net.friendface.friendface.model.entities;
 
-import javax.jcr.Binary;
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Author: S. Fink
@@ -12,10 +19,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "wall_messages")
 @NamedQueries(value = {
-        @NamedQuery(name = "getMessageByUsers",
-                query = "select m from WallMessage m where m.receiver = :rec and m.sender = :sen")
+        @NamedQuery(name = "getMessageByUser",
+                query = "select m from WallMessage m where m.receiver = :rec")
 })
-public class WallMessage {
+public class WallMessage implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
@@ -26,7 +33,7 @@ public class WallMessage {
     @JoinColumn(name = "sender")
     private User sender;
     @Transient
-    private Binary message;
+    private String content;
 
     public Integer getId() {
         return id;
@@ -52,11 +59,11 @@ public class WallMessage {
         this.sender = sender;
     }
 
-    public Binary getMessage() {
-        return message;
+    public <T> T getContent() {
+        return (T) content;
     }
 
-    public void setMessage(Binary message) {
-        this.message = message;
+    public <T> void setContent(T content) {
+        this.content = (String) content;
     }
 }

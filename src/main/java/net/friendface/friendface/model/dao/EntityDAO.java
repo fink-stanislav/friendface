@@ -1,14 +1,15 @@
 package net.friendface.friendface.model.dao;
 
+import net.friendface.friendface.model.entities.ContentEntity;
 import net.friendface.friendface.model.providers.EntityManagerProvider;
 
+import javax.jcr.Binary;
+import javax.jcr.Node;
+import javax.jcr.Property;
+import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-import javax.persistence.TypedQuery;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 /**
  * User: S. Fink
@@ -16,15 +17,21 @@ import java.util.Set;
  * Time: 12:10 PM
  */
 
-public class JpaDAO {
+public class EntityDAO {
     private EntityManager entityManager;
+    private QueryExecutor queryExecutor;
 
-    public JpaDAO() {
-        entityManager = EntityManagerProvider.getInstance().getEntityManager();
+    public EntityDAO(EntityManagerProvider provider) {
+        entityManager = provider.getEntityManager();
+        queryExecutor = new QueryExecutor(entityManager);
     }
 
     public EntityManager getEntityManager() {
         return entityManager;
+    }
+
+    public QueryExecutor getQueryExecutor() {
+        return queryExecutor;
     }
 
     public <T> void removeEntity(T entity) {
@@ -81,38 +88,22 @@ public class JpaDAO {
         return entityManager.find(entityClass, id);
     }
 
-    public <T> T executeNamedQuery(String queryName, Class<T> entityClass, String paramName, Object paramValue) {
-        TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
-        query.setParameter(paramName, paramValue);
-        return query.getSingleResult();
+    public <T extends ContentEntity> T retrieveContent(T entity, Node node) throws RepositoryException {
+        Property property = node.getProperty(
+                Integer.toString(entity.getId())
+        );
+        entity.setContent(property.getBinary());
+        return entity;
     }
 
-    public <T> T executeNamedQuery(String queryName, Class<T> entityClass, Map<String, Object> params) {
-        TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
-        Set<Map.Entry<String, Object>> paramsEntrySet = params.entrySet();
-        for (Map.Entry<String, Object> entry : paramsEntrySet) {
-            query.setParameter(entry.getKey(), entry.getValue());
-        }
-        return query.getSingleResult();
+    public <T extends ContentEntity> void storeContent(T entity, Node node) throws RepositoryException {
+        node.setProperty(Integer.toString(entity.getId()), (Binary) entity.getContent());
     }
 
-    public <T> List<T> executeNamedQueryList(String queryName, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
-        return query.getResultList();
-    }
-
-    public <T> List<T> executeNamedQueryList(String queryName, Class<T> entityClass, String paramName, Object paramValue) {
-        TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
-        query.setParameter(paramName, paramValue);
-        return query.getResultList();
-    }
-
-    public <T> List<T> executeNamedQueryList(String queryName, Class<T> entityClass, Map<String, Object> params) {
-        TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
-        Set<Map.Entry<String, Object>> paramsEntrySet = params.entrySet();
-        for (Map.Entry<String, Object> entry : paramsEntrySet) {
-            query.setParameter(entry.getKey(), entry.getValue());
-        }
-        return query.getResultList();
+    public <T extends ContentEntity> void removeContent(T entity, Node node) throws RepositoryException {
+        Property property = node.getProperty(
+                Integer.toString(entity.getId())
+        );
+        property.remove();
     }
 }

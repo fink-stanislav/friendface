@@ -2,6 +2,7 @@
 That text below represents repository hierarchy for Friendface application.
 
 user 1
+    ...
 user 2
 	albums
 		album 1
@@ -11,16 +12,23 @@ user 2
 			photo n
 		album 2
 		...
-		album 3
+		album n
 	videos
 		video 1
 		video 2
 		... 
 		video n
 	messages
-		message 1 (db id or hash of db id)
-		message 2
-		...
-		message n
+	    public
+		    message 1
+		    message 2
+		    ...
+		    message n
+		private
+		    message 1
+		    message 2
+		    ...
+		    message n
+user 3
 ...
 user n
