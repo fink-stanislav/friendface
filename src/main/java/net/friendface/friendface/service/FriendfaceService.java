@@ -1,6 +1,5 @@
 package net.friendface.friendface.service;
 
-import net.friendface.friendface.model.dao.JcrHelper;
 import net.friendface.friendface.model.providers.EntityManagerProvider;
 import net.friendface.friendface.model.providers.RepositoryProvider;
 import net.friendface.friendface.service.friends.FriendsService;
@@ -35,9 +34,7 @@ public class FriendfaceService {
     }
 
     public UserService getUserService() throws RepositoryException {
-        UserService service = UserService.getService();
-        service.setJcrHelper(new JcrHelper(RepositoryProvider.getInstance().getSession()));
-        return service;
+        return UserService.getService();
     }
 
     public FriendsService getFriendsService() {
@@ -45,8 +42,6 @@ public class FriendfaceService {
     }
 
     public MessagesService getMessagesService() throws RepositoryException {
-        MessagesService messagesService = MessagesService.getService();
-        messagesService.setJcrHelper(new JcrHelper(RepositoryProvider.getInstance().getSession()));
-        return messagesService;
+        return MessagesService.getService();
     }
 }

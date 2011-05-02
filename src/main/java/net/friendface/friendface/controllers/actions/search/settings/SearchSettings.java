@@ -17,16 +17,16 @@ import java.util.Map;
 
 public abstract class SearchSettings extends StandardAction implements ParameterAware, SessionAware {
     protected ParameterHelper parameters;
-    protected SessionHelper session;
+    protected SessionHelper sessionHelper;
 
     public void handleValidationException(ValidationException exception, String searchEntry) {
-        session.putToSession(SEARCH_ENTRY, searchEntry);
-        session.putToSession(ACTION_MESSAGE, getText(exception.toString()));
+        sessionHelper.putToSession(SEARCH_ENTRY, searchEntry);
+        sessionHelper.putToSession(ACTION_MESSAGE, getText(exception.toString()));
         addActionError(getText(exception.toString()));
     }
 
     public void executeDefault(String searchEntry) {
-        session.putToSession(SEARCH_ENTRY, searchEntry);
+        sessionHelper.putToSession(SEARCH_ENTRY, searchEntry);
         parameters.setParameter(SEARCH_ENTRY, searchEntry);
     }
 
@@ -35,6 +35,6 @@ public abstract class SearchSettings extends StandardAction implements Parameter
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

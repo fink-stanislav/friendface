@@ -6,7 +6,7 @@
         @import "css/wall.css";
         @import "css/addmessage.css";
     </style>
-    <script type="text/javascript" src="js/addmessage.js"></script>
+    <script type="text/javascript" src="js/textAreaHandlers.js"></script>
 
     <s:i18n name="jsps.content.userpage">
         <div id="userdata">
@@ -60,18 +60,21 @@
             </div>
             <div class="add-message-control">
                 <div>
-                    <form action="#">
+                    <s:form id="addMessageForm" action="addWallMessage" method="POST"
+                            onsubmit="formSubmit('addMessageForm', isModified())">
                         <div class="add-message-form-line">
-                            <textarea id="messageTextArea" class="add-message-textarea" cols="" rows=""
-                                      onfocus="focusTextArea('messageTextArea');"
-                                      onblur="blurTextArea('messageTextArea', 'Enter your message')">
-                                Enter your message
-                            </textarea>
+                            <s:textarea id="messageTextArea" name="message" rows="" cols=""
+                                        cssClass="add-message-textarea"
+                                        onfocus="focusTextArea('messageTextArea');"
+                                        onblur="blurTextArea('messageTextArea', 'Enter your message')"
+                                        onkeyup="keyUpTextArea()">
+                            </s:textarea>
+                            <s:hidden name="userId" value="%{user.id}"/>
                         </div>
                         <div>
                             <s:submit/><s:reset/>
                         </div>
-                    </form>
+                    </s:form>
                 </div>
             </div>
         </div>

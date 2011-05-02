@@ -13,5 +13,9 @@
             <result name="success" type="tiles">photos.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
+        <action name="addWallMessage" class="net.friendface.friendface.controllers.actions.messages.AddWallMessage">
+            <result name="success" type="redirectAction">userpage</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
     </package>
 </struts>

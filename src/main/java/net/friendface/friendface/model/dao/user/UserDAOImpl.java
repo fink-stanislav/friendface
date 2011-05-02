@@ -1,10 +1,12 @@
 package net.friendface.friendface.model.dao.user;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.User;
-import net.friendface.friendface.model.providers.EntityManagerProvider;
 import net.friendface.friendface.model.search.JpaSearch;
 
+import javax.jcr.RepositoryException;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 import java.util.Map;
@@ -16,15 +18,17 @@ import java.util.Map;
  */
 
 public class UserDAOImpl extends EntityDAO implements UserDAO {
-    public UserDAOImpl(EntityManagerProvider provider) {
-        super(provider);
+    public UserDAOImpl(EntityManager entityManager, RepositoryManager repositoryManager) {
+        super(entityManager, repositoryManager);
     }
 
-    public void createUser(User user) {
+    public void createUser(User user) throws RepositoryException {
+        repositoryManager.setupRepository(user);
         persistEntity(user);
     }
 
-    public void deleteUser(User user) {
+    public void deleteUser(User user) throws RepositoryException {
+        repositoryManager.removeRepository(user);
         removeEntity(user);
     }
 
@@ -37,12 +41,11 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
     }
 
     public User getUser(String loginEmail) {
-        return getQueryExecutor().
-                executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
+        return queryExecutor.executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
     }
 
     public List<User> findUsers(Map<String, String> searchParams) {
-        JpaSearch search = new JpaSearch(getEntityManager());
+        JpaSearch search = new JpaSearch(entityManager);
         return search.find(searchParams, User.class);
     }
 

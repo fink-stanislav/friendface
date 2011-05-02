@@ -1,4 +1,4 @@
-package net.friendface.friendface.model.dao;
+package net.friendface.friendface.model.providers;
 
 import net.friendface.friendface.model.entities.User;
 import org.apache.jackrabbit.value.BinaryImpl;
@@ -15,42 +15,15 @@ import java.io.*;
  * Time: 7:40 PM
  */
 
-public class JcrHelper {
+public class RepositoryManager {
     private Session session;
 
-    public JcrHelper(Session session) throws RepositoryException {
+    public RepositoryManager(Session session) throws RepositoryException {
         this.session = session;
     }
 
     public Session getSession() {
         return session;
-    }
-
-    public String binaryToString(Binary binary) throws Exception {
-        InputStream is = binary.getStream();
-        if (is != null) {
-            Writer writer = new StringWriter();
-
-            char[] buffer = new char[1024];
-            try {
-                Reader reader = new BufferedReader(
-                        new InputStreamReader(is, "UTF-8"));
-                int n;
-                while ((n = reader.read(buffer)) != -1) {
-                    writer.write(buffer, 0, n);
-                }
-            } finally {
-                is.close();
-            }
-            return writer.toString();
-        } else {
-            return "";
-        }
-    }
-
-    public Binary stringToBinary(String string) throws IOException {
-        InputStream is = new ByteArrayInputStream(string.getBytes());
-        return new BinaryImpl(is);
     }
 
     public void setupRepository(User user) throws RepositoryException {
@@ -72,6 +45,10 @@ public class JcrHelper {
 
     public Node getRootNode() throws RepositoryException {
         return session.getRootNode();
+    }
+
+    public Node getNode(String path) throws RepositoryException {
+        return session.getRootNode().getNode(path);
     }
 
     public Node getNode(Node parent, String name) throws RepositoryException {

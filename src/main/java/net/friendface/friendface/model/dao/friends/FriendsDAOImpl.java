@@ -1,10 +1,11 @@
 package net.friendface.friendface.model.dao.friends;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
-import net.friendface.friendface.model.providers.EntityManagerProvider;
 
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.HashMap;
 import java.util.List;
@@ -17,8 +18,8 @@ import java.util.Map;
  */
 
 public class FriendsDAOImpl extends EntityDAO implements FriendsDAO {
-    public FriendsDAOImpl(EntityManagerProvider provider) {
-        super(provider);
+    public FriendsDAOImpl(EntityManager entityManager, RepositoryManager repositoryManager) {
+        super(entityManager, repositoryManager);
     }
 
     public void setProposed(User sender, User receiver) {
@@ -52,7 +53,7 @@ public class FriendsDAOImpl extends EntityDAO implements FriendsDAO {
             Map<String, Object> params = new HashMap<String, Object>();
             params.put("rec", receiver);
             params.put("sen", sender);
-            return getQueryExecutor().executeNamedQuery("getSingle", Friend.class, params);
+            return queryExecutor.executeNamedQuery("getSingle", Friend.class, params);
         } catch (NoResultException e) {
             return null;
         }
@@ -72,7 +73,7 @@ public class FriendsDAOImpl extends EntityDAO implements FriendsDAO {
 
     private List<Friend> getFriendList(User user, String queryName) {
         try {
-            return getQueryExecutor().executeNamedQueryList(queryName, Friend.class, "user", user);
+            return queryExecutor.executeNamedQueryList(queryName, Friend.class, "user", user);
         } catch (NoResultException e) {
             return null;
         }

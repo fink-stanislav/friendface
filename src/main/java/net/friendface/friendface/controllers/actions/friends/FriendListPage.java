@@ -9,6 +9,8 @@ import org.apache.struts2.interceptor.SessionAware;
 import java.util.List;
 import java.util.Map;
 
+import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
+
 /**
  * User: S. Fink
  * Date: 2/7/11
@@ -22,14 +24,14 @@ public class FriendListPage extends StandardAction implements SessionAware {
     private Boolean hasApprovedFriends;
     private Boolean hasProposedFriends;
     private Boolean hasPendingFriends;
-    private SessionHelper session;
+    private SessionHelper sessionHelper;
 
     // something like active tab needed
 
     @Override
     public String execute() {
         try {
-            User user = FriendfaceService.getService().getUserService().getFromSession(session);
+            User user = sessionHelper.getFromSession(getUserSessionKey());
             setApprovedFriends(user);
             setProposedFriends(user);
             setPendingFriends(user);
@@ -79,6 +81,6 @@ public class FriendListPage extends StandardAction implements SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

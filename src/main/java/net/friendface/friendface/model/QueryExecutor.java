@@ -1,4 +1,4 @@
-package net.friendface.friendface.model.dao;
+package net.friendface.friendface.model;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

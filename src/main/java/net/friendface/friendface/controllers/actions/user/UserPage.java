@@ -8,6 +8,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
+import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
+
 /**
  * User: S. Fink
  * Date: 2/3/11
@@ -16,12 +18,12 @@ import java.util.Map;
 
 public class UserPage extends StandardAction implements SessionAware {
     private User user;
-    private SessionHelper session;
+    private SessionHelper sessionHelper;
 
     @Override
     public String execute() {
         try {
-            user = FriendfaceService.getService().getUserService().getFromSession(session);
+            user = sessionHelper.getFromSession(getUserSessionKey());
             return SUCCESS;
         } catch (Exception e) {
             return ERROR;
@@ -37,6 +39,6 @@ public class UserPage extends StandardAction implements SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

@@ -3,12 +3,16 @@ package net.friendface.friendface.controllers.actions.friends;
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
+import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
+import net.friendface.friendface.service.user.UserService;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
+
+import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
 
 /**
  * Author: S. Fink
@@ -18,7 +22,7 @@ import java.util.Map;
 
 public class DeleteFriend extends StandardAction implements ServletRequestAware, SessionAware {
     private RequestHelper requestHelper;
-    private SessionHelper session;
+    private SessionHelper sessionHelper;
     private Integer id;
 
     public Integer getId() {
@@ -32,7 +36,9 @@ public class DeleteFriend extends StandardAction implements ServletRequestAware,
     @Override
     public String execute() {
         try {
-            FriendfaceService.getService().getFriendsService().remove(session, id);
+            User owner = sessionHelper.getFromSession(getUserSessionKey());
+            User friend = UserService.getService().getById(id);
+            FriendfaceService.getService().getFriendsService().remove(owner, friend);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error"));
@@ -48,6 +54,6 @@ public class DeleteFriend extends StandardAction implements ServletRequestAware,
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

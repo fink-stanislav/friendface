@@ -14,11 +14,11 @@ import java.util.List;
  */
 
 public interface WallMessageDAO {
-    List<WallMessage> getMessages(User receiver);
+    List<WallMessage> getMessages(User receiver) throws RepositoryException;
 
-    WallMessage getMessage(User receiver, Node messageNode) throws RepositoryException;
+    WallMessage getMessage(User receiver) throws RepositoryException;
 
-    void addMessage(WallMessage message, Node messageNode) throws RepositoryException;
+    void addMessage(WallMessage message) throws RepositoryException;
 
-    void removeMessage(WallMessage message, Node messageNode) throws RepositoryException;
+    void removeMessage(WallMessage message) throws RepositoryException;
 }

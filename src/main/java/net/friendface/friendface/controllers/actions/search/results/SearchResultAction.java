@@ -17,7 +17,7 @@ import java.util.Map;
 public abstract class SearchResultAction extends StandardAction implements ParameterAware, SessionAware {
     private Boolean notEmpty = false;
     protected ParameterHelper parameters;
-    protected SessionHelper session;
+    protected SessionHelper sessionHelper;
 
     @Override
     public String execute() {
@@ -48,6 +48,6 @@ public abstract class SearchResultAction extends StandardAction implements Param
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

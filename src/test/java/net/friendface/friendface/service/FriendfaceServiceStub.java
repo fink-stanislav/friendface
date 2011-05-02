@@ -1,6 +1,6 @@
 package net.friendface.friendface.service;
 
-import net.friendface.friendface.model.dao.JcrHelper;
+import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.providers.EntityManagerProviderStub;
 import net.friendface.friendface.model.providers.RepositoryProviderStub;
 import net.friendface.friendface.service.messages.MessagesService;
@@ -33,14 +33,14 @@ public class FriendfaceServiceStub extends FriendfaceService {
     @Override
     public UserService getUserService() throws RepositoryException {
         UserService service = UserService.getService();
-        service.setJcrHelper(new JcrHelper(repositoryProviderStub.getSession()));
+        service.setRepositoryManager(new RepositoryManager(repositoryProviderStub.getSession()));
         return service;
     }
 
     @Override
     public MessagesService getMessagesService() throws RepositoryException {
         MessagesService service = MessagesService.getService();
-        service.setJcrHelper(new JcrHelper(repositoryProviderStub.getSession()));
+        service.setRepositoryManager(new RepositoryManager(repositoryProviderStub.getSession()));
         return service;
     }
 

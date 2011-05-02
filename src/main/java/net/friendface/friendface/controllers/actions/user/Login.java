@@ -5,12 +5,15 @@ import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
 import net.friendface.friendface.controllers.validation.Validator;
+import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.view.beans.LoginBean;
 import org.apache.struts2.interceptor.SessionAware;
 
 import javax.persistence.NoResultException;
 import java.util.Map;
+
+import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
 
 /**
  * User: S. Fink
@@ -20,24 +23,20 @@ import java.util.Map;
 
 public class Login extends StandardAction implements ModelDriven, SessionAware {
     private LoginBean loginBean = new LoginBean();
-    private SessionHelper session;
+    private SessionHelper sessionHelper;
 
     @Override
     public String execute() {
         try {
-            return login();
-        } catch (NoResultException e) {
-            return resultAndErrorMessage(INPUT, getText("no.user"));
+            User userFromStorage = FriendfaceService.getService().getUserService().login(loginBean);
+            if (userFromStorage != null) {
+                sessionHelper.putToSession(getUserSessionKey(), userFromStorage);
+                return SUCCESS;
+            } else {
+                return resultAndErrorMessage(INPUT, getText("wrong.password") + " or " + getText("no.user"));
+            }
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
-        }
-    }
-
-    private String login() throws Exception {
-        if (FriendfaceService.getService().getUserService().login(loginBean, session)) {
-            return SUCCESS;
-        } else {
-            return resultAndErrorMessage(INPUT, getText("wrong.password"));
         }
     }
 
@@ -57,6 +56,6 @@ public class Login extends StandardAction implements ModelDriven, SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

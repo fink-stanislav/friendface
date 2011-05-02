@@ -4,6 +4,7 @@ import net.friendface.friendface.model.dao.friends.FriendsDAO;
 import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
 import net.friendface.friendface.model.providers.EntityManagerProvider;
+import net.friendface.friendface.model.providers.RepositoryProvider;
 
 import javax.jcr.RepositoryException;
 
@@ -14,7 +15,6 @@ import javax.jcr.RepositoryException;
  */
 
 public abstract class DAOFactory {
-    private EntityManagerProvider provider;
     public abstract UserDAO getUserDAO() throws RepositoryException;
 
     public abstract FriendsDAO getFriendsDAO();
@@ -22,6 +22,9 @@ public abstract class DAOFactory {
     public abstract WallMessageDAO getMessageDAO() throws RepositoryException;
 
     public static DAOFactory getDAOFactory() {
-        return new DAOFactoryImpl(EntityManagerProvider.getInstance());
+        return new DAOFactoryImpl(
+                EntityManagerProvider.getInstance().getEntityManager(),
+                RepositoryProvider.getInstance().getRepositoryManager()
+        );
     }
 }

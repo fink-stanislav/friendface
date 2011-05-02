@@ -1,14 +1,12 @@
 package net.friendface.friendface.service.messages;
 
-import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
-import net.friendface.friendface.model.dao.JcrHelper;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
-import net.friendface.friendface.service.user.UserService;
+import net.friendface.friendface.utils.StringUtils;
 
-import javax.jcr.Node;
 import javax.jcr.RepositoryException;
+import java.io.IOException;
 import java.util.List;
 
 import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
@@ -22,7 +20,6 @@ import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 public class MessagesService {
     private static MessagesService service;
     private WallMessageDAO dao;
-    private JcrHelper jcrHelper;
 
     public static MessagesService getService() throws RepositoryException {
         if (service == null) {
@@ -35,28 +32,19 @@ public class MessagesService {
         dao = getDAOFactory().getMessageDAO();
     }
 
-    public void setJcrHelper(JcrHelper jcrHelper) {
-        this.jcrHelper = jcrHelper;
-    }
-
-    public void postWallMessage(SessionHelper session, User sender, String message) throws RepositoryException {
-        User receiver = UserService.getService().getFromSession(session);
-        Node messageNode = jcrHelper.getNode(
-                jcrHelper.getUserNode(receiver), "messages/public"
-        );
+    public void postWallMessage(User sender, User receiver, String message) throws RepositoryException, IOException {
         WallMessage wallMessage = new WallMessage();
         wallMessage.setReceiver(receiver);
         wallMessage.setSender(sender);
+        wallMessage.setContent(StringUtils.stringToBinary(message));
+        dao.addMessage(wallMessage);
     }
 
-    public void removeWallMessage(SessionHelper session) throws RepositoryException {
-        User receiver = UserService.getService().getFromSession(session);
-        Node messageNode = jcrHelper.getNode(
-                jcrHelper.getUserNode(receiver), "messages/public"
-        );
+    public void removeWallMessage(WallMessage message) throws RepositoryException {
+        dao.removeMessage(message);
     }
 
-    public List<WallMessage> getWallMessages() {
-        throw new UnsupportedOperationException();
+    public List<WallMessage> getWallMessages(User receiver) throws RepositoryException {
+        return dao.getMessages(receiver);
     }
 }

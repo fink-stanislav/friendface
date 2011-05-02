@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="css/commonstyle.css"/>
     <s:head/>
     <title>
-        <s:bean name="com.exadel.friendface.view.beans.PageTitle">
+        <s:bean name="net.friendface.friendface.view.beans.PageTitle">
             <s:param name="bundleName">
                 <tiles:getAsString name="title"/>
             </s:param>

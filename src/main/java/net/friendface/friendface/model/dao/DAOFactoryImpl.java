@@ -6,9 +6,10 @@ import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.user.UserDAOImpl;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAOImpl;
-import net.friendface.friendface.model.providers.EntityManagerProvider;
+import net.friendface.friendface.model.providers.RepositoryManager;
 
 import javax.jcr.RepositoryException;
+import javax.persistence.EntityManager;
 
 /**
  * Author: S. Fink
@@ -17,24 +18,27 @@ import javax.jcr.RepositoryException;
  */
 
 public class DAOFactoryImpl extends DAOFactory {
-    private EntityManagerProvider provider;
+    private EntityManager entityManager;
+    private RepositoryManager repositoryManager;
 
-    public DAOFactoryImpl(EntityManagerProvider provider) {
-        this.provider = provider;
+
+    public DAOFactoryImpl(EntityManager entityManager, RepositoryManager repositoryManager) {
+        this.entityManager = entityManager;
+        this.repositoryManager = repositoryManager;
     }
 
     @Override
     public UserDAO getUserDAO() throws RepositoryException {
-        return new UserDAOImpl(provider);
+        return new UserDAOImpl(entityManager, repositoryManager);
     }
 
     @Override
     public FriendsDAO getFriendsDAO() {
-        return new FriendsDAOImpl(provider);
+        return new FriendsDAOImpl(entityManager, repositoryManager);
     }
 
     @Override
     public WallMessageDAO getMessageDAO() throws RepositoryException {
-        return new WallMessageDAOImpl(provider);
+        return new WallMessageDAOImpl(entityManager, repositoryManager);
     }
 }

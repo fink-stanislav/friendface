@@ -1,5 +1,6 @@
 package net.friendface.friendface.controllers.actions.helpers;
 
+import java.io.Serializable;
 import java.util.Map;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Map;
  * Time: 23:20
  */
 
-public class SessionHelper {
+public class SessionHelper implements Serializable {
     private Map session;
 
     public SessionHelper(Map session) {

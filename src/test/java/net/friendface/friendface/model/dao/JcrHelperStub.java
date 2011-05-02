@@ -1,5 +1,7 @@
 package net.friendface.friendface.model.dao;
 
+import net.friendface.friendface.model.providers.RepositoryManager;
+
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
@@ -9,7 +11,7 @@ import javax.jcr.Session;
  * Time: 19:36
  */
 
-public class JcrHelperStub extends JcrHelper {
+public class JcrHelperStub extends RepositoryManager {
     public JcrHelperStub(Session session) throws RepositoryException {
         super(session);
     }

@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class SearchVideos extends StandardAction implements ParameterAware, SessionAware {
     private String videoTitle;
-    private SessionHelper session;
+    private SessionHelper sessionHelper;
     private ParameterHelper parameters;
 
     @Override
@@ -27,15 +27,15 @@ public class SearchVideos extends StandardAction implements ParameterAware, Sess
             Validator validator = new Validator();
             validator.notBlank(videoTitle);
         } catch (ValidationException e) {
-            session.putToSession(SEARCH_ENTRY, "Videos");
-            session.putToSession(ACTION_MESSAGE, getText(e.toString()));
+            sessionHelper.putToSession(SEARCH_ENTRY, "Videos");
+            sessionHelper.putToSession(ACTION_MESSAGE, getText(e.toString()));
             addActionError(getText(e.toString()));
         }
     }
 
     @Override
     public String execute() {
-        session.putToSession(SEARCH_ENTRY, "Videos");
+        sessionHelper.putToSession(SEARCH_ENTRY, "Videos");
         parameters.setParameter(SEARCH_ENTRY, "Videos");
         return SUCCESS;
     }
@@ -53,6 +53,6 @@ public class SearchVideos extends StandardAction implements ParameterAware, Sess
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

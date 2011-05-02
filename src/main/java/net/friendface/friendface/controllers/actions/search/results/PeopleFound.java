@@ -7,6 +7,8 @@ import net.friendface.friendface.view.beans.DisplayUserBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
+
 /**
  * Author: S. Fink
  * Date: 3/10/11
@@ -29,7 +31,7 @@ public class PeopleFound extends SearchResultAction {
 
     public void prepare(List<User> userList) throws Exception {
         resultList = new ArrayList<DisplayUserBean>(userList.size());
-        User currentUser = FriendfaceService.getService().getUserService().getFromSession(session);
+        User currentUser = sessionHelper.getFromSession(getUserSessionKey());
         for (User user : userList) {
             if (currentUser.getId().equals(user.getId())) {
                 continue;

@@ -1,5 +1,6 @@
 package net.friendface.friendface.model.entities;
 
+import javax.jcr.Binary;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class WallMessage implements ContentEntity {
     @JoinColumn(name = "sender")
     private User sender;
     @Transient
-    private String content;
+    private Binary content;
 
     public Integer getId() {
         return id;
@@ -64,6 +65,6 @@ public class WallMessage implements ContentEntity {
     }
 
     public <T> void setContent(T content) {
-        this.content = (String) content;
+        this.content = (Binary) content;
     }
 }

@@ -1,6 +1,9 @@
 package net.friendface.friendface.utils;
 
-import java.io.UnsupportedEncodingException;
+import org.apache.jackrabbit.value.BinaryImpl;
+
+import javax.jcr.Binary;
+import java.io.*;
 import java.net.URLEncoder;
 import java.util.Map;
 
@@ -27,5 +30,34 @@ public class StringUtils {
         }
         urlBuilder.deleteCharAt(urlBuilder.lastIndexOf("&"));
         return urlBuilder.toString();
+    }
+
+    public static String binaryToString(Binary binary) throws Exception {
+        InputStream is = binary.getStream();
+        if (is != null) {
+            Writer writer = new StringWriter();
+
+            char[] buffer = new char[1024];
+            try {
+                Reader reader = new BufferedReader(
+                        new InputStreamReader(is, "UTF-8"));
+                int n;
+                while ((n = reader.read(buffer)) != -1) {
+                    writer.write(buffer, 0, n);
+                }
+            } finally {
+                is.close();
+            }
+            return writer.toString();
+        } else {
+            return "";
+        }
+    }
+
+    public static Binary stringToBinary(String string) throws IOException {
+        InputStream is = new ByteArrayInputStream(string.getBytes("UTF-8"));
+        Binary result = new BinaryImpl(is);
+        is.close();
+        return result;
     }
 }

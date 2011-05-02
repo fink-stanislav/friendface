@@ -7,6 +7,8 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;
 
+import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
+
 /**
  * User: S. Fink
  * Date: 2/4/11
@@ -14,12 +16,12 @@ import java.util.Map;
  */
 
 public class Logout extends StandardAction implements SessionAware {
-    private SessionHelper session;
+    private SessionHelper sessionHelper;
 
     @Override
     public String execute() {
         try {
-            FriendfaceService.getService().getUserService().logout(session);
+            sessionHelper.putToSession(getUserSessionKey(), null);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
@@ -27,6 +29,6 @@ public class Logout extends StandardAction implements SessionAware {
     }
 
     public void setSession(Map session) {
-        this.session = new SessionHelper(session);
+        sessionHelper = new SessionHelper(session);
     }
 }

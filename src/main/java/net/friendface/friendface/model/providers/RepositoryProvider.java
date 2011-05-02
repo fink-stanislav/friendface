@@ -19,6 +19,7 @@ public class RepositoryProvider {
     private static RepositoryProvider instance;
     protected Repository repository;
     protected Session session;
+    protected RepositoryManager repositoryManager;
 
     public void initialize() throws Exception {
         InitialContext initialContext = new InitialContext();
@@ -27,6 +28,7 @@ public class RepositoryProvider {
         if (repository instanceof Repository) {
             this.repository = (Repository) repository;
             startSession();
+            repositoryManager = new RepositoryManager(session);
         }
     }
 
@@ -51,8 +53,8 @@ public class RepositoryProvider {
         return session;
     }
 
-    public Repository getRepository() {
-        return repository;
+    public RepositoryManager getRepositoryManager() {
+        return repositoryManager;
     }
 
     public void close() {

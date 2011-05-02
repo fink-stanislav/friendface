@@ -1,15 +1,14 @@
 package net.friendface.friendface.model.dao;
 
+import net.friendface.friendface.model.QueryExecutor;
 import net.friendface.friendface.model.entities.ContentEntity;
-import net.friendface.friendface.model.providers.EntityManagerProvider;
+import net.friendface.friendface.model.providers.RepositoryManager;
 
-import javax.jcr.Binary;
-import javax.jcr.Node;
-import javax.jcr.Property;
-import javax.jcr.RepositoryException;
+import javax.jcr.*;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
+import java.util.List;
 
 /**
  * User: S. Fink
@@ -18,20 +17,14 @@ import javax.persistence.PersistenceException;
  */
 
 public class EntityDAO {
-    private EntityManager entityManager;
-    private QueryExecutor queryExecutor;
+    protected EntityManager entityManager;
+    protected RepositoryManager repositoryManager;
+    protected QueryExecutor queryExecutor;
 
-    public EntityDAO(EntityManagerProvider provider) {
-        entityManager = provider.getEntityManager();
+    public EntityDAO(EntityManager entityManager, RepositoryManager repositoryManager) {
+        this.entityManager = entityManager;
+        this.repositoryManager = repositoryManager;
         queryExecutor = new QueryExecutor(entityManager);
-    }
-
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    public QueryExecutor getQueryExecutor() {
-        return queryExecutor;
     }
 
     public <T> void removeEntity(T entity) {
@@ -88,7 +81,8 @@ public class EntityDAO {
         return entityManager.find(entityClass, id);
     }
 
-    public <T extends ContentEntity> T retrieveContent(T entity, Node node) throws RepositoryException {
+    public <T extends ContentEntity> T retrieveContent(T entity, String path) throws RepositoryException {
+        Node node = repositoryManager.getNode(path);
         Property property = node.getProperty(
                 Integer.toString(entity.getId())
         );
@@ -96,14 +90,29 @@ public class EntityDAO {
         return entity;
     }
 
-    public <T extends ContentEntity> void storeContent(T entity, Node node) throws RepositoryException {
-        node.setProperty(Integer.toString(entity.getId()), (Binary) entity.getContent());
+    public <T extends ContentEntity> List<T> retrieveContent(List<T> entityList, String path) throws RepositoryException {
+        Node node = repositoryManager.getNode(path);
+        for (T entity : entityList) {
+            Property property = node.getProperty(
+                    Integer.toString(entity.getId())
+            );
+            entity.setContent(property.getBinary());
+        }
+        return entityList;
     }
 
-    public <T extends ContentEntity> void removeContent(T entity, Node node) throws RepositoryException {
+    public <T extends ContentEntity> void storeContent(T entity, String path) throws RepositoryException {
+        Node node = repositoryManager.getNode(path);
+        node.setProperty(Integer.toString(entity.getId()), (Binary) entity.getContent());
+        repositoryManager.getSession().save();
+    }
+
+    public <T extends ContentEntity> void removeContent(T entity, String path) throws RepositoryException {
+        Node node = repositoryManager.getNode(path);
         Property property = node.getProperty(
                 Integer.toString(entity.getId())
         );
         property.remove();
+        repositoryManager.getSession().save();
     }
 }

@@ -1,12 +1,10 @@
 package net.friendface.friendface.service.friends;
 
-import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.dao.DAOFactory;
 import net.friendface.friendface.model.dao.friends.FriendsDAO;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.enums.ContactState;
-import net.friendface.friendface.service.user.UserService;
 
 import javax.jcr.RepositoryException;
 import java.util.ArrayList;
@@ -45,22 +43,16 @@ public class FriendsService {
         return dao.getById(id);
     }
 
-    public void remove(SessionHelper session, Integer userToDelete) throws RepositoryException {
-        User owner = UserService.getService().getFromSession(session);
-        User friend = UserService.getService().getById(userToDelete);
+    public void remove(User owner, User friend) throws RepositoryException {
         Friend result = getFriend(owner, friend);
         dao.deleteFriend(result);
     }
 
-    public void sendProposal(SessionHelper session, Integer receiverId) throws RepositoryException {
-        User sender = UserService.getService().getFromSession(session);
-        User receiver = UserService.getService().getById(receiverId);
+    public void sendProposal(User sender, User receiver) throws RepositoryException {
         dao.setProposed(sender, receiver);
     }
 
-    public void approve(SessionHelper session, Integer userToApprove) throws RepositoryException {
-        User owner = UserService.getService().getFromSession(session);
-        User friend = UserService.getService().getById(userToApprove);
+    public void approve(User owner, User friend) throws RepositoryException {
         Friend result = getFriend(owner, friend);
         dao.approve(result);
     }

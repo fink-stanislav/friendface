@@ -1,12 +1,12 @@
 package net.friendface.friendface.model.dao.wallmessage;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
-import net.friendface.friendface.model.providers.EntityManagerProvider;
 
-import javax.jcr.Node;
 import javax.jcr.RepositoryException;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.List;
 
@@ -17,31 +17,41 @@ import java.util.List;
  */
 
 public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
-    public WallMessageDAOImpl(EntityManagerProvider provider) {
-        super(provider);
+    public WallMessageDAOImpl(EntityManager entityManager, RepositoryManager repositoryManager) {
+        super(entityManager, repositoryManager);
     }
 
-    public WallMessage getMessage(User receiver, Node messageNode) throws RepositoryException {
+    public WallMessage getMessage(User receiver) throws RepositoryException {
         try {
             WallMessage result =
-                    getQueryExecutor().executeNamedQuery("getMessageByUser", WallMessage.class, "rec", receiver);
-            return retrieveContent(result, messageNode);
+                    queryExecutor.executeNamedQuery("getMessageByUser", WallMessage.class, "rec", receiver);
+            return retrieveContent(result, getPath(receiver));
         } catch (NoResultException e) {
             return null;
         }
     }
 
-    public List<WallMessage> getMessages(User receiver) {
-        return null;
+    public List<WallMessage> getMessages(User receiver) throws RepositoryException {
+        try {
+            List<WallMessage> result =
+                    queryExecutor.executeNamedQueryList("getMessageByUser", WallMessage.class, "rec", receiver);
+            return retrieveContent(result, getPath(receiver));
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
-    public void addMessage(WallMessage message, Node messageNode) throws RepositoryException {
+    public void addMessage(WallMessage message) throws RepositoryException {
         persistEntity(message);
-        storeContent(message, messageNode);
+        storeContent(message, getPath(message.getReceiver()));
     }
 
-    public void removeMessage(WallMessage message, Node messageNode) throws RepositoryException {
-        removeContent(message, messageNode);
+    public void removeMessage(WallMessage message) throws RepositoryException {
+        removeContent(message, getPath(message.getReceiver()));
         removeEntity(message);
+    }
+
+    private String getPath(User receiver) {
+        return receiver.getLoginEmail() + "/messages/public";
     }
 }
