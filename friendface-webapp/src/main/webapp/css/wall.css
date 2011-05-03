@@ -13,6 +13,10 @@
 .wall-message-text {
 }
 
+.wall-empty-text {
+    text-align: center;
+}
+
 .wall-message-head {
     text-align: right;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #ffffff), color-stop(0%, #e5e5e5));

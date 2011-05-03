@@ -3,6 +3,10 @@
     text-align: right;
 }
 
+.add-message-control a {
+    color: black;
+}
+
 .add-message-form-line {
     display: inline;
 }

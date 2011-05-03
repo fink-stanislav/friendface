@@ -4,9 +4,11 @@ import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
 import net.friendface.friendface.utils.StringUtils;
+import net.friendface.friendface.view.beans.WallMessageBean;
 
 import javax.jcr.RepositoryException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
@@ -28,6 +30,10 @@ public class MessagesService {
         return service;
     }
 
+    public WallMessage getById(Integer id) {
+        return dao.getMessage(id);
+    }
+
     private MessagesService() throws RepositoryException {
         dao = getDAOFactory().getMessageDAO();
     }
@@ -44,7 +50,13 @@ public class MessagesService {
         dao.removeMessage(message);
     }
 
-    public List<WallMessage> getWallMessages(User receiver) throws RepositoryException {
-        return dao.getMessages(receiver);
+    public List<WallMessageBean> getWallMessages(User receiver) throws Exception {
+        List<WallMessage> wallMessageList = dao.getMessages(receiver);
+        List<WallMessageBean> wallMessageBeans = new ArrayList<WallMessageBean>(wallMessageList.size());
+        for (WallMessage message : wallMessageList) {
+            WallMessageBean messageBean = new WallMessageBean(message);
+            wallMessageBeans.add(messageBean);
+        }
+        return wallMessageBeans;
     }
 }

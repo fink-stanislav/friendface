@@ -4,3 +4,8 @@ function formSubmit(formId, submitForm) {
         form.reset();
     }
 }
+
+function submitForm(formId) {
+    var form = document.getElementById(formId);
+    form.submit();
+}

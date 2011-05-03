@@ -1,5 +1,7 @@
 package net.friendface.friendface.model.entities;
 
+import javax.jcr.Binary;
+
 /**
  * Author: S. Fink
  * Date: 01.05.11
@@ -7,6 +9,6 @@ package net.friendface.friendface.model.entities;
  */
 
 public interface ContentEntity extends Identifiable {
-    <T> T getContent();
-    <T> void setContent(T content);
+    Binary getContent();
+    void setContent(Binary content);
 }

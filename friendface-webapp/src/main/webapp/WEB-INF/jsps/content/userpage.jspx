@@ -7,6 +7,7 @@
         @import "css/addmessage.css";
     </style>
     <script type="text/javascript" src="js/textAreaHandlers.js"></script>
+    <script type="text/javascript" src="js/formHandlers.js"></script>
 
     <s:i18n name="jsps.content.userpage">
         <div id="userdata">
@@ -42,22 +43,49 @@
         </div>
 
         <div id="wall">
-            <div class="wall-message">
-                <div class="wall-message-head">
-                    <s:a href="" title="имя отправителя">имя отправителя</s:a>
-                    &#160;|&#160;
-                    <s:a href="" title="%{getText('link.delete.title')}">
-                        <s:text name="link.delete.value"/>
-                    </s:a>
-                </div>
-                <a href="">
-                    <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
-                </a>
 
-                <div class="wall-message-text">
-                    какоето сообщение
+            <s:if test="hasWallMessages">
+                <s:iterator value="messageList" status="status">
+                    <s:form id="goToUserPageForm">
+                        <s:hidden value="%{[0].userId}"/>
+                    </s:form>
+                    <s:form id="deleteMessageForm" action="removeWallMessage" method="POST">
+                        <s:hidden name="id" value="%{[0].id}"/>
+                    </s:form>
+
+                    <div class="wall-message">
+                        <div class="wall-message-head">
+                            <s:a href="#" title="имя отправителя" onclick="submitForm('goToUserPageForm')">
+                                <s:property value="%{[0].userName}"/>
+                            </s:a>
+                            &#160;|&#160;
+                            <s:a href="#" title="%{getText('link.delete.title')}"
+                                 onclick="submitForm('deleteMessageForm')">
+                                <s:text name="link.delete.value"/>
+                            </s:a>
+                        </div>
+                        <a href="">
+                            <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+                        </a>
+
+                        <div class="wall-message-text">
+                            <s:property value="%{[0].textContent}"/>
+                        </div>
+                    </div>
+                </s:iterator>
+            </s:if>
+
+            <s:else>
+                <div class="wall-message">
+                    <div class="wall-message-head">
+                        &#160;
+                    </div>
+                    <div class="wall-empty-text">
+                        no messages yet
+                    </div>
                 </div>
-            </div>
+            </s:else>
+
             <div class="add-message-control">
                 <div>
                     <s:form id="addMessageForm" action="addWallMessage" method="POST"
@@ -72,11 +100,15 @@
                             <s:hidden name="userId" value="%{user.id}"/>
                         </div>
                         <div>
+                            <s:a href="#">
+                                hide
+                            </s:a>
                             <s:submit/><s:reset/>
                         </div>
                     </s:form>
                 </div>
             </div>
+
         </div>
     </s:i18n>
 </jsp:root>

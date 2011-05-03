@@ -21,11 +21,9 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
         super(entityManager, repositoryManager);
     }
 
-    public WallMessage getMessage(User receiver) throws RepositoryException {
+    public WallMessage getMessage(Integer id) {
         try {
-            WallMessage result =
-                    queryExecutor.executeNamedQuery("getMessageByUser", WallMessage.class, "rec", receiver);
-            return retrieveContent(result, getPath(receiver));
+            return getById(id, WallMessage.class);
         } catch (NoResultException e) {
             return null;
         }

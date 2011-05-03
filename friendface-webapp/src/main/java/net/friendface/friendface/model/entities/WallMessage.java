@@ -40,7 +40,7 @@ public class WallMessage implements ContentEntity {
         return id;
     }
 
-    private void setId(Integer id) {
+    protected void setId(Integer id) {
         this.id = id;
     }
 
@@ -60,11 +60,11 @@ public class WallMessage implements ContentEntity {
         this.sender = sender;
     }
 
-    public <T> T getContent() {
-        return (T) content;
+    public Binary getContent() {
+        return content;
     }
 
-    public <T> void setContent(T content) {
-        this.content = (Binary) content;
+    public void setContent(Binary content) {
+        this.content = content;
     }
 }

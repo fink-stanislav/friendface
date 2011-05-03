@@ -103,7 +103,7 @@ public class EntityDAO {
 
     public <T extends ContentEntity> void storeContent(T entity, String path) throws RepositoryException {
         Node node = repositoryManager.getNode(path);
-        node.setProperty(Integer.toString(entity.getId()), (Binary) entity.getContent());
+        node.setProperty(Integer.toString(entity.getId()), entity.getContent());
         repositoryManager.getSession().save();
     }
 
