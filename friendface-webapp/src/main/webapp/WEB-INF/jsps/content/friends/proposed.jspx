@@ -4,21 +4,23 @@
     <style type="text/css">
         @import "css/list.css";
     </style>
+    <script type="text/javascript" src="js/formHandlers.js"></script>
+
     <div id="list">
         <s:if test="hasProposedFriends">
             <s:iterator value="proposedFriends" status="status">
                 <s:div cssClass="listitem">
                     <div class="itemheader">
-                        <s:form method="POST" name="rejectProposalForm" action="deleteFriend">
+                        <s:form method="POST" id="rejectProposalForm%{#status.index}" action="deleteFriend">
                             <s:hidden name="id" value="%{[0].id}"/>
                         </s:form>
-                        <s:form method="POST" name="approveForm" action="approveFriend">
+                        <s:form method="POST" id="approveForm%{#status.index}" action="approveFriend">
                             <s:hidden name="id" value="%{[0].id}"/>
                         </s:form>
-                        <s:a href="#" onclick="document.forms['rejectProposalForm'].submit()">
+                        <s:a href="#" onclick="submitForm('rejectProposalForm%{#status.index}')">
                             reject
                         </s:a>
-                        <s:a href="#" onclick="document.forms['approveForm'].submit()">
+                        <s:a href="#" onclick="submitForm('approveForm%{#status.index}')">
                             approve
                         </s:a>
                     </div>
@@ -28,8 +30,8 @@
                         </a>
 
                         <div class="itemtextinfo">
-                            <s:form method="POST" name="redirectToUserPageForm">
-                                <a href="#" onclick="document.forms['redirectToUserPageForm'].submit()">
+                            <s:form method="POST" id="redirectToUserPageForm%{#status.index}">
+                                <a href="#" onclick="submitForm('redirectToUserPageForm%{#status.index}')">
                                     <s:property value="%{[0].username}"/>&#160;
                                     <s:property value="%{[0].userSurname}"/>
                                 </a>

@@ -46,21 +46,21 @@
 
             <s:if test="hasWallMessages">
                 <s:iterator value="messageList" status="status">
-                    <s:form id="goToUserPageForm">
+                    <s:form id="goToUserPageForm%{#status.index}">
                         <s:hidden value="%{[0].userId}"/>
                     </s:form>
-                    <s:form id="deleteMessageForm" action="removeWallMessage" method="POST">
+                    <s:form id="deleteMessageForm%{#status.index}" action="removeWallMessage" method="POST">
                         <s:hidden name="id" value="%{[0].id}"/>
                     </s:form>
 
                     <div class="wall-message">
                         <div class="wall-message-head">
-                            <s:a href="#" title="имя отправителя" onclick="submitForm('goToUserPageForm')">
+                            <s:a href="#" title="имя отправителя" onclick="submitForm('goToUserPageForm%{#status.index}')">
                                 <s:property value="%{[0].userName}"/>
                             </s:a>
                             &#160;|&#160;
                             <s:a href="#" title="%{getText('link.delete.title')}"
-                                 onclick="submitForm('deleteMessageForm')">
+                                 onclick="submitForm('deleteMessageForm%{#status.index}')">
                                 <s:text name="link.delete.value"/>
                             </s:a>
                         </div>

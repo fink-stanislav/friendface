@@ -4,14 +4,16 @@
     <style type="text/css">
         @import "css/search.css";
     </style>
+    <script type="text/javascript" src="js/formHandlers.js"></script>
+
     <s:i18n name="jsps.content.search">
         <div id="searchpage">
             <div id="searchheader">Extended search</div>
             <div id="searchselect">
-                <s:form action="search" name="searchTypeForm">
+                <s:form action="search" id="searchTypeForm">
                     <span id="searchtypelabel">Search for:</span>
                     <s:select list="searchEntries" name="searchEntry" value="%{searchEntry}"
-                              onchange="document.forms['searchTypeForm'].submit()"/>
+                              onchange="formSubmit('searchTypeForm')"/>
                 </s:form>
             </div>
 
