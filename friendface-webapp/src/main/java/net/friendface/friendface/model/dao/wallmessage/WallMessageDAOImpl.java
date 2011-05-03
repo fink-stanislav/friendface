@@ -21,7 +21,7 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
         super(entityManager, repositoryManager);
     }
 
-    public WallMessage getMessage(Integer id) {
+    public WallMessage getById(Integer id) {
         try {
             return getById(id, WallMessage.class);
         } catch (NoResultException e) {

@@ -13,13 +13,13 @@ import java.util.Map;
  */
 
 public interface UserDAO {
-    void createUser(User user) throws RepositoryException;
+    void insertUser(User user) throws RepositoryException;
 
     void deleteUser(User user) throws RepositoryException;
 
     void updateUser(User user);
 
-    User getUser(Integer userId);
+    User getById(Integer userId);
 
     User getUser(String loginEmail);
 

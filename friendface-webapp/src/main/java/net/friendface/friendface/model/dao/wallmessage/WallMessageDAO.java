@@ -15,7 +15,7 @@ import java.util.List;
 public interface WallMessageDAO {
     List<WallMessage> getMessages(User receiver) throws RepositoryException;
 
-    WallMessage getMessage(Integer id);
+    WallMessage getById(Integer id);
 
     void addMessage(WallMessage message) throws RepositoryException;
 

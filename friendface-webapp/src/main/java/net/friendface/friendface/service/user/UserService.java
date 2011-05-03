@@ -47,7 +47,7 @@ public class UserService {
     public boolean register(RegistrationBean bean) throws RepositoryException {
         User user = getUserFromBean(bean);
         if (!dao.isUserExists(user)) {
-            dao.createUser(user);
+            dao.insertUser(user);
             // send mail
             return true;
         }
@@ -66,7 +66,7 @@ public class UserService {
     }
 
     public User getById(Integer id) {
-        return dao.getUser(id);
+        return dao.getById(id);
     }
 
     public List<User> find(Map<String, String> searchParams) throws Exception {

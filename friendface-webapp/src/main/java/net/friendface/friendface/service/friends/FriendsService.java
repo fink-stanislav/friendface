@@ -1,7 +1,7 @@
 package net.friendface.friendface.service.friends;
 
 import net.friendface.friendface.model.dao.DAOFactory;
-import net.friendface.friendface.model.dao.friends.FriendsDAO;
+import net.friendface.friendface.model.dao.friends.FriendDAO;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.enums.ContactState;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class FriendsService {
     private static FriendsService service;
-    private FriendsDAO dao;
+    private FriendDAO dao;
 
     public static FriendsService getService() {
         if (service == null) {

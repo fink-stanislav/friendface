@@ -17,8 +17,8 @@ import java.util.Map;
  * Time: 1:12 PM
  */
 
-public class FriendsDAOImpl extends EntityDAO implements FriendsDAO {
-    public FriendsDAOImpl(EntityManager entityManager, RepositoryManager repositoryManager) {
+public class FriendDAOImpl extends EntityDAO implements FriendDAO {
+    public FriendDAOImpl(EntityManager entityManager, RepositoryManager repositoryManager) {
         super(entityManager, repositoryManager);
     }
 

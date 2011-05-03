@@ -11,7 +11,7 @@ import java.util.List;
  * Time: 1:05 PM
  */
 
-public interface FriendsDAO {
+public interface FriendDAO {
     void setProposed(User sender, User receiver);
 
     void approve(Friend friend);

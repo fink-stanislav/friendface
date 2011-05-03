@@ -22,7 +22,7 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
         super(entityManager, repositoryManager);
     }
 
-    public void createUser(User user) throws RepositoryException {
+    public void insertUser(User user) throws RepositoryException {
         repositoryManager.setupRepository(user);
         persistEntity(user);
     }
@@ -36,7 +36,7 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
         updateEntity(user);
     }
 
-    public User getUser(Integer userId) {
+    public User getById(Integer userId) {
         return getById(userId, User.class);
     }
 

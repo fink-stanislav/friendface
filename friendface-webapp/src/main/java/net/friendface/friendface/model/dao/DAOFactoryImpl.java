@@ -1,7 +1,7 @@
 package net.friendface.friendface.model.dao;
 
-import net.friendface.friendface.model.dao.friends.FriendsDAO;
-import net.friendface.friendface.model.dao.friends.FriendsDAOImpl;
+import net.friendface.friendface.model.dao.friends.FriendDAO;
+import net.friendface.friendface.model.dao.friends.FriendDAOImpl;
 import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.user.UserDAOImpl;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
@@ -33,8 +33,8 @@ public class DAOFactoryImpl extends DAOFactory {
     }
 
     @Override
-    public FriendsDAO getFriendsDAO() {
-        return new FriendsDAOImpl(entityManager, repositoryManager);
+    public FriendDAO getFriendsDAO() {
+        return new FriendDAOImpl(entityManager, repositoryManager);
     }
 
     @Override
