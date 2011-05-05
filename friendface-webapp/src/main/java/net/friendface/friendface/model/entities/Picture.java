@@ -11,6 +11,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "pictures")
+@NamedQueries(value = {
+        @NamedQuery(name = "getPicturesByAlbum",
+                query = "select p from Picture p where p.album = :album")
+})
 public class Picture implements ContentEntity {
     @Id
     @GeneratedValue

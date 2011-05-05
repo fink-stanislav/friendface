@@ -1,6 +1,7 @@
 package net.friendface.friendface.model.dao.wallmessage;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
@@ -21,9 +22,10 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
         super(entityManager, repositoryManager);
     }
 
-    public WallMessage getById(Integer id) {
+    public WallMessage getById(Integer id) throws RepositoryException {
         try {
-            return getById(id, WallMessage.class);
+            WallMessage wallMessage = getById(id, WallMessage.class);
+            return retrieveContent(wallMessage, getPath(wallMessage.getReceiver()));
         } catch (NoResultException e) {
             return null;
         }
@@ -49,7 +51,7 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
         removeEntity(message);
     }
 
-    private String getPath(User receiver) {
-        return receiver.getLoginEmail() + "/messages/public";
+    public String getPath(Identifiable receiver) {
+        return ((User) receiver).getLoginEmail() + "/messages/public";
     }
 }
