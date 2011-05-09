@@ -1,0 +1,10 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+
+    <s:url value="showPicture.action" var="picUrl">
+        <s:param name="pictureId" value="1"/>
+    </s:url>
+    <img src="%{picUrl}" alt="picture might be here"/>
+
+</jsp:root>

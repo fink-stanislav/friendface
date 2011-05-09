@@ -16,7 +16,9 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="showPicture" class="net.friendface.friendface.controllers.actions.pictures.ShowPicture">
-            <result name="success" type="redirect">${nextAction}</result>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

@@ -4,13 +4,13 @@
         "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 
 <tiles-definitions>
+    <!-- templates -->
     <definition name="service.page.template" template="/WEB-INF/jsps/templates/service.page.template.jspx">
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/default.header.jspx"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
-
     <definition name="content.page.template" template="/WEB-INF/jsps/templates/content.page.template.jspx">
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/userpage.header.jspx"/>
@@ -18,6 +18,7 @@
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
+    <!-- end templates-->
 
     <!-- service pages -->
     <definition name="welcomepage.tiles" extends="service.page.template">
@@ -25,67 +26,64 @@
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/welcome.header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/service/welcomepage.jspx"/>
     </definition>
-
     <definition name="registration.tiles" extends="service.page.template">
         <put-attribute name="title" value="jsps.service.registration"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/registration.header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/service/registration.jspx"/>
     </definition>
-
     <definition name="entrance.tiles" extends="service.page.template">
         <put-attribute name="title" value="jsps.service.entrance"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/entrance.header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/service/entrance.jspx"/>
     </definition>
-
     <definition name="errorpage.tiles" extends="service.page.template">
         <put-attribute name="content" value="/WEB-INF/jsps/service/errorpage.jspx"/>
     </definition>
-
     <definition name="success.tiles" extends="service.page.template">
         <put-attribute name="content" value="/WEB-INF/jsps/service/success.jspx"/>
     </definition>
+    <!-- end service pages -->
 
     <!-- user's content -->
-    <definition name="userpage.tiles" extends="content.page.template">
-        <put-attribute name="title" value="jsps.content.userpage"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/userpage.jspx"/>
-    </definition>
-
-    <definition name="friends.tiles" extends="content.page.template">
-        <put-attribute name="title" value="jsps.content.friends"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/friends/friends.jspx"/>
-    </definition>
-
-    <definition name="messages.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Messages"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/messages.jspx"/>
-    </definition>
-
-    <definition name="albumlist.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Albums"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/albumlist.jspx"/>
-    </definition>
-
-    <definition name="video.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Videos"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
-    </definition>
-
-    <definition name="search.tiles" extends="content.page.template">
-        <put-attribute name="title" value="jsps.content.search"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/search/search.jspx"/>
-    </definition>
-    <!-- end menu -->
-
     <definition name="settings.tiles" extends="content.page.template">
         <put-attribute name="title" value="Settings"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/settings.header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
-
     <definition name="searchresults.tiles" extends="content.page.template">
         <put-attribute name="title" value="Results"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/peoplefound.jspx"/>
     </definition>
+    <definition name="pictureview.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Settings"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/pictureview.jspx"/>
+    </definition>
+
+    <!-- available from menu -->
+    <definition name="userpage.tiles" extends="content.page.template">
+        <put-attribute name="title" value="jsps.content.userpage"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/userpage.jspx"/>
+    </definition>
+    <definition name="friends.tiles" extends="content.page.template">
+        <put-attribute name="title" value="jsps.content.friends"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/friends/friends.jspx"/>
+    </definition>
+    <definition name="messages.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Messages"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/messages.jspx"/>
+    </definition>
+    <definition name="albumlist.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Albums"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/albumlist.jspx"/>
+    </definition>
+    <definition name="video.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Videos"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
+    </definition>
+    <definition name="search.tiles" extends="content.page.template">
+        <put-attribute name="title" value="jsps.content.search"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/search/search.jspx"/>
+    </definition>
+    <!-- end -->
+    <!-- end user's content -->
 </tiles-definitions>

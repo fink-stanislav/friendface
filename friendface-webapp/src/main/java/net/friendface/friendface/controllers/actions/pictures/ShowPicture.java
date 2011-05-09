@@ -8,6 +8,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.jcr.RepositoryException;
 import javax.servlet.http.HttpServletRequest;
+import java.io.InputStream;
 
 /**
  * Author: S. Fink
@@ -18,12 +19,13 @@ import javax.servlet.http.HttpServletRequest;
 public class ShowPicture extends StandardAction implements ServletRequestAware {
     private RequestHelper requestHelper;
     private Integer pictureId;
-    private Picture picture;
+    private InputStream inputStream;
 
     @Override
     public String execute() {
         try {
-            picture = FriendfaceService.getService().getPicturesService().getPictureById(pictureId);
+            Picture picture = FriendfaceService.getService().getPicturesService().getPictureById(pictureId);
+            inputStream = picture.getContent().getStream();
         } catch (RepositoryException e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
         }
@@ -34,8 +36,8 @@ public class ShowPicture extends StandardAction implements ServletRequestAware {
         this.pictureId = pictureId;
     }
 
-    public Picture getPicture() {
-        return picture;
+    public InputStream getInputStream() {
+        return inputStream;
     }
 
     public String getNextAction() {
