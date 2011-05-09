@@ -84,11 +84,6 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
 
-    <definition name="photos.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Photos"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/photos.jspx"/>
-    </definition>
-
     <definition name="searchresults.tiles" extends="content.page.template">
         <put-attribute name="title" value="Results"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/peoplefound.jspx"/>

@@ -10,18 +10,17 @@ import java.util.Map;
  */
 
 public class SessionHelper implements Serializable {
-    private Map session;
+    private Map<String, Object> session;
 
-    public SessionHelper(Map session) {
+    public SessionHelper(Map<String, Object> session) {
         this.session = session;
     }
 
-    public <T> T getFromSession(String key) {
-        Object object = session.get(key);
-        return (T) object;
+    public Object getFromSession(String key) {
+        return session.get(key);
     }
 
-    public <T> void putToSession(String key, T value) {
+    public void putToSession(String key, Object value) {
         session.put(key, value);
     }
 

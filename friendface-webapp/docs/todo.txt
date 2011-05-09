@@ -4,6 +4,9 @@ DONE
 3. Tabs for showing all kinds of friends (regular, pending, proposed)
 4. Approving/Rejecting friends.
 TODO
+
+Album handling
+
 1. Implement pagination
 2. Inaccurate search
 3. Continue internationalization

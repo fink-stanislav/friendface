@@ -14,9 +14,10 @@
             <result name="success" type="tiles">messages.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="albumlist">
+        <action name="albumlist" class="net.friendface.friendface.controllers.actions.pictures.ShowAlbums">
             <result name="success" type="tiles">albumlist.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="videos">
             <result name="success" type="tiles">video.tiles</result>

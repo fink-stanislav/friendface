@@ -20,15 +20,16 @@ public class I18nInterceptor implements Interceptor {
     }
 
     private Locale getLocaleFromParams(ActionInvocation invocation) {
-        Map<String, String[]> params = invocation.getInvocationContext().getParameters();
-        if (params != null && params.size() == 0) {
-            return null;
-        }
-        try {
-            return new Locale(params.get("request_locale")[0]);
-        } catch (Exception e) {
-            return null;
-        }
+//        Map<String, String[]> params = invocation.getInvocationContext().getParameters();
+//        if (params != null && params.size() == 0) {
+//            return null;
+//        }
+//        try {
+//            return new Locale(params.get("request_locale")[0]);
+//        } catch (Exception e) {
+//            return null;
+//        }
+        return null;
     }
 
     private Locale getLocaleFromSession(ActionInvocation invocation) {
@@ -37,17 +38,17 @@ public class I18nInterceptor implements Interceptor {
     }
 
     public String intercept(ActionInvocation invocation) throws Exception {
-        Locale locale = getLocaleFromParams(invocation);
-        if (locale != null) {
-            Map session = invocation.getInvocationContext().getSession();
-            session.put("WW_TRANS_I18N_LOCALE", locale);
-            invocation.getInvocationContext().setLocale(locale);
-        } else {
-            locale = getLocaleFromSession(invocation);
-            if (locale != null) {
-                invocation.getInvocationContext().setLocale(locale);
-            }
-        }
+//        Locale locale = getLocaleFromParams(invocation);
+//        if (locale != null) {
+//            Map session = invocation.getInvocationContext().getSession();
+//            session.put("WW_TRANS_I18N_LOCALE", locale);
+//            invocation.getInvocationContext().setLocale(locale);
+//        } else {
+//            locale = getLocaleFromSession(invocation);
+//            if (locale != null) {
+//                invocation.getInvocationContext().setLocale(locale);
+//            }
+//        }
         return invocation.invoke();
     }
 }

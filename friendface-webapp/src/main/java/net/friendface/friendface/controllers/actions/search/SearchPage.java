@@ -38,8 +38,8 @@ public class SearchPage extends StandardAction implements SessionAware {
     }
 
     private String prepareSearch() throws Exception {
-        String sessionValue = sessionHelper.getFromSession(SEARCH_ENTRY);
-        String errorMessage = sessionHelper.getFromSession(ACTION_MESSAGE);
+        String sessionValue = (String) sessionHelper.getFromSession(SEARCH_ENTRY);
+        String errorMessage = (String) sessionHelper.getFromSession(ACTION_MESSAGE);
 
         if (sessionValue == null) {
             sessionHelper.putToSession(SEARCH_ENTRY, searchEntry);
@@ -62,14 +62,14 @@ public class SearchPage extends StandardAction implements SessionAware {
     }
 
     public String getSearchEntry() {
-        return sessionHelper.getFromSession(SEARCH_ENTRY);
+        return (String) sessionHelper.getFromSession(SEARCH_ENTRY);
     }
 
     public void setSearchEntry(String searchEntry) {
         sessionHelper.putToSession(SEARCH_ENTRY, searchEntry);
     }
 
-    public void setSession(Map session) {
-        sessionHelper = new SessionHelper(session);
+    public void setSession(Map<String, Object> stringObjectMap) {
+        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

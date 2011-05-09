@@ -9,10 +9,6 @@
             <result name="success" type="tiles">settings.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="photos">
-            <result name="success" type="tiles">photos.tiles</result>
-            <result name="login" type="tiles">entrance.tiles</result>
-        </action>
         <action name="addWallMessage" class="net.friendface.friendface.controllers.actions.messages.AddWallMessage">
             <result name="success" type="redirectAction">userpage</result>
             <result name="login" type="tiles">entrance.tiles</result>

@@ -14,7 +14,7 @@
             <s:a href="%{localeRu}">rus</s:a>
         </div>
         <div id="footertxt">
-            friendface.com, 2010 - 2011
+            friendface.net, 2010 - 2011
         </div>
     </div>
 </jsp:root>

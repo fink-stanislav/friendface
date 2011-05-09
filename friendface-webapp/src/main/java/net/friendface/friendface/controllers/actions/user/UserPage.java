@@ -27,7 +27,7 @@ public class UserPage extends StandardAction implements SessionAware {
     @Override
     public String execute() {
         try {
-            user = sessionHelper.getFromSession(getUserSessionKey());
+            user = (User) sessionHelper.getFromSession(getUserSessionKey());
             messageList = FriendfaceService.getService().getMessagesService().getWallMessages(user);
             hasWallMessages = !messageList.isEmpty();
             return SUCCESS;
@@ -52,7 +52,7 @@ public class UserPage extends StandardAction implements SessionAware {
         return hasWallMessages;
     }
 
-    public void setSession(Map session) {
-        sessionHelper = new SessionHelper(session);
+    public void setSession(Map<String, Object> stringObjectMap) {
+        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

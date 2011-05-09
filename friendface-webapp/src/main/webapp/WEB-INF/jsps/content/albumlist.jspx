@@ -1,6 +1,68 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
 
-    Coming soon!
+    <style type="text/css">
+        @import "css/list.css";
+    </style>
+
+    <script type="text/javascript" src="js/formHandlers.js"></script>
+
+    <s:form id="addAlbumForm" action="addAlbum">
+        <s:hidden name="albumTitle" value="album"/>
+    </s:form>
+
+    <div id="list">
+        <s:if test="hasAlbums">
+            <s:iterator value="albumList" status="status">
+                <s:div cssClass="listitem">
+                    <div class="itemheader">
+                        <s:form method="POST" id="removeAlbumForm%{#status.index}" action="removeAlbum">
+                            <s:hidden name="albumId" value="%{[0].id}"/>
+                        </s:form>
+                        <s:form method="POST" id="showPicturesForm%{#status.index}" action="showPictures">
+                            <s:hidden name="albumId" value="%{[0].id}"/>
+                        </s:form>
+                        <s:a href="#" onclick="submitForm('showPicturesForm%{#status.index}')">
+                            show pictures
+                        </s:a> |
+                        <s:a href="#" onclick="submitForm('removeAlbumForm%{#status.index}')">
+                            remove
+                        </s:a>
+                    </div>
+                    <div class="itemcontent">
+                        <a href="">
+                            <img class="imagelittle" alt="" src="/images/littleuserpic.png"/>
+                        </a>
+
+                        <div class="itemtextinfo">
+                            <s:a href="#" onclick="submitForm('showPicturesForm%{#status.index}')">
+                                <s:property value="%{[0].title}"/> (
+                                <s:property value="%{[0].pictureCount}"/> )
+                            </s:a>
+                        </div>
+                    </div>
+                </s:div>
+            </s:iterator>
+
+            <div class="additem">
+                <s:a href="#" onclick="submitForm('addAlbumForm')">
+                    add album
+                </s:a>
+            </div>
+        </s:if>
+        <s:else>
+            <div class="listitem">
+                <div class="itemheader">&#160;</div>
+                <div class="itemcontent">
+                    <div class="empty-item">
+                        <s:a href="#" onclick="submitForm('addAlbumForm')">
+                            add album
+                        </s:a>
+                    </div>
+                </div>
+            </div>
+        </s:else>
+    </div>
 
 </jsp:root>

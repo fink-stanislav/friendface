@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="pictures" extends="private">
+        <action name="uploadPicture" class="net.friendface.friendface.controllers.actions.pictures.UploadPicture">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+        <action name="removePicture" class="net.friendface.friendface.controllers.actions.pictures.RemovePicture">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+        <action name="showPicture" class="net.friendface.friendface.controllers.actions.pictures.ShowPicture">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+        <action name="showPictures" class="net.friendface.friendface.controllers.actions.pictures.ShowPictures">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+
+        <action name="addAlbum" class="net.friendface.friendface.controllers.actions.pictures.AddAlbum">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+        <action name="removeAlbum" class="net.friendface.friendface.controllers.actions.pictures.RemoveAlbum">
+            <result name="success" type="redirect">${nextAction}</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+    </package>
+</struts>

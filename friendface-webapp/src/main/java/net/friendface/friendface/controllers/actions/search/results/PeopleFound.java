@@ -31,7 +31,7 @@ public class PeopleFound extends SearchResultAction {
 
     public void prepare(List<User> userList) throws Exception {
         resultList = new ArrayList<DisplayUserBean>(userList.size());
-        User currentUser = sessionHelper.getFromSession(getUserSessionKey());
+        User currentUser = (User) sessionHelper.getFromSession(getUserSessionKey());
         for (User user : userList) {
             if (currentUser.getId().equals(user.getId())) {
                 continue;

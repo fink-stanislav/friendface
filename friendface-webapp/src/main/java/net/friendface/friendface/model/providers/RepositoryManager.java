@@ -1,13 +1,10 @@
 package net.friendface.friendface.model.providers;
 
 import net.friendface.friendface.model.entities.User;
-import org.apache.jackrabbit.value.BinaryImpl;
 
-import javax.jcr.Binary;
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
-import java.io.*;
 
 /**
  * Author: S. Fink
@@ -51,6 +48,12 @@ public class RepositoryManager {
         return session.getRootNode().getNode(path);
     }
 
+    public void removeNode(String path) throws RepositoryException {
+        session.removeItem(path);
+    }
+
+
+
     public Node getNode(Node parent, String name) throws RepositoryException {
         return parent.getNode(name);
     }
@@ -65,14 +68,5 @@ public class RepositoryManager {
 
     public Node addUserNode(User user) throws RepositoryException {
         return addNode(getRootNode(), user.getLoginEmail());
-    }
-
-    // in photo dao
-    public Node getAlbumNode(User user, String albumTitle) throws RepositoryException {
-        return getNode(getUserNode(user), "albums").getNode(albumTitle);
-    }
-
-    public Node addAlbumNode(User user, String albumTitle) throws RepositoryException {
-        return addNode(getUserNode(user).getNode("albums"), albumTitle);
     }
 }

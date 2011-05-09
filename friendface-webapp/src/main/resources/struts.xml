@@ -22,6 +22,11 @@
             <interceptor-stack name="secureStack">
                 <interceptor-ref name="i18nInterceptor"/>
                 <interceptor-ref name="authenticationInterceptor"/>
+                <interceptor-ref name="fileUpload">
+                    <param name="allowedTypes">
+                        image/png, image/gif, image/jpeg
+                    </param>
+                </interceptor-ref>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
         </interceptors>
@@ -35,4 +40,5 @@
     <include file="strutsactions/userpage.xml"/>
     <include file="strutsactions/friends.xml"/>
     <include file="strutsactions/search.xml"/>
+    <include file="strutsactions/pictures.xml"/>
 </struts>

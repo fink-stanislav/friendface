@@ -19,6 +19,12 @@ public class QueryExecutor {
         this.entityManager = entityManager;
     }
 
+    public Number executeCountQuery(String queryName, String paramName, Object paramValue) {
+        TypedQuery<Number> query = entityManager.createNamedQuery(queryName, Number.class);
+        query.setParameter(paramName, paramValue);
+        return query.getSingleResult().intValue();
+    }
+
     public <T> T executeNamedQuery(String queryName, Class<T> entityClass, String paramName, Object paramValue) {
         TypedQuery<T> query = entityManager.createNamedQuery(queryName, entityClass);
         query.setParameter(paramName, paramValue);

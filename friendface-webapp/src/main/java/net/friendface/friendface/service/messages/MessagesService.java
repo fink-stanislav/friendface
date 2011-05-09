@@ -30,7 +30,7 @@ public class MessagesService {
         return service;
     }
 
-    public WallMessage getById(Integer id) {
+    public WallMessage getById(Integer id) throws RepositoryException {
         return dao.getById(id);
     }
 

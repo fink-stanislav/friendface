@@ -47,7 +47,7 @@ public abstract class SearchResultAction extends StandardAction implements Param
         this.parameters = new ParameterHelper(parameters);
     }
 
-    public void setSession(Map session) {
-        sessionHelper = new SessionHelper(session);
+    public void setSession(Map<String, Object> stringObjectMap) {
+        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

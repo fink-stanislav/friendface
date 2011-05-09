@@ -28,7 +28,7 @@ public class SendProposal extends StandardAction implements ServletRequestAware,
     @Override
     public String execute() {
         try {
-            User sender = sessionHelper.getFromSession(getUserSessionKey());
+            User sender = (User) sessionHelper.getFromSession(getUserSessionKey());
             User receiver = UserService.getService().getById(receiverId);
             FriendfaceService.getService().getFriendsService().sendProposal(sender, receiver);
             return SUCCESS;
@@ -53,7 +53,7 @@ public class SendProposal extends StandardAction implements ServletRequestAware,
         requestHelper = new RequestHelper(request);
     }
 
-    public void setSession(Map session) {
-        sessionHelper = new SessionHelper(session);
+    public void setSession(Map<String, Object> stringObjectMap) {
+        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

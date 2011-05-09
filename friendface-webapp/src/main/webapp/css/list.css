@@ -3,6 +3,21 @@
     float: left;
 }
 
+.additem {
+    margin: 0 2em;
+    text-align: right;
+}
+
+.empty-item {
+    text-align: center;
+}
+
+.additem a {
+    font-size: small;
+    color: black;
+    margin: 1em;
+}
+
 .listitem {
     clear: both;
     margin: 0.5em 2em;
@@ -25,11 +40,11 @@
 .itemcontent {
 }
 
+.itemcontent a {
+    color: black;
+}
+
 .itemtextinfo {
     float: left;
     margin: 0.5em 2em;
-}
-
-.itemtextinfo a {
-    color: black;
 }

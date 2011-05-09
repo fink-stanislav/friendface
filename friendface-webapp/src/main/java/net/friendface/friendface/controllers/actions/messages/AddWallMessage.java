@@ -29,7 +29,7 @@ public class AddWallMessage extends StandardAction implements SessionAware {
         try {
             UserService userService = FriendfaceService.getService().getUserService();
             User receiver = userService.getById(userId);
-            User sender = sessionHelper.getFromSession(getUserSessionKey());
+            User sender = (User) sessionHelper.getFromSession(getUserSessionKey());
             FriendfaceService.getService().getMessagesService().postWallMessage(sender, receiver, message);
             return SUCCESS;
         } catch (RepositoryException e) {
@@ -47,7 +47,7 @@ public class AddWallMessage extends StandardAction implements SessionAware {
         this.userId = userId;
     }
 
-    public void setSession(Map session) {
-        sessionHelper = new SessionHelper(session);
+    public void setSession(Map<String, Object> stringObjectMap) {
+        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

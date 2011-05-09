@@ -10,6 +10,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "albums")
+@NamedQueries(value = {
+        @NamedQuery(name = "getAlbumsByUser", query = "select a from Album a where a.user = :user"),
+        @NamedQuery(name = "getPicturesCount", query = "select count(p) from Picture p where p.album = :album")
+})
 public class Album implements Identifiable {
     @Id
     @GeneratedValue
@@ -21,6 +25,10 @@ public class Album implements Identifiable {
 
     public Integer getId() {
         return id;
+    }
+
+    protected void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {

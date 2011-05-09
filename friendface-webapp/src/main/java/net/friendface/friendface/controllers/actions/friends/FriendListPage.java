@@ -31,7 +31,7 @@ public class FriendListPage extends StandardAction implements SessionAware {
     @Override
     public String execute() {
         try {
-            User user = sessionHelper.getFromSession(getUserSessionKey());
+            User user = (User) sessionHelper.getFromSession(getUserSessionKey());
             setApprovedFriends(user);
             setProposedFriends(user);
             setPendingFriends(user);
@@ -80,7 +80,7 @@ public class FriendListPage extends StandardAction implements SessionAware {
         return pendingFriends;
     }
 
-    public void setSession(Map session) {
-        sessionHelper = new SessionHelper(session);
+    public void setSession(Map<String, Object> stringObjectMap) {
+        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

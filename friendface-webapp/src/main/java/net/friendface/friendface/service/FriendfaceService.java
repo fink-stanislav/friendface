@@ -4,6 +4,7 @@ import net.friendface.friendface.model.providers.EntityManagerProvider;
 import net.friendface.friendface.model.providers.RepositoryProvider;
 import net.friendface.friendface.service.friends.FriendsService;
 import net.friendface.friendface.service.messages.MessagesService;
+import net.friendface.friendface.service.pictures.PicturesService;
 import net.friendface.friendface.service.user.UserService;
 
 import javax.jcr.RepositoryException;
@@ -43,5 +44,9 @@ public class FriendfaceService {
 
     public MessagesService getMessagesService() throws RepositoryException {
         return MessagesService.getService();
+    }
+
+    public PicturesService getPicturesService() throws RepositoryException {
+        return PicturesService.getService();
     }
 }
