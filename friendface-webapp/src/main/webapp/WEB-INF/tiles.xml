@@ -55,8 +55,12 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/peoplefound.jspx"/>
     </definition>
     <definition name="pictureview.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Settings"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/pictureview.jspx"/>
+        <put-attribute name="title" value="Picture"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/pictureview.jspx"/>
+    </definition>
+    <definition name="addpicture.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Add picture"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/addpicture.jspx"/>
     </definition>
 
     <!-- available from menu -->
@@ -74,7 +78,7 @@
     </definition>
     <definition name="albumlist.tiles" extends="content.page.template">
         <put-attribute name="title" value="Albums"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/albumlist.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/albumlist.jspx"/>
     </definition>
     <definition name="video.tiles" extends="content.page.template">
         <put-attribute name="title" value="Videos"/>

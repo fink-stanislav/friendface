@@ -4,7 +4,7 @@
     <style type="text/css">
         @import "css/forms.css";
     </style>
-    <div id="reg-form">
+    <div class="form">
         <form name="userdataform" method="POST" action="register.action">
             <s:token/>
             <s:i18n name="jsps.service.registration">

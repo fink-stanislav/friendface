@@ -23,11 +23,17 @@
                         <s:form method="POST" id="showPicturesForm%{#status.index}" action="showPictures">
                             <s:hidden name="albumId" value="%{[0].id}"/>
                         </s:form>
+                        <s:form method="POST" id="addPicturesForm%{#status.index}" action="addPictureForm">
+                            <s:hidden name="albumId" value="%{[0].id}"/>
+                        </s:form>
                         <s:a href="#" onclick="submitForm('showPicturesForm%{#status.index}')">
                             show pictures
                         </s:a> |
                         <s:a href="#" onclick="submitForm('removeAlbumForm%{#status.index}')">
                             remove
+                        </s:a> |
+                        <s:a href="#" onclick="submitForm('addPicturesForm%{#status.index}')">
+                            add picture
                         </s:a>
                     </div>
                     <div class="itemcontent">

@@ -5,8 +5,13 @@
 
 <struts>
     <package name="pictures" extends="private">
-        <action name="uploadPicture" class="net.friendface.friendface.controllers.actions.pictures.UploadPicture">
-            <result name="success" type="redirect">${nextAction}</result>
+        <action name="addPictureForm" class="net.friendface.friendface.controllers.actions.pictures.AddPictureForm">
+            <result name="success" type="tiles">addpicture.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+        <action name="addPicture" class="net.friendface.friendface.controllers.actions.pictures.AddPicture">
+            <result name="success" type="redirectAction">addPictureForm</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

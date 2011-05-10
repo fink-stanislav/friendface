@@ -24,7 +24,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 8:38 PM
  */
 
-public class UploadPicture extends StandardAction implements SessionAware, ServletRequestAware {
+public class AddPicture extends StandardAction implements SessionAware, ServletRequestAware {
     private SessionHelper sessionHelper;
     private RequestHelper requestHelper;
     private File pictureFile;

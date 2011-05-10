@@ -1,11 +1,17 @@
-#reg-form {
+.form {
     margin: 1em 2em;
-}
-
-#login-form {
-    margin: 1em 2em;
+    float: left;
 }
 
 .input {
     width: 180px;
+}
+
+.submit {
+    text-align: right;
+}
+
+.title {
+    text-align: center;
+    padding-top: 1em;
 }

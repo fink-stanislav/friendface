@@ -4,7 +4,7 @@
     <style type="text/css">
         @import "css/forms.css";
     </style>
-    <div id="login-form">
+    <div class="form">
         <form action="login.action" method="POST">
             <s:token/>
             <s:i18n name="jsps.service.entrance">
