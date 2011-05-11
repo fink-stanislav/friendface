@@ -11,7 +11,10 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="addPicture" class="net.friendface.friendface.controllers.actions.pictures.AddPicture">
-            <result name="success" type="redirectAction">addPictureForm</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">addPictureForm</param>
+                <param name="albumId">${albumId}</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

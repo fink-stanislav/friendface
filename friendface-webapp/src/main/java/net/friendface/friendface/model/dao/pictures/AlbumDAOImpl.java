@@ -6,6 +6,7 @@ import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;
 
+import javax.jcr.Node;
 import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -40,10 +41,9 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
 
     public void insertAlbum(Album album) throws RepositoryException {
         persistEntity(album);
-        repositoryManager.addNode(
-                repositoryManager.getNode(getPath(album)),
-                Integer.toString(album.getId())
-        );
+        Node root = repositoryManager.getRootNode();
+        Node albumNode = repositoryManager.getNode(root, getPath(album));
+        repositoryManager.addNode(albumNode, Integer.toString(album.getId()));
     }
 
     public void deleteAlbum(Album album) throws RepositoryException {

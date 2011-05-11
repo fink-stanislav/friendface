@@ -2,21 +2,15 @@ package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
-import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.Album;
-import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 import javax.jcr.RepositoryException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
-
-import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
 
 /**
  * Author: S. Fink
@@ -24,8 +18,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 8:38 PM
  */
 
-public class AddPicture extends StandardAction implements SessionAware, ServletRequestAware {
-    private SessionHelper sessionHelper;
+public class AddPicture extends StandardAction implements ServletRequestAware {
     private RequestHelper requestHelper;
     private File pictureFile;
     private String pictureTitle;
@@ -33,7 +26,6 @@ public class AddPicture extends StandardAction implements SessionAware, ServletR
 
     @Override
     public String execute() {
-        User user = (User) sessionHelper.getFromSession(getUserSessionKey());
         try {
             PicturesService service = FriendfaceService.getService().getPicturesService();
             Album album = service.getAlbumById(albumId);
@@ -46,6 +38,14 @@ public class AddPicture extends StandardAction implements SessionAware, ServletR
         return SUCCESS;
     }
 
+    public void setAlbumId(Integer albumId) {
+        this.albumId = albumId;
+    }
+
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
     public void setPictureFile(File pictureFile) {
         this.pictureFile = pictureFile;
     }
@@ -56,10 +56,6 @@ public class AddPicture extends StandardAction implements SessionAware, ServletR
 
     public String getNextAction() {
         return requestHelper.getPreviousAction();
-    }
-
-    public void setSession(Map<String, Object> stringObjectMap) {
-        sessionHelper = new SessionHelper(stringObjectMap);
     }
 
     public void setServletRequest(HttpServletRequest request) {

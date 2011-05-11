@@ -13,6 +13,7 @@
 
         <div class="form">
             <s:form action="addPicture" method="post" enctype="multipart/form-data">
+                <s:hidden name="albumId" value="%{albumId}"/>
                 <div>
                     <div>
                         <div>
