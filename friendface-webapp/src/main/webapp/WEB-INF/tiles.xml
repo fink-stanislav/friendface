@@ -58,6 +58,10 @@
         <put-attribute name="title" value="Picture"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/pictureview.jspx"/>
     </definition>
+    <definition name="picturegrid.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Picture"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/picturegrid.jspx"/>
+    </definition>
     <definition name="addpicture.tiles" extends="content.page.template">
         <put-attribute name="title" value="Add picture"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/addpicture.jspx"/>

@@ -34,11 +34,10 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
     }
 
     public Picture getById(Integer id) throws RepositoryException {
-        try{
+        try {
             Picture picture = getById(id, Picture.class);
             return retrieveContent(picture, getPath(picture.getAlbum()));
-        }
-        catch (NoResultException e) {
+        } catch (NoResultException e) {
             return null;
         }
     }

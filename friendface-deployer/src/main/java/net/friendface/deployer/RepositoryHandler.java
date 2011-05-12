@@ -20,7 +20,7 @@ public class RepositoryHandler {
     private Session session;
 
     public RepositoryHandler() {
-        repositoryHome = "C:\\friendface\\test-content\\";
+        repositoryHome = "C:\\friendface\\content\\";
         repositoryConfig = repositoryHome + "repository.xml";
     }
 

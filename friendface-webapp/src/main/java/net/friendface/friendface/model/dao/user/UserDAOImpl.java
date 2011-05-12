@@ -41,7 +41,11 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
     }
 
     public User getUser(String loginEmail) {
-        return queryExecutor.executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
+        try {
+            return queryExecutor.executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public List<User> findUsers(Map<String, String> searchParams) {
@@ -50,11 +54,6 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
     }
 
     public Boolean isUserExists(User user) {
-        try {
-            getUser(user.getLoginEmail());
-            return true;
-        } catch (NoResultException e) {
-            return false;
-        }
+        return getUser(user.getLoginEmail()) != null;
     }
 }

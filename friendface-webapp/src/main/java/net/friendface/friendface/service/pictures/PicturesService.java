@@ -7,6 +7,7 @@ import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.view.beans.AlbumBean;
+import net.friendface.friendface.view.beans.PictureBean;
 import org.apache.jackrabbit.value.BinaryImpl;
 
 import javax.jcr.RepositoryException;
@@ -61,8 +62,14 @@ public class PicturesService {
         }
     }
 
-    public List<Picture> getAlbumPictures(Album album) throws RepositoryException {
-        return pictureDAO.getPictures(album);
+    public List<PictureBean> getAlbumPictures(Album album) throws RepositoryException {
+        List<Picture> pictures = pictureDAO.getPictures(album);
+        List<PictureBean> result = new ArrayList<PictureBean>(pictures.size());
+        for (Picture picture : pictures) {
+            PictureBean bean = new PictureBean(picture);
+            result.add(bean);
+        }
+        return result;
     }
 
     public List<AlbumBean> getUserAlbums(User user) {

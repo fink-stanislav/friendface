@@ -1,0 +1,20 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+
+    <div id="list">
+        <s:if test="hasPictures">
+            <s:iterator value="pictureList" status="status">
+                <s:div cssClass="listitem">
+                    <div class="itemheader">
+                        <s:property value="%{[0].title}"/>
+                    </div>
+                    <div class="itemcontent">
+                        <s:property value="%{[0].inputStream}"/>
+                    </div>
+                </s:div>
+            </s:iterator>
+        </s:if>
+    </div>
+
+</jsp:root>

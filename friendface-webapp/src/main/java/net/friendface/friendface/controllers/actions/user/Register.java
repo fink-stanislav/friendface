@@ -34,18 +34,14 @@ public class Register extends StandardAction implements ModelDriven {
     @Override
     public String execute() {
         try {
-            return register();
+            if (FriendfaceService.getService().getUserService().register(registrationBean)) {
+                addActionMessage(getText("registration.succeed"));
+                return SUCCESS;
+            } else {
+                return resultAndErrorMessage(INPUT, getText("user.already.exists"));
+            }
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
-        }
-    }
-
-    private String register() throws Exception {
-        if (FriendfaceService.getService().getUserService().register(registrationBean)) {
-            addActionMessage(getText("registration.succeed"));
-            return SUCCESS;
-        } else {
-            return resultAndErrorMessage(INPUT, getText("user.already.exists"));
         }
     }
 

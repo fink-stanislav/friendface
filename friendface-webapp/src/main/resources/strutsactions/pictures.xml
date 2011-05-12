@@ -31,7 +31,7 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="showPictures" class="net.friendface.friendface.controllers.actions.pictures.ShowPictures">
-            <result name="success" type="redirect">${nextAction}</result>
+            <result name="success" type="tiles">picturegrid.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

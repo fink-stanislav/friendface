@@ -37,7 +37,7 @@ public class UserService {
     public User login(LoginBean bean) {
         User userFromRequest = getUserFromBean(bean);
         User userFromStorage = getByLogin(userFromRequest.getLoginEmail());
-        if (checkCredentials(userFromRequest, userFromStorage)) {
+        if (userFromStorage != null && checkCredentials(userFromRequest, userFromStorage)) {
             return userFromStorage;
         } else {
             return null;

@@ -27,6 +27,10 @@ public class Picture implements ContentEntity {
         return id;
     }
 
+    protected void setId(Integer id) {
+        this.id = id;
+    }
+
     public Album getAlbum() {
         return album;
     }
