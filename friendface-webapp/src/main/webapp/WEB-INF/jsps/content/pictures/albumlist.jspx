@@ -38,7 +38,7 @@
                     </div>
                     <div class="itemcontent">
                         <a href="">
-                            <img class="imagelittle" alt="" src="/images/littleuserpic.png"/>
+                            <img class="userpic" alt="" src="/images/littleuserpic.png"/>
                         </a>
 
                         <div class="itemtextinfo">

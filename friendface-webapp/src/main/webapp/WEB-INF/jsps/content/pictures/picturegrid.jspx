@@ -2,15 +2,28 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
+    <style type="text/css">
+        @import "css/images.css";
+        @import "css/menu.css";
+    </style>
+
     <div id="list">
         <s:if test="hasPictures">
             <s:iterator value="pictureList" status="status">
                 <s:div cssClass="listitem">
-                    <div class="itemheader">
-                        <s:property value="%{[0].title}"/>
-                    </div>
+                    <div class="itemheader"></div>
                     <div class="itemcontent">
-                        <s:property value="%{[0].inputStream}"/>
+                        <div class="grid-image">
+                            <s:url var="imageUrl" value="showPicture.action">
+                                <s:param name="pictureId" value="%{[0].id}"/>
+                            </s:url>
+                            <s:a href="#">
+                                <span class="ref"><img src="${imageUrl}" alt="" width="110" height="90"/></span>
+                            </s:a>
+                            <div class="title">
+                                <s:property value="%{[0].title}"/>
+                            </div>
+                        </div>
                     </div>
                 </s:div>
             </s:iterator>

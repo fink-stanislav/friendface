@@ -8,12 +8,12 @@
         <!-- application welcome page -->
         <action name="welcome" class="net.friendface.friendface.controllers.actions.common.Welcome">
             <result name="login" type="tiles">welcomepage.tiles</result>
-            <result name="success" type="redirect">userpage.action</result>
+            <result name="success" type="redirectAction">userpage</result>
         </action>
         <!-- login input page -->
         <action name="entrance" class="net.friendface.friendface.controllers.actions.common.Entrance">
             <result name="login" type="tiles">entrance.tiles</result>
-            <result name="success" type="redirect">userpage.action</result>
+            <result name="success" type="redirectAction">userpage</result>
         </action>
         <!-- userpage -->
         <action name="userpage" class="net.friendface.friendface.controllers.actions.user.UserPage">
@@ -44,7 +44,7 @@
         <!-- login -->
         <action name="login" class="net.friendface.friendface.controllers.actions.user.Login">
             <interceptor-ref name="myTokenStack"/>
-            <result name="success" type="redirect">userpage.action</result>
+            <result name="success" type="redirectAction">userpage</result>
             <result name="input" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
             <result name="invalid.token" type="tiles">welcomepage.tiles</result>

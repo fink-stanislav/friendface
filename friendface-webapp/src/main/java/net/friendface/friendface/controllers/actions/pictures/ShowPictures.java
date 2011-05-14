@@ -9,9 +9,9 @@ package net.friendface.friendface.controllers.actions.pictures;
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.model.entities.Album;
+import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
-import net.friendface.friendface.view.beans.PictureBean;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.jcr.RepositoryException;
@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ShowPictures extends StandardAction implements ServletRequestAware {
     private RequestHelper requestHelper;
-    private List<PictureBean> pictureList;
+    private List<Picture> pictureList;
     private Integer albumId;
     private Boolean hasPictures;
 
@@ -37,7 +37,7 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
         return SUCCESS;
     }
 
-    public List<PictureBean> getPictureList() {
+    public List<Picture> getPictureList() {
         return pictureList;
     }
 
@@ -61,4 +61,3 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
         requestHelper = new RequestHelper(request);
     }
 }
-

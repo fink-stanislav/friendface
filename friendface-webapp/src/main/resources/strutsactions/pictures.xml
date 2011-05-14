@@ -19,11 +19,12 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="removePicture" class="net.friendface.friendface.controllers.actions.pictures.RemovePicture">
-            <result name="success" type="redirect">${nextAction}</result>
+            <result name="success" type="redirectAction">${nextAction}</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="showPicture" class="net.friendface.friendface.controllers.actions.pictures.ShowPicture">
+            <param name="pictureId">${pictureId}</param>
             <result name="success" type="stream">
                 <param name="inputName">inputStream</param>
             </result>
@@ -37,12 +38,12 @@
         </action>
 
         <action name="addAlbum" class="net.friendface.friendface.controllers.actions.pictures.AddAlbum">
-            <result name="success" type="redirect">${nextAction}</result>
+            <result name="success" type="redirectAction">${nextAction}</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="removeAlbum" class="net.friendface.friendface.controllers.actions.pictures.RemoveAlbum">
-            <result name="success" type="redirect">${nextAction}</result>
+            <result name="success" type="redirectAction">${nextAction}</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

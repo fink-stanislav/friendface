@@ -20,6 +20,7 @@ public class RequestHelper {
     public String getPreviousAction() {
         String referer = request.getHeader("referer");
         referer = StringUtils.substringAfterLast(referer, "/");
+        referer = StringUtils.substringBeforeLast(referer, ".action");
         return referer;
     }
 }

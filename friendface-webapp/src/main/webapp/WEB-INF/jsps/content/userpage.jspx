@@ -65,7 +65,7 @@
                             </s:a>
                         </div>
                         <a href="">
-                            <img class="imagelittle" alt="" src="images/littleuserpic.png"/>
+                            <img class="userpic" alt="" src="images/littleuserpic.png"/>
                         </a>
 
                         <div class="wall-message-text">

@@ -24,10 +24,7 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
 
     public List<Picture> getPictures(Album album) throws RepositoryException {
         try {
-            return retrieveContent(
-                    queryExecutor.executeNamedQueryList("getPicturesByAlbum", Picture.class, "album", album),
-                    getPath(album)
-            );
+            return queryExecutor.executeNamedQueryList("getPicturesByAlbum", Picture.class, "album", album);
         } catch (NoResultException e) {
             return null;
         }

@@ -62,14 +62,8 @@ public class PicturesService {
         }
     }
 
-    public List<PictureBean> getAlbumPictures(Album album) throws RepositoryException {
-        List<Picture> pictures = pictureDAO.getPictures(album);
-        List<PictureBean> result = new ArrayList<PictureBean>(pictures.size());
-        for (Picture picture : pictures) {
-            PictureBean bean = new PictureBean(picture);
-            result.add(bean);
-        }
-        return result;
+    public List<Picture> getAlbumPictures(Album album) throws RepositoryException {
+        return pictureDAO.getPictures(album);
     }
 
     public List<AlbumBean> getUserAlbums(User user) {

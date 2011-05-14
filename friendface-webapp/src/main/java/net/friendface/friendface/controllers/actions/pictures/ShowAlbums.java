@@ -22,7 +22,6 @@ public class ShowAlbums extends StandardAction implements SessionAware {
     private SessionHelper sessionHelper;
     private List<AlbumBean> albumList;
     private Boolean hasAlbums;
-    private Integer pictureCount;
 
     @Override
     public String execute() {
