@@ -27,3 +27,6 @@ Album handling
 It is worth implement some notification when
 one user rejects friendship proposal from another one.
 (deferred: no notification mechanism implemented)
+
+Reimplement EntityDAO. Use Visitor pattern. All entities should be content related.
+Put all content CRUD operations between begin() and commit() methods of JPA.

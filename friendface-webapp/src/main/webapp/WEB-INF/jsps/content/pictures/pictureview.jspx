@@ -2,9 +2,39 @@
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
 
-    <s:url value="showPicture.action" var="picUrl">
-        <s:param name="pictureId" value="1"/>
-    </s:url>
-    <img src="%{picUrl}" alt="picture might be here"/>
+    <style type="text/css">
+        @import "css/images.css";
+        @import "css/image-grid.css";
+    </style>
+
+    <div id="horizontal-menu">
+        <ul>
+            <li>
+                <s:a>rename picture</s:a>
+            </li>
+            <li>
+                <s:a>remove</s:a>
+            </li>
+            <li>
+                <s:a>edit description</s:a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="image-large">
+        <div class="image-container">
+            <div class="image-layer">
+                <s:url var="imageUrl" value="showPicture.action">
+                    <s:param name="pictureId" value="%{[0].id}"/>
+                </s:url>
+                <s:a href="#">
+                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                </s:a>
+            </div>
+            <div class="image-title">
+                <s:property value="%{[0].title}"/>
+            </div>
+        </div>
+    </div>
 
 </jsp:root>

@@ -22,6 +22,8 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
     private RequestHelper requestHelper;
     private List<Picture> pictureList;
     private Integer albumId;
+    private String albumTitle;
+    private Integer pictureCount;
     private Boolean hasPictures;
 
     @Override
@@ -29,6 +31,8 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
         try {
             PicturesService picturesService = FriendfaceService.getService().getPicturesService();
             Album album = picturesService.getAlbumById(albumId);
+            albumTitle = album.getTitle();
+            pictureCount = picturesService.getAlbumPictureCount(album);
             pictureList = picturesService.getAlbumPictures(album);
             hasPictures = !pictureList.isEmpty();
         } catch (RepositoryException e) {
@@ -47,6 +51,14 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
 
     public void setAlbumId(Integer albumId) {
         this.albumId = albumId;
+    }
+
+    public String getAlbumTitle() {
+        return albumTitle;
+    }
+
+    public Integer getPictureCount() {
+        return pictureCount;
     }
 
     public Boolean getHasPictures() {

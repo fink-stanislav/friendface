@@ -36,7 +36,11 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
     }
 
     public Integer getPictureCount(Album album) {
-        return (Integer) queryExecutor.executeCountQuery("getPicturesCount", "album", album);
+        try {
+            return (Integer) queryExecutor.executeCountQuery("getPicturesCount", "album", album);
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 
     public void insertAlbum(Album album) throws RepositoryException {

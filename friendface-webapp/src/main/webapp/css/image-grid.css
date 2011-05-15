@@ -1,10 +1,11 @@
 #grid {
     width: 35em;
     float: left;
+    margin-left: 0.7em;
 }
 
 div.grid-image-container {
-    margin: 10px;
+    margin: 10px 0 10px 15px;
     border: 1px solid black;
     height: 142px;
     width: 160px;

@@ -115,3 +115,8 @@ a:visited {
 h1 a, h2 a, h3 a {
     color: inherit !important
 }
+
+.title {
+    text-align: center;
+    padding-top: 1em;
+}

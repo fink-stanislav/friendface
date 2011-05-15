@@ -6,3 +6,35 @@
     border: 0;
 }
 
+div.image-container {
+    margin: 10px 0 10px 15px;
+    border: 1px solid black;
+    height: 142px;
+    width: 160px;
+    float: left;
+    text-align: left;
+}
+
+div.image-layer {}
+
+
+div.image-layer img {
+    margin: 6px 3px 3px;
+    border: 1px solid white;
+    max-height: 100px;
+    max-width: 150px;
+}
+
+div.image-layer a:hover img {
+    border: 1px solid gray;
+}
+
+div.image-layer-title {
+    text-align: left;
+    width: 120px;
+    margin: 2px 2px 2px 5px;
+    font-size: small;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

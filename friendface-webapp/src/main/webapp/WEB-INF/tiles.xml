@@ -14,7 +14,7 @@
     <definition name="content.page.template" template="/WEB-INF/jsps/templates/content.page.template.jspx">
         <put-attribute name="title" value=""/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/userpage.header.jspx"/>
-        <put-attribute name="menu" value="/WEB-INF/jsps/frames/menu.jspx"/>
+        <put-attribute name="menu" value="/WEB-INF/jsps/frames/mainmenu.jspx"/>
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>

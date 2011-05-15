@@ -12,6 +12,16 @@
         <s:hidden name="albumTitle" value="album"/>
     </s:form>
 
+    <div id="horizontal-menu">
+        <ul>
+            <li>
+                <s:a href="#" onclick="submitForm('addAlbumForm')">
+                    add album
+                </s:a>
+            </li>
+        </ul>
+    </div>
+
     <div id="list">
         <s:if test="hasAlbums">
             <s:iterator value="albumList" status="status">
@@ -50,12 +60,6 @@
                     </div>
                 </div>
             </s:iterator>
-
-            <div class="additem">
-                <s:a href="#" onclick="submitForm('addAlbumForm')">
-                    add album
-                </s:a>
-            </div>
         </s:if>
         <s:else>
             <div class="list-item">

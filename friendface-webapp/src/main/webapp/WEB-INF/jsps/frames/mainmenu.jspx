@@ -10,7 +10,7 @@
         @import "css/menu.css";
     </style>
     <s:i18n name="jsps.frames.menu">
-        <div id="menu">
+        <div id="mainmenu">
             <div class="menuitem"><s:a href="userpage.action" title="%{getText('title.mypage')}">
                 <span class="ref"><s:text name="item.mypage"/></span>
             </s:a></div>

@@ -40,6 +40,10 @@ public class PicturesService {
         albumDAO = DAOFactory.getDAOFactory().getAlbumDAO();
     }
 
+    public Picture getPictureById(Integer id) throws RepositoryException {
+        return pictureDAO.getById(id);
+    }
+
     public void addPicture(Album album, String title, File file) throws RepositoryException, IOException {
         Picture picture = new Picture();
         picture.setAlbum(album);
@@ -50,10 +54,6 @@ public class PicturesService {
         pictureDAO.insertPicture(picture);
     }
 
-    public Picture getPictureById(Integer id) throws RepositoryException {
-        return pictureDAO.getById(id);
-    }
-
     public void removePicture(Picture picture) throws RepositoryException {
         Album album = picture.getAlbum();
         pictureDAO.deletePicture(picture);
@@ -62,23 +62,31 @@ public class PicturesService {
         }
     }
 
+    public Album getAlbumById(Integer id) {
+        return albumDAO.getById(id);
+    }
+
     public List<Picture> getAlbumPictures(Album album) throws RepositoryException {
         return pictureDAO.getPictures(album);
     }
 
-    public List<AlbumBean> getUserAlbums(User user) {
-        List<Album> albums = albumDAO.getUserAlbums(user);
-        List<AlbumBean> albumBeans = new ArrayList<AlbumBean>(albums.size());
-        for (Album album : albums) {
-            AlbumBean albumBean = new AlbumBean(album);
-            albumBean.setPictureCount(getAlbumPictureCount(album));
-            albumBeans.add(albumBean);
-        }
-        return albumBeans;
-    }
-
     public Integer getAlbumPictureCount(Album album) {
         return albumDAO.getPictureCount(album);
+    }
+
+    public List<AlbumBean> getUserAlbums(User user) {
+        List<Album> albums = albumDAO.getUserAlbums(user);
+        if (albums != null) {
+            List<AlbumBean> albumBeans = new ArrayList<AlbumBean>(albums.size());
+            for (Album album : albums) {
+                AlbumBean albumBean = new AlbumBean(album);
+                albumBean.setPictureCount(getAlbumPictureCount(album));
+                albumBeans.add(albumBean);
+            }
+            return albumBeans;
+        } else {
+            return null;
+        }
     }
 
     public void addAlbum(User user, String title) throws RepositoryException {
@@ -86,10 +94,6 @@ public class PicturesService {
         album.setTitle(title);
         album.setUser(user);
         albumDAO.insertAlbum(album);
-    }
-
-    public Album getAlbumById(Integer id) {
-        return albumDAO.getById(id);
     }
 
     public void removeAlbum(Album album) throws RepositoryException {

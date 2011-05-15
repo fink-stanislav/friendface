@@ -1,7 +1,28 @@
-#menu {
+#mainmenu {
     float: left;
     width: 9em;
     margin: 0.1em;
+}
+
+#horizontal-menu {
+    position: relative;
+    text-align: center;
+    width: 35em;
+    float: right;
+}
+
+#horizontal-menu ul {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #ffffff), color-stop(0%, #e5e5e5));
+}
+
+#horizontal-menu li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 2em;
+}
+
+#horizontal-menu li a {
+    color: black;
 }
 
 .menuitem {

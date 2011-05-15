@@ -13,12 +13,15 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "pictures")
-@NamedQuery(name = "getPicturesByAlbum", query = "select p from Picture p where p.album = :album")
+@NamedQueries(value = {
+        @NamedQuery(name = "getPicturesByAlbum", query = "select p from Picture p where p.album = :album"),
+        @NamedQuery(name = "deleteAllAlbumPictures", query = "delete from Picture p where p.album = :album")
+})
 public class Picture implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "albumId")
     private Album album;
     private String title;
