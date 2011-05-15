@@ -3,8 +3,9 @@
           xmlns:s="/struts-tags">
     <style type="text/css">
         @import "css/userdata.css";
-        @import "css/wall.css";
+        @import "css/list.css";
         @import "css/addmessage.css";
+        @import "css/images.css";
     </style>
     <script type="text/javascript" src="js/textAreaHandlers.js"></script>
     <script type="text/javascript" src="js/formHandlers.js"></script>
@@ -43,7 +44,6 @@
         </div>
 
         <div id="wall">
-
             <s:if test="hasWallMessages">
                 <s:iterator value="messageList" status="status">
                     <s:form id="goToUserPageForm%{#status.index}">
@@ -53,9 +53,10 @@
                         <s:hidden name="id" value="%{[0].id}"/>
                     </s:form>
 
-                    <div class="wall-message">
-                        <div class="wall-message-head">
-                            <s:a href="#" title="имя отправителя" onclick="submitForm('goToUserPageForm%{#status.index}')">
+                    <div class="list-item">
+                        <div class="list-item-header">
+                            <s:a href="#" title="имя отправителя"
+                                 onclick="submitForm('goToUserPageForm%{#status.index}')">
                                 <s:property value="%{[0].userName}"/>
                             </s:a>
                             &#160;|&#160;
@@ -64,24 +65,25 @@
                                 <s:text name="link.delete.value"/>
                             </s:a>
                         </div>
-                        <a href="">
-                            <img class="userpic" alt="" src="images/littleuserpic.png"/>
-                        </a>
+                        <div class="list-item-content">
+                            <a href="">
+                                <img class="userpic" alt="" src="images/littleuserpic.png"/>
+                            </a>
 
-                        <div class="wall-message-text">
-                            <s:property value="%{[0].textContent}"/>
+                            <div class="list-item-text">
+                                <s:property value="%{[0].textContent}"/>
+                            </div>
                         </div>
                     </div>
                 </s:iterator>
             </s:if>
-
             <s:else>
-                <div class="wall-message">
-                    <div class="wall-message-head">
-                        &#160;
-                    </div>
-                    <div class="wall-empty-text">
-                        no messages yet
+                <div class="list-item">
+                    <div class="list-item-header">&#160;</div>
+                    <div class="list-item-content">
+                        <div class="empty-list-item">
+                            no messages yet
+                        </div>
                     </div>
                 </div>
             </s:else>

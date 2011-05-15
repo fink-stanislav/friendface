@@ -10,8 +10,8 @@
         <div id="list">
             <s:if test="notEmpty">
                 <s:iterator value="resultList" status="status">
-                    <s:div cssClass="listitem">
-                        <div class="itemheader">
+                    <div class="list-item">
+                        <div class="list-item-header">
                             <s:if test="%{[0].state.name() eq 'NOT_CONNECTED'}">
                                 <s:form method="POST" id="addToFriendsForm%{#status.index}" action="sendProposal">
                                     <s:hidden name="receiverId" value="%{[0].user.id}"/>
@@ -43,12 +43,12 @@
                                 </s:form>
                             </s:elseif>
                         </div>
-                        <div class="itemcontent">
+                        <div class="list-item-content">
                             <a href="">
                                 <img class="userpic" alt="" src="images/littleuserpic.png"/>
                             </a>
 
-                            <div class="itemtextinfo">
+                            <div class="list-item-text">
                                 <s:form method="POST" id="redirectToUserPageForm%{#status.index}">
                                     <a href="#" onclick="submitForm('redirectToUserPageForm%{#status.index}')">
                                         <s:property value="%{[0].user.username}"/>&#160;
@@ -57,17 +57,17 @@
                                 </s:form>
                             </div>
                         </div>
-                    </s:div>
+                    </div>
                 </s:iterator>
             </s:if>
             <s:else>
-                <div class="listitem">
-                    <div class="itemheader">
+                <div class="list-item">
+                    <div class="list-item-header">
                         <s:url action="search" id="searchPage"/>
                         <s:a href="%{searchPage}">back</s:a>
                     </div>
-                    <div class="itemcontent">
-                        <div class="itemtextinfo">
+                    <div class="list-item-content">
+                        <div class="list-item-text">
                             no results found.
                         </div>
                     </div>

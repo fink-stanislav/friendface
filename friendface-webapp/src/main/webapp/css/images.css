@@ -6,27 +6,3 @@
     border: 0;
 }
 
-div.grid-image {
-    margin: 10px;
-    border: 1px solid black;
-    height: auto;
-    width: auto;
-    float: left;
-    text-align: left;
-}
-
-div.grid-image img {
-    display: inline;
-    margin: 3px;
-    border: 1px solid white;
-}
-
-div.grid-image a:hover img {
-    border: 1px solid gray;
-}
-
-div.title {
-    text-align: left;
-    width: 120px;
-    margin: 2px;
-}

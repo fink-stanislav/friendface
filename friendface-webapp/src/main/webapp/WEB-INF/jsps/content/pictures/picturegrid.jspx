@@ -3,31 +3,40 @@
           xmlns:s="/struts-tags">
 
     <style type="text/css">
-        @import "css/images.css";
-        @import "css/menu.css";
+        @import "css/list.css";
+        @import "css/image-grid.css";
     </style>
 
-    <div id="list">
+    <div id="grid">
         <s:if test="hasPictures">
             <s:iterator value="pictureList" status="status">
-                <s:div cssClass="listitem">
-                    <div class="itemheader"></div>
-                    <div class="itemcontent">
+                <div class="grid-item">
+                    <div class="grid-image-container">
                         <div class="grid-image">
                             <s:url var="imageUrl" value="showPicture.action">
                                 <s:param name="pictureId" value="%{[0].id}"/>
                             </s:url>
                             <s:a href="#">
-                                <span class="ref"><img src="${imageUrl}" alt="" width="110" height="90"/></span>
+                                <span class="ref"><img src="${imageUrl}" alt=""/></span>
                             </s:a>
-                            <div class="title">
-                                <s:property value="%{[0].title}"/>
-                            </div>
+                        </div>
+                        <div class="grid-image-title">
+                            <s:property value="%{[0].title}"/>
                         </div>
                     </div>
-                </s:div>
+                </div>
             </s:iterator>
         </s:if>
+        <s:else>
+            <div class="list-item">
+                <div class="list-item-header">&#160;</div>
+                <div class="list-item-content">
+                    <div class="empty-list-item">
+                        no pictures yet
+                    </div>
+                </div>
+            </div>
+        </s:else>
     </div>
 
 </jsp:root>

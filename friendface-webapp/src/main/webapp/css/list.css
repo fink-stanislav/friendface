@@ -3,12 +3,18 @@
     float: left;
 }
 
+#wall {
+    clear: both;
+    border-top: 1px solid gray;
+    padding: 1em 1em 2em 1em;
+}
+
 .additem {
     margin: 0 2em;
     text-align: right;
 }
 
-.empty-item {
+.empty-list-item {
     text-align: center;
 }
 
@@ -18,7 +24,7 @@
     margin: 1em;
 }
 
-.listitem {
+.list-item {
     clear: both;
     margin: 0.5em 2em;
     padding: 0 0 2em 0;
@@ -26,25 +32,25 @@
     min-height: 4.9em;
 }
 
-.itemheader {
+.list-item-header {
     text-align: right;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #ffffff), color-stop(0%, #e5e5e5));
 }
 
-.itemheader a {
+.list-item-header a {
     font-size: small;
     color: black;
     margin: 1em;
 }
 
-.itemcontent {
+.list-item-content {
 }
 
-.itemcontent a {
+.list-item-content a {
     color: black;
 }
 
-.itemtextinfo {
+.list-item-text {
     float: left;
     margin: 0.5em 2em;
 }
