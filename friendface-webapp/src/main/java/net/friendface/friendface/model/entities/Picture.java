@@ -1,7 +1,5 @@
 package net.friendface.friendface.model.entities;
 
-import org.apache.commons.lang.StringUtils;
-
 import javax.jcr.Binary;
 import javax.persistence.*;
 

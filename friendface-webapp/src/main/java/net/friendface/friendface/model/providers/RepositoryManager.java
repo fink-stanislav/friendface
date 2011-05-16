@@ -1,10 +1,13 @@
 package net.friendface.friendface.model.providers;
 
+import net.friendface.friendface.model.entities.ContentEntity;
 import net.friendface.friendface.model.entities.User;
 
 import javax.jcr.Node;
+import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.jcr.Session;
+import java.util.List;
 
 /**
  * Author: S. Fink
@@ -51,6 +54,43 @@ public class RepositoryManager {
     public void removeNode(String path) throws RepositoryException {
         session.removeItem(path);
     }
+
+    public <T extends ContentEntity> T retrieveContent(T entity, String path) throws RepositoryException {
+        Node node = getNode(path);
+        Property property = node.getProperty(
+                Integer.toString(entity.getId())
+        );
+        entity.setContent(property.getBinary());
+        return entity;
+    }
+
+    public <T extends ContentEntity> List<T> retrieveContent(List<T> entityList, String path) throws RepositoryException {
+        Node node = getNode(path);
+        for (T entity : entityList) {
+            Property property = node.getProperty(
+                    Integer.toString(entity.getId())
+            );
+            entity.setContent(property.getBinary());
+        }
+        return entityList;
+    }
+
+    public <T extends ContentEntity> void storeContent(T entity, String path) throws RepositoryException {
+        Node node = getNode(path);
+        String name = Integer.toString(entity.getId());
+        node.setProperty(name, entity.getContent());
+        getSession().save();
+    }
+
+    public <T extends ContentEntity> void removeContent(T entity, String path) throws RepositoryException {
+        Node node = getNode(path);
+        Property property = node.getProperty(
+                Integer.toString(entity.getId())
+        );
+        property.remove();
+        getSession().save();
+    }
+
 
 
 

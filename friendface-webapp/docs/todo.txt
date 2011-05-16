@@ -3,10 +3,11 @@ DONE
 2. Adding friends
 3. Tabs for showing all kinds of friends (regular, pending, proposed)
 4. Approving/Rejecting friends.
+5. Reimplement EntityDAO. All entities should be content related.
+Put all content CRUD operations between begin() and commit() methods of JPA.
+6. Album handling
+
 TODO
-
-Album handling
-
 1. Implement pagination
 2. Inaccurate search
 3. Continue internationalization
@@ -16,11 +17,12 @@ Album handling
     - improve css
 7. Reimplement double container style.
 8. Implement user settings (extend domain model)
-9. Implement wall message handling
+9. Implement wall message handling         (partly implemented)
 10. Registration mail
-11. Upload and display images
+11. Upload and display images              (partly implemented)
 12. Upload and display videos
 13. Another user page view
+14. Generalize dao
 
 ------------------------
 
@@ -28,5 +30,3 @@ It is worth implement some notification when
 one user rejects friendship proposal from another one.
 (deferred: no notification mechanism implemented)
 
-Reimplement EntityDAO. Use Visitor pattern. All entities should be content related.
-Put all content CRUD operations between begin() and commit() methods of JPA.

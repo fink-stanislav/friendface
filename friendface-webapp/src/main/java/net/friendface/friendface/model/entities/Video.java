@@ -17,7 +17,7 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "videos")
-public class Video {
+public class Video implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;

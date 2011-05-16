@@ -5,6 +5,7 @@ import org.hibernate.search.annotations.Index;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Store;
 
+import javax.jcr.Binary;
 import javax.persistence.*;
 
 /**
@@ -19,7 +20,7 @@ import javax.persistence.*;
         @NamedQuery(name = "getUserByLogin", query = "select u from User u where u.loginEmail = :loginEmail")
 })
 @Indexed
-public class User implements Identifiable {
+public class User implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
@@ -30,6 +31,8 @@ public class User implements Identifiable {
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String userSurname;
     private String passwordHash;
+    @Transient
+    private Binary content;
 
     public Integer getId() {
         return id;
@@ -69,5 +72,13 @@ public class User implements Identifiable {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
+    }
+
+    public Binary getContent() {
+        return content;
+    }
+
+    public void setContent(Binary content) {
+        this.content = content;
     }
 }

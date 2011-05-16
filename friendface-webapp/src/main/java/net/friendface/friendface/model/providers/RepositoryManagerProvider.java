@@ -15,8 +15,8 @@ import javax.naming.InitialContext;
  * Time: 1:22 AM
  */
 
-public class RepositoryProvider {
-    private static RepositoryProvider instance;
+public class RepositoryManagerProvider {
+    private static RepositoryManagerProvider instance;
     protected Repository repository;
     protected Session session;
     protected RepositoryManager repositoryManager;
@@ -38,10 +38,10 @@ public class RepositoryProvider {
         );
     }
 
-    public static RepositoryProvider getInstance() {
+    public static RepositoryManagerProvider getInstance() {
         try {
             if (instance == null) {
-                instance = new RepositoryProvider();
+                instance = new RepositoryManagerProvider();
             }
             return instance;
         } catch (Exception e) {

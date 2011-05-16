@@ -1,7 +1,7 @@
 package net.friendface.friendface.service;
 
 import net.friendface.friendface.model.providers.EntityManagerProviderStub;
-import net.friendface.friendface.model.providers.RepositoryProviderStub;
+import net.friendface.friendface.model.providers.RepositoryManagerProviderStub;
 import net.friendface.friendface.service.messages.MessagesService;
 import net.friendface.friendface.service.user.UserService;
 
@@ -16,11 +16,11 @@ import javax.jcr.RepositoryException;
 public class FriendfaceServiceStub extends FriendfaceService {
     private static FriendfaceServiceStub service;
     private EntityManagerProviderStub entityManagerProviderStub;
-    private RepositoryProviderStub repositoryProviderStub;
+    private RepositoryManagerProviderStub repositoryProviderStub;
 
     public FriendfaceServiceStub() {
         entityManagerProviderStub = new EntityManagerProviderStub();
-        repositoryProviderStub = new RepositoryProviderStub();
+        repositoryProviderStub = new RepositoryManagerProviderStub();
     }
 
     @Override

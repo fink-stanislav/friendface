@@ -10,11 +10,11 @@ import javax.jcr.SimpleCredentials;
  * Time: 3:38 PM
  */
 
-public class RepositoryProviderStub extends RepositoryProvider {
+public class RepositoryManagerProviderStub extends RepositoryManagerProvider {
     private String repositoryHome;
     private String repositoryConfig;
 
-    public RepositoryProviderStub() {
+    public RepositoryManagerProviderStub() {
         super();
         repositoryHome = "C:\\friendface\\test-content\\";
         repositoryConfig = repositoryHome + "repository.xml";

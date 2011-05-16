@@ -1,6 +1,7 @@
 package net.friendface.friendface.model.dao.wallmessage;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.dao.Operation;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.User;
@@ -22,10 +23,30 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
         super(entityManager, repositoryManager);
     }
 
+    public void addMessage(WallMessage message) throws RepositoryException {
+        perform(new Operation<WallMessage>(message) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.persist(entity);
+                repositoryManager.storeContent(entity, getPath(entity.getReceiver()));
+            }
+        });
+    }
+
+    public void removeMessage(WallMessage message) throws RepositoryException {
+        perform(new Operation<WallMessage>(message) {
+            @Override
+            public void perform() throws RepositoryException {
+                repositoryManager.removeContent(entity, getPath(entity.getReceiver()));
+                entityManager.remove(entity);
+            }
+        });
+    }
+
     public WallMessage getById(Integer id) throws RepositoryException {
         try {
             WallMessage wallMessage = getById(id, WallMessage.class);
-            return retrieveContent(wallMessage, getPath(wallMessage.getReceiver()));
+            return repositoryManager.retrieveContent(wallMessage, getPath(wallMessage.getReceiver()));
         } catch (NoResultException e) {
             return null;
         }
@@ -35,20 +56,10 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
         try {
             List<WallMessage> result =
                     queryExecutor.executeNamedQueryList("getMessageByUser", WallMessage.class, "rec", receiver);
-            return retrieveContent(result, getPath(receiver));
+            return repositoryManager.retrieveContent(result, getPath(receiver));
         } catch (NoResultException e) {
             return null;
         }
-    }
-
-    public void addMessage(WallMessage message) throws RepositoryException {
-        persistEntity(message);
-        storeContent(message, getPath(message.getReceiver()));
-    }
-
-    public void removeMessage(WallMessage message) throws RepositoryException {
-        removeContent(message, getPath(message.getReceiver()));
-        removeEntity(message);
     }
 
     public String getPath(Identifiable receiver) {

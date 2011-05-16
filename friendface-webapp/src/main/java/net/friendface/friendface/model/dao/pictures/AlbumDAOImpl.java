@@ -1,6 +1,7 @@
 package net.friendface.friendface.model.dao.pictures;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.dao.Operation;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
@@ -23,6 +24,33 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         super(entityManager, repositoryManager);
     }
 
+    public void insertAlbum(Album album) throws RepositoryException {
+        perform(new Operation<Album>(album) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.persist(entity);
+                Node root = repositoryManager.getRootNode();
+                Node albumNode = repositoryManager.getNode(root, getPath(entity));
+                repositoryManager.addNode(albumNode, Integer.toString(entity.getId()));
+            }
+        });
+    }
+
+    public void deleteAlbum(Album album) throws RepositoryException {
+        perform(new Operation<Album>(album) {
+            @Override
+            public void perform() throws RepositoryException {
+                repositoryManager.removeNode(
+                        "/" + getPath(entity) + "/" + Integer.toString(entity.getId())
+                );
+                entityManager.remove(entity);
+            }
+        });
+    }
+
+    public void updateAlbum(Album album) {
+    }
+
     public List<Album> getUserAlbums(User user) {
         try {
             return queryExecutor.executeNamedQueryList("getAlbumsByUser", Album.class, "user", user);
@@ -41,23 +69,6 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         } catch (NoResultException e) {
             return null;
         }
-    }
-
-    public void insertAlbum(Album album) throws RepositoryException {
-        persistEntity(album);
-        Node root = repositoryManager.getRootNode();
-        Node albumNode = repositoryManager.getNode(root, getPath(album));
-        repositoryManager.addNode(albumNode, Integer.toString(album.getId()));
-    }
-
-    public void deleteAlbum(Album album) throws RepositoryException {
-        repositoryManager.removeNode(
-                "/" + getPath(album) + "/" + Integer.toString(album.getId())
-        );
-        removeEntity(album);
-    }
-
-    public void updateAlbum(Album album) {
     }
 
     public String getPath(Identifiable album) {

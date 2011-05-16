@@ -1,5 +1,6 @@
 package net.friendface.friendface.model.dao.friends;
 
+import net.friendface.friendface.model.dao.CommonDAO;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
 

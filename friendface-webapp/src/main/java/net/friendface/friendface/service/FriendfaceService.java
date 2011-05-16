@@ -1,7 +1,7 @@
 package net.friendface.friendface.service;
 
 import net.friendface.friendface.model.providers.EntityManagerProvider;
-import net.friendface.friendface.model.providers.RepositoryProvider;
+import net.friendface.friendface.model.providers.RepositoryManagerProvider;
 import net.friendface.friendface.service.friends.FriendsService;
 import net.friendface.friendface.service.messages.MessagesService;
 import net.friendface.friendface.service.pictures.PicturesService;
@@ -19,12 +19,12 @@ public class FriendfaceService {
 
     public void start() throws Exception {
         EntityManagerProvider.getInstance().initialize();
-        RepositoryProvider.getInstance().initialize();
+        RepositoryManagerProvider.getInstance().initialize();
     }
 
     public void stop() {
         EntityManagerProvider.getInstance().close();
-        RepositoryProvider.getInstance().close();
+        RepositoryManagerProvider.getInstance().close();
     }
 
     public static FriendfaceService getService() {

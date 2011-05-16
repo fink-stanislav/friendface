@@ -4,7 +4,9 @@ import net.friendface.friendface.model.QueryExecutor;
 import net.friendface.friendface.model.entities.ContentEntity;
 import net.friendface.friendface.model.providers.RepositoryManager;
 
-import javax.jcr.*;
+import javax.jcr.Node;
+import javax.jcr.Property;
+import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
@@ -27,51 +29,16 @@ public class EntityDAO {
         queryExecutor = new QueryExecutor(entityManager);
     }
 
-    public <T> void removeEntity(T entity) {
+    public void perform(Operation operation) {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         try {
             entityTransaction.begin();
-            entityManager.remove(entity);
+            operation.perform();
             entityTransaction.commit();
         } catch (PersistenceException e) {
             entityTransaction.rollback();
             throw new PersistenceException(e);
-        }
-    }
-
-    public <T> void updateEntity(T entity) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        try {
-            entityTransaction.begin();
-            entityManager.merge(entity);
-            entityTransaction.commit();
-        } catch (PersistenceException e) {
-            entityTransaction.rollback();
-            throw new PersistenceException(e);
-        }
-    }
-
-    public <T> void persistEntities(T... entities) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        try {
-            entityTransaction.begin();
-            for (T entity : entities) {
-                entityManager.persist(entity);
-            }
-            entityTransaction.commit();
-        } catch (PersistenceException e) {
-            entityTransaction.rollback();
-            throw new PersistenceException(e);
-        }
-    }
-
-    public <T> void persistEntity(T entity) {
-        EntityTransaction entityTransaction = entityManager.getTransaction();
-        try {
-            entityTransaction.begin();
-            entityManager.persist(entity);
-            entityTransaction.commit();
-        } catch (PersistenceException e) {
+        } catch (RepositoryException e) {
             entityTransaction.rollback();
             throw new PersistenceException(e);
         }
@@ -79,41 +46,5 @@ public class EntityDAO {
 
     public <T> T getById(Object id, Class<T> entityClass) {
         return entityManager.find(entityClass, id);
-    }
-
-    public <T extends ContentEntity> T retrieveContent(T entity, String path) throws RepositoryException {
-        Node node = repositoryManager.getNode(path);
-        Property property = node.getProperty(
-                Integer.toString(entity.getId())
-        );
-        entity.setContent(property.getBinary());
-        return entity;
-    }
-
-    public <T extends ContentEntity> List<T> retrieveContent(List<T> entityList, String path) throws RepositoryException {
-        Node node = repositoryManager.getNode(path);
-        for (T entity : entityList) {
-            Property property = node.getProperty(
-                    Integer.toString(entity.getId())
-            );
-            entity.setContent(property.getBinary());
-        }
-        return entityList;
-    }
-
-    public <T extends ContentEntity> void storeContent(T entity, String path) throws RepositoryException {
-        Node node = repositoryManager.getNode(path);
-        String name = Integer.toString(entity.getId());
-        node.setProperty(name, entity.getContent());
-        repositoryManager.getSession().save();
-    }
-
-    public <T extends ContentEntity> void removeContent(T entity, String path) throws RepositoryException {
-        Node node = repositoryManager.getNode(path);
-        Property property = node.getProperty(
-                Integer.toString(entity.getId())
-        );
-        property.remove();
-        repositoryManager.getSession().save();
     }
 }

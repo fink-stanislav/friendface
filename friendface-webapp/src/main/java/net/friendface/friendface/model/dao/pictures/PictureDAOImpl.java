@@ -1,6 +1,7 @@
 package net.friendface.friendface.model.dao.pictures;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.dao.Operation;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.Picture;
@@ -22,6 +23,26 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         super(entityManager, repositoryManager);
     }
 
+    public void insertPicture(Picture picture) throws RepositoryException {
+        perform(new Operation<Picture>(picture) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.persist(entity);
+                repositoryManager.storeContent(entity, getPath(entity.getAlbum()));
+            }
+        });
+    }
+
+    public void deletePicture(Picture picture) throws RepositoryException {
+        perform(new Operation<Picture>(picture) {
+            @Override
+            public void perform() throws RepositoryException {
+                repositoryManager.removeContent(entity, getPath(entity.getAlbum()));
+                entityManager.remove(entity);
+            }
+        });
+    }
+
     public List<Picture> getPictures(Album album) throws RepositoryException {
         try {
             return queryExecutor.executeNamedQueryList("getPicturesByAlbum", Picture.class, "album", album);
@@ -33,20 +54,10 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
     public Picture getById(Integer id) throws RepositoryException {
         try {
             Picture picture = getById(id, Picture.class);
-            return retrieveContent(picture, getPath(picture.getAlbum()));
+            return repositoryManager.retrieveContent(picture, getPath(picture.getAlbum()));
         } catch (NoResultException e) {
             return null;
         }
-    }
-
-    public void insertPicture(Picture picture) throws RepositoryException {
-        persistEntity(picture);
-        storeContent(picture, getPath(picture.getAlbum()));
-    }
-
-    public void deletePicture(Picture picture) throws RepositoryException {
-        removeContent(picture, getPath(picture.getAlbum()));
-        removeEntity(picture);
     }
 
     public void updatePicture(Picture picture) {

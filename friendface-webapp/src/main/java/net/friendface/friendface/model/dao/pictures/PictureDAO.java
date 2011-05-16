@@ -1,6 +1,5 @@
 package net.friendface.friendface.model.dao.pictures;
 
-import net.friendface.friendface.model.dao.ContentDAO;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Picture;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * Time: 9:43 PM
  */
 
-public interface PictureDAO extends ContentDAO {
+public interface PictureDAO {
     List<Picture> getPictures(Album album) throws RepositoryException;
 
     Picture getById(Integer id) throws RepositoryException;

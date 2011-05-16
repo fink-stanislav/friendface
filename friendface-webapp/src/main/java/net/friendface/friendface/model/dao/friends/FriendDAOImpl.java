@@ -1,10 +1,12 @@
 package net.friendface.friendface.model.dao.friends;
 
 import net.friendface.friendface.model.dao.EntityDAO;
+import net.friendface.friendface.model.dao.Operation;
 import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
 
+import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.util.HashMap;
@@ -27,17 +29,32 @@ public class FriendDAOImpl extends EntityDAO implements FriendDAO {
         friend.setSender(sender);
         friend.setReceiver(receiver);
         friend.setApproved(false);
-        persistEntity(friend);
+        perform(new Operation<Friend>(friend) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.persist(entity);
+            }
+        });
     }
 
     public void approve(Friend friend) {
         Friend f = getById(friend.getId());
         f.setApproved(true);
-        persistEntity(f);
+        perform(new Operation<Friend>(f) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.persist(entity);
+            }
+        });
     }
 
     public void deleteFriend(Friend friend) {
-        removeEntity(friend);
+        perform(new Operation<Friend>(friend) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.remove(entity);
+            }
+        });
     }
 
     public Friend getById(Integer recordId) {

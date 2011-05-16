@@ -6,7 +6,7 @@ import net.friendface.friendface.model.dao.pictures.PictureDAO;
 import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
 import net.friendface.friendface.model.providers.EntityManagerProvider;
-import net.friendface.friendface.model.providers.RepositoryProvider;
+import net.friendface.friendface.model.providers.RepositoryManagerProvider;
 
 import javax.jcr.RepositoryException;
 
@@ -30,7 +30,7 @@ public abstract class DAOFactory {
     public static DAOFactory getDAOFactory() {
         return new DAOFactoryImpl(
                 EntityManagerProvider.getInstance().getEntityManager(),
-                RepositoryProvider.getInstance().getRepositoryManager()
+                RepositoryManagerProvider.getInstance().getRepositoryManager()
         );
     }
 }

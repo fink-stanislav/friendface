@@ -1,5 +1,6 @@
 package net.friendface.friendface.model.entities;
 
+import javax.jcr.Binary;
 import javax.persistence.*;
 
 /**
@@ -14,7 +15,7 @@ import javax.persistence.*;
         @NamedQuery(name = "getAlbumsByUser", query = "select a from Album a where a.user = :user"),
         @NamedQuery(name = "getPicturesCount", query = "select count(p) from Picture p where p.album = :album")
 })
-public class Album implements Identifiable {
+public class Album implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
@@ -22,6 +23,8 @@ public class Album implements Identifiable {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+    @Transient
+    private Binary content;
 
     public Integer getId() {
         return id;
@@ -29,6 +32,13 @@ public class Album implements Identifiable {
 
     protected void setId(Integer id) {
         this.id = id;
+    }
+
+    public Binary getContent() {
+        return null;
+    }
+
+    public void setContent(Binary content) {
     }
 
     public String getTitle() {

@@ -1,6 +1,5 @@
 package net.friendface.friendface.model.dao.pictures;
 
-import net.friendface.friendface.model.dao.ContentDAO;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.User;
 
@@ -13,7 +12,7 @@ import java.util.List;
  * Time: 9:28 PM
  */
 
-public interface AlbumDAO extends ContentDAO {
+public interface AlbumDAO {
     List<Album> getUserAlbums(User user);
 
     Album getById(Integer id);

@@ -10,5 +10,6 @@ import javax.jcr.Binary;
 
 public interface ContentEntity extends Identifiable {
     Binary getContent();
+
     void setContent(Binary content);
 }
