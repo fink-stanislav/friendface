@@ -18,21 +18,21 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 5:50 PM
  */
 
-public class UserPage extends StandardAction implements SessionAware {
+public class UserPage extends StandardAction {
     private User user;
+    private Integer userId;
     private List<WallMessageBean> messageList;
-    private SessionHelper sessionHelper;
     private Boolean hasWallMessages;
 
     @Override
     public String execute() {
         try {
-            user = (User) sessionHelper.getFromSession(getUserSessionKey());
+            user = FriendfaceService.getService().getUserService().getById(userId);
             messageList = FriendfaceService.getService().getMessagesService().getWallMessages(user);
             hasWallMessages = !messageList.isEmpty();
             return SUCCESS;
         } catch (Exception e) {
-            return ERROR;
+            return resultAndErrorMessage(ERROR, e.getMessage());
         }
     }
 
@@ -40,8 +40,12 @@ public class UserPage extends StandardAction implements SessionAware {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public List<WallMessageBean> getMessageList() {
@@ -50,9 +54,5 @@ public class UserPage extends StandardAction implements SessionAware {
 
     public Boolean getHasWallMessages() {
         return hasWallMessages;
-    }
-
-    public void setSession(Map<String, Object> stringObjectMap) {
-        sessionHelper = new SessionHelper(stringObjectMap);
     }
 }

@@ -24,6 +24,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
 public class Login extends StandardAction implements ModelDriven, SessionAware {
     private LoginBean loginBean = new LoginBean();
     private SessionHelper sessionHelper;
+    private Integer userId;
 
     @Override
     public String execute() {
@@ -31,6 +32,7 @@ public class Login extends StandardAction implements ModelDriven, SessionAware {
             User userFromStorage = FriendfaceService.getService().getUserService().login(loginBean);
             if (userFromStorage != null) {
                 sessionHelper.putToSession(getUserSessionKey(), userFromStorage);
+                userId = userFromStorage.getId();
                 return SUCCESS;
             } else {
                 return resultAndErrorMessage(INPUT, getText("wrong.password") + " or " + getText("no.user"));
@@ -38,6 +40,10 @@ public class Login extends StandardAction implements ModelDriven, SessionAware {
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, getText("internal.app.error") + e.getMessage());
         }
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 
     @Override

@@ -17,7 +17,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 2:24 PM
  */
 
-public class FriendListPage extends StandardAction implements SessionAware {
+public class FriendList extends StandardAction implements SessionAware {
     private List<User> approvedFriends;
     private List<User> proposedFriends;
     private List<User> pendingFriends;

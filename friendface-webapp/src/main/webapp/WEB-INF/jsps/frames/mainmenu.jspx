@@ -11,7 +11,7 @@
     </style>
     <s:i18n name="jsps.frames.menu">
         <div id="mainmenu">
-            <div class="menuitem"><s:a href="userpage.action" title="%{getText('title.mypage')}">
+            <div class="menuitem"><s:a href="entrance.action" title="%{getText('title.mypage')}">
                 <span class="ref"><s:text name="item.mypage"/></span>
             </s:a></div>
             <div class="menuitem"><s:a href="friendList.action" title="%{getText('title.friends')}">

@@ -30,7 +30,7 @@
                         <s:form method="POST" id="removeAlbumForm%{#status.index}" action="removeAlbum">
                             <s:hidden name="albumId" value="%{[0].id}"/>
                         </s:form>
-                        <s:form method="POST" id="showPicturesForm%{#status.index}" action="showPictures">
+                        <s:form method="GET" id="showPicturesForm%{#status.index}" action="showPictures">
                             <s:hidden name="albumId" value="%{[0].id}"/>
                         </s:form>
                         <s:form method="POST" id="addPicturesForm%{#status.index}" action="addPictureForm">
