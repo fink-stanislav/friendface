@@ -18,12 +18,12 @@ import java.util.List;
  * Time: 12:10 PM
  */
 
-public class EntityDAO {
+public abstract class EntityDAO {
     protected EntityManager entityManager;
     protected RepositoryManager repositoryManager;
     protected QueryExecutor queryExecutor;
 
-    public EntityDAO(EntityManager entityManager, RepositoryManager repositoryManager) {
+    protected EntityDAO(EntityManager entityManager, RepositoryManager repositoryManager) {
         this.entityManager = entityManager;
         this.repositoryManager = repositoryManager;
         queryExecutor = new QueryExecutor(entityManager);

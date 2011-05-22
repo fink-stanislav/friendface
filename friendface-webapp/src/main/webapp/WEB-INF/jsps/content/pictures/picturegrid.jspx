@@ -4,7 +4,7 @@
 
     <style type="text/css">
         @import "css/list.css";
-        @import "css/image-grid.css";
+        @import "css/images.css";
     </style>
 
     <div>
@@ -30,16 +30,19 @@
             <s:if test="hasPictures">
                 <s:iterator value="pictureList" status="status">
                     <div class="grid-item">
-                        <div class="grid-image-container">
-                            <div class="grid-image">
+                        <div class="image-container image-container-small">
+                            <div class="image image-small">
                                 <s:url var="imageUrl" value="showPicture.action">
                                     <s:param name="pictureId" value="%{[0].id}"/>
                                 </s:url>
-                                <s:a href="#">
+                                <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
+                                    <s:param name="pictureId" value="%{[0].id}"/>
+                                </s:url>
+                                <s:a href="%{imageDetailsUrl}">
                                     <span class="ref"><img src="${imageUrl}" alt=""/></span>
                                 </s:a>
                             </div>
-                            <div class="grid-image-title">
+                            <div class="image-title image-title-small">
                                 <s:property value="%{[0].title}"/>
                             </div>
                         </div>

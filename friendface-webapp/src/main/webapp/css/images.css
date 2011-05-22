@@ -1,40 +1,63 @@
 .userpic {
     float: left;
-    width: 56px;
-    height: 66px;
+    width: 3.5em;
+    height: 4.1em;
     margin: 0.5em;
     border: 0;
 }
 
 div.image-container {
-    margin: 10px 0 10px 15px;
+    margin: 0.625em 0 0.625em 0.94em;
     border: 1px solid black;
-    height: 142px;
-    width: 160px;
     float: left;
     text-align: left;
 }
 
-div.image-layer {}
-
-
-div.image-layer img {
-    margin: 6px 3px 3px;
-    border: 1px solid white;
-    max-height: 100px;
-    max-width: 150px;
+div.image-container-small {
+    height: 8.9em;
+    width: 10em;
 }
 
-div.image-layer a:hover img {
+div.image-container-large {
+    height: 30em;
+    width: 34em;
+}
+
+div.image {}
+
+
+div.image img {
+    margin: 6px 3px 3px;
+    border: 1px solid white;
+}
+
+div.image-small img {
+    max-height: 6.25em;
+    max-width: 9.4em;
+}
+
+div.image-large img {
+    max-height: 21em;
+    max-width: 31.7em;
+}
+
+div.image a:hover img {
     border: 1px solid gray;
 }
 
-div.image-layer-title {
+div.image-title {
     text-align: left;
-    width: 120px;
     margin: 2px 2px 2px 5px;
-    font-size: small;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+div.image-title-large {
+    width: 30em;
+}
+
+div.image-title-small {
+    width: 7.5em;
+    font-size: small;
 }

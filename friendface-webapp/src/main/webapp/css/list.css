@@ -3,6 +3,12 @@
     float: left;
 }
 
+#grid {
+    width: 35em;
+    float: left;
+    margin-left: 0.7em;
+}
+
 #wall {
     clear: both;
     border-top: 1px solid gray;

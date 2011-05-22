@@ -71,6 +71,10 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         }
     }
 
+    public Integer getTitlePictureId(Album album) {
+        return 0;
+    }
+
     public String getPath(Identifiable album) {
         StringBuilder sb = new StringBuilder();
         sb.append(((Album) album).getUser().getLoginEmail())

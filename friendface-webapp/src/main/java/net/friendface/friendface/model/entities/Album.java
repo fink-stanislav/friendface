@@ -13,7 +13,8 @@ import javax.persistence.*;
 @Table(name = "albums")
 @NamedQueries(value = {
         @NamedQuery(name = "getAlbumsByUser", query = "select a from Album a where a.user = :user"),
-        @NamedQuery(name = "getPicturesCount", query = "select count(p) from Picture p where p.album = :album")
+        @NamedQuery(name = "getPicturesCount", query = "select count(p) from Picture p where p.album = :album"),
+        @NamedQuery(name = "getTitleImageId", query = "select p from Picture p where p.album = :album")
 })
 public class Album implements ContentEntity {
     @Id

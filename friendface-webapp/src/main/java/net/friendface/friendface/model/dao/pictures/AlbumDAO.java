@@ -19,6 +19,8 @@ public interface AlbumDAO {
 
     Integer getPictureCount(Album album);
 
+    Integer getTitlePictureId(Album album);
+
     void insertAlbum(Album album) throws RepositoryException;
 
     void deleteAlbum(Album album) throws RepositoryException;

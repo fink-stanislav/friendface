@@ -22,7 +22,7 @@ TODO
 11. Upload and display images              (partly implemented)
 12. Upload and display videos
 13. Another user page view
-14. Generalize dao
+14. Refactor repository usage.
 
 ------------------------
 

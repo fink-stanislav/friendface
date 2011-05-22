@@ -80,7 +80,11 @@ public class PicturesService {
             List<AlbumBean> albumBeans = new ArrayList<AlbumBean>(albums.size());
             for (Album album : albums) {
                 AlbumBean albumBean = new AlbumBean(album);
-                albumBean.setPictureCount(getAlbumPictureCount(album));
+                Integer pictureCount = getAlbumPictureCount(album);
+                albumBean.setPictureCount(pictureCount);
+                if (pictureCount.equals(0)) {
+                    albumBean.setPictureId(0);
+                }
                 albumBeans.add(albumBean);
             }
             return albumBeans;

@@ -4,7 +4,6 @@
 
     <style type="text/css">
         @import "css/images.css";
-        @import "css/image-grid.css";
     </style>
 
     <div id="horizontal-menu">
@@ -21,18 +20,18 @@
         </ul>
     </div>
 
-    <div class="image-large">
-        <div class="image-container">
-            <div class="image-layer">
+    <div>
+        <div class="image-container image-container-large">
+            <div class="image image-large">
                 <s:url var="imageUrl" value="showPicture.action">
-                    <s:param name="pictureId" value="%{[0].id}"/>
+                    <s:param name="pictureId" value="%{pictureId}"/>
                 </s:url>
                 <s:a href="#">
                     <span class="ref"><img src="${imageUrl}" alt=""/></span>
                 </s:a>
             </div>
-            <div class="image-title">
-                <s:property value="%{[0].title}"/>
+            <div class="image-title image-title-large">
+                <s:property value="%{title}"/>
             </div>
         </div>
     </div>

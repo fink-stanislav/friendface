@@ -10,6 +10,7 @@ import net.friendface.friendface.model.entities.Album;
 
 public class AlbumBean extends Album {
     private Integer pictureCount;
+    private Integer pictureId;
 
     public AlbumBean(Album album) {
         this.setId(album.getId());
@@ -23,5 +24,13 @@ public class AlbumBean extends Album {
 
     public void setPictureCount(Integer pictureCount) {
         this.pictureCount = pictureCount;
+    }
+
+    public Integer getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(Integer pictureId) {
+        this.pictureId = pictureId;
     }
 }
