@@ -4,16 +4,19 @@
     <style type="text/css">
         @import "css/userdata.css";
         @import "css/list.css";
-        @import "css/addmessage.css";
+        @import "css/forms.css";
         @import "css/images.css";
     </style>
     <script type="text/javascript" src="js/textAreaHandlers.js"></script>
+    <script type="text/javascript" src="js/visibility.js"></script>
     <script type="text/javascript" src="js/formHandlers.js"></script>
 
     <s:i18n name="jsps.content.userpage">
         <div id="userdata">
-            <div id="userpic">
-                <img class="image" src="" alt=""/>
+            <div class="frontpic frontpic-large">
+                <s:a href="#">
+                    <span class="ref"><img src="images/no_image.png" alt=""/></span>
+                </s:a>
             </div>
             <div id="common-info">
                 <div class="horizontal-block-normal">
@@ -66,10 +69,11 @@
                             </s:a>
                         </div>
                         <div class="list-item-content">
-                            <a href="">
-                                <img class="userpic" alt="" src="images/littleuserpic.png"/>
-                            </a>
-
+                            <div class="frontpic frontpic-small">
+                                <s:a href="#">
+                                    <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
+                                </s:a>
+                            </div>
                             <div class="list-item-text">
                                 <s:property value="%{[0].textContent}"/>
                             </div>
@@ -88,13 +92,23 @@
                 </div>
             </s:else>
 
-            <div class="add-message-control">
+            <div class="horizontal-menu horizontal-menu-wall">
+                <ul>
+                    <li>
+                        <s:a href="#" onclick="hideShow('add-message-control')">
+                            new message
+                        </s:a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-controls" id="add-message-control">
                 <div>
                     <s:form id="addMessageForm" action="addWallMessage" method="POST"
                             onsubmit="formSubmit('addMessageForm', isModified())">
-                        <div class="add-message-form-line">
+                        <div class="form-line">
                             <s:textarea id="messageTextArea" name="message" rows="" cols=""
-                                        cssClass="add-message-textarea"
+                                        cssClass="form-textarea"
                                         onfocus="focusTextArea('messageTextArea');"
                                         onblur="blurTextArea('messageTextArea', 'Enter your message')"
                                         onkeyup="keyUpTextArea()">
@@ -102,10 +116,8 @@
                             <s:hidden name="userId" value="%{user.id}"/>
                         </div>
                         <div>
-                            <s:a href="#">
-                                hide
-                            </s:a>
-                            <s:submit/><s:reset/>
+                            <s:submit value="Send"/>
+                            <s:reset value="Cancel"/>
                         </div>
                     </s:form>
                 </div>

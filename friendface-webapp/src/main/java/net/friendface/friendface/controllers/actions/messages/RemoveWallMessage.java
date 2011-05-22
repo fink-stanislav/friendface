@@ -15,12 +15,14 @@ import javax.jcr.RepositoryException;
 
 public class RemoveWallMessage extends StandardAction {
     private Integer id;
+    private Integer userId;
 
     @Override
     public String execute() {
         try {
             MessagesService service = FriendfaceService.getService().getMessagesService();
             WallMessage message = service.getById(id);
+            userId = message.getReceiver().getId();
             service.removeWallMessage(message);
         } catch (RepositoryException e) {
             return ERROR;
@@ -34,5 +36,9 @@ public class RemoveWallMessage extends StandardAction {
 
     public Integer getId() {
         return id;
+    }
+
+    public Integer getUserId() {
+        return userId;
     }
 }

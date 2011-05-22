@@ -10,11 +10,17 @@
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
         <action name="addWallMessage" class="net.friendface.friendface.controllers.actions.messages.AddWallMessage">
-            <result name="success" type="redirectAction">userpage</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">userpage</param>
+                <param name="userId">${userId}</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
         <action name="removeWallMessage" class="net.friendface.friendface.controllers.actions.messages.RemoveWallMessage">
-            <result name="success" type="redirectAction">userpage</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">userpage</param>
+                <param name="userId">${userId}</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
     </package>

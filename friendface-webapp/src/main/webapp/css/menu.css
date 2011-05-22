@@ -4,24 +4,36 @@
     margin: 0.1em;
 }
 
-#horizontal-menu {
+.horizontal-menu {
     position: relative;
     text-align: center;
     width: 35em;
-    float: right;
 }
 
-#horizontal-menu ul {
+.horizontal-menu-wall {
+    width: 39em;
+    float: left;
+    padding-left: 2em;
+}
+
+.horizontal-menu-list {
+    text-align: center;
+    width: 31em;
+    float: left;
+    margin-left: 2em;
+}
+
+.horizontal-menu ul {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(100%, #ffffff), color-stop(0%, #e5e5e5));
 }
 
-#horizontal-menu li {
+.horizontal-menu li {
     display: inline;
     list-style-type: none;
     padding-right: 2em;
 }
 
-#horizontal-menu li a {
+.horizontal-menu li a {
     color: black;
 }
 

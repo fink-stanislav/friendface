@@ -20,7 +20,7 @@
                     </div>
                     <div class="list-item-content">
                         <a href="">
-                            <img class="userpic" alt="" src="/images/littleuserpic.png"/>
+                            <img class="frontpic" alt="" src="/images/littleuserpic.png"/>
                         </a>
 
                         <div class="list-item-text">

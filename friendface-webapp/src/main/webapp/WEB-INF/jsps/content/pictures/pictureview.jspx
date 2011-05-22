@@ -4,23 +4,10 @@
 
     <style type="text/css">
         @import "css/images.css";
+        @import "css/list.css";
     </style>
 
-    <div id="horizontal-menu">
-        <ul>
-            <li>
-                <s:a>rename picture</s:a>
-            </li>
-            <li>
-                <s:a>remove</s:a>
-            </li>
-            <li>
-                <s:a>edit description</s:a>
-            </li>
-        </ul>
-    </div>
-
-    <div>
+    <div id="grid">
         <div class="image-container image-container-large">
             <div class="image image-large">
                 <s:url var="imageUrl" value="showPicture.action">
@@ -33,6 +20,19 @@
             <div class="image-title image-title-large">
                 <s:property value="%{title}"/>
             </div>
+        </div>
+        <div class="horizontal-menu horizontal-menu-list">
+            <ul>
+                <li>
+                    <s:a>rename picture</s:a>
+                </li>
+                <li>
+                    <s:a>remove</s:a>
+                </li>
+                <li>
+                    <s:a>edit description</s:a>
+                </li>
+            </ul>
         </div>
     </div>
 

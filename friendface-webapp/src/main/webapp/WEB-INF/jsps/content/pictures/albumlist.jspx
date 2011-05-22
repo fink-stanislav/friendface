@@ -5,23 +5,11 @@
     <style type="text/css">
         @import "css/list.css";
         @import "css/images.css";
+        @import "css/forms.css";
     </style>
 
     <script type="text/javascript" src="js/formHandlers.js"></script>
-
-    <s:form id="addAlbumForm" action="addAlbum">
-        <s:hidden name="albumTitle" value="album"/>
-    </s:form>
-
-    <div id="horizontal-menu">
-        <ul>
-            <li>
-                <s:a href="#" onclick="submitForm('addAlbumForm')">
-                    add album
-                </s:a>
-            </li>
-        </ul>
-    </div>
+    <script type="text/javascript" src="js/visibility.js"></script>
 
     <div id="list">
         <s:if test="hasAlbums">
@@ -49,12 +37,18 @@
                     </div>
                     <div class="list-item-content">
                         <s:if test="%{[0].pictureId eq 0}">
-                            <a href="">
-                                <img class="userpic" alt="" src="images/no_image.png"/>
-                            </a>
+                            <div class="frontpic frontpic-small">
+                                <s:a href="#">
+                                    <span class="ref"><img alt="" src="images/no_image.png"/></span>
+                                </s:a>
+                            </div>
                         </s:if>
                         <s:else>
-                            <img class="userpic" alt="" src="images/littleuserpic.png"/>
+                            <div class="frontpic frontpic-small">
+                                <s:a href="#">
+                                    <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
+                                </s:a>
+                            </div>
                         </s:else>
 
                         <div class="list-item-text">
@@ -77,6 +71,30 @@
                 </div>
             </div>
         </s:else>
+
+        <div class="horizontal-menu horizontal-menu-list">
+            <ul>
+                <li>
+                    <s:a href="#" onclick="hideShow('add-album-control')">
+                        new album
+                    </s:a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="form-controls" id="add-album-control">
+            <div>
+                <s:form id="addAlbumForm" action="addAlbum">
+                    <div class="form-line">
+                        <s:textfield name="albumTitle"/>
+                    </div>
+                    <div>
+                        <s:submit value="Add"/>
+                        <s:reset value="Cancel"/>
+                    </div>
+                </s:form>
+            </div>
+        </div>
     </div>
 
 </jsp:root>

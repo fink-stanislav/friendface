@@ -13,6 +13,7 @@
     clear: both;
     border-top: 1px solid gray;
     padding: 1em 1em 2em 1em;
+    padding-bottom: 5em;
 }
 
 .additem {
@@ -35,7 +36,7 @@
     margin: 0.5em 2em;
     padding: 0 0 2em 0;
     border-bottom: 1px solid #d3d3d3;
-    min-height: 4.9em;
+    min-height: 5.9em;
 }
 
 .list-item-header {

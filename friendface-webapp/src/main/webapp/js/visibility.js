@@ -12,7 +12,7 @@ function hideElement(id) {
 
 var counter = 0;
 
-function hideshow(id) {
+function hideShow(id) {
     var element = document.getElementById(id);
     if (counter % 2 == 0) {
         element.style.display = 'block';

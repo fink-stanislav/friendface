@@ -1,9 +1,17 @@
-.userpic {
+.frontpic {
     float: left;
-    width: 3.5em;
-    height: 4.1em;
+}
+
+.frontpic-small img {
+    max-width: 4em;
+    max-height: 5em;
     margin: 0.5em;
-    border: 0;
+}
+
+.frontpic-large img {
+    max-width: 11em;
+    max-height: 14.3em;
+    margin: 1em 0.5em 0.5em 2em;
 }
 
 div.image-container {
@@ -19,12 +27,12 @@ div.image-container-small {
 }
 
 div.image-container-large {
-    height: 30em;
+    height: auto;
     width: 34em;
 }
 
-div.image {}
-
+div.image {
+}
 
 div.image img {
     margin: 6px 3px 3px;
@@ -46,8 +54,8 @@ div.image a:hover img {
 }
 
 div.image-title {
-    text-align: left;
-    margin: 2px 2px 2px 5px;
+    margin-left: 2.1em;
+    text-align: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

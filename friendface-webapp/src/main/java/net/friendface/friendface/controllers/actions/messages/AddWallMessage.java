@@ -47,6 +47,10 @@ public class AddWallMessage extends StandardAction implements SessionAware {
         this.userId = userId;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
     public void setSession(Map<String, Object> stringObjectMap) {
         sessionHelper = new SessionHelper(stringObjectMap);
     }
