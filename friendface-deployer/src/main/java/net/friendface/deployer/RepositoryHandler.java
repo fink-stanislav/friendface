@@ -16,7 +16,6 @@ import javax.jcr.SimpleCredentials;
 public class RepositoryHandler {
     private String repositoryHome;
     private String repositoryConfig;
-    private Repository repository;
     private Session session;
 
     public RepositoryHandler() {
@@ -30,27 +29,11 @@ public class RepositoryHandler {
     }
 
     public Session createSession() throws RepositoryException {
-        repository = new TransientRepository(repositoryConfig, repositoryHome);
+        Repository repository = new TransientRepository(repositoryConfig, repositoryHome);
         return session = repository.login(new SimpleCredentials("admin", "testPassword".toCharArray()));
     }
 
     public void destroySession() {
         session.logout();
-    }
-
-    public String getRepositoryHome() {
-        return repositoryHome;
-    }
-
-    public String getRepositoryConfig() {
-        return repositoryConfig;
-    }
-
-    public Repository getRepository() {
-        return repository;
-    }
-
-    public Session getSession() {
-        return session;
     }
 }

@@ -23,10 +23,5 @@
             <result name="success" type="tiles">video.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="search" class="net.friendface.friendface.controllers.actions.search.SearchPage">
-            <result name="success" type="tiles">search.tiles</result>
-            <result name="login" type="tiles">entrance.tiles</result>
-            <result name="error" type="tiles">errorpage.tiles</result>
-        </action>
     </package>
 </struts>

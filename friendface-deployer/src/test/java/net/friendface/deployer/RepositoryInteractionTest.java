@@ -16,12 +16,11 @@ import static org.junit.Assert.assertEquals;
  * Time: 9:02 PM
  */
 public class RepositoryInteractionTest {
-    private RepositoryHandler repositoryHandler;
     private Session session;
 
     @Before
     public void setUp() throws Exception {
-        repositoryHandler = new RepositoryHandler();
+        RepositoryHandler repositoryHandler = new RepositoryHandler();
         session = repositoryHandler.createSession();
     }
 

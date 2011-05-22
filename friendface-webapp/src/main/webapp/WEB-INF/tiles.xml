@@ -18,7 +18,7 @@
         <put-attribute name="content" value=""/>
         <put-attribute name="footer" value="/WEB-INF/jsps/frames/footer.jspx"/>
     </definition>
-    <!-- end templates-->
+    <!-- end of templates-->
 
     <!-- service pages -->
     <definition name="welcomepage.tiles" extends="service.page.template">
@@ -42,7 +42,7 @@
     <definition name="success.tiles" extends="service.page.template">
         <put-attribute name="content" value="/WEB-INF/jsps/service/success.jspx"/>
     </definition>
-    <!-- end service pages -->
+    <!-- end of service pages -->
 
     <!-- user's content -->
     <definition name="settings.tiles" extends="content.page.template">
@@ -50,10 +50,13 @@
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/settings.header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
-    <definition name="searchresults.tiles" extends="content.page.template">
+    <!-- search -->
+    <definition name="peoplefound.tiles" extends="content.page.template">
         <put-attribute name="title" value="Results"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/peoplefound.jspx"/>
     </definition>
+    <!-- end of search -->
+    <!-- pictures related -->
     <definition name="pictureview.tiles" extends="content.page.template">
         <put-attribute name="title" value="Picture"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/pictureview.jspx"/>
@@ -66,6 +69,7 @@
         <put-attribute name="title" value="Add picture"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/addpicture.jspx"/>
     </definition>
+    <!-- end of pictures related -->
 
     <!-- available from menu -->
     <definition name="userpage.tiles" extends="content.page.template">
@@ -92,6 +96,6 @@
         <put-attribute name="title" value="jsps.content.search"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/search.jspx"/>
     </definition>
-    <!-- end -->
-    <!-- end user's content -->
+    <!-- end of available from menu -->
+    <!-- end of user's content -->
 </tiles-definitions>

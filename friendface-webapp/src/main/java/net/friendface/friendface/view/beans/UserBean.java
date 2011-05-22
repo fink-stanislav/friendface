@@ -9,21 +9,14 @@ import net.friendface.friendface.model.enums.ContactState;
  * Time: 23:00
  */
 
-public class DisplayUserBean {
-    private User user;
+public class UserBean extends User {
     private ContactState state;
 
-    public DisplayUserBean(User user, ContactState state) {
-        this.user = user;
-        this.state = state;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public UserBean(User user) {
+        setId(user.getId());
+        setUsername(user.getUsername());
+        setLoginEmail(user.getUserSurname());
+        setLoginEmail(user.getLoginEmail());
     }
 
     public ContactState getState() {

@@ -1,75 +1,50 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
           xmlns="http://www.w3.org/1999/xhtml" version="2.0"
           xmlns:s="/struts-tags">
+
     <style type="text/css">
         @import "css/search.css";
+        @import "css/tabs.css";
     </style>
+
     <script type="text/javascript" src="js/formHandlers.js"></script>
+    <script type="text/javascript" src="js/tabs.js"></script>
 
     <s:i18n name="jsps.content.search">
-        <div id="searchpage">
-            <div id="searchheader">Extended search</div>
-            <div id="searchselect">
-                <s:form action="search" id="searchTypeForm">
-                    <span id="searchtypelabel">Search for:</span>
-                    <s:select list="searchEntries" name="searchEntry" value="%{searchEntry}"
-                              onchange="formSubmit('searchTypeForm')"/>
-                </s:form>
+        <div id="tabcontrol">
+            <div id="tabs">
+                <ul>
+                    <li class="tab" id="searchPeopleTab"
+                        style="border-bottom: 1px solid #d3d3d3; background: white">
+                        <s:a href="#" onclick="switchItem('searchPeopleTab', 'searchPeoplePane', 'white');">
+                            <span>Users</span>
+                        </s:a>
+                    </li>
+                    <li class="tab" id="searchPicturesTab">
+                        <s:a href="#" onclick="switchItem('searchPicturesTab', 'searchPicturesPane', 'white');">
+                            <span>Pictures</span>
+                        </s:a>
+                    </li>
+                    <li class="tab" id="searchVideosTab">
+                        <s:a href="#" onclick="switchItem('searchVideosTab', 'searchVideosPane', 'white');">
+                            <span>Videos</span>
+                        </s:a>
+                    </li>
+                </ul>
             </div>
 
-            <s:if test="%{searchEntry eq 'People'}">
-                <div class="searchform">
-                    <s:form action="searchPeople" id="searchPeopleForm">
-                        <div><s:text name="login"/></div>
-                        <div><s:textfield name="loginEmail" value="%{loginEmail}" cssClass="input"/></div>
-
-                        <div><s:text name="name"/></div>
-                        <div><s:textfield name="username" value="%{username}" cssClass="input"/></div>
-
-                        <div><s:text name="surname"/></div>
-                        <div><s:textfield name="userSurname" value="%{userSurname}" cssClass="input"/></div>
-                        <s:actionmessage/>
-                        <hr/>
-                        <s:submit value="%{getText('search')}"/>
-                    </s:form>
+            <div class="panes">
+                <div id="searchPeoplePane" class="pane"
+                     style="display: block;">
+                    <s:include value="/WEB-INF/jsps/content/search/searchPeople.jspx"/>
                 </div>
-            </s:if>
-            <s:elseif test="%{searchEntry eq 'Pictures'}">
-                <div class="searchform">
-                    <s:form id="searchPicturesForm" action="searchPictures">
-                        <div><s:text name="entrytitle"/></div>
-                        <div><s:textfield name="picTitle" value="%{picTitle}" cssClass="input"/></div>
-                        <s:actionmessage/>
-                        <hr/>
-                        <s:submit value="%{getText('search')}"/>
-                    </s:form>
+                <div id="searchPicturesPane" class="pane">
+                    <s:include value="/WEB-INF/jsps/content/search/searchPictures.jspx"/>
                 </div>
-            </s:elseif>
-            <s:elseif test="%{searchEntry eq 'Videos'}">
-                <div class="searchform">
-                    <s:form id="searchVideosForm" action="searchVideos">
-                        <div><s:text name="entrytitle"/></div>
-                        <div><s:textfield name="videoTitle" value="%{videoTitle}" cssClass="input"/></div>
-                        <s:actionmessage/>
-                        <hr/>
-                        <s:submit value="%{getText('search')}"/>
-                    </s:form>
+                <div id="searchVideosPane" class="pane">
+                    <s:include value="/WEB-INF/jsps/content/search/searchVideos.jspx"/>
                 </div>
-            </s:elseif>
-            <s:elseif test="%{searchEntry eq 'Posts'}">
-                <div class="searchform">
-                    <s:form id="searchPostsForm" action="searchPosts">
-                        <div><s:text name="entrytitle"/></div>
-                        <div><s:textfield name="postTitle" value="%{postTitle}" cssClass="input"/></div>
-
-                        <div><s:text name="contains"/></div>
-                        <div><s:textfield name="containText" value="%{containText}" cssClass="input"/></div>
-                        <s:actionmessage/>
-                        <hr/>
-                        <s:submit value="%{getText('search')}"/>
-                    </s:form>
-                </div>
-            </s:elseif>
+            </div>
         </div>
     </s:i18n>
 </jsp:root>

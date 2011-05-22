@@ -1,0 +1,26 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml" version="2.0"
+          xmlns:s="/struts-tags">
+
+    <style type="text/css">
+        @import "css/search.css";
+    </style>
+
+    <div class="title">
+        Search for videos
+    </div>
+
+    <div class="searchform">
+        <s:form id="searchVideosForm" action="searchVideos">
+            <div>
+                <s:text name="entrytitle"/>
+            </div>
+            <div>
+                <s:textfield name="videoTitle" value="%{videoTitle}" cssClass="input"/>
+            </div>
+            <s:actionmessage/>
+            <hr/>
+            <s:submit value="%{getText('search')}"/>
+        </s:form>
+    </div>
+</jsp:root>
