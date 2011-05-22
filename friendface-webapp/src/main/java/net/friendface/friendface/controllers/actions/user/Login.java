@@ -10,7 +10,6 @@ import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.view.beans.LoginBean;
 import org.apache.struts2.interceptor.SessionAware;
 
-import javax.persistence.NoResultException;
 import java.util.Map;
 
 import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;

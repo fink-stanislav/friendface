@@ -17,7 +17,7 @@ public interface AlbumDAO {
 
     Album getById(Integer id);
 
-    Integer getPictureCount(Album album);
+    Long getPictureCount(Album album);
 
     Integer getTitlePictureId(Album album);
 

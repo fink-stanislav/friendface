@@ -7,7 +7,6 @@ import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.view.beans.AlbumBean;
-import net.friendface.friendface.view.beans.PictureBean;
 import org.apache.jackrabbit.value.BinaryImpl;
 
 import javax.jcr.RepositoryException;
@@ -70,7 +69,7 @@ public class PicturesService {
         return pictureDAO.getPictures(album);
     }
 
-    public Integer getAlbumPictureCount(Album album) {
+    public Long getAlbumPictureCount(Album album) {
         return albumDAO.getPictureCount(album);
     }
 
@@ -80,9 +79,9 @@ public class PicturesService {
             List<AlbumBean> albumBeans = new ArrayList<AlbumBean>(albums.size());
             for (Album album : albums) {
                 AlbumBean albumBean = new AlbumBean(album);
-                Integer pictureCount = getAlbumPictureCount(album);
+                Long pictureCount = getAlbumPictureCount(album);
                 albumBean.setPictureCount(pictureCount);
-                if (pictureCount.equals(0)) {
+                if (pictureCount.equals(0L)) {
                     albumBean.setPictureId(0);
                 }
                 albumBeans.add(albumBean);

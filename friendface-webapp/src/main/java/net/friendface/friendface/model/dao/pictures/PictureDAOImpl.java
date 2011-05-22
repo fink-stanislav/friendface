@@ -6,6 +6,7 @@ import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.model.providers.RepositoryManager;
+import net.friendface.friendface.model.queryhandling.ExecutorParams;
 
 import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
@@ -45,7 +46,9 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
 
     public List<Picture> getPictures(Album album) throws RepositoryException {
         try {
-            return queryExecutor.executeNamedQueryList("getPicturesByAlbum", Picture.class, "album", album);
+            ExecutorParams params = new ExecutorParams("getPicturesByAlbum");
+            params.setParam("album", album);
+            return queryExecutor.executeNamedQueryList(params, Picture.class);
         } catch (NoResultException e) {
             return null;
         }

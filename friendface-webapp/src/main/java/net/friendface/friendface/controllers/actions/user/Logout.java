@@ -2,7 +2,6 @@ package net.friendface.friendface.controllers.actions.user;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
-import net.friendface.friendface.service.FriendfaceService;
 import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.Map;

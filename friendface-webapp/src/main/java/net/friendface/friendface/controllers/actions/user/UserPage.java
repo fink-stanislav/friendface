@@ -1,16 +1,11 @@
 package net.friendface.friendface.controllers.actions.user;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
-import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.view.beans.WallMessageBean;
-import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
-import java.util.Map;
-
-import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
 
 /**
  * User: S. Fink

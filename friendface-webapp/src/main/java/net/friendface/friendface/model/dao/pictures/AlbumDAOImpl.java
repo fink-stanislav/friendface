@@ -6,6 +6,7 @@ import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;
+import net.friendface.friendface.model.queryhandling.ExecutorParams;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -53,7 +54,9 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
 
     public List<Album> getUserAlbums(User user) {
         try {
-            return queryExecutor.executeNamedQueryList("getAlbumsByUser", Album.class, "user", user);
+            ExecutorParams params = new ExecutorParams("getAlbumsByUser");
+            params.setParam("user", user);
+            return queryExecutor.executeNamedQueryList(params, Album.class);
         } catch (NoResultException e) {
             return null;
         }
@@ -63,9 +66,11 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         return getById(id, Album.class);
     }
 
-    public Integer getPictureCount(Album album) {
+    public Long getPictureCount(Album album) {
         try {
-            return (Integer) queryExecutor.executeCountQuery("getPicturesCount", "album", album);
+            ExecutorParams params = new ExecutorParams("getPicturesCount");
+            params.setParam("album", album);
+            return queryExecutor.executeCountQuery(params, Long.class);
         } catch (NoResultException e) {
             return null;
         }

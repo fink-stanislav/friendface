@@ -23,7 +23,7 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
     private List<Picture> pictureList;
     private Integer albumId;
     private String albumTitle;
-    private Integer pictureCount;
+    private Long pictureCount;
     private Boolean hasPictures;
 
     @Override
@@ -57,7 +57,7 @@ public class ShowPictures extends StandardAction implements ServletRequestAware 
         return albumTitle;
     }
 
-    public Integer getPictureCount() {
+    public Long getPictureCount() {
         return pictureCount;
     }
 

@@ -1,16 +1,12 @@
 package net.friendface.friendface.model.dao;
 
-import net.friendface.friendface.model.QueryExecutor;
-import net.friendface.friendface.model.entities.ContentEntity;
 import net.friendface.friendface.model.providers.RepositoryManager;
+import net.friendface.friendface.model.queryhandling.QueryExecutor;
 
-import javax.jcr.Node;
-import javax.jcr.Property;
 import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceException;
-import java.util.List;
 
 /**
  * User: S. Fink

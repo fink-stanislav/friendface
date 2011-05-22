@@ -2,9 +2,9 @@ package net.friendface.friendface.model.dao.user;
 
 import net.friendface.friendface.model.dao.EntityDAO;
 import net.friendface.friendface.model.dao.Operation;
-import net.friendface.friendface.model.entities.Identifiable;
-import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.entities.User;
+import net.friendface.friendface.model.providers.RepositoryManager;
+import net.friendface.friendface.model.queryhandling.ExecutorParams;
 import net.friendface.friendface.model.search.JpaSearch;
 
 import javax.jcr.RepositoryException;
@@ -60,7 +60,9 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
 
     public User getUser(String loginEmail) {
         try {
-            return queryExecutor.executeNamedQuery("getUserByLogin", User.class, "loginEmail", loginEmail);
+            ExecutorParams params = new ExecutorParams("getUserByLogin");
+            params.setParam("loginEmail", loginEmail);
+            return queryExecutor.executeNamedQuery(params, User.class);
         } catch (NoResultException e) {
             return null;
         }
