@@ -20,10 +20,13 @@ public class Album implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
+
     private String title;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
     @Transient
     private Binary content;
 

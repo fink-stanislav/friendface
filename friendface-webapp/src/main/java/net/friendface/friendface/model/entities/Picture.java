@@ -1,5 +1,10 @@
 package net.friendface.friendface.model.entities;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+
 import javax.jcr.Binary;
 import javax.persistence.*;
 
@@ -15,14 +20,19 @@ import javax.persistence.*;
         @NamedQuery(name = "getPicturesByAlbum", query = "select p from Picture p where p.album = :album"),
         @NamedQuery(name = "deleteAllAlbumPictures", query = "delete from Picture p where p.album = :album")
 })
+@Indexed
 public class Picture implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
+
     @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "albumId")
     private Album album;
+
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String title;
+
     @Transient
     public Binary content;
 

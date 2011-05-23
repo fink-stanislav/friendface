@@ -6,7 +6,7 @@ import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;
-import net.friendface.friendface.model.queryhandling.ExecutorParams;
+import net.friendface.friendface.model.queryhandling.QueryExecutorParams;
 
 import javax.jcr.Node;
 import javax.jcr.RepositoryException;
@@ -54,9 +54,9 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
 
     public List<Album> getUserAlbums(User user) {
         try {
-            ExecutorParams params = new ExecutorParams("getAlbumsByUser");
-            params.setParam("user", user);
-            return queryExecutor.executeNamedQueryList(params, Album.class);
+            QueryExecutorParams paramsQuery = new QueryExecutorParams("getAlbumsByUser");
+            paramsQuery.setParam("user", user);
+            return queryExecutor.executeNamedQueryList(paramsQuery, Album.class);
         } catch (NoResultException e) {
             return null;
         }
@@ -68,9 +68,9 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
 
     public Long getPictureCount(Album album) {
         try {
-            ExecutorParams params = new ExecutorParams("getPicturesCount");
-            params.setParam("album", album);
-            return queryExecutor.executeCountQuery(params, Long.class);
+            QueryExecutorParams paramsQuery = new QueryExecutorParams("getPicturesCount");
+            paramsQuery.setParam("album", album);
+            return queryExecutor.executeCountQuery(paramsQuery, Long.class);
         } catch (NoResultException e) {
             return null;
         }

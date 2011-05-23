@@ -24,13 +24,18 @@ public class User implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
+
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String loginEmail;
+
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String username;
+
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String userSurname;
+
     private String passwordHash;
+
     @Transient
     private Binary content;
 

@@ -1,5 +1,8 @@
 package net.friendface.friendface.model.providers;
 
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.Search;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -13,14 +16,15 @@ import javax.persistence.criteria.CriteriaBuilder;
 
 public class EntityManagerProvider {
     private EntityManagerFactory entityManagerFactory;
+    private FullTextEntityManager fullTextEntityManager;
     private EntityManager entityManager;
-    private CriteriaBuilder criteriaBuilder;
     private static EntityManagerProvider instance;
 
-    public void initialize() {
+    public void initialize() throws InterruptedException {
         entityManagerFactory = Persistence.createEntityManagerFactory("friendface");
         entityManager = entityManagerFactory.createEntityManager();
-        criteriaBuilder = entityManagerFactory.getCriteriaBuilder();
+        fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
+        fullTextEntityManager.createIndexer().startAndWait();
     }
 
     public static EntityManagerProvider getInstance() {
@@ -38,8 +42,8 @@ public class EntityManagerProvider {
         return entityManager;
     }
 
-    public CriteriaBuilder getCriteriaBuilder() {
-        return criteriaBuilder;
+    public FullTextEntityManager getFullTextEntityManager() {
+        return fullTextEntityManager;
     }
 
     public void close() {

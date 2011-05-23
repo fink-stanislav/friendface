@@ -1,5 +1,10 @@
 package net.friendface.friendface.model.entities;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
+
 import javax.jcr.Binary;
 import javax.persistence.*;
 
@@ -11,14 +16,19 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "videos")
+@Indexed
 public class Video implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
+
+    @Field(index = Index.TOKENIZED, store = Store.NO)
     private String title;
+
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
     @Transient
     private Binary content;
 

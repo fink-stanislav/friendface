@@ -24,12 +24,15 @@ public class Friend implements Identifiable {
     @Id
     @GeneratedValue
     private Integer id;
+
     @ManyToOne
     @JoinColumn(name = "sender")
     private User sender;
+
     @ManyToOne
     @JoinColumn(name = "receiver")
     private User receiver;
+
     private Boolean isApproved;
 
     public Integer getId() {

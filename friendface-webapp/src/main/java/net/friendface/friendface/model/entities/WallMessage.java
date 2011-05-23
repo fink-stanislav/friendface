@@ -19,12 +19,15 @@ public class WallMessage implements ContentEntity {
     @Id
     @GeneratedValue
     private Integer id;
+
     @ManyToOne
     @JoinColumn(name = "receiver")
     private User receiver;
+
     @ManyToOne
     @JoinColumn(name = "sender")
     private User sender;
+
     @Transient
     private Binary content;
 

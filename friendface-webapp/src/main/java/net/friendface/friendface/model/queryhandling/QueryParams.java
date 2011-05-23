@@ -7,21 +7,15 @@ import java.util.Set;
 
 /**
  * Author: S. Fink
- * Date: 22.05.11
- * Time: 16:25
+ * Date: 23.05.11
+ * Time: 23:41
  */
 
-public class ExecutorParams {
-    private String queryName;
-    private Map<String, Object> queryParams;
+public abstract class QueryParams {
+    protected Map<String, Object> queryParams;
 
-    public ExecutorParams(String queryName) {
-        this.queryName = queryName;
+    protected QueryParams() {
         queryParams = new HashMap<String, Object>();
-    }
-
-    public String getQueryName() {
-        return queryName;
     }
 
     public Object getParam(String paramName) {

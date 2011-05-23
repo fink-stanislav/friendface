@@ -18,28 +18,28 @@ public class QueryExecutor {
         this.entityManager = entityManager;
     }
 
-    private <T> void setupParams(TypedQuery<T> query, ExecutorParams params) {
-        Set<String> names = params.getParamNames();
+    private <T> void setupParams(TypedQuery<T> query, QueryExecutorParams paramsQuery) {
+        Set<String> names = paramsQuery.getParamNames();
         for (String name : names) {
-            query.setParameter(name, params.getParam(name));
+            query.setParameter(name, paramsQuery.getParam(name));
         }
     }
 
-    public <T> T executeCountQuery(ExecutorParams params, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(params.getQueryName(), entityClass);
-        setupParams(query, params);
+    public <T> T executeCountQuery(QueryExecutorParams paramsQuery, Class<T> entityClass) {
+        TypedQuery<T> query = entityManager.createNamedQuery(paramsQuery.getQueryName(), entityClass);
+        setupParams(query, paramsQuery);
         return query.getSingleResult();
     }
 
-    public <T> T executeNamedQuery(ExecutorParams params, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(params.getQueryName(), entityClass);
-        setupParams(query, params);
+    public <T> T executeNamedQuery(QueryExecutorParams paramsQuery, Class<T> entityClass) {
+        TypedQuery<T> query = entityManager.createNamedQuery(paramsQuery.getQueryName(), entityClass);
+        setupParams(query, paramsQuery);
         return query.getSingleResult();
     }
 
-    public <T> List<T> executeNamedQueryList(ExecutorParams params, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(params.getQueryName(), entityClass);
-        setupParams(query, params);
+    public <T> List<T> executeNamedQueryList(QueryExecutorParams paramsQuery, Class<T> entityClass) {
+        TypedQuery<T> query = entityManager.createNamedQuery(paramsQuery.getQueryName(), entityClass);
+        setupParams(query, paramsQuery);
         return query.getResultList();
     }
 }
