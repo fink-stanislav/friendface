@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="search" extends="private">
+        <action name="search">
+            <result name="success" type="tiles">search.tiles</result>
+        </action>
+        <action name="searchForPeople" class="net.friendface.friendface.controllers.actions.search.SearchForPeople">
+            <result name="success" type="tiles">peoplefound.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+    </package>
+</struts>
