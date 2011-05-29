@@ -22,7 +22,7 @@ public class AuthenticationInterceptor implements Interceptor {
     }
 
     public String intercept(ActionInvocation invocation) throws Exception {
-        Map session = invocation.getInvocationContext().getSession();
+        Map<String, Object> session = invocation.getInvocationContext().getSession();
         User user = (User) session.get(FriendfaceAction.FRIENDFACE_USER);
 
         // user is not stored in session

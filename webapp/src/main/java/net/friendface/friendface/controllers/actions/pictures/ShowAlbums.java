@@ -1,5 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
+import net.friendface.friendface.controllers.actions.SecurityAware;
+import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
@@ -18,10 +20,11 @@ import java.util.Map;
  * Time: 6:26 PM
  */
 
-public class ShowAlbums extends StandardAction implements SessionAware {
+public class ShowAlbums extends StandardAction implements SessionAware, SecurityAware {
     private SessionHelper sessionHelper;
     private List<AlbumBean> albumList;
     private Boolean hasAlbums;
+    private Boolean showControls;
 
     @Override
     public String execute() {
@@ -45,5 +48,14 @@ public class ShowAlbums extends StandardAction implements SessionAware {
 
     public void setSession(Map<String, Object> stringObjectMap) {
         sessionHelper = new SessionHelper(stringObjectMap);
+    }
+
+    public Boolean getShowControls() {
+        return showControls;
+    }
+
+    @Override
+    public void setSecuritySettings(SecuritySettings settings) {
+        showControls = settings.getEqualIds();
     }
 }

@@ -19,9 +19,12 @@
                          class="net.friendface.friendface.controllers.interceptors.AuthenticationInterceptor"/>
             <interceptor name="i18nInterceptor"
                          class="net.friendface.friendface.controllers.interceptors.I18nInterceptor"/>
+            <interceptor name="securityInterceptor"
+                         class="net.friendface.friendface.controllers.interceptors.SecurityInterceptor"/>
             <interceptor-stack name="secureStack">
                 <interceptor-ref name="i18nInterceptor"/>
                 <interceptor-ref name="authenticationInterceptor"/>
+                <interceptor-ref name="securityInterceptor"/>
                 <interceptor-ref name="fileUpload">
                     <param name="allowedTypes">
                         image/png, image/gif, image/jpeg

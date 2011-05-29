@@ -62,11 +62,15 @@
                                  onclick="submitForm('goToUserPageForm%{#status.index}')">
                                 <s:property value="%{[0].userName}"/>
                             </s:a>
-                            &#160;|&#160;
-                            <s:a href="#" title="%{getText('link.delete.title')}"
-                                 onclick="submitForm('deleteMessageForm%{#status.index}')">
-                                <s:text name="link.delete.value"/>
-                            </s:a>
+
+                            <s:if test="showControls">
+                                &#160;|&#160;
+                                <s:a href="#" title="%{getText('link.delete.title')}"
+                                     onclick="submitForm('deleteMessageForm%{#status.index}')">
+                                    <s:text name="link.delete.value"/>
+                                </s:a>
+                            </s:if>
+
                         </div>
                         <div class="list-item-content">
                             <div class="frontpic frontpic-small">

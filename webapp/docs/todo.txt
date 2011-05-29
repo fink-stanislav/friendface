@@ -6,23 +6,20 @@ DONE
 5. Reimplement EntityDAO. All entities should be content related.
 Put all content CRUD operations between begin() and commit() methods of JPA.
 6. Album handling
+7. Inaccurate search
+8. Implement wall message handling
+9. Upload and display images
 
-TODO
-1. Implement pagination
-2. Inaccurate search
-3. Continue internationalization
-4. Edit bundles which already exists
-5. Refactor view:
-    - reduce duplication in html
-    - improve css
-7. Reimplement double container style.
-8. Implement user settings (extend domain model)
-9. Implement wall message handling         (partly implemented)
-10. Registration mail
-11. Upload and display images              (partly implemented)
-12. Upload and display videos
-13. Another user page view
-14. Refactor repository usage.
+TODO 1. Implement pagination
+TODO 2. Continue internationalization
+TODO 3. Edit bundles which already exists
+TODO 4. Reimplement double container style.
+TODO 5. Implement user settings (extend domain model)
+TODO 6. Upload and display videos
+TODO 7. Another user page view
+TODO 8. Refactor repository usage.
+TODO 9. Userpics
+TODO 10. Crossbrowser
 
 ------------------------
 

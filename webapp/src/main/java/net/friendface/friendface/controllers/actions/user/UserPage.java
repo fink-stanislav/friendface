@@ -1,5 +1,7 @@
 package net.friendface.friendface.controllers.actions.user;
 
+import net.friendface.friendface.controllers.actions.SecurityAware;
+import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
@@ -13,11 +15,12 @@ import java.util.List;
  * Time: 5:50 PM
  */
 
-public class UserPage extends StandardAction {
+public class UserPage extends StandardAction implements SecurityAware {
     private User user;
     private Integer userId;
     private List<WallMessageBean> messageList;
     private Boolean hasWallMessages;
+    private Boolean showControls;
 
     @Override
     public String execute() {
@@ -49,5 +52,14 @@ public class UserPage extends StandardAction {
 
     public Boolean getHasWallMessages() {
         return hasWallMessages;
+    }
+
+    public Boolean getShowControls() {
+        return showControls;
+    }
+
+    @Override
+    public void setSecuritySettings(SecuritySettings settings) {
+        showControls = settings.getEqualIds();
     }
 }

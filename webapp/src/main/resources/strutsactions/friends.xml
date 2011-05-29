@@ -9,10 +9,6 @@
             <result name="success" type="redirectAction">${nextAction}</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="friendPage" class="net.friendface.friendface.controllers.actions.friends.FriendPage">
-            <result name="success" type="tiles">userpage.tiles</result>
-            <result name="error" type="tiles">errorpage.tiles</result>
-        </action>
         <action name="sendProposal" class="net.friendface.friendface.controllers.actions.friends.SendProposal">
             <result name="success" type="redirectAction">${nextAction}</result>
             <result name="error" type="tiles">errorpage.tiles</result>
