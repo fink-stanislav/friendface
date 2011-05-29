@@ -5,10 +5,10 @@ import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
 import net.friendface.friendface.controllers.validation.Validator;
+import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.queryhandling.SearchQueryParams;
 import net.friendface.friendface.service.FriendfaceService;
-import net.friendface.friendface.service.user.UserUtils;
 import net.friendface.friendface.view.beans.UserBean;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -19,23 +19,20 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
 
 /**
  * Author: S. Fink
- * Date: 22.05.11
- * Time: 22:10
+ * Date: 29.05.11
+ * Time: 11:34
  */
 
-public class SearchForPeople extends StandardAction implements ModelDriven, SessionAware {
-    private User user = new User();
-    private SessionHelper sessionHelper;
-    private List<UserBean> peopleFound;
+public class SearchForPictures extends StandardAction implements ModelDriven {
+    private Picture picture = new Picture();
+    private List<Picture> picturesFound;
     private Boolean notEmpty;
 
     @Override
     public void validate() {
         try {
-            Validator validator = new Validator(3);
-            validator.increasingNotBlank(user.getLoginEmail());
-            validator.increasingNotBlank(user.getUsername());
-            validator.increasingNotBlank(user.getUserSurname());
+            Validator validator = new Validator();
+            validator.notBlank(picture.getTitle());
         } catch (ValidationException e) {
             addActionError(getText(e.toString()));
         }
@@ -45,20 +42,17 @@ public class SearchForPeople extends StandardAction implements ModelDriven, Sess
     public String execute() {
         try {
             SearchQueryParams<String> queryParams = new SearchQueryParams<String>();
-            queryParams.setParam("username", user.getUsername());
-            queryParams.setParam("userSurname", user.getUserSurname());
-            queryParams.setParam("loginEmail", user.getLoginEmail());
-            User currentUser = (User) sessionHelper.getFromSession(getUserSessionKey());
-            peopleFound = FriendfaceService.getService().getSearchService().searchForPeople(currentUser, queryParams);
-            notEmpty = !peopleFound.isEmpty();
+            queryParams.setParam("title", picture.getTitle());
+            picturesFound = FriendfaceService.getService().getSearchService().searchForPictures(queryParams);
+            notEmpty = !picturesFound.isEmpty();
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
         }
     }
 
-    public List<UserBean> getPeopleFound() {
-        return peopleFound;
+    public List<Picture> getPicturesFound() {
+        return picturesFound;
     }
 
     public Boolean getNotEmpty() {
@@ -67,11 +61,6 @@ public class SearchForPeople extends StandardAction implements ModelDriven, Sess
 
     @Override
     public Object getModel() {
-        return user;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> stringObjectMap) {
-        sessionHelper = new SessionHelper(stringObjectMap);
+        return picture;
     }
 }

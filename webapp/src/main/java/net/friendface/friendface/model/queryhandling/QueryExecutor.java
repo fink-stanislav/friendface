@@ -18,28 +18,28 @@ public class QueryExecutor {
         this.entityManager = entityManager;
     }
 
-    private <T> void setupParams(TypedQuery<T> query, QueryExecutorParams paramsQuery) {
-        Set<String> names = paramsQuery.getParamNames();
+    private <T> void setupParams(TypedQuery<T> query, DefaultQueryParams queryParams) {
+        Set<String> names = queryParams.getParamNames();
         for (String name : names) {
-            query.setParameter(name, paramsQuery.getParam(name));
+            query.setParameter(name, queryParams.getParam(name));
         }
     }
 
-    public <T> T executeCountQuery(QueryExecutorParams paramsQuery, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(paramsQuery.getQueryName(), entityClass);
-        setupParams(query, paramsQuery);
+    public <T> T executeCountQuery(DefaultQueryParams queryParams, Class<T> entityClass) {
+        TypedQuery<T> query = entityManager.createNamedQuery(queryParams.getQueryName(), entityClass);
+        setupParams(query, queryParams);
         return query.getSingleResult();
     }
 
-    public <T> T executeNamedQuery(QueryExecutorParams paramsQuery, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(paramsQuery.getQueryName(), entityClass);
-        setupParams(query, paramsQuery);
+    public <T> T executeNamedQuery(DefaultQueryParams queryParams, Class<T> entityClass) {
+        TypedQuery<T> query = entityManager.createNamedQuery(queryParams.getQueryName(), entityClass);
+        setupParams(query, queryParams);
         return query.getSingleResult();
     }
 
-    public <T> List<T> executeNamedQueryList(QueryExecutorParams paramsQuery, Class<T> entityClass) {
-        TypedQuery<T> query = entityManager.createNamedQuery(paramsQuery.getQueryName(), entityClass);
-        setupParams(query, paramsQuery);
+    public <T> List<T> executeNamedQueryList(DefaultQueryParams queryParams, Class<T> entityClass) {
+        TypedQuery<T> query = entityManager.createNamedQuery(queryParams.getQueryName(), entityClass);
+        setupParams(query, queryParams);
         return query.getResultList();
     }
 }

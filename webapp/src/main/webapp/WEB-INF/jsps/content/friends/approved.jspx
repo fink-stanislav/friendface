@@ -9,7 +9,7 @@
     <div id="list">
         <s:if test="hasApprovedFriends">
             <s:iterator value="approvedFriends" status="status">
-                <div class="list-item">
+                <div class="list-item list-item-for-text">
                     <div class="list-item-header">
                         <s:form method="POST" id="deleteFromFriendsForm%{#status.index}" action="deleteFriend">
                             <s:hidden name="id" value="%{[0].id}"/>
@@ -36,7 +36,7 @@
             </s:iterator>
         </s:if>
         <s:else>
-            <div class="list-item">
+            <div class="list-item list-item-for-text">
                 <div class="list-item-header">&#160;</div>
                 <div class="list-item-content">
                     <div class="list-item-text">

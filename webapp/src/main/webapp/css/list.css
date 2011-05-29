@@ -36,7 +36,14 @@
     margin: 0.5em 2em;
     padding: 0 0 2em 0;
     border-bottom: 1px solid #d3d3d3;
+}
+
+.list-item-for-text {
     min-height: 5.9em;
+}
+
+.list-item-for-image {
+    min-height: 9.9em;
 }
 
 .list-item-header {

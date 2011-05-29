@@ -15,12 +15,12 @@ public class UserBean extends User {
     public UserBean(User user) {
         setId(user.getId());
         setUsername(user.getUsername());
-        setLoginEmail(user.getUserSurname());
+        setUserSurname(user.getUserSurname());
         setLoginEmail(user.getLoginEmail());
     }
 
-    public ContactState getState() {
-        return state;
+    public String getState() {
+        return state.name();
     }
 
     public void setState(ContactState state) {

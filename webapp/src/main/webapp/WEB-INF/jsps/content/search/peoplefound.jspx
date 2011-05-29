@@ -4,11 +4,84 @@
 
     <style type="text/css">
         @import "css/list.css";
+        @import "css/images.css";
     </style>
 
     <script type="text/javascript" src="js/formHandlers.js"></script>
 
     <s:i18n name="jsps.content.friends">
+        <div id="list">
+            <s:if test="notEmpty">
+                <s:iterator value="peopleFound" status="status">
+                    <div class="list-item list-item-for-text">
+                        <div class="list-item-header">
+                            <s:if test="%{[0].state eq 'NOT_CONNECTED'}">
+                                <s:form method="POST" id="addToFriendsForm%{#status.index}" action="sendProposal">
+                                    <s:hidden name="receiverId" value="%{[0].id}"/>
+                                    <s:a href="#" onclick="submitForm('addToFriendsForm%{#status.index}')">
+                                        send proposal
+                                    </s:a>
+                                </s:form>
+                            </s:if>
+                            <s:elseif test="%{[0].state eq 'APPROVED'}">
+                                <s:form method="POST" id="deleteFromFriendsForm%{#status.index}" action="deleteFriend">
+                                    <s:hidden name="id" value="%{[0].id}"/>
+                                    <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
+                                        delete from friends
+                                    </s:a>
+                                </s:form>
+                            </s:elseif>
+                            <s:elseif test="%{[0].state eq 'PENDING'}">
+                                <s:form>
+                                    <s:a href="#">
+                                        reject proposal
+                                    </s:a>
+                                </s:form>
+                            </s:elseif>
+                            <s:elseif test="%{[0].state eq 'PROPOSED'}">
+                                <s:form>
+                                    <s:a href="#">
+                                        reject proposal
+                                    </s:a>
+                                </s:form>
+                            </s:elseif>
+                        </div>
+                        <div class="list-item-content">
+                            <s:if test="true">
+                                <div class="frontpic frontpic-small">
+                                    <s:a href="#">
+                                        <span class="ref"><img alt="" src="images/no_image.png"/></span>
+                                    </s:a>
+                                </div>
+                            </s:if>
+                            <s:else>
+                                <div class="frontpic frontpic-small">
+                                    <s:a href="#">
+                                        <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
+                                    </s:a>
+                                </div>
+                            </s:else>
 
+                            <div class="list-item-text">
+                                <s:a href="#">
+                                    <s:property value="%{[0].username}"/>&#8201;
+                                    <s:property value="%{[0].userSurname}"/>
+                                </s:a>
+                            </div>
+                        </div>
+                    </div>
+                </s:iterator>
+            </s:if>
+            <s:else>
+                <div class="list-item list-item-for-text">
+                    <div class="list-item-header">&#160;</div>
+                    <div class="list-item-content">
+                        <div class="empty-list-item">
+                            no results found
+                        </div>
+                    </div>
+                </div>
+            </s:else>
+        </div>
     </s:i18n>
 </jsp:root>

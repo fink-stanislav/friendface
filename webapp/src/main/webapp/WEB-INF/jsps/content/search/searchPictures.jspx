@@ -11,14 +11,14 @@
     </div>
 
     <div class="searchform">
-        <s:form id="searchPicturesForm" action="searchPictures">
+        <s:form id="searchPicturesForm" action="searchForPictures">
             <div>
                 <s:text name="entrytitle"/>
             </div>
             <div>
-                <s:textfield name="picTitle" value="%{picTitle}" cssClass="input"/>
+                <s:textfield name="title" value="%{title}" cssClass="input"/>
             </div>
-            <s:actionmessage/>
+            <s:actionerror/>
             <hr/>
             <s:submit value="%{getText('search')}"/>
         </s:form>

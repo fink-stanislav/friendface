@@ -21,11 +21,11 @@ public class Application {
         /**
          * Create database
          */
-        DataBasePopulator populator = new DataBasePopulator("sqlscript");
-        try {
-            populator.createDb();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        // DataBasePopulator populator = new DataBasePopulator("sqlscript");
+        // try {
+        //     populator.createDb();
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // }
     }
 }

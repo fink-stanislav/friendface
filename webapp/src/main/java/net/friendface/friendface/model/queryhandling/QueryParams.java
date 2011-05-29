@@ -11,18 +11,22 @@ import java.util.Set;
  * Time: 23:41
  */
 
-public abstract class QueryParams {
-    protected Map<String, Object> queryParams;
+public abstract class QueryParams<T> {
+    private Map<String, T> queryParams;
+    private Integer currentRecord;
+    private Integer recordCount;
 
     protected QueryParams() {
-        queryParams = new HashMap<String, Object>();
+        queryParams = new HashMap<String, T>();
+        currentRecord = 1;
+        recordCount = 10;
     }
 
-    public Object getParam(String paramName) {
+    public T getParam(String paramName) {
         return queryParams.get(paramName);
     }
 
-    public void setParam(String paramName, Object paramValue) {
+    public void setParam(String paramName, T paramValue) {
         queryParams.put(paramName, paramValue);
     }
 
@@ -35,5 +39,25 @@ public abstract class QueryParams {
             return Collections.emptySet();
         }
         return queryParams.keySet();
+    }
+
+    public Integer getRecordCount() {
+        return recordCount;
+    }
+
+    public Integer getCurrentRecord() {
+        return currentRecord;
+    }
+
+    public void setCurrentRecord(Integer currentRecord) {
+        this.currentRecord = currentRecord;
+    }
+
+    public void setRecordCount(Integer recordCount) {
+        this.recordCount = recordCount;
+    }
+
+    public Integer getParamCount() {
+        return queryParams.size();
     }
 }

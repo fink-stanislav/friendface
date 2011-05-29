@@ -11,10 +11,10 @@ import java.util.Set;
  * Time: 16:25
  */
 
-public class QueryExecutorParams extends QueryParams {
+public class DefaultQueryParams<T> extends QueryParams<T> {
     private String queryName;
 
-    public QueryExecutorParams(String queryName) {
+    public DefaultQueryParams(String queryName) {
         super();
         this.queryName = queryName;
     }

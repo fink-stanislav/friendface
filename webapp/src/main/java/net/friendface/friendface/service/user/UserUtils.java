@@ -1,12 +1,19 @@
 package net.friendface.friendface.service.user;
 
 import net.friendface.friendface.controllers.actions.FriendfaceAction;
+import net.friendface.friendface.model.dao.friends.FriendDAO;
+import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
+import net.friendface.friendface.model.enums.ContactState;
+import net.friendface.friendface.service.friends.FriendUtils;
 import net.friendface.friendface.view.beans.LoginBean;
 import net.friendface.friendface.view.beans.RegistrationBean;
+import net.friendface.friendface.view.beans.UserBean;
 import org.apache.commons.codec.binary.Hex;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author: S. Fink
@@ -51,5 +58,15 @@ public class UserUtils {
         user.setLoginEmail(loginBean.getLoginEmail());
         user.setPasswordHash(getPasswordHash(loginBean.getPassword()));
         return user;
+    }
+
+    public static List<UserBean> usersToUserBeans(User currentUser, List<User> users, FriendDAO friendDAO) {
+        List<UserBean> result = new ArrayList<UserBean>(users.size());
+        for (User user : users) {
+            UserBean bean = new UserBean(user);
+            bean.setState(FriendUtils.getContactState(currentUser, user, friendDAO));
+            result.add(bean);
+        }
+        return result;
     }
 }

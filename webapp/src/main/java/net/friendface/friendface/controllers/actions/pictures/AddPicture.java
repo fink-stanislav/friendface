@@ -2,6 +2,8 @@ package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
@@ -18,11 +20,22 @@ import java.io.IOException;
  * Time: 8:38 PM
  */
 
-public class AddPicture extends StandardAction implements ServletRequestAware {
-    private RequestHelper requestHelper;
+public class AddPicture extends StandardAction {
     private File pictureFile;
     private String pictureTitle;
     private Integer albumId;
+
+    @Override
+    public void validate() {
+        try{
+            Validator validator = new Validator();
+            validator.notBlank(pictureTitle);
+            validator.notNull(pictureFile);
+        }
+        catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
 
     @Override
     public String execute() {
@@ -50,15 +63,11 @@ public class AddPicture extends StandardAction implements ServletRequestAware {
         this.pictureFile = pictureFile;
     }
 
+    public File getPictureFile() {
+        return pictureFile;
+    }
+
     public void setPictureTitle(String pictureTitle) {
         this.pictureTitle = pictureTitle;
-    }
-
-    public String getNextAction() {
-        return requestHelper.getPreviousAction();
-    }
-
-    public void setServletRequest(HttpServletRequest request) {
-        requestHelper = new RequestHelper(request);
     }
 }

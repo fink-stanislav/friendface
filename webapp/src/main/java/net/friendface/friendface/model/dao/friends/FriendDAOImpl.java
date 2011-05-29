@@ -5,7 +5,7 @@ import net.friendface.friendface.model.dao.Operation;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;
-import net.friendface.friendface.model.queryhandling.QueryExecutorParams;
+import net.friendface.friendface.model.queryhandling.DefaultQueryParams;
 
 import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
@@ -66,10 +66,10 @@ public class FriendDAOImpl extends EntityDAO implements FriendDAO {
 
     public Friend getFriend(User receiver, User sender) {
         try {
-            QueryExecutorParams paramsQuery = new QueryExecutorParams("getSingle");
-            paramsQuery.setParam("rec", receiver);
-            paramsQuery.setParam("sen", sender);
-            return queryExecutor.executeNamedQuery(paramsQuery, Friend.class);
+            DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>("getSingle");
+            queryParams.setParam("rec", receiver);
+            queryParams.setParam("sen", sender);
+            return queryExecutor.executeNamedQuery(queryParams, Friend.class);
         } catch (NoResultException e) {
             return null;
         }
@@ -89,9 +89,9 @@ public class FriendDAOImpl extends EntityDAO implements FriendDAO {
 
     private List<Friend> getFriendList(User user, String queryName) {
         try {
-            QueryExecutorParams paramsQuery = new QueryExecutorParams(queryName);
-            paramsQuery.setParam("user", user);
-            return queryExecutor.executeNamedQueryList(paramsQuery, Friend.class);
+            DefaultQueryParams queryParams = new DefaultQueryParams(queryName);
+            queryParams.setParam("user", user);
+            return queryExecutor.executeNamedQueryList(queryParams, Friend.class);
         } catch (NoResultException e) {
             return null;
         }

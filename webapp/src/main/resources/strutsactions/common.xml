@@ -12,6 +12,7 @@
                 <param name="actionName">userpage</param>
                 <param name="userId">${userId}</param>
             </result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <!-- login input page -->
         <action name="entrance" class="net.friendface.friendface.controllers.actions.welcome.Entrance">

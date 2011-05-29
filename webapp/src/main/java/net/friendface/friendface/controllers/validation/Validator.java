@@ -94,6 +94,12 @@ public class Validator {
         }
     }
 
+    public void notNull(Object object) throws ValidationException {
+        if (object == null) {
+            throw new ValidationException("null.object");
+        }
+    }
+
     public void increasingNotBlank(String textString) throws ValidationException {
         if (isBlank(textString)) {
             failNumber++;

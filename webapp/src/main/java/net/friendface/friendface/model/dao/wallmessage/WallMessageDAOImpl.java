@@ -6,7 +6,7 @@ import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
 import net.friendface.friendface.model.providers.RepositoryManager;
-import net.friendface.friendface.model.queryhandling.QueryExecutorParams;
+import net.friendface.friendface.model.queryhandling.DefaultQueryParams;
 
 import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
@@ -55,10 +55,10 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
 
     public List<WallMessage> getMessages(User receiver) throws RepositoryException {
         try {
-            QueryExecutorParams paramsQuery = new QueryExecutorParams("getMessageByUser");
-            paramsQuery.setParam("rec", receiver);
+            DefaultQueryParams queryParams = new DefaultQueryParams("getMessageByUser");
+            queryParams.setParam("rec", receiver);
             List<WallMessage> result =
-                    queryExecutor.executeNamedQueryList(paramsQuery, WallMessage.class);
+                    queryExecutor.executeNamedQueryList(queryParams, WallMessage.class);
             return repositoryManager.retrieveContent(result, getPath(receiver));
         } catch (NoResultException e) {
             return null;

@@ -72,21 +72,6 @@ public class FriendsService {
         return getUserList(user, friendList);
     }
 
-    public ContactState getContactState(User currentUser, User other) {
-        Friend friend = dao.getFriend(currentUser, other);
-        if (friend == null) {
-            friend = dao.getFriend(other, currentUser);
-        } else {
-            return friend.getApproved() ? ContactState.APPROVED : ContactState.PROPOSED;
-        }
-
-        if (friend == null) {
-            return ContactState.NOT_CONNECTED;
-        } else {
-            return friend.getApproved() ? ContactState.APPROVED : ContactState.PENDING;
-        }
-    }
-
     private List<User> getUserList(User user, List<Friend> friendList) {
         List<User> result = new ArrayList<User>(friendList.size());
         for (Friend friend : friendList) {

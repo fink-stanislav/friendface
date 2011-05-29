@@ -1,8 +1,13 @@
 package net.friendface.friendface.model.queryhandling;
 
 import org.hibernate.search.jpa.FullTextEntityManager;
-import org.hibernate.search.jpa.FullTextQuery;
+import org.hibernate.search.query.dsl.BooleanJunction;
 import org.hibernate.search.query.dsl.QueryBuilder;
+
+import javax.persistence.Query;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Author: S. Fink
@@ -17,12 +22,31 @@ public class SearchQueryExecutor {
         this.fullTextEntityManager = fullTextEntityManager;
     }
 
-    FullTextQuery buildSearchQuery(Class<?> entityClass, SearchQueryExecutorParams params) {
+    public List executeSearchQuery(Class<?> entityClass, SearchQueryParams params) {
         QueryBuilder builder = fullTextEntityManager.getSearchFactory()
                 .buildQueryBuilder().forEntity(entityClass).get();
 
         org.apache.lucene.search.Query luceneQuery = null;
 
-        return fullTextEntityManager.createFullTextQuery(luceneQuery, entityClass);
+        Set<String> names = params.getParamNames();
+
+        if (names.size() > 1) {
+            BooleanJunction junction = builder.bool();
+            for (String name : names) {
+                junction.should(builder.keyword().wildcard().onField(name).matching(params.getParam(name)).createQuery());
+            }
+            luceneQuery = junction.createQuery();
+        } else {
+            for (String name : names) {
+                luceneQuery = builder.keyword().wildcard().onField(name).matching(params.getParam(name)).createQuery();
+            }
+        }
+
+        if (luceneQuery != null) {
+            Query fullTextQuery = fullTextEntityManager.createFullTextQuery(luceneQuery, entityClass);
+            return fullTextQuery.getResultList();
+        } else {
+            return Collections.emptyList();
+        }
     }
 }
