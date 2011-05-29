@@ -3,6 +3,7 @@ package net.friendface.friendface.controllers.actions.user;
 import net.friendface.friendface.controllers.actions.SecurityAware;
 import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.view.beans.WallMessageBean;
@@ -15,9 +16,8 @@ import java.util.List;
  * Time: 5:50 PM
  */
 
-public class UserPage extends StandardAction implements SecurityAware {
+public class UserPage extends UserAction implements SecurityAware {
     private User user;
-    private Integer userId;
     private List<WallMessageBean> messageList;
     private Boolean hasWallMessages;
     private Boolean showControls;
@@ -36,14 +36,6 @@ public class UserPage extends StandardAction implements SecurityAware {
 
     public User getUser() {
         return user;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
     public List<WallMessageBean> getMessageList() {

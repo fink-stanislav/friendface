@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.service.FriendfaceService;
@@ -16,8 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  * Time: 6:26 PM
  */
 
-public class RemoveAlbum extends StandardAction implements ServletRequestAware {
-    private RequestHelper requestHelper;
+public class RemoveAlbum extends UserAction {
     private Integer albumId;
 
     @Override
@@ -38,13 +38,5 @@ public class RemoveAlbum extends StandardAction implements ServletRequestAware {
 
     public Integer getAlbumId() {
         return albumId;
-    }
-
-    public String getNextAction() {
-        return requestHelper.getPreviousAction();
-    }
-
-    public void setServletRequest(HttpServletRequest request) {
-        requestHelper = new RequestHelper(request);
     }
 }

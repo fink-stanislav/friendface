@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.friends;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
@@ -17,7 +18,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 2:24 PM
  */
 
-public class FriendList extends StandardAction implements SessionAware {
+public class FriendList extends UserAction implements SessionAware {
     private List<User> approvedFriends;
     private List<User> proposedFriends;
     private List<User> pendingFriends;

@@ -6,20 +6,24 @@
 <struts>
     <package name="menu" extends="private">
         <action name="friendList" class="net.friendface.friendface.controllers.actions.friends.FriendList">
+            <param name="userId">${userId}</param>
             <result name="success" type="tiles">friends.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="messages">
+        <action name="privateMessages" class="net.friendface.friendface.controllers.actions.messages.ShowPrivateMessages">
+            <param name="userId">${userId}</param>
             <result name="success" type="tiles">messages.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="albumlist" class="net.friendface.friendface.controllers.actions.pictures.ShowAlbums">
-            <result name="success" type="tiles">albumlist.tiles</result>
+        <action name="albumList" class="net.friendface.friendface.controllers.actions.pictures.ShowAlbums">
+            <param name="userId">${userId}</param>
+            <result name="success" type="tiles">albumList.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="videos">
+        <action name="videosList" class="net.friendface.friendface.controllers.actions.videos.ShowVideos">
+            <param name="userId">${userId}</param>
             <result name="success" type="tiles">video.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>

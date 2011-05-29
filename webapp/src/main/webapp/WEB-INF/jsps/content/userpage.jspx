@@ -49,17 +49,16 @@
         <div id="wall">
             <s:if test="hasWallMessages">
                 <s:iterator value="messageList" status="status">
-                    <s:form id="goToUserPageForm%{#status.index}">
-                        <s:hidden value="%{[0].userId}"/>
-                    </s:form>
+                    <s:url var="userPageUrl" value="userpage.action">
+                        <s:param name="userId" value="%{[0].userId}"/>
+                    </s:url>
                     <s:form id="deleteMessageForm%{#status.index}" action="removeWallMessage" method="POST">
                         <s:hidden name="id" value="%{[0].id}"/>
                     </s:form>
 
                     <div class="list-item list-item-for-text">
                         <div class="list-item-header">
-                            <s:a href="#" title="имя отправителя"
-                                 onclick="submitForm('goToUserPageForm%{#status.index}')">
+                            <s:a href="%{userPageUrl}" title="имя отправителя">
                                 <s:property value="%{[0].userName}"/>
                             </s:a>
 

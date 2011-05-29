@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.messages;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.WallMessage;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.messages.MessagesService;
@@ -13,9 +14,8 @@ import javax.jcr.RepositoryException;
  * Time: 9:13 PM
  */
 
-public class RemoveWallMessage extends StandardAction {
+public class RemoveWallMessage extends UserAction {
     private Integer id;
-    private Integer userId;
 
     @Override
     public String execute() {
@@ -36,9 +36,5 @@ public class RemoveWallMessage extends StandardAction {
 
     public Integer getId() {
         return id;
-    }
-
-    public Integer getUserId() {
-        return userId;
     }
 }

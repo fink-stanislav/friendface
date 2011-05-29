@@ -3,6 +3,7 @@ package net.friendface.friendface.controllers.actions.pictures;
 import net.friendface.friendface.controllers.actions.SecurityAware;
 import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
@@ -20,8 +21,7 @@ import java.util.Map;
  * Time: 6:26 PM
  */
 
-public class ShowAlbums extends StandardAction implements SessionAware, SecurityAware {
-    private SessionHelper sessionHelper;
+public class ShowAlbums extends UserAction implements SecurityAware {
     private List<AlbumBean> albumList;
     private Boolean hasAlbums;
     private Boolean showControls;
@@ -29,7 +29,7 @@ public class ShowAlbums extends StandardAction implements SessionAware, Security
     @Override
     public String execute() {
         try {
-            User user = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
+            User user = FriendfaceService.getService().getUserService().getById(userId);
             albumList = FriendfaceService.getService().getPicturesService().getUserAlbums(user);
             hasAlbums = !albumList.isEmpty();
         } catch (RepositoryException e) {
@@ -44,10 +44,6 @@ public class ShowAlbums extends StandardAction implements SessionAware, Security
 
     public List<AlbumBean> getAlbumList() {
         return albumList;
-    }
-
-    public void setSession(Map<String, Object> stringObjectMap) {
-        sessionHelper = new SessionHelper(stringObjectMap);
     }
 
     public Boolean getShowControls() {

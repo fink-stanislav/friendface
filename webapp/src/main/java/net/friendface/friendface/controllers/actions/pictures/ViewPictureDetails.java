@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
 
@@ -10,7 +11,7 @@ import net.friendface.friendface.service.FriendfaceService;
  * Time: 14:24
  */
 
-public class ViewPictureDetails extends StandardAction {
+public class ViewPictureDetails extends UserAction {
     private Integer pictureId;
     private String title;
 

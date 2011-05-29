@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.search;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 
 /**
  * Author: S. Fink
@@ -8,8 +9,7 @@ import net.friendface.friendface.controllers.actions.StandardAction;
  * Time: 12:34
  */
 
-public class SearchAction extends StandardAction {
-
+public class SearchAction extends UserAction {
     @Override
     public String execute() {
         return SUCCESS;

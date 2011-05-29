@@ -2,6 +2,7 @@ package net.friendface.friendface.controllers.actions.search;
 
 import com.opensymphony.xwork2.ModelDriven;
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
 import net.friendface.friendface.controllers.validation.Validator;
@@ -23,7 +24,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 22:10
  */
 
-public class SearchForPeople extends StandardAction implements ModelDriven, SessionAware {
+public class SearchForPeople extends UserAction implements ModelDriven, SessionAware {
     private User user = new User();
     private SessionHelper sessionHelper;
     private List<UserBean> peopleFound;

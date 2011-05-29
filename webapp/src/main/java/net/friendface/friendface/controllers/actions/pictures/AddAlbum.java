@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
@@ -19,9 +20,8 @@ import java.util.Map;
  * Time: 6:26 PM
  */
 
-public class AddAlbum extends StandardAction implements SessionAware, ServletRequestAware {
+public class AddAlbum extends UserAction implements SessionAware {
     private SessionHelper sessionHelper;
-    private RequestHelper requestHelper;
     private String albumTitle;
 
     @Override
@@ -39,15 +39,7 @@ public class AddAlbum extends StandardAction implements SessionAware, ServletReq
         this.albumTitle = albumTitle;
     }
 
-    public String getNextAction() {
-        return requestHelper.getPreviousAction();
-    }
-
     public void setSession(Map<String, Object> stringObjectMap) {
         sessionHelper = new SessionHelper(stringObjectMap);
-    }
-
-    public void setServletRequest(HttpServletRequest request) {
-        requestHelper = new RequestHelper(request);
     }
 }

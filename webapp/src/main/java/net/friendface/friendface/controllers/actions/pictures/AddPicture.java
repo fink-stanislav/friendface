@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
 import net.friendface.friendface.controllers.validation.Validator;
@@ -20,7 +21,7 @@ import java.io.IOException;
  * Time: 8:38 PM
  */
 
-public class AddPicture extends StandardAction {
+public class AddPicture extends UserAction {
     private File pictureFile;
     private String pictureTitle;
     private Integer albumId;

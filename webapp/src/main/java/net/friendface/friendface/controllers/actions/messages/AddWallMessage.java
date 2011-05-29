@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.messages;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
@@ -19,9 +20,8 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 9:12 PM
  */
 
-public class AddWallMessage extends StandardAction implements SessionAware {
+public class AddWallMessage extends UserAction implements SessionAware {
     private String message;
-    private Integer userId;
     private SessionHelper sessionHelper;
 
     @Override
@@ -41,14 +41,6 @@ public class AddWallMessage extends StandardAction implements SessionAware {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-    public Integer getUserId() {
-        return userId;
     }
 
     public void setSession(Map<String, Object> stringObjectMap) {

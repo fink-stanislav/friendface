@@ -28,6 +28,7 @@
                                 </s:url>
                                 <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
                                     <s:param name="pictureId" value="%{[0].id}"/>
+                                    <s:param name="userId" value="%{userId}"/>
                                 </s:url>
                                 <s:a href="%{imageDetailsUrl}">
                                     <span class="ref"><img src="${imageUrl}" alt=""/></span>
@@ -71,6 +72,7 @@
                 <div>
                     <s:form id="addPictureForm" action="addPicture" method="POST" enctype="multipart/form-data">
                         <s:hidden name="albumId" value="%{albumId}"/>
+                        <s:hidden name="userId" value="%{userId}"/>
 
                         <div>
                             <div>

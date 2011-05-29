@@ -14,19 +14,39 @@
             <div class="menuitem"><s:a href="entrance.action" title="%{getText('title.mypage')}">
                 <span class="ref"><s:text name="item.mypage"/></span>
             </s:a></div>
-            <div class="menuitem"><s:a href="friendList.action" title="%{getText('title.friends')}">
+
+            <s:url var="friendListUrl" value="friendList.action">
+                <s:param name="userId" value="%{userId}"/>
+            </s:url>
+            <div class="menuitem"><s:a href="%{friendListUrl}" title="%{getText('title.friends')}">
                 <span class="ref"><s:text name="item.friends"/></span>
             </s:a></div>
-            <div class="menuitem"><s:a href="messages.action" title="%{getText('title.messages')}">
+
+            <s:url var="messageshUrl" value="privateMessages.action">
+                <s:param name="userId" value="%{userId}"/>
+            </s:url>
+            <div class="menuitem"><s:a href="%{messageshUrl}" title="%{getText('title.messages')}">
                 <span class="ref"><s:text name="item.messages"/></span>
             </s:a></div>
-            <div class="menuitem"><s:a href="albumlist.action" title="%{getText('title.photos')}">
+
+            <s:url var="showAlbumsUrl" value="albumList.action">
+                <s:param name="userId" value="%{userId}"/>
+            </s:url>
+            <div class="menuitem"><s:a href="%{showAlbumsUrl}" title="%{getText('title.photos')}">
                 <span class="ref"><s:text name="item.photos"/></span>
             </s:a></div>
-            <div class="menuitem"><s:a href="videos.action" title="%{getText('title.videos')}">
+
+            <s:url var="showVideosUrl" value="videosList.action">
+                <s:param name="userId" value="%{userId}"/>
+            </s:url>
+            <div class="menuitem"><s:a href="%{showVideosUrl}" title="%{getText('title.videos')}">
                 <span class="ref"><s:text name="item.videos"/></span>
             </s:a></div>
-            <div class="menuitem"><s:a href="search.action" title="%{getText('title.search')}">
+
+            <s:url var="searchUrl" value="search.action">
+                <s:param name="userId" value="%{userId}"/>
+            </s:url>
+            <div class="menuitem"><s:a href="%{searchUrl}" title="%{getText('title.search')}">
                 <span class="ref"><s:text name="item.search"/></span>
             </s:a></div>
         </div>

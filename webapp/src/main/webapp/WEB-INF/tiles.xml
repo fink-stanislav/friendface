@@ -84,7 +84,7 @@
         <put-attribute name="title" value="Messages"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/messages.jspx"/>
     </definition>
-    <definition name="albumlist.tiles" extends="content.page.template">
+    <definition name="albumList.tiles" extends="content.page.template">
         <put-attribute name="title" value="Albums"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/albumlist.jspx"/>
     </definition>

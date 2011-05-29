@@ -9,16 +9,23 @@
             <result name="success" type="redirectAction">
                 <param name="actionName">showPictures</param>
                 <param name="albumId">${albumId}</param>
+                <param name="userId">${userId}</param>
             </result>
             <result name="input" type="redirectAction">
                 <param name="actionName">showPictures</param>
                 <param name="albumId">${albumId}</param>
+                <param name="userId">${userId}</param>
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+
         <action name="removePicture" class="net.friendface.friendface.controllers.actions.pictures.RemovePicture">
-            <result name="success" type="redirectAction">${nextAction}</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">showPictures</param>
+                <param name="albumId">${albumId}</param>
+                <param name="userId">${userId}</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
@@ -31,27 +38,38 @@
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+
         <action name="showPictures" class="net.friendface.friendface.controllers.actions.pictures.ShowPictures">
             <param name="albumId">${albumId}</param>
+            <param name="userId">${userId}</param>
             <result name="success" type="tiles">picturegrid.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+
         <action name="viewPictureDetails"
                 class="net.friendface.friendface.controllers.actions.pictures.ViewPictureDetails">
             <param name="pictureId">${pictureId}</param>
+            <param name="userId">${userId}</param>
             <result name="success" type="tiles">pictureview.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
 
         <action name="addAlbum" class="net.friendface.friendface.controllers.actions.pictures.AddAlbum">
-            <result name="success" type="redirectAction">${nextAction}</result>
+            <result name="success" type="redirectAction">
+                <param name="userId">${userId}</param>
+                <param name="actionName">albumList</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+
         <action name="removeAlbum" class="net.friendface.friendface.controllers.actions.pictures.RemoveAlbum">
-            <result name="success" type="redirectAction">${nextAction}</result>
+            <result name="success" type="redirectAction">
+                <param name="userId">${userId}</param>
+                <param name="actionName">albumList</param>
+            </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
