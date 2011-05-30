@@ -15,35 +15,34 @@
                 <s:iterator value="peopleFound" status="status">
                     <div class="list-item list-item-for-text">
                         <div class="list-item-header">
+                            <s:form method="POST" id="addToFriendsForm%{#status.index}" action="sendProposal">
+                                <s:hidden name="receiverId" value="%{[0].id}"/>
+                                <s:hidden name="userId" value="%{[0].userId}"/>
+                            </s:form>
+                            <s:form method="POST" id="deleteFromFriendsForm%{#status.index}" action="deleteFriend">
+                                <s:hidden name="id" value="%{[0].id}"/>
+                                <s:hidden name="userId" value="%{[0].userId}"/>
+                            </s:form>
+
                             <s:if test="%{[0].state eq 'NOT_CONNECTED'}">
-                                <s:form method="POST" id="addToFriendsForm%{#status.index}" action="sendProposal">
-                                    <s:hidden name="receiverId" value="%{[0].id}"/>
-                                    <s:a href="#" onclick="submitForm('addToFriendsForm%{#status.index}')">
-                                        send proposal
-                                    </s:a>
-                                </s:form>
+                                <s:a href="#" onclick="submitForm('addToFriendsForm%{#status.index}')">
+                                    send proposal
+                                </s:a>
                             </s:if>
                             <s:elseif test="%{[0].state eq 'APPROVED'}">
-                                <s:form method="POST" id="deleteFromFriendsForm%{#status.index}" action="deleteFriend">
-                                    <s:hidden name="id" value="%{[0].id}"/>
-                                    <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
-                                        delete from friends
-                                    </s:a>
-                                </s:form>
+                                <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
+                                    delete from friends
+                                </s:a>
                             </s:elseif>
                             <s:elseif test="%{[0].state eq 'PENDING'}">
-                                <s:form>
-                                    <s:a href="#">
-                                        reject proposal
-                                    </s:a>
-                                </s:form>
+                                <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
+                                    reject proposal
+                                </s:a>
                             </s:elseif>
                             <s:elseif test="%{[0].state eq 'PROPOSED'}">
-                                <s:form>
-                                    <s:a href="#">
-                                        reject proposal
-                                    </s:a>
-                                </s:form>
+                                <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
+                                    reject proposal
+                                </s:a>
                             </s:elseif>
                         </div>
                         <div class="list-item-content">
@@ -62,8 +61,12 @@
                                 </div>
                             </s:else>
 
+                            <s:url var="userUrl" value="userpage.action">
+                                <s:param name="userId" value="%{[0].id}"/>
+                            </s:url>
+
                             <div class="list-item-text">
-                                <s:a href="#">
+                                <s:a href="%{userUrl}">
                                     <s:property value="%{[0].username}"/>&#8201;
                                     <s:property value="%{[0].userSurname}"/>
                                 </s:a>

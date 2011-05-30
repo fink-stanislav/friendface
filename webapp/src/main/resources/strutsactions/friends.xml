@@ -5,17 +5,33 @@
 
 <struts>
     <package name="friends" extends="private">
+
         <action name="deleteFriend" class="net.friendface.friendface.controllers.actions.friends.DeleteFriend">
-            <result name="success" type="redirectAction">${nextAction}</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">${nextAction}</param>
+                <param name="userId">${userId}</param>
+            </result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
         <action name="sendProposal" class="net.friendface.friendface.controllers.actions.friends.SendProposal">
-            <result name="success" type="redirectAction">${nextAction}</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">${nextAction}</param>
+                <param name="userId">${userId}</param>
+            </result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
         <action name="approveFriend" class="net.friendface.friendface.controllers.actions.friends.ApproveFriend">
-            <result name="success" type="redirectAction">${nextAction}</result>
+            <result name="success" type="redirectAction">
+                <param name="actionName">${nextAction}</param>
+                <param name="userId">${userId}</param>
+            </result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
     </package>
 </struts>

@@ -32,9 +32,20 @@
                         </div>
 
                         <div class="list-item-text">
-                            <s:a href="#">
+                            <s:url var="picUrl" value="viewPictureDetails.action">
+                                <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
+                                <s:param name="pictureId" value="%{[0].id}"/>
+                            </s:url>
+                            <s:a href="%{picUrl}">
                                 Title:
-                                <s:property value="%{[0].title}"/><br/>
+                                <s:property value="%{[0].title}"/>
+                            </s:a>
+                            <br/>
+                            <s:url var="albumUrl" value="showPictures.action">
+                                <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
+                                <s:param name="albumId" value="%{[0].album.getId()}"/>
+                            </s:url>
+                            <s:a href="%{albumUrl}">
                                 Album:
                                 <s:property value="%{[0].album.getTitle()}"/>
                             </s:a>

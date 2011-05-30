@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.friends;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
@@ -20,7 +21,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 21:38
  */
 
-public class DeleteFriend extends StandardAction implements ServletRequestAware, SessionAware {
+public class DeleteFriend extends UserAction implements ServletRequestAware, SessionAware {
     private RequestHelper requestHelper;
     private SessionHelper sessionHelper;
     private Integer id;

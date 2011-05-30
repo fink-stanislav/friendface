@@ -5,10 +5,13 @@
 
 <struts>
     <package name="search" extends="private">
+
         <action name="search" class="net.friendface.friendface.controllers.actions.search.SearchAction">
             <param name="userId">${userId}</param>
             <result name="success" type="tiles">search.tiles</result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
         <action name="searchForPeople" class="net.friendface.friendface.controllers.actions.search.SearchForPeople">
             <param name="userId">${userId}</param>
             <result name="success" type="tiles">peoplefound.tiles</result>
@@ -17,7 +20,9 @@
                 <param name="actionName">search</param>
                 <param name="userId">${userId}</param>
             </result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
         <action name="searchForPictures" class="net.friendface.friendface.controllers.actions.search.SearchForPictures">
             <param name="userId">${userId}</param>
             <result name="success" type="tiles">picturesfound.tiles</result>
@@ -26,6 +31,8 @@
                 <param name="actionName">search</param>
                 <param name="userId">${userId}</param>
             </result>
+            <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
     </package>
 </struts>

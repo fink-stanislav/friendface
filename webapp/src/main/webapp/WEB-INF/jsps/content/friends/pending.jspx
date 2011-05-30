@@ -13,10 +13,11 @@
                     <div class="list-item-header">
                         <s:form method="POST" id="rejectProposalForm%{#status.index}" action="deleteFriend">
                             <s:hidden name="id" value="%{[0].id}"/>
-                            <s:a href="#" onclick="submitForm('rejectProposalForm%{#status.index}')">
-                                reject
-                            </s:a>
+                            <s:hidden name="userId" value="%{userId}"/>
                         </s:form>
+                        <s:a href="#" onclick="submitForm('rejectProposalForm%{#status.index}')">
+                            reject proposal
+                        </s:a>
                     </div>
                     <div class="list-item-content">
                         <a href="">
@@ -24,12 +25,13 @@
                         </a>
 
                         <div class="list-item-text">
-                            <s:form method="POST" id="redirectToUserPageForm%{#status.index}">
-                                <a href="#" onclick="formSubmit('redirectToUserPageForm%{#status.index}')">
-                                    <s:property value="%{[0].username}"/>&#160;
-                                    <s:property value="%{[0].userSurname}"/>
-                                </a>
-                            </s:form>
+                            <s:url var="userUrl" value="userpage.action">
+                                <s:param name="userId" value="%{[0].id}"/>
+                            </s:url>
+                            <s:a href="%{userUrl}">
+                                <s:property value="%{[0].username}"/>&#160;
+                                <s:property value="%{[0].userSurname}"/>
+                            </s:a>
                         </div>
                     </div>
                 </div>

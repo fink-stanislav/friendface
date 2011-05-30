@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.friends;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
@@ -20,7 +21,7 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
  * Time: 1:58 AM
  */
 
-public class SendProposal extends StandardAction implements ServletRequestAware, SessionAware {
+public class SendProposal extends UserAction implements ServletRequestAware, SessionAware {
     private Integer receiverId;
     private SessionHelper sessionHelper;
     private RequestHelper requestHelper;
