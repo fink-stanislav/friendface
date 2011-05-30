@@ -13,13 +13,12 @@ import net.friendface.friendface.service.FriendfaceService;
 
 public class ViewPictureDetails extends UserAction {
     private Integer pictureId;
-    private String title;
+    private Picture picture;
 
     @Override
     public String execute() {
         try {
-            Picture picture = FriendfaceService.getService().getPicturesService().getPictureById(pictureId);
-            title = picture.getTitle();
+            picture = FriendfaceService.getService().getPicturesService().getPictureById(pictureId);
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
@@ -34,7 +33,7 @@ public class ViewPictureDetails extends UserAction {
         this.pictureId = pictureId;
     }
 
-    public String getTitle() {
-        return title;
+    public Picture getPicture() {
+        return picture;
     }
 }

@@ -31,10 +31,7 @@ public abstract class EntityDAO {
             entityTransaction.begin();
             operation.perform();
             entityTransaction.commit();
-        } catch (PersistenceException e) {
-            entityTransaction.rollback();
-            throw new PersistenceException(e);
-        } catch (RepositoryException e) {
+        } catch (Exception e) {
             entityTransaction.rollback();
             throw new PersistenceException(e);
         }

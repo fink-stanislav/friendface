@@ -54,11 +54,12 @@ public class PicturesService {
     }
 
     public void removePicture(Picture picture) throws RepositoryException {
-        Album album = picture.getAlbum();
         pictureDAO.deletePicture(picture);
-        if (albumDAO.getPictureCount(album) == 0) {
-            albumDAO.deleteAlbum(album);
-        }
+    }
+
+    public void renamePicture(Picture picture, String newTitle) {
+        picture.setTitle(newTitle);
+        pictureDAO.updatePicture(picture);
     }
 
     public Album getAlbumById(Integer id) {
@@ -101,5 +102,10 @@ public class PicturesService {
 
     public void removeAlbum(Album album) throws RepositoryException {
         albumDAO.deleteAlbum(album);
+    }
+
+    public void renameAlbum(Album album, String newTitle) {
+        album.setTitle(newTitle);
+        albumDAO.updateAlbum(album);
     }
 }

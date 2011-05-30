@@ -13,7 +13,9 @@
 
     <div>
         <div class="title">
-            Album: <s:property value="%{albumTitle}"/>
+            Album:
+            <s:property value="%{albumTitle}"/> (
+            <s:property value="%{pictureCount}"/> )
             <hr/>
         </div>
 
@@ -55,15 +57,14 @@
             <div class="horizontal-menu horizontal-menu-list">
                 <ul>
                     <li>
-                        <s:a href="#" onclick="hideShow('add-picture-control')">
+                        <s:a href="#" onclick="hideShow('add-picture-control', 'rename-album-control')">
                             add picture
                         </s:a>
                     </li>
                     <li>
-                        <s:a>rename album</s:a>
-                    </li>
-                    <li>
-                        <s:a>edit description</s:a>
+                        <s:a href="#" onclick="hideShow('rename-album-control', 'add-picture-control')">
+                            rename album
+                        </s:a>
                     </li>
                 </ul>
             </div>
@@ -83,10 +84,29 @@
                                 <s:textfield name="pictureTitle"/>
                             </div>
                             <br/>
+
                             <div>
                                 <s:submit value="Add"/>
                                 <s:reset value="Cancel"/>
                             </div>
+                        </div>
+                    </s:form>
+                </div>
+            </div>
+
+            <div class="form-controls" id="rename-album-control">
+                <div>
+                    <s:form id="renameAlbumForm" action="renameAlbum" method="POST">
+                        <s:hidden name="albumId" value="%{albumId}"/>
+                        <s:hidden name="userId" value="%{userId}"/>
+
+                        New album title
+                        <div class="form-line">
+                            <s:textfield name="newAlbumTitle"/>
+                        </div>
+                        <div>
+                            <s:submit value="Rename"/>
+                            <s:reset value="Cancel"/>
                         </div>
                     </s:form>
                 </div>

@@ -5,7 +5,11 @@
     <style type="text/css">
         @import "css/images.css";
         @import "css/list.css";
+        @import "css/forms.css";
     </style>
+
+    <script type="text/javascript" src="js/formHandlers.js"></script>
+    <script type="text/javascript" src="js/visibility.js"></script>
 
     <div id="grid">
         <div class="image-container image-container-large">
@@ -18,21 +22,49 @@
                 </s:a>
             </div>
             <div class="image-title image-title-large">
-                <s:property value="%{title}"/>
+                <s:property value="%{picture.getTitle()}"/>
             </div>
         </div>
+
+        <s:form id="removePictureForm" action="removePicture" method="POST">
+            <s:hidden name="pictureId" value="%{pictureId}"/>
+            <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
+            <s:hidden name="albumId" value="%{picture.getAlbum().getId()}"/>
+        </s:form>
+
         <div class="horizontal-menu horizontal-menu-list">
             <ul>
                 <li>
-                    <s:a>rename picture</s:a>
+                    <s:a href="#" onclick="hideShow('rename-picture-control')">
+                        rename picture
+                    </s:a>
                 </li>
                 <li>
-                    <s:a>remove</s:a>
-                </li>
-                <li>
-                    <s:a>edit description</s:a>
+                    <s:a href="#" onclick="submitForm('removePictureForm')">
+                        remove picture
+                    </s:a>
                 </li>
             </ul>
+        </div>
+
+        <div class="form-controls" id="rename-picture-control">
+            <div>
+                <s:form id="renamePictureForm" action="renamePicture" method="POST">
+                    <s:hidden name="pictureId" value="%{pictureId}"/>
+                    <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
+
+                    <div>
+                        New picture title
+                        <div class="form-line">
+                            <s:textfield name="newPictureTitle"/>
+                        </div>
+                        <div>
+                            <s:submit value="Rename"/>
+                            <s:reset value="Cancel"/>
+                        </div>
+                    </div>
+                </s:form>
+            </div>
         </div>
     </div>
 

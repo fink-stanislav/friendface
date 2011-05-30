@@ -19,7 +19,7 @@ public interface AlbumDAO {
 
     Long getPictureCount(Album album);
 
-    Integer getTitlePictureId(Album album);
+    Integer getFrontPictureId(Album album);
 
     void insertAlbum(Album album) throws RepositoryException;
 

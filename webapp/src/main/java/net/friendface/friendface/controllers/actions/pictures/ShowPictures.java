@@ -6,17 +6,13 @@ package net.friendface.friendface.controllers.actions.pictures;
  * Time: 6:56 PM
  */
 
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
-import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
-import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.jcr.RepositoryException;
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public class ShowPictures extends UserAction {

@@ -1,6 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
+import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
@@ -16,9 +17,10 @@ import javax.servlet.http.HttpServletRequest;
  * Time: 6:56 PM
  */
 
-public class RemovePicture extends StandardAction implements ServletRequestAware {
+public class RemovePicture extends UserAction implements ServletRequestAware {
     private RequestHelper requestHelper;
     private Integer pictureId;
+    private Integer albumId;
 
     @Override
     public String execute() {
@@ -34,6 +36,14 @@ public class RemovePicture extends StandardAction implements ServletRequestAware
 
     public void setPictureId(Integer pictureId) {
         this.pictureId = pictureId;
+    }
+
+    public Integer getAlbumId() {
+        return albumId;
+    }
+
+    public void setAlbumId(Integer albumId) {
+        this.albumId = albumId;
     }
 
     public String getNextAction() {

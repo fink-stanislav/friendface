@@ -30,6 +30,16 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
 
+        <action name="renamePicture" class="net.friendface.friendface.controllers.actions.pictures.RenamePicture">
+            <result name="success" type="redirectAction">
+                <param name="actionName">viewPictureDetails</param>
+                <param name="pictureId">${pictureId}</param>
+                <param name="userId">${userId}</param>
+            </result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+
         <action name="showPicture" class="net.friendface.friendface.controllers.actions.pictures.ShowPicture">
             <param name="pictureId">${pictureId}</param>
             <result name="success" type="stream">
@@ -69,6 +79,16 @@
             <result name="success" type="redirectAction">
                 <param name="userId">${userId}</param>
                 <param name="actionName">albumList</param>
+            </result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+
+        <action name="renameAlbum" class="net.friendface.friendface.controllers.actions.pictures.RenameAlbum">
+            <result name="success" type="redirectAction">
+                <param name="userId">${userId}</param>
+                <param name="albumId">${albumId}</param>
+                <param name="actionName">showPictures</param>
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>

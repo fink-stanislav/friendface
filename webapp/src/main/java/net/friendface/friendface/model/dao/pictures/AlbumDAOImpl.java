@@ -50,6 +50,12 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
     }
 
     public void updateAlbum(Album album) {
+        perform(new Operation<Album>(album) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.merge(entity);
+            }
+        });
     }
 
     public List<Album> getUserAlbums(User user) {
@@ -76,7 +82,7 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         }
     }
 
-    public Integer getTitlePictureId(Album album) {
+    public Integer getFrontPictureId(Album album) {
         return 0;
     }
 

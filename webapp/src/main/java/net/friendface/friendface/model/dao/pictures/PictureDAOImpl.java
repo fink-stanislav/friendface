@@ -44,6 +44,15 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         });
     }
 
+    public void updatePicture(Picture picture) {
+        perform(new Operation<Picture>(picture) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.merge(entity);
+            }
+        });
+    }
+
     public List<Picture> getPictures(Album album) throws RepositoryException {
         try {
             DefaultQueryParams queryParams = new DefaultQueryParams("getPicturesByAlbum");
@@ -61,9 +70,6 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         } catch (NoResultException e) {
             return null;
         }
-    }
-
-    public void updatePicture(Picture picture) {
     }
 
     public String getPath(Identifiable album) {
