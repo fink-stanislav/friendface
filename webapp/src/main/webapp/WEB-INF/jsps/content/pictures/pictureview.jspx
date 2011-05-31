@@ -55,14 +55,14 @@
                         <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
 
                         <div>
-                            <s:text name="rpf.field.title.caption"/>
+                            <s:text name="rpf.field.title.caption"/>:
 
                             <div class="form-line">
                                 <s:textfield name="newPictureTitle"/>
                             </div>
                             <div>
                                 <s:submit value="%{getText('rpf.button.submit.caption')}"/>
-                                <s:reset value="%{getText('rpf.button.reset.caption')"/>
+                                <s:reset value="%{getText('rpf.button.reset.caption')}"/>
                             </div>
                         </div>
                     </s:form>

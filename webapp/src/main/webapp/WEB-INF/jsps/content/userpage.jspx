@@ -58,7 +58,7 @@
 
                     <div class="list-item list-item-for-text">
                         <div class="list-item-header">
-                            <s:a href="%{userPageUrl}" title="имя отправителя">
+                            <s:a href="%{userPageUrl}" title="%{getText('link.sender_name.title')}">
                                 <s:property value="%{[0].userName}"/>
                             </s:a>
 
@@ -89,7 +89,7 @@
                     <div class="list-item-header">&#160;</div>
                     <div class="list-item-content">
                         <div class="empty-list-item">
-                            no messages yet
+                            <s:text name="msg.no_messages"/>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                 <ul>
                     <li>
                         <s:a href="#" onclick="hideShow('add-message-control')">
-                            new message
+                            <s:text name="link.new_message.value"/>
                         </s:a>
                     </li>
                 </ul>
@@ -119,8 +119,8 @@
                             <s:hidden name="userId" value="%{user.id}"/>
                         </div>
                         <div>
-                            <s:submit value="Send"/>
-                            <s:reset value="Cancel"/>
+                            <s:submit value="%{getText('button.new_message.add.caption')}"/>
+                            <s:reset value="%{getText('button.new_message.cancel.caption')}"/>
                         </div>
                     </s:form>
                 </div>

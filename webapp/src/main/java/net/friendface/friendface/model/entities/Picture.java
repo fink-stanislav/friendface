@@ -26,7 +26,7 @@ public class Picture implements ContentEntity {
     @GeneratedValue
     private Integer id;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "albumId")
     private Album album;
 

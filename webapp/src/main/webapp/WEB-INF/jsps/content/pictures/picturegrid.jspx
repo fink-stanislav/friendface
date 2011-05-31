@@ -14,7 +14,7 @@
     <s:i18n name="jsps.content.pictures">
         <div>
             <div class="title">
-                <s:text name="album"/>
+                <s:text name="album"/>:
                 <s:property value="%{albumTitle}"/> (
                 <s:property value="%{pictureCount}"/> )
                 <hr/>
@@ -81,7 +81,7 @@
                                     <s:file name="pictureFile"/>
                                 </div>
                                 <div>
-                                    <s:text name="apf.field.title.caption"/>
+                                    <s:text name="apf.field.title.caption"/>:
                                     <s:textfield name="pictureTitle"/>
                                 </div>
                                 <br/>
@@ -101,13 +101,13 @@
                             <s:hidden name="albumId" value="%{albumId}"/>
                             <s:hidden name="userId" value="%{userId}"/>
 
-                            <s:text name="raf.field.title.caption"/>
+                            <s:text name="raf.field.title.caption"/>:
 
                             <div class="form-line">
                                 <s:textfield name="newAlbumTitle"/>
                             </div>
                             <div>
-                                <s:submit value="%{getText('raf.button.reset.caption')}"/>
+                                <s:submit value="%{getText('raf.button.submit.caption')}"/>
                                 <s:reset value="%{getText('raf.button.reset.caption')}"/>
                             </div>
                         </s:form>
