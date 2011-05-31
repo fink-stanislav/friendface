@@ -7,20 +7,20 @@
     </style>
 
     <div class="title">
-        Search for videos
+        <s:text name="tab.content.videos.title"/>
     </div>
 
     <div class="searchform">
-        <s:form id="searchVideosForm" action="searchVideos">
+        <s:form id="searchVideosForm">
             <div>
-                <s:text name="entrytitle"/>
+                <s:text name="svf.field.title.caption"/>
             </div>
             <div>
                 <s:textfield name="videoTitle" value="%{videoTitle}" cssClass="input"/>
             </div>
             <s:actionmessage/>
             <hr/>
-            <s:submit value="%{getText('search')}"/>
+            <s:submit value="%{getText('button.search.caption')}"/>
         </s:form>
     </div>
 </jsp:root>

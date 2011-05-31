@@ -20,10 +20,10 @@
                             <s:hidden name="userId" value="%{userId}"/>
                         </s:form>
                         <s:a href="#" onclick="submitForm('rejectProposalForm%{#status.index}')">
-                            reject
+                            <s:text name="link.reject.value"/>
                         </s:a>
                         <s:a href="#" onclick="submitForm('approveForm%{#status.index}')">
-                            approve
+                            <s:text name="link.approve.value"/>
                         </s:a>
                     </div>
                     <div class="list-item-content">

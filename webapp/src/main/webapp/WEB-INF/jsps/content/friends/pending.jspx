@@ -16,7 +16,7 @@
                             <s:hidden name="userId" value="%{userId}"/>
                         </s:form>
                         <s:a href="#" onclick="submitForm('rejectProposalForm%{#status.index}')">
-                            reject proposal
+                            <s:text name="link.reject.value"/>
                         </s:a>
                     </div>
                     <div class="list-item-content">

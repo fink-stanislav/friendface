@@ -16,7 +16,7 @@
                             <s:hidden name="userId" value="%{userId}"/>
                         </s:form>
                         <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
-                            delete from friends
+                            <s:text name="link.delete.value"/>
                         </s:a>
                     </div>
                     <div class="list-item-content">

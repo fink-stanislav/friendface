@@ -7,21 +7,21 @@
     </style>
 
     <div class="title">
-        Search for pictures
+        <s:text name="tab.content.pictures.title"/>
     </div>
 
     <div class="searchform">
         <s:form id="searchPicturesForm" action="searchForPictures">
             <s:hidden name="userId" value="%{userId}"/>
             <div>
-                <s:text name="entrytitle"/>
+                <s:text name="spf.field.title.caption"/>
             </div>
             <div>
                 <s:textfield name="title" value="%{title}" cssClass="input"/>
             </div>
             <s:actionerror/>
             <hr/>
-            <s:submit value="%{getText('search')}"/>
+            <s:submit value="%{getText('button.search.caption')}"/>
         </s:form>
     </div>
 

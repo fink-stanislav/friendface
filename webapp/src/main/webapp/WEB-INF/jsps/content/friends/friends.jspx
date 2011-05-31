@@ -12,17 +12,17 @@
                     <li class="tab" id="approvedTab"
                         style="border-bottom: 1px solid #d3d3d3; background: white">
                         <s:a href="#" onclick="switchItem('approvedTab', 'approvedPane', 'white');">
-                            <span>Approved</span>
+                            <span><s:text name="tab.title.approved"/></span>
                         </s:a>
                     </li>
                     <li class="tab" id="proposedTab">
                         <s:a href="#" onclick="switchItem('proposedTab', 'proposedPane', 'white');">
-                            <span>Proposals</span>
+                            <span><s:text name="tab.title.proposals"/></span>
                         </s:a>
                     </li>
                     <li class="tab" id="pendingTab">
                         <s:a href="#" onclick="switchItem('pendingTab', 'pendingPane', 'white');">
-                            <span>Pending</span>
+                            <span><s:text name="tab.title.pending"/></span>
                         </s:a>
                     </li>
                 </ul>

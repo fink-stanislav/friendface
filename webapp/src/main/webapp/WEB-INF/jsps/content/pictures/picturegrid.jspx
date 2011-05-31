@@ -11,107 +11,109 @@
     <script type="text/javascript" src="js/formHandlers.js"></script>
     <script type="text/javascript" src="js/visibility.js"></script>
 
-    <div>
-        <div class="title">
-            Album:
-            <s:property value="%{albumTitle}"/> (
-            <s:property value="%{pictureCount}"/> )
-            <hr/>
-        </div>
+    <s:i18n name="jsps.content.pictures">
+        <div>
+            <div class="title">
+                <s:text name="album"/>
+                <s:property value="%{albumTitle}"/> (
+                <s:property value="%{pictureCount}"/> )
+                <hr/>
+            </div>
 
-        <div id="grid">
-            <s:if test="hasPictures">
-                <s:iterator value="pictureList" status="status">
-                    <div class="grid-item">
-                        <div class="image-container image-container-small">
-                            <div class="image image-small">
-                                <s:url var="imageUrl" value="showPicture.action">
-                                    <s:param name="pictureId" value="%{[0].id}"/>
-                                </s:url>
-                                <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
-                                    <s:param name="pictureId" value="%{[0].id}"/>
-                                    <s:param name="userId" value="%{userId}"/>
-                                </s:url>
-                                <s:a href="%{imageDetailsUrl}">
-                                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
-                                </s:a>
+            <div id="grid">
+                <s:if test="hasPictures">
+                    <s:iterator value="pictureList" status="status">
+                        <div class="grid-item">
+                            <div class="image-container image-container-small">
+                                <div class="image image-small">
+                                    <s:url var="imageUrl" value="showPicture.action">
+                                        <s:param name="pictureId" value="%{[0].id}"/>
+                                    </s:url>
+                                    <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
+                                        <s:param name="pictureId" value="%{[0].id}"/>
+                                        <s:param name="userId" value="%{userId}"/>
+                                    </s:url>
+                                    <s:a href="%{imageDetailsUrl}">
+                                        <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                                    </s:a>
+                                </div>
+                                <div class="image-title image-title-small">
+                                    <s:property value="%{[0].title}"/>
+                                </div>
                             </div>
-                            <div class="image-title image-title-small">
-                                <s:property value="%{[0].title}"/>
+                        </div>
+                    </s:iterator>
+                </s:if>
+                <s:else>
+                    <div class="list-item list-item-for-text">
+                        <div class="list-item-header">&#160;</div>
+                        <div class="list-item-content">
+                            <div class="empty-list-item">
+                                <s:text name="msg.no_pictures"/>
                             </div>
                         </div>
                     </div>
-                </s:iterator>
-            </s:if>
-            <s:else>
-                <div class="list-item list-item-for-text">
-                    <div class="list-item-header">&#160;</div>
-                    <div class="list-item-content">
-                        <div class="empty-list-item">
-                            no pictures yet
-                        </div>
+                </s:else>
+
+                <div class="horizontal-menu horizontal-menu-list">
+                    <ul>
+                        <li>
+                            <s:a href="#" onclick="hideShow('add-picture-control', 'rename-album-control')">
+                                <s:text name="link.add_picture.value"/>
+                            </s:a>
+                        </li>
+                        <li>
+                            <s:a href="#" onclick="hideShow('rename-album-control', 'add-picture-control')">
+                                <s:text name="link.rename_album.value"/>
+                            </s:a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-controls" id="add-picture-control">
+                    <div>
+                        <s:form id="addPictureForm" action="addPicture" method="POST" enctype="multipart/form-data">
+                            <s:hidden name="albumId" value="%{albumId}"/>
+                            <s:hidden name="userId" value="%{userId}"/>
+
+                            <div>
+                                <div>
+                                    <s:file name="pictureFile"/>
+                                </div>
+                                <div>
+                                    <s:text name="apf.field.title.caption"/>
+                                    <s:textfield name="pictureTitle"/>
+                                </div>
+                                <br/>
+
+                                <div>
+                                    <s:submit value="%{getText('apf.button.submit.caption')}"/>
+                                    <s:reset value="%{getText('apf.button.reset.caption')}"/>
+                                </div>
+                            </div>
+                        </s:form>
                     </div>
                 </div>
-            </s:else>
 
-            <div class="horizontal-menu horizontal-menu-list">
-                <ul>
-                    <li>
-                        <s:a href="#" onclick="hideShow('add-picture-control', 'rename-album-control')">
-                            add picture
-                        </s:a>
-                    </li>
-                    <li>
-                        <s:a href="#" onclick="hideShow('rename-album-control', 'add-picture-control')">
-                            rename album
-                        </s:a>
-                    </li>
-                </ul>
-            </div>
+                <div class="form-controls" id="rename-album-control">
+                    <div>
+                        <s:form id="renameAlbumForm" action="renameAlbum" method="POST">
+                            <s:hidden name="albumId" value="%{albumId}"/>
+                            <s:hidden name="userId" value="%{userId}"/>
 
-            <div class="form-controls" id="add-picture-control">
-                <div>
-                    <s:form id="addPictureForm" action="addPicture" method="POST" enctype="multipart/form-data">
-                        <s:hidden name="albumId" value="%{albumId}"/>
-                        <s:hidden name="userId" value="%{userId}"/>
+                            <s:text name="raf.field.title.caption"/>
 
-                        <div>
-                            <div>
-                                <s:file name="pictureFile"/>
+                            <div class="form-line">
+                                <s:textfield name="newAlbumTitle"/>
                             </div>
                             <div>
-                                Picture title
-                                <s:textfield name="pictureTitle"/>
+                                <s:submit value="%{getText('raf.button.reset.caption')}"/>
+                                <s:reset value="%{getText('raf.button.reset.caption')}"/>
                             </div>
-                            <br/>
-
-                            <div>
-                                <s:submit value="Add"/>
-                                <s:reset value="Cancel"/>
-                            </div>
-                        </div>
-                    </s:form>
+                        </s:form>
+                    </div>
                 </div>
             </div>
-
-            <div class="form-controls" id="rename-album-control">
-                <div>
-                    <s:form id="renameAlbumForm" action="renameAlbum" method="POST">
-                        <s:hidden name="albumId" value="%{albumId}"/>
-                        <s:hidden name="userId" value="%{userId}"/>
-
-                        New album title
-                        <div class="form-line">
-                            <s:textfield name="newAlbumTitle"/>
-                        </div>
-                        <div>
-                            <s:submit value="Rename"/>
-                            <s:reset value="Cancel"/>
-                        </div>
-                    </s:form>
-                </div>
-            </div>
-
         </div>
-    </div>
+    </s:i18n>
 </jsp:root>

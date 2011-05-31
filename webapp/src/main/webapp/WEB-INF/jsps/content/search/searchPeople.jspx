@@ -7,7 +7,7 @@
     </style>
 
     <div class="title">
-        Search for users
+        <s:text name="tab.content.users.title"/>
     </div>
 
     <div class="searchform">
@@ -35,7 +35,7 @@
             </div>
             <s:actionmessage/>
             <hr/>
-            <s:submit value="%{getText('search')}"/>
+            <s:submit value="%{getText('button.search.caption')}"/>
         </s:form>
     </div>
 

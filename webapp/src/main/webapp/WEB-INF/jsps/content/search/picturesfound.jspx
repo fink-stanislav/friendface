@@ -9,60 +9,62 @@
 
     <script type="text/javascript" src="js/formHandlers.js"></script>
 
-    <div id="list">
-        <s:if test="notEmpty">
-            <s:iterator value="picturesFound" status="status">
-                <div class="list-item list-item-for-image">
-                    <div class="list-item-header">
-                        &#160;
-                    </div>
-                    <div class="list-item-content">
-                        <div class="image-container image-container-small">
-                            <div class="image image-small">
-                                <s:url var="imageUrl" value="showPicture.action">
+    <s:i18n name="jsps.content.search_results">
+        <div id="list">
+            <s:if test="notEmpty">
+                <s:iterator value="picturesFound" status="status">
+                    <div class="list-item list-item-for-image">
+                        <div class="list-item-header">
+                            &#160;
+                        </div>
+                        <div class="list-item-content">
+                            <div class="image-container image-container-small">
+                                <div class="image image-small">
+                                    <s:url var="imageUrl" value="showPicture.action">
+                                        <s:param name="pictureId" value="%{[0].id}"/>
+                                    </s:url>
+                                    <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
+                                        <s:param name="pictureId" value="%{[0].id}"/>
+                                    </s:url>
+                                    <s:a href="%{imageDetailsUrl}">
+                                        <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                                    </s:a>
+                                </div>
+                            </div>
+
+                            <div class="list-item-text">
+                                <s:url var="picUrl" value="viewPictureDetails.action">
+                                    <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
                                     <s:param name="pictureId" value="%{[0].id}"/>
                                 </s:url>
-                                <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
-                                    <s:param name="pictureId" value="%{[0].id}"/>
+                                <s:a href="%{picUrl}">
+                                    <s:text name="picture.title.caption"/>:
+                                    <s:property value="%{[0].title}"/>
+                                </s:a>
+                                <br/>
+                                <s:url var="albumUrl" value="showPictures.action">
+                                    <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
+                                    <s:param name="albumId" value="%{[0].album.getId()}"/>
                                 </s:url>
-                                <s:a href="%{imageDetailsUrl}">
-                                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                                <s:a href="%{albumUrl}">
+                                    <s:text name="album.title.caption"/>:
+                                    <s:property value="%{[0].album.getTitle()}"/>
                                 </s:a>
                             </div>
                         </div>
-
-                        <div class="list-item-text">
-                            <s:url var="picUrl" value="viewPictureDetails.action">
-                                <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
-                                <s:param name="pictureId" value="%{[0].id}"/>
-                            </s:url>
-                            <s:a href="%{picUrl}">
-                                Title:
-                                <s:property value="%{[0].title}"/>
-                            </s:a>
-                            <br/>
-                            <s:url var="albumUrl" value="showPictures.action">
-                                <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
-                                <s:param name="albumId" value="%{[0].album.getId()}"/>
-                            </s:url>
-                            <s:a href="%{albumUrl}">
-                                Album:
-                                <s:property value="%{[0].album.getTitle()}"/>
-                            </s:a>
+                    </div>
+                </s:iterator>
+            </s:if>
+            <s:else>
+                <div class="list-item list-item-for-image">
+                    <div class="list-item-header">&#160;</div>
+                    <div class="list-item-content">
+                        <div class="empty-list-item">
+                            <s:text name="msg.no_results_found"/>
                         </div>
                     </div>
                 </div>
-            </s:iterator>
-        </s:if>
-        <s:else>
-            <div class="list-item list-item-for-image">
-                <div class="list-item-header">&#160;</div>
-                <div class="list-item-content">
-                    <div class="empty-list-item">
-                        no results found
-                    </div>
-                </div>
-            </div>
-        </s:else>
-    </div>
+            </s:else>
+        </div>
+    </s:i18n>
 </jsp:root>

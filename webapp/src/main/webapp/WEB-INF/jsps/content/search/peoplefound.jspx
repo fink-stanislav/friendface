@@ -9,7 +9,7 @@
 
     <script type="text/javascript" src="js/formHandlers.js"></script>
 
-    <s:i18n name="jsps.content.friends">
+    <s:i18n name="jsps.content.search_results">
         <div id="list">
             <s:if test="notEmpty">
                 <s:iterator value="peopleFound" status="status">
@@ -26,22 +26,22 @@
 
                             <s:if test="%{[0].state eq 'NOT_CONNECTED'}">
                                 <s:a href="#" onclick="submitForm('addToFriendsForm%{#status.index}')">
-                                    send proposal
+                                    <s:text name='link.send_proposal.value'/>
                                 </s:a>
                             </s:if>
                             <s:elseif test="%{[0].state eq 'APPROVED'}">
                                 <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
-                                    delete from friends
+                                    <s:text name='link.delete_friend.value'/>
                                 </s:a>
                             </s:elseif>
                             <s:elseif test="%{[0].state eq 'PENDING'}">
                                 <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
-                                    reject proposal
+                                    <s:text name='link.reject_proposal.value'/>
                                 </s:a>
                             </s:elseif>
                             <s:elseif test="%{[0].state eq 'PROPOSED'}">
                                 <s:a href="#" onclick="submitForm('deleteFromFriendsForm%{#status.index}')">
-                                    reject proposal
+                                    <s:text name='link.reject_proposal.value'/>
                                 </s:a>
                             </s:elseif>
                         </div>
@@ -80,7 +80,7 @@
                     <div class="list-item-header">&#160;</div>
                     <div class="list-item-content">
                         <div class="empty-list-item">
-                            no results found
+                            <s:text name='msg.no_results_found'/>
                         </div>
                     </div>
                 </div>

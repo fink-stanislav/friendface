@@ -10,24 +10,24 @@
     <script type="text/javascript" src="js/formHandlers.js"></script>
     <script type="text/javascript" src="js/tabs.js"></script>
 
-    <s:i18n name="jsps.content.search">
+    <s:i18n name="jsps.content.search_page">
         <div id="tabcontrol">
             <div id="tabs">
                 <ul>
                     <li class="tab" id="searchPeopleTab"
                         style="border-bottom: 1px solid #d3d3d3; background: white">
                         <s:a href="#" onclick="switchItem('searchPeopleTab', 'searchPeoplePane', 'white');">
-                            <span>Users</span>
+                            <span><s:text name="tab.users.caption"/></span>
                         </s:a>
                     </li>
                     <li class="tab" id="searchPicturesTab">
                         <s:a href="#" onclick="switchItem('searchPicturesTab', 'searchPicturesPane', 'white');">
-                            <span>Pictures</span>
+                            <span><s:text name="tab.pictures.caption"/></span>
                         </s:a>
                     </li>
                     <li class="tab" id="searchVideosTab">
                         <s:a href="#" onclick="switchItem('searchVideosTab', 'searchVideosPane', 'white');">
-                            <span>Videos</span>
+                            <span><s:text name="tab.videos.caption"/></span>
                         </s:a>
                     </li>
                 </ul>
