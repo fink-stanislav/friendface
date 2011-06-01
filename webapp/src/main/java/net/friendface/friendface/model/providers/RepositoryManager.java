@@ -91,9 +91,6 @@ public class RepositoryManager {
         getSession().save();
     }
 
-
-
-
     public Node getNode(Node parent, String name) throws RepositoryException {
         return parent.getNode(name);
     }

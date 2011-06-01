@@ -101,6 +101,7 @@ public class PicturesService {
     }
 
     public void removeAlbum(Album album) throws RepositoryException {
+        pictureDAO.deleteAlbumPictures(album);
         albumDAO.deleteAlbum(album);
     }
 

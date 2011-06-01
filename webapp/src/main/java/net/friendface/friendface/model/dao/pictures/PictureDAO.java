@@ -17,6 +17,8 @@ public interface PictureDAO {
 
     Picture getById(Integer id) throws RepositoryException;
 
+    void deleteAlbumPictures(Album album);
+
     void insertPicture(Picture picture) throws RepositoryException;
 
     void deletePicture(Picture picture) throws RepositoryException;

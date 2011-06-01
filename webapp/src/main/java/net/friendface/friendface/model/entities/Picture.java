@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Table(name = "pictures")
 @NamedQueries(value = {
         @NamedQuery(name = "getPicturesByAlbum", query = "select p from Picture p where p.album = :album"),
-        @NamedQuery(name = "deleteAllAlbumPictures", query = "delete from Picture p where p.album = :album")
+        @NamedQuery(name = "deleteAlbumPictures", query = "delete from Picture p where p.album = :album")
 })
 @Indexed
 public class Picture implements ContentEntity {

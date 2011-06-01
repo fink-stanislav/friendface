@@ -44,4 +44,5 @@
     <include file="strutsactions/friends.xml"/>
     <include file="strutsactions/search.xml"/>
     <include file="strutsactions/pictures.xml"/>
+    <include file="strutsactions/videos.xml"/>
 </struts>

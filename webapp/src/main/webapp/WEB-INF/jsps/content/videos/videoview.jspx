@@ -1,0 +1,32 @@
+<jsp:root xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
+
+    <style type="text/css">
+        @import "css/videos.css";
+    </style>
+
+    <script type="text/javascript" src="js/visibility.js"></script>
+    <script type="text/javascript" src="js/flowplayer-3.2.6.min.js"></script>
+
+    <div>
+        <div>
+            Video title
+        </div>
+        <div>
+            <s:a id="video-link">
+                link to video
+            </s:a>
+
+            <script type="text/javascript">
+                flowplayer("video-link", "player/flowplayer-3.2.7.swf", {
+                    clip:  {
+                        autoPlay: false,
+                        autoBuffering: true
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+</jsp:root>

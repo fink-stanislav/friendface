@@ -46,6 +46,10 @@
     min-height: 9.9em;
 }
 
+.list-item-for-video {
+    min-height: 2em;
+}
+
 .list-item-header {
     text-align: right;
     background: #d3d3d3;

@@ -53,9 +53,21 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         });
     }
 
+    @Override
+    public void deleteAlbumPictures(Album album) {
+        perform(new Operation<Album>(album) {
+            @Override
+            public void perform() throws RepositoryException {
+                DefaultQueryParams<Album> queryParams = new DefaultQueryParams<Album>("deleteAlbumPictures");
+                queryParams.setParam("album", entity);
+                queryExecutor.executeUpdateQuery(queryParams);
+            }
+        });
+    }
+
     public List<Picture> getPictures(Album album) throws RepositoryException {
         try {
-            DefaultQueryParams queryParams = new DefaultQueryParams("getPicturesByAlbum");
+            DefaultQueryParams<Album> queryParams = new DefaultQueryParams<Album>("getPicturesByAlbum");
             queryParams.setParam("album", album);
             return queryExecutor.executeNamedQueryList(queryParams, Picture.class);
         } catch (NoResultException e) {

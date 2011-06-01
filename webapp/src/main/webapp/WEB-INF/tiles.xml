@@ -70,6 +70,16 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/picturegrid.jspx"/>
     </definition>
     <!-- end of pictures related -->
+    <!-- videos -->
+    <definition name="videoslist.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Videos"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/videos/videoslist.jspx"/>
+    </definition>
+    <definition name="videoview.tiles" extends="content.page.template">
+        <put-attribute name="title" value="View video"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/videos/videoview.jspx"/>
+    </definition>
+    <!-- end of videos -->
 
     <!-- available from menu -->
     <definition name="userpage.tiles" extends="content.page.template">
@@ -87,10 +97,6 @@
     <definition name="albumList.tiles" extends="content.page.template">
         <put-attribute name="title" value="Albums"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/albumlist.jspx"/>
-    </definition>
-    <definition name="video.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Videos"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
     <definition name="search.tiles" extends="content.page.template">
         <put-attribute name="title" value="jsps.content.search"/>

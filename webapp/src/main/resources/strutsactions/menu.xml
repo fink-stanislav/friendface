@@ -24,8 +24,9 @@
         </action>
         <action name="videosList" class="net.friendface.friendface.controllers.actions.videos.ShowVideos">
             <param name="userId">${userId}</param>
-            <result name="success" type="tiles">video.tiles</result>
+            <result name="success" type="tiles">videoslist.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
     </package>
 </struts>

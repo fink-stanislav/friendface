@@ -8,6 +8,8 @@ import net.friendface.friendface.model.dao.pictures.PictureDAO;
 import net.friendface.friendface.model.dao.pictures.PictureDAOImpl;
 import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.user.UserDAOImpl;
+import net.friendface.friendface.model.dao.videos.VideoDAO;
+import net.friendface.friendface.model.dao.videos.VideoDAOImpl;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
 import net.friendface.friendface.model.dao.wallmessage.WallMessageDAOImpl;
 import net.friendface.friendface.model.providers.RepositoryManager;
@@ -31,7 +33,7 @@ public class DAOFactoryImpl extends DAOFactory {
     }
 
     @Override
-    public UserDAO getUserDAO() throws RepositoryException {
+    public UserDAO getUserDAO() {
         return new UserDAOImpl(entityManager, repositoryManager);
     }
 
@@ -41,7 +43,7 @@ public class DAOFactoryImpl extends DAOFactory {
     }
 
     @Override
-    public WallMessageDAO getMessageDAO() throws RepositoryException {
+    public WallMessageDAO getMessageDAO() {
         return new WallMessageDAOImpl(entityManager, repositoryManager);
     }
 
@@ -53,5 +55,10 @@ public class DAOFactoryImpl extends DAOFactory {
     @Override
     public AlbumDAO getAlbumDAO() {
         return new AlbumDAOImpl(entityManager, repositoryManager);
+    }
+
+    @Override
+    public VideoDAO getVideoDAO() {
+        return new VideoDAOImpl(entityManager, repositoryManager);
     }
 }

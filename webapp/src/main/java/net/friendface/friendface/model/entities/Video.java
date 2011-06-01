@@ -16,6 +16,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "videos")
+@NamedQuery(name = "getVideosByUser", query = "select v from Video v where v.user = :user")
 @Indexed
 public class Video implements ContentEntity {
     @Id
