@@ -13,15 +13,15 @@ import java.util.List;
  */
 
 public interface PictureDAO {
-    List<Picture> getPictures(Album album) throws RepositoryException;
+    List<Picture> getPictures(Album album);
 
     Picture getById(Integer id) throws RepositoryException;
 
     void deleteAlbumPictures(Album album);
 
-    void insertPicture(Picture picture) throws RepositoryException;
+    void insertPicture(Picture picture);
 
-    void deletePicture(Picture picture) throws RepositoryException;
+    void deletePicture(Picture picture);
 
     void updatePicture(Picture picture);
 }

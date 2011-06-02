@@ -74,7 +74,7 @@ public class VideoDAOImpl extends EntityDAO implements VideoDAO {
     public String getPath(Identifiable video) {
         StringBuilder sb = new StringBuilder();
         sb.append(((Video) video).getUser().getLoginEmail())
-                .append(Integer.toString(video.getId()));
+                .append("/videos");
         return sb.toString();
     }
 }

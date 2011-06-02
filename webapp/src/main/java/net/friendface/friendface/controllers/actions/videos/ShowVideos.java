@@ -3,6 +3,13 @@ package net.friendface.friendface.controllers.actions.videos;
 import net.friendface.friendface.controllers.actions.SecurityAware;
 import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.UserAction;
+import net.friendface.friendface.model.entities.User;
+import net.friendface.friendface.model.entities.Video;
+import net.friendface.friendface.service.FriendfaceService;
+import net.friendface.friendface.service.user.UserUtils;
+import net.friendface.friendface.service.video.VideoService;
+
+import java.util.List;
 
 /**
  * Author: S. Fink
@@ -11,11 +18,28 @@ import net.friendface.friendface.controllers.actions.UserAction;
  */
 
 public class ShowVideos extends UserAction implements SecurityAware {
+    private List<Video> videosList;
     private Boolean showControls;
+    private Boolean hasVideos;
 
     @Override
     public String execute() {
-        return SUCCESS;
+        try {
+            User user = FriendfaceService.getService().getUserService().getById(userId);
+            videosList = FriendfaceService.getService().getVideoService().getUserVideos(user);
+            hasVideos = !videosList.isEmpty();
+            return SUCCESS;
+        } catch (Exception e) {
+            return resultAndErrorMessage(ERROR, e.getMessage());
+        }
+    }
+
+    public Boolean getHasVideos() {
+        return hasVideos;
+    }
+
+    public List<Video> getVideosList() {
+        return videosList;
     }
 
     public Boolean getShowControls() {

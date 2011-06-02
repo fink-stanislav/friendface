@@ -25,7 +25,7 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         super(entityManager, repositoryManager);
     }
 
-    public void insertAlbum(Album album) throws RepositoryException {
+    public void insertAlbum(Album album) {
         perform(new Operation<Album>(album) {
             @Override
             public void perform() throws RepositoryException {
@@ -37,7 +37,7 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
         });
     }
 
-    public void deleteAlbum(Album album) throws RepositoryException {
+    public void deleteAlbum(Album album) {
         perform(new Operation<Album>(album) {
             @Override
             public void perform() throws RepositoryException {

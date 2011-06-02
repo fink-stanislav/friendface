@@ -27,7 +27,7 @@ public class PicturesService {
     private PictureDAO pictureDAO;
     private AlbumDAO albumDAO;
 
-    public static PicturesService getService() throws RepositoryException {
+    public static PicturesService getService() {
         if (service == null) {
             service = new PicturesService();
         }
@@ -43,7 +43,7 @@ public class PicturesService {
         return pictureDAO.getById(id);
     }
 
-    public void addPicture(Album album, String title, File file) throws RepositoryException, IOException {
+    public void addPicture(Album album, String title, File file) throws IOException {
         Picture picture = new Picture();
         picture.setAlbum(album);
         picture.setTitle(title);
@@ -53,7 +53,7 @@ public class PicturesService {
         pictureDAO.insertPicture(picture);
     }
 
-    public void removePicture(Picture picture) throws RepositoryException {
+    public void removePicture(Picture picture) {
         pictureDAO.deletePicture(picture);
     }
 
@@ -66,7 +66,7 @@ public class PicturesService {
         return albumDAO.getById(id);
     }
 
-    public List<Picture> getAlbumPictures(Album album) throws RepositoryException {
+    public List<Picture> getAlbumPictures(Album album) {
         return pictureDAO.getPictures(album);
     }
 
@@ -93,14 +93,14 @@ public class PicturesService {
         }
     }
 
-    public void addAlbum(User user, String title) throws RepositoryException {
+    public void addAlbum(User user, String title) {
         Album album = new Album();
         album.setTitle(title);
         album.setUser(user);
         albumDAO.insertAlbum(album);
     }
 
-    public void removeAlbum(Album album) throws RepositoryException {
+    public void removeAlbum(Album album) {
         pictureDAO.deleteAlbumPictures(album);
         albumDAO.deleteAlbum(album);
     }

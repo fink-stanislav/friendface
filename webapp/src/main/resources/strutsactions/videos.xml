@@ -12,5 +12,15 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
 
+        <action name="addVideo" class="net.friendface.friendface.controllers.actions.videos.AddVideo">
+            <param name="userId">${userId}</param>
+            <result name="success" type="redirectAction">
+                <param name="actionName">videosList</param>
+                <param name="userId">${userId}</param>
+            </result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+
     </package>
 </struts>

@@ -24,7 +24,7 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         super(entityManager, repositoryManager);
     }
 
-    public void insertPicture(Picture picture) throws RepositoryException {
+    public void insertPicture(Picture picture) {
         perform(new Operation<Picture>(picture) {
             @Override
             public void perform() throws RepositoryException {
@@ -34,7 +34,7 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         });
     }
 
-    public void deletePicture(Picture picture) throws RepositoryException {
+    public void deletePicture(Picture picture) {
         perform(new Operation<Picture>(picture) {
             @Override
             public void perform() throws RepositoryException {
@@ -65,7 +65,7 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         });
     }
 
-    public List<Picture> getPictures(Album album) throws RepositoryException {
+    public List<Picture> getPictures(Album album) {
         try {
             DefaultQueryParams<Album> queryParams = new DefaultQueryParams<Album>("getPicturesByAlbum");
             queryParams.setParam("album", album);

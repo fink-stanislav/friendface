@@ -21,9 +21,9 @@ public interface AlbumDAO {
 
     Integer getFrontPictureId(Album album);
 
-    void insertAlbum(Album album) throws RepositoryException;
+    void insertAlbum(Album album);
 
-    void deleteAlbum(Album album) throws RepositoryException;
+    void deleteAlbum(Album album);
 
     void updateAlbum(Album album);
 }

@@ -7,6 +7,7 @@ import net.friendface.friendface.service.messages.MessagesService;
 import net.friendface.friendface.service.pictures.PicturesService;
 import net.friendface.friendface.service.search.SearchService;
 import net.friendface.friendface.service.user.UserService;
+import net.friendface.friendface.service.video.VideoService;
 
 import javax.jcr.RepositoryException;
 
@@ -53,5 +54,9 @@ public class FriendfaceService {
 
     public SearchService getSearchService() {
         return SearchService.getService();
+    }
+
+    public VideoService getVideoService() {
+        return VideoService.getService();
     }
 }

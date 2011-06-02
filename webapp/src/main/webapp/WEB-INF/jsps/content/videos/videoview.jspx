@@ -14,7 +14,8 @@
             Video title
         </div>
         <div>
-            <s:a id="video-link">
+            <s:url var="videoUrl" value="player/flowplayer-700.flv"/>
+            <s:a id="video-link" href="%{videoUrl}">
                 link to video
             </s:a>
 
