@@ -10,14 +10,9 @@
     <script type="text/javascript" src="js/flowplayer-3.2.6.min.js"></script>
 
     <div>
-        <div>
-            Video title
-        </div>
-        <div>
+        <div class="video-container video-container-large">
             <s:url var="videoUrl" value="player/flowplayer-700.flv"/>
-            <s:a id="video-link" href="%{videoUrl}">
-                link to video
-            </s:a>
+            <s:a id="video-link" href="%{videoUrl}"/>
 
             <script type="text/javascript">
                 flowplayer("video-link", "player/flowplayer-3.2.7.swf", {
@@ -27,6 +22,9 @@
                     }
                 });
             </script>
+        </div>
+        <div class="video-title video-title-large">
+            Video title
         </div>
     </div>
 

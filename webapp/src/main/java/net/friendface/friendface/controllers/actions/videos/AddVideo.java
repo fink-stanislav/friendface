@@ -46,6 +46,22 @@ public class AddVideo extends UserAction implements SessionAware {
         }
     }
 
+    public void setVideoFile(File videoFile) {
+        this.videoFile = videoFile;
+    }
+
+    public void setVideoTitle(String videoTitle) {
+        this.videoTitle = videoTitle;
+    }
+
+    public File getVideoFile() {
+        return videoFile;
+    }
+
+    public String getVideoTitle() {
+        return videoTitle;
+    }
+
     @Override
     public void setSession(Map<String, Object> session) {
         sessionHelper = new SessionHelper(session);

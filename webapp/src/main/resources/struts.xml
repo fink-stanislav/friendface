@@ -4,6 +4,8 @@
         "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+    <constant name="struts.multipart.maxSize" value="209715200"/>
+
     <package name="root" namespace="/" extends="tiles-default">
         <interceptors>
             <interceptor-stack name="myTokenStack">
@@ -26,8 +28,11 @@
                 <interceptor-ref name="authenticationInterceptor"/>
                 <interceptor-ref name="securityInterceptor"/>
                 <interceptor-ref name="fileUpload">
+                    <param name="maximumSize">
+                        104857600
+                    </param>
                     <param name="allowedTypes">
-                        image/png, image/gif, image/jpeg
+                        application/octet-stream
                     </param>
                 </interceptor-ref>
                 <interceptor-ref name="defaultStack"/>

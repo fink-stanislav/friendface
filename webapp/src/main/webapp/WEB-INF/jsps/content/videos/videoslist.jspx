@@ -20,7 +20,11 @@
                     </div>
                     <div class="list-item-content">
                         <div class="list-item-text">
-                            <s:a href="#">
+                            <s:url var="videoUrl" value="viewVideo.action">
+                                <s:param name="userId" value="%{userId}"/>
+                                <s:param name="videoId" value="%{[0].id}"/>
+                            </s:url>
+                            <s:a href="%{videoUrl}">
                                 <s:property value="%{[0].title}"/>
                             </s:a>
                         </div>
@@ -53,7 +57,7 @@
             </div>
             <div class="form-controls" id="add-video-control">
                 <div>
-                    <s:form id="addVideoForm" action="addVideo">
+                    <s:form id="addVideoForm" action="addVideo" enctype="multipart/form-data" method="POST">
                         <s:hidden name="userId" value="%{userId}"/>
 
                         <div>
@@ -61,12 +65,12 @@
                                 <s:file name="videoFile"/>
                             </div>
                             <div class="form-line">
-                                <s:text name="apf.field.title.caption"/>:
+                                Video title:
                                 <s:textfield name="videoTitle"/>
                             </div>
                             <div>
-                                <s:submit value="%{getText('aaf.button.submit.caption')}"/>
-                                <s:reset value="%{getText('aaf.button.reset.caption')}"/>
+                                <s:submit/>
+                                <s:reset/>
                             </div>
                         </div>
                     </s:form>

@@ -25,6 +25,11 @@
         <welcome-file>welcome.action</welcome-file>
     </welcome-file-list>
 
+    <mime-mapping>
+        <extension>flv</extension>
+        <mime-type>video/x-flv</mime-type>
+    </mime-mapping>
+
     <!-- struts 2 -->
     <filter>
         <filter-name>struts2</filter-name>

@@ -20,6 +20,7 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="input" type="tiles">videoslist.tiles</result>
         </action>
 
     </package>

@@ -1,5 +1,25 @@
 #video-link {
-    display: block;
+}
+
+div.video-container {
+    margin-left: 2em;
+    margin-top: 1em;
+    float: left;
+    text-align: left;
+}
+
+div.video-container-large {
+    height: 20em;
+    width: 32em;
+}
+
+div.video-title {
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+div.video-title-large {
     width: 30em;
-    height: 18em;
 }
