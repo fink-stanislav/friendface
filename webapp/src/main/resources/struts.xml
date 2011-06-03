@@ -5,6 +5,7 @@
 
 <struts>
     <constant name="struts.multipart.maxSize" value="209715200"/>
+    <constant name="struts.action.extension" value="action"/>
 
     <package name="root" namespace="/" extends="tiles-default">
         <interceptors>

@@ -4,28 +4,80 @@
 
     <style type="text/css">
         @import "css/videos.css";
+        @import "css/forms.css";
+        @import "css/list.css";
     </style>
 
+    <script type="text/javascript" src="js/formHandlers.js"></script>
     <script type="text/javascript" src="js/visibility.js"></script>
     <script type="text/javascript" src="js/flowplayer-3.2.6.min.js"></script>
 
-    <div>
-        <div class="video-container video-container-large">
-            <s:url var="videoUrl" value="player/flowplayer-700.flv"/>
-            <s:a id="video-link" href="%{videoUrl}"/>
+    <div id="grid">
+        <div>
+            <div class="video-container video-container-large">
+                <s:url var="videoUrl" value="showVideo">
+                    <s:param name="videoId" value="%{videoId}"/>
+                </s:url>
 
-            <script type="text/javascript">
-                flowplayer("video-link", "player/flowplayer-3.2.7.swf", {
-                    clip:  {
-                        autoPlay: false,
-                        autoBuffering: true
-                    }
-                });
-            </script>
+                <div class="video">
+                    <s:a id="video-link" href="%{videoUrl}"/>
+                </div>
+
+                <script type="text/javascript">
+                    flowplayer("video-link", "player/flowplayer-3.2.7.swf", {
+                        clip:  {
+                            autoPlay: false,
+                            autoBuffering: true
+                        }
+                    });
+                </script>
+            </div>
+            <div class="video-title video-title-large">
+                Video title
+            </div>
         </div>
-        <div class="video-title video-title-large">
-            Video title
+
+        <div>
+            <s:form id="removeVideoForm" action="removeVideo" method="POST">
+                <s:hidden name="videoId" value="%{videoId}"/>
+                <s:hidden name="userId" value="%{video.getUser().getId()}"/>
+            </s:form>
+
+            <div class="horizontal-menu horizontal-menu-list">
+                <ul>
+                    <li>
+                        <s:a href="#" onclick="hideShow('rename-video-control')">
+                            <s:text name="link.rename_video.value"/>
+                        </s:a>
+                    </li>
+                    <li>
+                        <s:a href="#" onclick="submitForm('removeVideoForm')">
+                            <s:text name="link.remove_video.value"/>
+                        </s:a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-controls" id="rename-video-control">
+                <div>
+                    <s:form id="renameVideoForm" action="renameVideo" method="POST">
+                        <s:hidden name="videoId" value="%{videoId}"/>
+                        <s:hidden name="userId" value="%{video.getUser().getId()}"/>
+
+                        <div>
+                            <s:text name="rpf.field.title.caption"/>:
+
+                            <div class="form-line">
+                                <s:textfield name="newVideoTitle"/>
+                            </div>
+                            <div>
+                                <s:submit value="%{getText('rpf.button.submit.caption')}"/>
+                                <s:reset value="%{getText('rpf.button.reset.caption')}"/>
+                            </div>
+                        </div>
+                    </s:form>
+                </div>
+            </div>
         </div>
     </div>
-
 </jsp:root>

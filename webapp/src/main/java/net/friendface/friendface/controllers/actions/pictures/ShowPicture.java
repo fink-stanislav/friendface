@@ -16,8 +16,7 @@ import java.io.InputStream;
  * Time: 8:41 PM
  */
 
-public class ShowPicture extends StandardAction implements ServletRequestAware {
-    private RequestHelper requestHelper;
+public class ShowPicture extends StandardAction {
     private Integer pictureId;
     private InputStream inputStream;
 
@@ -38,13 +37,5 @@ public class ShowPicture extends StandardAction implements ServletRequestAware {
 
     public InputStream getInputStream() {
         return inputStream;
-    }
-
-    public String getNextAction() {
-        return requestHelper.getPreviousAction();
-    }
-
-    public void setServletRequest(HttpServletRequest request) {
-        requestHelper = new RequestHelper(request);
     }
 }

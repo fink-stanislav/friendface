@@ -1,4 +1,10 @@
 #video-link {
+    border: 0;
+}
+
+div.video {
+    max-width: 31em;
+    max-height: 21em;
 }
 
 div.video-container {
@@ -9,7 +15,7 @@ div.video-container {
 }
 
 div.video-container-large {
-    height: 20em;
+    height: 21em;
     width: 32em;
 }
 
@@ -21,5 +27,5 @@ div.video-title {
 }
 
 div.video-title-large {
-    width: 30em;
+    width: 33em;
 }
