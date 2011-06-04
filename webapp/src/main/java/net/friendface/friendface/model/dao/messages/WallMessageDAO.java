@@ -1,4 +1,4 @@
-package net.friendface.friendface.model.dao.wallmessage;
+package net.friendface.friendface.model.dao.messages;
 
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;

@@ -1,7 +1,6 @@
 package net.friendface.deployer;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,13 +16,10 @@ import static net.friendface.deployer.PropertyManager.getPropertyManager;
  * @author S. Fink
  */
 public class DataBasePopulator {
-    private URL scriptUrl;
+    private InputStream in;
 
     public DataBasePopulator(String scriptName) {
-        ClassLoader cs = getClass().getClassLoader();
-        scriptUrl = cs.getResource(
-                getPropertyManager().getProperty(scriptName)
-        );
+        in = getClass().getResourceAsStream("/" + scriptName);
     }
 
     public Connection getConnection() throws SQLException {
@@ -32,9 +28,8 @@ public class DataBasePopulator {
         );
     }
 
-    public void createDb() throws Exception {
-        FileReader input = new FileReader(scriptUrl.getFile());
-        BufferedReader bufRead = new BufferedReader(input);
+    public void executeStatement() throws Exception {
+        BufferedReader bufRead = new BufferedReader(new InputStreamReader(in));
         Connection connection = getConnection();
         String line;
 
@@ -61,8 +56,7 @@ public class DataBasePopulator {
     }
 
     public void populate() throws Exception {
-        FileReader input = new FileReader(scriptUrl.getFile());
-        BufferedReader bufRead = new BufferedReader(input);
+        BufferedReader bufRead = new BufferedReader(new InputStreamReader(in));
         Connection connection = getConnection();
         String line;
 

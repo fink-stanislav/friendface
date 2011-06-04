@@ -1,6 +1,5 @@
 package net.friendface.friendface.controllers.actions.messages;
 
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.WallMessage;
 import net.friendface.friendface.service.FriendfaceService;

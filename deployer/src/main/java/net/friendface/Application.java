@@ -1,31 +1,23 @@
 package net.friendface;
 
-import net.friendface.deployer.DataBasePopulator;
-import net.friendface.deployer.RepositoryHandler;
-
-import javax.jcr.RepositoryException;
+import net.friendface.deployer.DeployHelper;
 
 public class Application {
     public static void main(String[] args) {
-        /**
-         * Repository initialization
-         */
-        RepositoryHandler repositoryHandler = new RepositoryHandler();
-        try {
-            repositoryHandler.createSession();
-            repositoryHandler.destroySession();
-        } catch (RepositoryException e) {
-            e.printStackTrace();
+        for (String arg : args) {
+            if (arg.equals("-truncate")) {
+                DeployHelper.truncateDataBase();
+            } else if (arg.equals("-createDB")) {
+                DeployHelper.createDataBase();
+            } else if (arg.equals("-createRepo")) {
+                DeployHelper.createRepository();
+            } else if (arg.equals("-deploy")) {
+                DeployHelper.createDataBase();
+                DeployHelper.createRepository();
+            } else if (arg.equals("-redeploy")) {
+                DeployHelper.createRepository();
+                DeployHelper.truncateDataBase();
+            }
         }
-
-        /**
-         * Create database
-         */
-        // DataBasePopulator populator = new DataBasePopulator("sqlscript");
-        // try {
-        //     populator.createDb();
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
     }
 }

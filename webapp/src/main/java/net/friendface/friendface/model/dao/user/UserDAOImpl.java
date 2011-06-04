@@ -5,13 +5,10 @@ import net.friendface.friendface.model.dao.Operation;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.queryhandling.DefaultQueryParams;
-import net.friendface.friendface.model.search.JpaSearch;
 
 import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Author: S. Fink
@@ -60,17 +57,12 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
 
     public User getUser(String loginEmail) {
         try {
-            DefaultQueryParams queryParams = new DefaultQueryParams("getUserByLogin");
+            DefaultQueryParams<String> queryParams = new DefaultQueryParams<String>("getUserByLogin");
             queryParams.setParam("loginEmail", loginEmail);
             return queryExecutor.executeNamedQuery(queryParams, User.class);
         } catch (NoResultException e) {
             return null;
         }
-    }
-
-    public List<User> findUsers(Map<String, String> searchParams) {
-        JpaSearch search = new JpaSearch(entityManager);
-        return search.find(searchParams, User.class);
     }
 
     public Boolean isUserExists(User user) {

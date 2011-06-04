@@ -89,7 +89,7 @@ public class FriendDAOImpl extends EntityDAO implements FriendDAO {
 
     private List<Friend> getFriendList(User user, String queryName) {
         try {
-            DefaultQueryParams queryParams = new DefaultQueryParams(queryName);
+            DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>(queryName);
             queryParams.setParam("user", user);
             return queryExecutor.executeNamedQueryList(queryParams, Friend.class);
         } catch (NoResultException e) {

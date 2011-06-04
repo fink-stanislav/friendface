@@ -60,7 +60,7 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
 
     public List<Album> getUserAlbums(User user) {
         try {
-            DefaultQueryParams queryParams = new DefaultQueryParams("getAlbumsByUser");
+            DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>("getAlbumsByUser");
             queryParams.setParam("user", user);
             return queryExecutor.executeNamedQueryList(queryParams, Album.class);
         } catch (NoResultException e) {
@@ -74,7 +74,7 @@ public class AlbumDAOImpl extends EntityDAO implements AlbumDAO {
 
     public Long getPictureCount(Album album) {
         try {
-            DefaultQueryParams queryParams = new DefaultQueryParams("getPicturesCount");
+            DefaultQueryParams<Album> queryParams = new DefaultQueryParams<Album>("getPicturesCount");
             queryParams.setParam("album", album);
             return queryExecutor.executeCountQuery(queryParams, Long.class);
         } catch (NoResultException e) {

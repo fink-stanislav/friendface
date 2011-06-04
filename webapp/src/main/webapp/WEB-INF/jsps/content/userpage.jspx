@@ -7,7 +7,7 @@
         @import "css/forms.css";
         @import "css/images.css";
     </style>
-    <script type="text/javascript" src="js/textAreaHandlers.js"></script>
+
     <script type="text/javascript" src="js/visibility.js"></script>
     <script type="text/javascript" src="js/formHandlers.js"></script>
 
@@ -107,15 +107,9 @@
 
             <div class="form-controls" id="add-message-control">
                 <div>
-                    <s:form id="addMessageForm" action="addWallMessage" method="POST"
-                            onsubmit="formSubmit('addMessageForm', isModified())">
+                    <s:form id="addMessageForm" action="addWallMessage" method="POST">
                         <div class="form-line">
-                            <s:textarea id="messageTextArea" name="message" rows="" cols=""
-                                        cssClass="form-textarea"
-                                        onfocus="focusTextArea('messageTextArea');"
-                                        onblur="blurTextArea('messageTextArea', 'Enter your message')"
-                                        onkeyup="keyUpTextArea()">
-                            </s:textarea>
+                            <s:textarea id="messageTextArea" name="message" rows="" cols="" cssClass="form-textarea"/>
                             <s:hidden name="userId" value="%{user.id}"/>
                         </div>
                         <div>

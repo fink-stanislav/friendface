@@ -4,7 +4,6 @@ import net.friendface.friendface.model.dao.DAOFactory;
 import net.friendface.friendface.model.dao.friends.FriendDAO;
 import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
-import net.friendface.friendface.model.enums.ContactState;
 
 import javax.jcr.RepositoryException;
 import java.util.ArrayList;

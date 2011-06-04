@@ -1,6 +1,7 @@
 package net.friendface.deployer;
 
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Properties;
 
@@ -20,10 +21,12 @@ public class PropertyManager {
 
     private PropertyManager(String resourceName) {
         try {
-            URL resUrl = getClass().getClassLoader().getResource(resourceName);
-            FileInputStream inputStream = new FileInputStream(resUrl.getFile());
+            InputStream in = getClass().getClassLoader().getResourceAsStream(resourceName);
+            if (in == null) {
+                throw new RuntimeException();
+            }
             properties = new Properties();
-            properties.load(inputStream);
+            properties.load(in);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -11,10 +11,11 @@
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
-        <action name="privateMessages" class="net.friendface.friendface.controllers.actions.messages.ShowPrivateMessages">
+        <action name="showSenders" class="net.friendface.friendface.controllers.actions.messages.ShowSenders">
             <param name="userId">${userId}</param>
-            <result name="success" type="tiles">messages.tiles</result>
+            <result name="success" type="tiles">showsenders.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
         </action>
         <action name="albumList" class="net.friendface.friendface.controllers.actions.pictures.ShowAlbums">
             <param name="userId">${userId}</param>

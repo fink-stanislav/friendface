@@ -1,13 +1,10 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
-import net.friendface.friendface.controllers.actions.helpers.RequestHelper;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
-import org.apache.struts2.interceptor.ServletRequestAware;
 
 import javax.jcr.RepositoryException;
-import javax.servlet.http.HttpServletRequest;
 import java.io.InputStream;
 
 /**

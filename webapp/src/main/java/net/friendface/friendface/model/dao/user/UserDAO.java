@@ -3,8 +3,6 @@ package net.friendface.friendface.model.dao.user;
 import net.friendface.friendface.model.entities.User;
 
 import javax.jcr.RepositoryException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * User: S. Fink
@@ -22,8 +20,6 @@ public interface UserDAO {
     User getById(Integer userId);
 
     User getUser(String loginEmail);
-
-    List<User> findUsers(Map<String, String> searchParams);
 
     Boolean isUserExists(User user);
 }

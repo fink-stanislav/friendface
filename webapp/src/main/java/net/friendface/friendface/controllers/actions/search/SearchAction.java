@@ -1,6 +1,5 @@
 package net.friendface.friendface.controllers.actions.search;
 
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
 
 /**

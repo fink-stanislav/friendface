@@ -22,10 +22,10 @@
                 <span class="ref"><s:text name="item.friends"/></span>
             </s:a></div>
 
-            <s:url var="messageshUrl" value="privateMessages.action">
+            <s:url var="messagesUrl" value="showSenders.action">
                 <s:param name="userId" value="%{userId}"/>
             </s:url>
-            <div class="menuitem"><s:a href="%{messageshUrl}" title="%{getText('title.messages')}">
+            <div class="menuitem"><s:a href="%{messagesUrl}" title="%{getText('title.messages')}">
                 <span class="ref"><s:text name="item.messages"/></span>
             </s:a></div>
 

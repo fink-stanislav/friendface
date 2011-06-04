@@ -8,12 +8,8 @@ import net.friendface.friendface.model.entities.Video;
 import net.friendface.friendface.model.providers.EntityManagerProvider;
 import net.friendface.friendface.model.queryhandling.SearchQueryExecutor;
 import net.friendface.friendface.model.queryhandling.SearchQueryParams;
-import net.friendface.friendface.service.friends.FriendUtils;
-import net.friendface.friendface.service.user.UserUtils;
 import net.friendface.friendface.view.beans.UserBean;
 
-import javax.jcr.RepositoryException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

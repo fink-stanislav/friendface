@@ -1,22 +1,14 @@
 package net.friendface.friendface.controllers.actions.search;
 
 import com.opensymphony.xwork2.ModelDriven;
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
-import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
 import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.Picture;
-import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.queryhandling.SearchQueryParams;
 import net.friendface.friendface.service.FriendfaceService;
-import net.friendface.friendface.view.beans.UserBean;
-import org.apache.struts2.interceptor.SessionAware;
 
 import java.util.List;
-import java.util.Map;
-
-import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey;
 
 /**
  * Author: S. Fink

@@ -1,13 +1,17 @@
-﻿
-CREATE DATABASE IF NOT EXISTS friendface;
+
+DROP DATABASE IF EXISTS friendface;
+--commit
+CREATE DATABASE IF NOT EXISTS friendface CHARACTER SET utf8 COLLATE utf8_general_ci;
 --commit
 USE friendface;
 --commit
 CREATE TABLE IF NOT EXISTS friendface.users(id INT (11) NOT NULL AUTO_INCREMENT, loginEmail VARCHAR (20) NOT NULL, passwordHash VARCHAR (100) NOT NULL, username VARCHAR (20) NOT NULL, userSurname VARCHAR (20) NOT NULL, PRIMARY KEY (id), UNIQUE INDEX login USING BTREE (loginEmail)) ENGINE = INNODB AUTO_INCREMENT = 1 CHARACTER SET utf8 COLLATE utf8_general_ci;
 --commit
-CREATE TABLE IF NOT EXISTS friendface.albums(id INT (11) NOT NULL AUTO_INCREMENT, userId INT (11) NOT NULL, title VARCHAR (20) NOT NULL, PRIMARY KEY (id), INDEX albums_user USING BTREE (userId),CONSTRAINT albums_user FOREIGN KEY (userId) REFERENCES friendface.users (id)) ENGINE = INNODB AUTO_INCREMENT = 1 CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE TABLE IF NOT EXISTS friendface.albums( id INT (11) NOT NULL AUTO_INCREMENT, userId INT (11) NOT NULL, title VARCHAR (20) NOT NULL, PRIMARY KEY (id), INDEX albums_user USING BTREE (userId), CONSTRAINT albums_user FOREIGN KEY (userId) REFERENCES friendface.users (id)) ENGINE = INNODB AUTO_INCREMENT = 1 CHARACTER SET utf8 COLLATE utf8_general_ci;
 --commit
 CREATE TABLE IF NOT EXISTS friendface.friends(id INT (11) NOT NULL AUTO_INCREMENT, sender INT (11) NOT NULL, receiver INT (11) NOT NULL, isApproved TINYINT (1) NOT NULL DEFAULT 0, PRIMARY KEY (id), INDEX friends_user USING BTREE (sender), UNIQUE INDEX unique_value USING BTREE (receiver, sender), CONSTRAINT user_friends FOREIGN KEY (sender) REFERENCES friendface.users (id)) ENGINE = INNODB AUTO_INCREMENT = 1 CHARACTER SET utf8 COLLATE utf8_general_ci;
+--commit
+CREATE TABLE IF NOT EXISTS friendface.private_messages(id INT (11) NOT NULL, receiver INT (11) NOT NULL, sender INT (11) NOT NULL, postDate DATETIME NOT NULL, PRIMARY KEY (id), INDEX private_messages_receiver USING BTREE (receiver), INDEX private_messages_sender USING BTREE (sender), CONSTRAINT private_messages_receiver FOREIGN KEY (receiver) REFERENCES friendface.users (id), CONSTRAINT private_messages_sender FOREIGN KEY (sender) REFERENCES friendface.users (id)) ENGINE = INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
 --commit
 CREATE TABLE IF NOT EXISTS friendface.videos(id INT (11) NOT NULL AUTO_INCREMENT, userId INT (11) NOT NULL, title VARCHAR (20) DEFAULT NULL, PRIMARY KEY (id), INDEX videos_user USING BTREE (userId), CONSTRAINT videos_user FOREIGN KEY (userId) REFERENCES friendface.users (id)) ENGINE = INNODB AUTO_INCREMENT = 1 CHARACTER SET utf8 COLLATE utf8_general_ci;
 --commit

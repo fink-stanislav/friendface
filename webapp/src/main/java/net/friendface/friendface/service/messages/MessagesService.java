@@ -1,15 +1,17 @@
 package net.friendface.friendface.service.messages;
 
-import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
+import net.friendface.friendface.model.dao.messages.PrivateMessageDAO;
+import net.friendface.friendface.model.dao.messages.WallMessageDAO;
+import net.friendface.friendface.model.entities.PrivateMessage;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.WallMessage;
 import net.friendface.friendface.utils.StringUtils;
+import net.friendface.friendface.view.beans.PrivateMessageBean;
 import net.friendface.friendface.view.beans.WallMessageBean;
 
 import javax.jcr.RepositoryException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 
@@ -21,7 +23,8 @@ import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 
 public class MessagesService {
     private static MessagesService service;
-    private WallMessageDAO dao;
+    private WallMessageDAO wallMessageDAO;
+    private PrivateMessageDAO privateMessageDAO;
 
     public static MessagesService getService() throws RepositoryException {
         if (service == null) {
@@ -31,11 +34,12 @@ public class MessagesService {
     }
 
     public WallMessage getById(Integer id) throws RepositoryException {
-        return dao.getById(id);
+        return wallMessageDAO.getById(id);
     }
 
     private MessagesService() throws RepositoryException {
-        dao = getDAOFactory().getMessageDAO();
+        wallMessageDAO = getDAOFactory().getMessageDAO();
+        privateMessageDAO = getDAOFactory().getPrivateMessageDAO();
     }
 
     public void postWallMessage(User sender, User receiver, String message) throws RepositoryException, IOException {
@@ -43,20 +47,50 @@ public class MessagesService {
         wallMessage.setReceiver(receiver);
         wallMessage.setSender(sender);
         wallMessage.setContent(StringUtils.stringToBinary(message));
-        dao.addMessage(wallMessage);
+        wallMessageDAO.addMessage(wallMessage);
     }
 
     public void removeWallMessage(WallMessage message) throws RepositoryException {
-        dao.removeMessage(message);
+        wallMessageDAO.removeMessage(message);
     }
 
     public List<WallMessageBean> getWallMessages(User receiver) throws Exception {
-        List<WallMessage> wallMessageList = dao.getMessages(receiver);
+        List<WallMessage> wallMessageList = wallMessageDAO.getMessages(receiver);
         List<WallMessageBean> wallMessageBeans = new ArrayList<WallMessageBean>(wallMessageList.size());
         for (WallMessage message : wallMessageList) {
             WallMessageBean messageBean = new WallMessageBean(message);
             wallMessageBeans.add(messageBean);
         }
         return wallMessageBeans;
+    }
+
+    public void postPrivateMessage(User sender, User receiver, String message) throws IOException {
+        PrivateMessage privateMessage = new PrivateMessage();
+        privateMessage.setSender(sender);
+        privateMessage.setReceiver(receiver);
+        privateMessage.setPostDate(new Date());
+        privateMessage.setContent(StringUtils.stringToBinary(message));
+        privateMessageDAO.insertMessage(privateMessage);
+    }
+
+    public List<User> getPrivateMessagesSenders(User receiver) {
+        return privateMessageDAO.getSenders(receiver);
+    }
+
+    public List<PrivateMessageBean<PrivateMessage>> getPrivateMessages(User receiver, User sender) throws RepositoryException {
+        List<PrivateMessage> messagesTo = privateMessageDAO.getUserMessages(receiver, sender);
+        List<PrivateMessage> messagesFrom = privateMessageDAO.getUserMessages(receiver, sender);
+        List<PrivateMessageBean<PrivateMessage>> beans = new ArrayList<PrivateMessageBean<PrivateMessage>>(messagesTo.size() + messagesFrom.size());
+
+        for (PrivateMessage message : messagesTo) {
+            PrivateMessageBean<PrivateMessage> bean = new PrivateMessageBean<PrivateMessage>(message);
+            beans.add(bean);
+        }
+        for (PrivateMessage message : messagesFrom) {
+            PrivateMessageBean<PrivateMessage> bean = new PrivateMessageBean<PrivateMessage>(message);
+            beans.add(bean);
+        }
+        Collections.sort(beans);
+        return beans;
     }
 }

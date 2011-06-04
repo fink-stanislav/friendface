@@ -14,12 +14,14 @@ import javax.jcr.SimpleCredentials;
  */
 
 public class RepositoryHandler {
+    private String root;
     private String repositoryHome;
     private String repositoryConfig;
     private Session session;
 
     public RepositoryHandler() {
-        repositoryHome = "C:\\friendface\\content\\";
+        root = "C:\\friendface\\";
+        repositoryHome = root + "content\\";
         repositoryConfig = repositoryHome + "repository.xml";
     }
 
@@ -29,6 +31,8 @@ public class RepositoryHandler {
     }
 
     public Session createSession() throws RepositoryException {
+        IOHelper.createPath(root);
+        IOHelper.deleteDirectory(repositoryHome);
         Repository repository = new TransientRepository(repositoryConfig, repositoryHome);
         return session = repository.login(new SimpleCredentials("admin", "testPassword".toCharArray()));
     }

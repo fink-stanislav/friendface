@@ -32,9 +32,6 @@
                     <param name="maximumSize">
                         104857600
                     </param>
-                    <param name="allowedTypes">
-                        application/octet-stream
-                    </param>
                 </interceptor-ref>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
@@ -51,4 +48,5 @@
     <include file="strutsactions/search.xml"/>
     <include file="strutsactions/pictures.xml"/>
     <include file="strutsactions/videos.xml"/>
+    <include file="strutsactions/messages.xml"/>
 </struts>

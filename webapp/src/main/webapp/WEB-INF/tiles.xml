@@ -80,6 +80,12 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/videos/videoview.jspx"/>
     </definition>
     <!-- end of videos -->
+    <!-- private messages -->
+    <definition name="showmessages.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Messages"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/messages/messagelist.jspx"/>
+    </definition>
+    <!-- end of private messages -->
 
     <!-- available from menu -->
     <definition name="userpage.tiles" extends="content.page.template">
@@ -90,9 +96,9 @@
         <put-attribute name="title" value="jsps.content.friends"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/friends/friends.jspx"/>
     </definition>
-    <definition name="messages.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Messages"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/messages.jspx"/>
+    <definition name="showsenders.tiles" extends="content.page.template">
+        <put-attribute name="title" value="Conversations"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/messages/senderlist.jspx"/>
     </definition>
     <definition name="albumList.tiles" extends="content.page.template">
         <put-attribute name="title" value="Albums"/>

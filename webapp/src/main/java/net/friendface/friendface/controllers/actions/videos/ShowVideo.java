@@ -1,8 +1,5 @@
 package net.friendface.friendface.controllers.actions.videos;
 
-import net.friendface.friendface.model.entities.Video;
-import net.friendface.friendface.service.FriendfaceService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

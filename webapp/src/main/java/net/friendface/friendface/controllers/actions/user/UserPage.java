@@ -2,7 +2,6 @@ package net.friendface.friendface.controllers.actions.user;
 
 import net.friendface.friendface.controllers.actions.SecurityAware;
 import net.friendface.friendface.controllers.actions.SecuritySettings;
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;

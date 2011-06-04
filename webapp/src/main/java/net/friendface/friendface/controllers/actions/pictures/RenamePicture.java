@@ -5,8 +5,6 @@ import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
 
-import javax.jcr.RepositoryException;
-
 /**
  * Author: S. Fink
  * Date: 30.05.11

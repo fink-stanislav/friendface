@@ -3,7 +3,6 @@ package net.friendface.friendface.model.dao.pictures;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.User;
 
-import javax.jcr.RepositoryException;
 import java.util.List;
 
 /**

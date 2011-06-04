@@ -2,9 +2,7 @@ package net.friendface.friendface.service.user;
 
 import net.friendface.friendface.controllers.actions.FriendfaceAction;
 import net.friendface.friendface.model.dao.friends.FriendDAO;
-import net.friendface.friendface.model.entities.Friend;
 import net.friendface.friendface.model.entities.User;
-import net.friendface.friendface.model.enums.ContactState;
 import net.friendface.friendface.service.friends.FriendUtils;
 import net.friendface.friendface.view.beans.LoginBean;
 import net.friendface.friendface.view.beans.RegistrationBean;

@@ -6,8 +6,6 @@ import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.Video;
 import net.friendface.friendface.service.FriendfaceService;
-import net.friendface.friendface.service.user.UserUtils;
-import net.friendface.friendface.service.video.VideoService;
 
 import java.util.List;
 

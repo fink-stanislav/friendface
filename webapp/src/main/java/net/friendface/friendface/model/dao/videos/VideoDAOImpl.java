@@ -2,7 +2,9 @@ package net.friendface.friendface.model.dao.videos;
 
 import net.friendface.friendface.model.dao.EntityDAO;
 import net.friendface.friendface.model.dao.Operation;
-import net.friendface.friendface.model.entities.*;
+import net.friendface.friendface.model.entities.Identifiable;
+import net.friendface.friendface.model.entities.User;
+import net.friendface.friendface.model.entities.Video;
 import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.queryhandling.DefaultQueryParams;
 

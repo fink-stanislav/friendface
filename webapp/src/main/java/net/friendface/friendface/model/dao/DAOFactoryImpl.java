@@ -2,6 +2,10 @@ package net.friendface.friendface.model.dao;
 
 import net.friendface.friendface.model.dao.friends.FriendDAO;
 import net.friendface.friendface.model.dao.friends.FriendDAOImpl;
+import net.friendface.friendface.model.dao.messages.PrivateMessageDAO;
+import net.friendface.friendface.model.dao.messages.PrivateMessageDAOImpl;
+import net.friendface.friendface.model.dao.messages.WallMessageDAO;
+import net.friendface.friendface.model.dao.messages.WallMessageDAOImpl;
 import net.friendface.friendface.model.dao.pictures.AlbumDAO;
 import net.friendface.friendface.model.dao.pictures.AlbumDAOImpl;
 import net.friendface.friendface.model.dao.pictures.PictureDAO;
@@ -10,11 +14,9 @@ import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.user.UserDAOImpl;
 import net.friendface.friendface.model.dao.videos.VideoDAO;
 import net.friendface.friendface.model.dao.videos.VideoDAOImpl;
-import net.friendface.friendface.model.dao.wallmessage.WallMessageDAO;
-import net.friendface.friendface.model.dao.wallmessage.WallMessageDAOImpl;
+import net.friendface.friendface.model.entities.PrivateMessage;
 import net.friendface.friendface.model.providers.RepositoryManager;
 
-import javax.jcr.RepositoryException;
 import javax.persistence.EntityManager;
 
 /**
@@ -60,5 +62,9 @@ public class DAOFactoryImpl extends DAOFactory {
     @Override
     public VideoDAO getVideoDAO() {
         return new VideoDAOImpl(entityManager, repositoryManager);
+    }
+
+    public PrivateMessageDAO getPrivateMessageDAO() {
+        return new PrivateMessageDAOImpl(entityManager, repositoryManager);
     }
 }

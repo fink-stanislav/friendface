@@ -1,4 +1,4 @@
-package net.friendface.friendface.model.dao.wallmessage;
+package net.friendface.friendface.model.dao.messages;
 
 import net.friendface.friendface.model.dao.EntityDAO;
 import net.friendface.friendface.model.dao.Operation;
@@ -55,7 +55,7 @@ public class WallMessageDAOImpl extends EntityDAO implements WallMessageDAO {
 
     public List<WallMessage> getMessages(User receiver) throws RepositoryException {
         try {
-            DefaultQueryParams queryParams = new DefaultQueryParams("getMessageByUser");
+            DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>("getMessageByUser");
             queryParams.setParam("rec", receiver);
             List<WallMessage> result =
                     queryExecutor.executeNamedQueryList(queryParams, WallMessage.class);

@@ -2,18 +2,13 @@ package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.SecurityAware;
 import net.friendface.friendface.controllers.actions.SecuritySettings;
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
-import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
-import net.friendface.friendface.service.user.UserUtils;
 import net.friendface.friendface.view.beans.AlbumBean;
-import org.apache.struts2.interceptor.SessionAware;
 
 import javax.jcr.RepositoryException;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Author: S. Fink

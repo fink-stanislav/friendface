@@ -6,8 +6,6 @@ import net.friendface.friendface.view.beans.LoginBean;
 import net.friendface.friendface.view.beans.RegistrationBean;
 
 import javax.jcr.RepositoryException;
-import java.util.List;
-import java.util.Map;
 
 import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 import static net.friendface.friendface.service.user.UserUtils.checkCredentials;
@@ -67,9 +65,5 @@ public class UserService {
 
     public User getById(Integer id) {
         return dao.getById(id);
-    }
-
-    public List<User> find(Map<String, String> searchParams) throws Exception {
-        return dao.findUsers(searchParams);
     }
 }
