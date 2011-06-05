@@ -73,13 +73,28 @@ public class MessagesService {
         privateMessageDAO.insertMessage(privateMessage);
     }
 
-    public List<User> getPrivateMessagesSenders(User receiver) {
-        return privateMessageDAO.getSenders(receiver);
+    public List<User> getConversations(User user) {
+        List<User> userList = privateMessageDAO.getConversations(user);
+        List<User> result = new ArrayList<User>(userList.size());
+
+        if (userList.size() > 0) {
+            result.add(userList.get(0));
+        }
+
+        for (User u : userList) {
+            for (int i = 0; i < result.size(); i++) {
+                if (!u.equals(result.get(i))) {
+                    result.add(u);
+                    break;
+                }
+            }
+        }
+        return result;
     }
 
     public List<PrivateMessageBean<PrivateMessage>> getPrivateMessages(User receiver, User sender) throws RepositoryException {
         List<PrivateMessage> messagesTo = privateMessageDAO.getUserMessages(receiver, sender);
-        List<PrivateMessage> messagesFrom = privateMessageDAO.getUserMessages(receiver, sender);
+        List<PrivateMessage> messagesFrom = privateMessageDAO.getUserMessages(sender, receiver);
         List<PrivateMessageBean<PrivateMessage>> beans = new ArrayList<PrivateMessageBean<PrivateMessage>>(messagesTo.size() + messagesFrom.size());
 
         for (PrivateMessage message : messagesTo) {

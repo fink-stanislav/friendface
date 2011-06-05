@@ -50,6 +50,10 @@
     min-height: 4em;
 }
 
+.list-item-for-message {
+    min-height: 2.5em;
+}
+
 .list-item-header {
     text-align: right;
     background: #d3d3d3;

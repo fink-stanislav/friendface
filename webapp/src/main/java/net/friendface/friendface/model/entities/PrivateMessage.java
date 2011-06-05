@@ -15,7 +15,8 @@ import java.util.Date;
 @Table(name = "private_messages")
 @NamedQueries(value = {
         @NamedQuery(name = "getPrivateMessages", query = "select m from PrivateMessage m where m.receiver = :rec and m.sender = :sen"),
-        @NamedQuery(name = "getPrivateMessagesSenders", query = "select m.sender from PrivateMessage m where m.receiver = :rec")
+        @NamedQuery(name = "getSenders", query = "select m.sender from PrivateMessage m where m.receiver = :user"),
+        @NamedQuery(name = "getReceivers", query = "select m.receiver from PrivateMessage m where m.sender = :user")
 })
 public class PrivateMessage implements ContentEntity {
     @Id

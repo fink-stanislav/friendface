@@ -19,5 +19,5 @@ public interface PrivateMessageDAO {
 
     List<PrivateMessage> getUserMessages(User receiver, User sender) throws RepositoryException;
 
-    List<User> getSenders(User receiver);
+    public List<User> getConversations(User user);
 }

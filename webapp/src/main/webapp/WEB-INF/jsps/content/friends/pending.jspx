@@ -1,9 +1,12 @@
 <jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
+
     <style type="text/css">
         @import "css/list.css";
+        @import "css/images.css";
     </style>
+
     <script type="text/javascript" src="js/formHandlers.js"></script>
 
     <div id="list">
@@ -20,9 +23,20 @@
                         </s:a>
                     </div>
                     <div class="list-item-content">
-                        <a href="">
-                            <img class="frontpic" alt="" src="/images/littleuserpic.png"/>
-                        </a>
+                        <s:if test="true">
+                            <div class="frontpic frontpic-small">
+                                <s:a href="#">
+                                    <span class="ref"><img alt="" src="images/no_image.png"/></span>
+                                </s:a>
+                            </div>
+                        </s:if>
+                        <s:else>
+                            <div class="frontpic frontpic-small">
+                                <s:a href="#">
+                                    <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
+                                </s:a>
+                            </div>
+                        </s:else>
 
                         <div class="list-item-text">
                             <s:url var="userUrl" value="userpage.action">

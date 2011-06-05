@@ -16,19 +16,19 @@ import java.util.Map;
  * Time: 23:22
  */
 
-public class ShowSenders extends UserAction implements SessionAware {
+public class ShowConversations extends UserAction implements SessionAware {
     private SessionHelper sessionHelper;
-    private List<User> senderList;
+    private List<User> recipients;
     private List<User> friendList;
     private Boolean notEmpty;
 
     @Override
     public String execute() {
         try {
-            User receiver = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
-            senderList = FriendfaceService.getService().getMessagesService().getPrivateMessagesSenders(receiver);
-            friendList = FriendfaceService.getService().getFriendsService().getApproved(receiver);
-            notEmpty = !senderList.isEmpty();
+            User me = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
+            recipients = FriendfaceService.getService().getMessagesService().getConversations(me);
+            friendList = FriendfaceService.getService().getFriendsService().getApproved(me);
+            notEmpty = !recipients.isEmpty();
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
@@ -39,8 +39,8 @@ public class ShowSenders extends UserAction implements SessionAware {
         return notEmpty;
     }
 
-    public List<User> getSenderList() {
-        return senderList;
+    public List<User> getRecipients() {
+        return recipients;
     }
 
     public List<User> getFriendList() {

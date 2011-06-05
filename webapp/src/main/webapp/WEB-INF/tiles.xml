@@ -96,9 +96,9 @@
         <put-attribute name="title" value="jsps.content.friends"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/friends/friends.jspx"/>
     </definition>
-    <definition name="showsenders.tiles" extends="content.page.template">
+    <definition name="conversations.tiles" extends="content.page.template">
         <put-attribute name="title" value="Conversations"/>
-        <put-attribute name="content" value="/WEB-INF/jsps/content/messages/senderlist.jspx"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/messages/conversation.jspx"/>
     </definition>
     <definition name="albumList.tiles" extends="content.page.template">
         <put-attribute name="title" value="Albums"/>

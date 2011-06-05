@@ -22,16 +22,16 @@ public class ShowPrivateMessages extends UserAction implements SessionAware {
     private SessionHelper sessionHelper;
     private List<PrivateMessageBean<PrivateMessage>> messageList;
     private List<User> friendList;
-    private Integer senderId;
+    private Integer otherId;
     private Boolean notEmpty;
 
     @Override
     public String execute() {
         try {
-            User receiver = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
-            User sender = FriendfaceService.getService().getUserService().getById(senderId);
-            messageList = FriendfaceService.getService().getMessagesService().getPrivateMessages(receiver, sender);
-            friendList = FriendfaceService.getService().getFriendsService().getApproved(receiver);
+            User me = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
+            User other = FriendfaceService.getService().getUserService().getById(otherId);
+            messageList = FriendfaceService.getService().getMessagesService().getPrivateMessages(me, other);
+            friendList = FriendfaceService.getService().getFriendsService().getApproved(me);
             notEmpty = !messageList.isEmpty();
             return SUCCESS;
         } catch (Exception e) {
@@ -43,8 +43,12 @@ public class ShowPrivateMessages extends UserAction implements SessionAware {
         return notEmpty;
     }
 
-    public void setSenderId(Integer senderId) {
-        this.senderId = senderId;
+    public Integer getOtherId() {
+        return otherId;
+    }
+
+    public void setOtherId(Integer otherId) {
+        this.otherId = otherId;
     }
 
     public List<PrivateMessageBean<PrivateMessage>> getMessageList() {

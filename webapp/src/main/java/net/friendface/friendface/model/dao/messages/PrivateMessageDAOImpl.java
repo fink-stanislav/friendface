@@ -50,6 +50,7 @@ public class PrivateMessageDAOImpl extends EntityDAO implements PrivateMessageDA
         try {
             DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>("getPrivateMessages");
             queryParams.setParam("rec", receiver);
+            queryParams.setParam("sen", sender);
             List<PrivateMessage> result =
                     queryExecutor.executeNamedQueryList(queryParams, PrivateMessage.class);
             return repositoryManager.retrieveContent(result, getPath(receiver));
@@ -59,11 +60,18 @@ public class PrivateMessageDAOImpl extends EntityDAO implements PrivateMessageDA
     }
 
     @Override
-    public List<User> getSenders(User receiver) {
+    public List<User> getConversations(User user) {
         try {
-            DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>("getPrivateMessagesSenders");
-            queryParams.setParam("rec", receiver);
-            return queryExecutor.executeNamedQueryList(queryParams, User.class);
+            DefaultQueryParams<User> queryParams = new DefaultQueryParams<User>("getSenders");
+            queryParams.setParam("user", user);
+
+            List<User> result = queryExecutor.executeNamedQueryList(queryParams, User.class);
+
+            queryParams = new DefaultQueryParams<User>("getReceivers");
+            queryParams.setParam("user", user);
+
+            result.addAll(queryExecutor.executeNamedQueryList(queryParams, User.class));
+            return result;
         } catch (NoResultException e) {
             return null;
         }

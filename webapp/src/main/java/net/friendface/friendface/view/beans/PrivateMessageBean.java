@@ -35,6 +35,6 @@ public class PrivateMessageBean<T extends Identifiable> extends PrivateMessage i
 
     @Override
     public int compareTo(T message) {
-        return message.getId() - this.getId();
+        return this.getId() - message.getId();
     }
 }

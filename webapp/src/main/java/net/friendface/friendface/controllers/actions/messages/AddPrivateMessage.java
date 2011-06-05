@@ -36,6 +36,14 @@ public class AddPrivateMessage extends UserAction implements SessionAware {
         this.message = message;
     }
 
+    public void setReceiverId(Integer receiverId) {
+        this.receiverId = receiverId;
+    }
+
+    public Integer getReceiverId() {
+        return receiverId;
+    }
+
     @Override
     public void setSession(Map<String, Object> session) {
         sessionHelper = new SessionHelper(session);
