@@ -11,9 +11,9 @@ import javax.jcr.RepositoryException;
  */
 
 public interface UserDAO {
-    void insertUser(User user) throws RepositoryException;
+    void insertUser(User user);
 
-    void deleteUser(User user) throws RepositoryException;
+    void deleteUser(User user);
 
     void updateUser(User user);
 

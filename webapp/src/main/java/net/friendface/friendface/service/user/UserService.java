@@ -4,8 +4,14 @@ import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.view.beans.LoginBean;
 import net.friendface.friendface.view.beans.RegistrationBean;
+import org.apache.jackrabbit.value.BinaryImpl;
 
 import javax.jcr.RepositoryException;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 import static net.friendface.friendface.service.user.UserUtils.checkCredentials;
@@ -21,14 +27,14 @@ public class UserService {
     private static UserService service;
     private UserDAO dao;
 
-    public static UserService getService() throws RepositoryException {
+    public static UserService getService() {
         if (service == null) {
             service = new UserService();
         }
         return service;
     }
 
-    private UserService() throws RepositoryException {
+    private UserService() {
         dao = getDAOFactory().getUserDAO();
     }
 
@@ -42,21 +48,22 @@ public class UserService {
         }
     }
 
-    public boolean register(RegistrationBean bean) throws RepositoryException {
+    public boolean register(RegistrationBean bean) {
         User user = getUserFromBean(bean);
         if (!dao.isUserExists(user)) {
             dao.insertUser(user);
-            // send mail
             return true;
         }
         return false;
     }
 
-    public void removeUser(User user) throws RepositoryException {
+    public void removeUser(User user) {
         dao.deleteUser(user);
     }
 
-    public void updateUser(User user) {
+    public void addUserPic(User user, File file) throws IOException {
+        user.setContent(new BinaryImpl(new FileInputStream(file)));
+        dao.updateUser(user);
     }
 
     public User getByLogin(String login) {

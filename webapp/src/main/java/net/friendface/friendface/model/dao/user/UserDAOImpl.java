@@ -2,6 +2,8 @@ package net.friendface.friendface.model.dao.user;
 
 import net.friendface.friendface.model.dao.EntityDAO;
 import net.friendface.friendface.model.dao.Operation;
+import net.friendface.friendface.model.entities.Album;
+import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;
 import net.friendface.friendface.model.queryhandling.DefaultQueryParams;
@@ -47,12 +49,19 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
             @Override
             public void perform() throws RepositoryException {
                 entityManager.merge(entity);
+                repositoryManager.storeContent(entity, getPath(entity));
             }
         });
     }
 
     public User getById(Integer userId) {
-        return getById(userId, User.class);
+        User user = getById(userId, User.class);
+        try {
+            user = repositoryManager.retrieveContent(user, getPath(user));
+        } catch (RepositoryException e) {
+            user.setContent(null);
+        }
+        return user;
     }
 
     public User getUser(String loginEmail) {
@@ -67,5 +76,11 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
 
     public Boolean isUserExists(User user) {
         return getUser(user.getLoginEmail()) != null;
+    }
+
+    public String getPath(Identifiable user) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(((User) user).getLoginEmail());
+        return sb.toString();
     }
 }
