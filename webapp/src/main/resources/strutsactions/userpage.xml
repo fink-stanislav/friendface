@@ -5,10 +5,14 @@
 
 <struts>
     <package name="userpage" extends="private">
-        <action name="settings">
+
+        <action name="settingsAction" class="net.friendface.friendface.controllers.actions.settings.SettingsAction">
+            <param name="userId">${userId}</param>
             <result name="success" type="tiles">settings.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
         <action name="addWallMessage" class="net.friendface.friendface.controllers.actions.messages.AddWallMessage">
             <result name="success" type="redirectAction">
                 <param name="actionName">userpage</param>
@@ -16,12 +20,15 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
-        <action name="removeWallMessage" class="net.friendface.friendface.controllers.actions.messages.RemoveWallMessage">
+
+        <action name="removeWallMessage"
+                class="net.friendface.friendface.controllers.actions.messages.RemoveWallMessage">
             <result name="success" type="redirectAction">
                 <param name="actionName">userpage</param>
                 <param name="userId">${userId}</param>
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
+
     </package>
 </struts>

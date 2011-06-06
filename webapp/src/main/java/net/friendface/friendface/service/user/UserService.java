@@ -61,9 +61,20 @@ public class UserService {
         dao.deleteUser(user);
     }
 
-    public void addUserPic(User user, File file) throws IOException {
+    public void addUserpic(User user, File file) throws IOException, RepositoryException {
         user.setContent(new BinaryImpl(new FileInputStream(file)));
-        dao.updateUser(user);
+        dao.addUserpic(user);
+    }
+
+    public void removeUserpic(User user) throws RepositoryException {
+        dao.removeUserpic(user);
+    }
+
+    public void renameUser(User user) {
+        User u = getById(user.getId());
+        u.setUsername(user.getUsername());
+        u.setUserSurname(user.getUserSurname());
+        dao.updateUser(u);
     }
 
     public User getByLogin(String login) {

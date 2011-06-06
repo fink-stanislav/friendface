@@ -1,6 +1,7 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
           xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
           xmlns:s="/struts-tags">
+
     <style type="text/css">
         @import "css/userdata.css";
         @import "css/list.css";
@@ -14,8 +15,14 @@
     <s:i18n name="jsps.content.userpage">
         <div id="userdata">
             <div class="frontpic frontpic-large">
-                <s:a href="#">
-                    <span class="ref"><img src="images/no_image.png" alt=""/></span>
+                <s:url var="imageUrl" value="showUserpic.action">
+                    <s:param name="userId" value="%{[0].userId}"/>
+                </s:url>
+                <s:url var="userUrl" value="userpage.action">
+                    <s:param name="userId" value="%{[0].userId}"/>
+                </s:url>
+                <s:a href="%{userUrl}">
+                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
                 </s:a>
             </div>
             <div id="common-info">
@@ -73,8 +80,14 @@
                         </div>
                         <div class="list-item-content">
                             <div class="frontpic frontpic-small">
-                                <s:a href="#">
-                                    <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
+                                <s:url var="imageUrl" value="showUserpic.action">
+                                    <s:param name="userId" value="%{[0].userId}"/>
+                                </s:url>
+                                <s:url var="userUrl" value="userpage.action">
+                                    <s:param name="userId" value="%{[0].userId}"/>
+                                </s:url>
+                                <s:a href="%{userUrl}">
+                                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
                                 </s:a>
                             </div>
                             <div class="list-item-text">

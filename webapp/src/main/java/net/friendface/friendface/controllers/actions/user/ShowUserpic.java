@@ -1,10 +1,10 @@
 package net.friendface.friendface.controllers.actions.user;
 
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 
+import javax.jcr.Binary;
 import java.io.InputStream;
 
 /**
@@ -20,7 +20,12 @@ public class ShowUserpic extends UserAction {
     public String execute() {
         try {
             User user = FriendfaceService.getService().getUserService().getById(userId);
-            inputStream = user.getContent().getStream();
+            Binary content = user.getContent();
+            if (content == null) {
+                inputStream = getClass().getResourceAsStream("/images/no_image.png");
+            } else {
+                inputStream = content.getStream();
+            }
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());

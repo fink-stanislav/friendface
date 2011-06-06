@@ -76,4 +76,5 @@
 .list-item-text {
     float: left;
     margin: 0.5em 2em;
+    max-width: 30em;
 }

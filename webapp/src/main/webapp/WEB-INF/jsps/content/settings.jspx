@@ -1,6 +1,56 @@
 ﻿<jsp:root xmlns="http://www.w3.org/1999/xhtml"
-          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+          xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0"
+          xmlns:s="/struts-tags">
 
-    Coming soon!
+    <style type="text/css">
+        @import "css/images.css";
+        @import "css/settings.css";
+    </style>
+
+    <div>
+        <div class="userpic-area">
+            <div class="frontpic frontpic-large">
+                <s:url var="imageUrl" value="showUserpic.action">
+                    <s:param name="userId" value="%{userId}"/>
+                </s:url>
+                <s:url var="userUrl" value="userpage.action">
+                    <s:param name="userId" value="%{userId}"/>
+                </s:url>
+                <s:a href="%{userUrl}">
+                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                </s:a>
+            </div>
+            <div class="userpic-controls">
+                <s:form action="addUserpic" method="POST" enctype="multipart/form-data">
+                    <div>
+                        <s:file name="pictureFile"/>
+                    </div>
+                    <div>
+                        <s:submit value="Send"/>
+                        <s:reset value="Cancel"/>
+                    </div>
+                </s:form>
+            </div>
+        </div>
+        <div class="user-rename-area">
+            <div class="user-rename-controls">
+                <s:form action="renameUser" method="POST">
+                    <div>
+                        <div><s:text name="name"/></div>
+                        <div><s:textfield name="newName" value="%{user.getUsername()}"/></div>
+
+                        <div><s:text name="surname"/></div>
+                        <div><s:textfield name="newSurname" value="%{user.getUserSurname()}"/></div>
+                    </div>
+                    <div>
+                        <div>
+                            <s:submit value="OK"/>
+                            <s:reset value="%{getText('cancel')}"/>
+                        </div>
+                    </div>
+                </s:form>
+            </div>
+        </div>
+    </div>
 
 </jsp:root>

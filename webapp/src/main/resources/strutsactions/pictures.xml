@@ -5,6 +5,7 @@
 
 <struts>
     <package name="pictures" extends="private">
+
         <action name="addPicture" class="net.friendface.friendface.controllers.actions.pictures.AddPicture">
             <result name="success" type="redirectAction">
                 <param name="actionName">showPictures</param>
@@ -93,5 +94,6 @@
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+
     </package>
 </struts>

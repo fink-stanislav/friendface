@@ -30,25 +30,18 @@
                         </s:a>
                     </div>
                     <div class="list-item-content">
-                        <s:if test="true">
-                            <div class="frontpic frontpic-small">
-                                <s:a href="#">
-                                    <span class="ref"><img alt="" src="images/no_image.png"/></span>
-                                </s:a>
-                            </div>
-                        </s:if>
-                        <s:else>
-                            <div class="frontpic frontpic-small">
-                                <s:a href="#">
-                                    <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
-                                </s:a>
-                            </div>
-                        </s:else>
-
-                        <div class="list-item-text">
+                        <div class="frontpic frontpic-small">
+                            <s:url var="imageUrl" value="showUserpic.action">
+                                <s:param name="userId" value="%{[0].id}"/>
+                            </s:url>
                             <s:url var="userUrl" value="userpage.action">
                                 <s:param name="userId" value="%{[0].id}"/>
                             </s:url>
+                            <s:a href="%{userUrl}">
+                                <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                            </s:a>
+                        </div>
+                        <div class="list-item-text">
                             <s:a href="%{userUrl}">
                                 <s:property value="%{[0].username}"/>&#160;
                                 <s:property value="%{[0].userSurname}"/>

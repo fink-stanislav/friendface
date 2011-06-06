@@ -29,6 +29,15 @@
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
+
+        <action name="showUserpic" class="net.friendface.friendface.controllers.actions.user.ShowUserpic">
+            <param name="userId">${userId}</param>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+            </result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
         <!-- logout -->
         <action name="logout" class="net.friendface.friendface.controllers.actions.user.Logout">
             <result name="success" type="tiles">welcomepage.tiles</result>
@@ -45,7 +54,7 @@
             <result name="success" type="tiles">registration.tiles</result>
         </action>
         <action name="register" class="net.friendface.friendface.controllers.actions.user.Register">
-            <result name="success" type="tiles">success.tiles</result>
+            <result name="success" type="tiles">welcomepage.tiles</result>
             <result name="input" type="tiles">registration.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>

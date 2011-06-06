@@ -1,15 +1,18 @@
-package net.friendface.friendface.controllers.actions.user;
+package net.friendface.friendface.controllers.actions.settings;
 
 import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
+import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
 import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.user.UserService;
+import net.friendface.friendface.service.user.UserUtils;
+import org.apache.struts2.interceptor.SessionAware;
 
-import javax.jcr.RepositoryException;
 import java.io.File;
+import java.util.Map;
 
 /**
  * Author: S. Fink
@@ -17,7 +20,8 @@ import java.io.File;
  * Time: 0:59
  */
 
-public class AddUserpic extends UserAction {
+public class AddUserpic extends UserAction implements SessionAware {
+    private SessionHelper sessionHelper;
     private File pictureFile;
 
     @Override
@@ -35,8 +39,9 @@ public class AddUserpic extends UserAction {
     public String execute() {
         try {
             UserService service = FriendfaceService.getService().getUserService();
-            User user = service.getById(userId);
-            service.addUserPic(user, pictureFile);
+            User user = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
+            userId = user.getId();
+            service.addUserpic(user, pictureFile);
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
         }
@@ -45,5 +50,10 @@ public class AddUserpic extends UserAction {
 
     public void setPictureFile(File pictureFile) {
         this.pictureFile = pictureFile;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> session) {
+        sessionHelper = new SessionHelper(session);
     }
 }

@@ -61,6 +61,9 @@ public class UserUtils {
     public static List<UserBean> usersToUserBeans(User currentUser, List<User> users, FriendDAO friendDAO) {
         List<UserBean> result = new ArrayList<UserBean>(users.size());
         for (User user : users) {
+            if (user.getId().equals(currentUser.getId())) {
+                continue;
+            }
             UserBean bean = new UserBean(user);
             bean.setState(FriendUtils.getContactState(currentUser, user, friendDAO));
             result.add(bean);

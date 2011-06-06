@@ -49,9 +49,16 @@ public class UserDAOImpl extends EntityDAO implements UserDAO {
             @Override
             public void perform() throws RepositoryException {
                 entityManager.merge(entity);
-                repositoryManager.storeContent(entity, getPath(entity));
             }
         });
+    }
+
+    public void addUserpic(User user) throws RepositoryException {
+        repositoryManager.storeContent(user, getPath(user));
+    }
+
+    public void removeUserpic(User user) throws RepositoryException {
+        repositoryManager.removeContent(user, getPath(user));
     }
 
     public User getById(Integer userId) {

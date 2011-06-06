@@ -49,4 +49,5 @@
     <include file="strutsactions/pictures.xml"/>
     <include file="strutsactions/videos.xml"/>
     <include file="strutsactions/messages.xml"/>
+    <include file="strutsactions/settings.xml"/>
 </struts>

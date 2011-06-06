@@ -17,6 +17,10 @@ public interface UserDAO {
 
     void updateUser(User user);
 
+    void removeUserpic(User user) throws RepositoryException;
+
+    void addUserpic(User user) throws RepositoryException;
+
     User getById(Integer userId);
 
     User getUser(String loginEmail);
