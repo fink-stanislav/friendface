@@ -75,6 +75,16 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         }
     }
 
+    public Picture getAlbumPicture(Album album) {
+        try {
+            DefaultQueryParams<Album> queryParams = new DefaultQueryParams<Album>("getPicturesByAlbum");
+            queryParams.setParam("album", album);
+            return queryExecutor.executeNamedQuery(queryParams, Picture.class);
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
     public Picture getById(Integer id) throws RepositoryException {
         try {
             Picture picture = getById(id, Picture.class);

@@ -93,6 +93,10 @@ public class PicturesService {
         }
     }
 
+    public Picture getAlbumPicture(Album album) {
+        return pictureDAO.getAlbumPicture(album);
+    }
+
     public void addAlbum(User user, String title) {
         Album album = new Album();
         album.setTitle(title);

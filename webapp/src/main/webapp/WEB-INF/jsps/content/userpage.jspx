@@ -63,7 +63,7 @@
                         <s:hidden name="id" value="%{[0].id}"/>
                     </s:form>
 
-                    <div class="list-item list-item-for-text">
+                    <div class="list-item list-item-no-border">
                         <div class="list-item-header">
                             <s:a href="%{userPageUrl}" title="%{getText('link.sender_name.title')}">
                                 <s:property value="%{[0].userName}"/>

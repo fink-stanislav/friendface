@@ -40,20 +40,14 @@
                             </s:if>
                         </div>
                         <div class="list-item-content">
-                            <s:if test="%{[0].pictureId eq 0}">
-                                <div class="frontpic frontpic-small">
-                                    <s:a href="#">
-                                        <span class="ref"><img alt="" src="images/no_image.png"/></span>
-                                    </s:a>
-                                </div>
-                            </s:if>
-                            <s:else>
-                                <div class="frontpic frontpic-small">
-                                    <s:a href="#">
-                                        <span class="ref"><img alt="" src="images/littleuserpic.png"/></span>
-                                    </s:a>
-                                </div>
-                            </s:else>
+                            <div class="frontpic frontpic-small">
+                                <s:url var="showAlbumPic" value="showAlbumPicture.action">
+                                    <s:param name="albumId" value="%{[0].id}"/>
+                                </s:url>
+                                <s:a href="%{showPicturesUrl}">
+                                    <span class="ref"><img src="${showAlbumPic}" alt=""/></span>
+                                </s:a>
+                            </div>
 
                             <div class="list-item-text">
                                 <s:a href="%{showPicturesUrl}">

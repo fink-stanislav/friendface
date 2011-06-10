@@ -50,6 +50,15 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
 
+        <action name="showAlbumPicture" class="net.friendface.friendface.controllers.actions.pictures.ShowAlbumPicture">
+            <param name="albumId">${albumId}</param>
+            <result name="success" type="stream">
+                <param name="inputName">inputStream</param>
+            </result>
+            <result name="login" type="tiles">entrance.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+        </action>
+
         <action name="showPictures" class="net.friendface.friendface.controllers.actions.pictures.ShowPictures">
             <param name="albumId">${albumId}</param>
             <param name="userId">${userId}</param>

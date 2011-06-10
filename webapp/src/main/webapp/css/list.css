@@ -33,13 +33,18 @@
 
 .list-item {
     clear: both;
-    margin: 0.5em 2em;
+    margin: 0.5em 2em 1em;
     padding: 0 0 2em 0;
     border-bottom: 1px solid #d3d3d3;
 }
 
 .list-item-for-text {
     min-height: 5.9em;
+}
+
+.list-item-no-border {
+    min-height: 5.9em;
+    border: 0;
 }
 
 .list-item-for-image {
@@ -52,6 +57,7 @@
 
 .list-item-for-message {
     min-height: 2.5em;
+    border: 0;
 }
 
 .list-item-header {

@@ -15,6 +15,8 @@ import java.util.List;
 public interface PictureDAO {
     List<Picture> getPictures(Album album);
 
+    Picture getAlbumPicture(Album album);
+
     Picture getById(Integer id) throws RepositoryException;
 
     void deleteAlbumPictures(Album album);

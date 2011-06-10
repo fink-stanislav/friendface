@@ -1,5 +1,6 @@
 package net.friendface.friendface.model.queryhandling;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.query.dsl.BooleanJunction;
 import org.hibernate.search.query.dsl.QueryBuilder;
@@ -33,12 +34,14 @@ public class SearchQueryExecutor {
         if (names.size() > 1) {
             BooleanJunction junction = builder.bool();
             for (String name : names) {
-                junction.should(builder.keyword().wildcard().onField(name).matching(params.getParam(name)).createQuery());
+                String key = StringUtils.lowerCase((String) params.getParam(name));
+                junction.should(builder.keyword().wildcard().onField(name).matching(params.getParam(key)).createQuery());
             }
             luceneQuery = junction.createQuery();
         } else {
             for (String name : names) {
-                luceneQuery = builder.keyword().wildcard().onField(name).matching(params.getParam(name)).createQuery();
+                String key = StringUtils.lowerCase((String) params.getParam(name));
+                luceneQuery = builder.keyword().wildcard().onField(name).matching(key).createQuery();
             }
         }
 
