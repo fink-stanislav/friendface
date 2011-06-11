@@ -1,13 +1,19 @@
 package net.friendface.friendface.utils;
 
 import org.apache.jackrabbit.value.BinaryImpl;
+import sun.net.util.URLUtil;
 
 import javax.jcr.Binary;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.MalformedInputException;
 import java.util.Map;
 
 import static org.apache.commons.lang.StringUtils.contains;
+import static org.apache.commons.lang.StringUtils.indexOf;
+import static org.apache.commons.lang.StringUtils.lastIndexOf;
 
 /**
  * User: S. Fink
@@ -30,6 +36,15 @@ public class StringUtils {
         }
         urlBuilder.deleteCharAt(urlBuilder.lastIndexOf("&"));
         return urlBuilder.toString();
+    }
+
+    public static String getUrlParamValue(String url, String paramName) {
+        try {
+            // return org.apache.commons.lang.StringUtils.substringAfterLast(result, "&");
+            return org.apache.commons.lang.StringUtils.substringAfter(url, "=");
+        } catch (Exception e) {
+            return "";
+        }
     }
 
     public static String binaryToString(Binary binary) {

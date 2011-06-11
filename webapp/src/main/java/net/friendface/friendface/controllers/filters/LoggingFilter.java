@@ -42,7 +42,7 @@ public class LoggingFilter implements Filter {
             requestStringBuilder.append("[Logger error]");
         }
 
-        logger.info(requestStringBuilder.toString());
+        //logger.info(requestStringBuilder.toString());
 
         filterChain.doFilter(servletRequest, servletResponse);
 
@@ -56,7 +56,7 @@ public class LoggingFilter implements Filter {
             responseStringBuilder.append("[Logger error]");
         }
 
-        logger.info(responseStringBuilder.toString());
+        //logger.info(responseStringBuilder.toString());
     }
 
     public void destroy() {

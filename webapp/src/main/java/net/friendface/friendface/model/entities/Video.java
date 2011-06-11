@@ -23,6 +23,8 @@ public class Video implements ContentEntity {
     @GeneratedValue
     private Integer id;
 
+    private Boolean converted;
+
     @Field(index = Index.TOKENIZED, store = Store.NO)
     private String title;
 
@@ -51,6 +53,14 @@ public class Video implements ContentEntity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean getConverted() {
+        return converted;
+    }
+
+    public void setConverted(Boolean converted) {
+        this.converted = converted;
     }
 
     public Binary getContent() {

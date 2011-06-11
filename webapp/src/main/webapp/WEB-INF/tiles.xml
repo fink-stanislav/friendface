@@ -46,33 +46,33 @@
 
     <!-- user's content -->
     <definition name="settings.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Settings"/>
+        <put-attribute name="title" value="jsps.service.settings"/>
         <put-attribute name="header" value="/WEB-INF/jsps/frames/headers/settings.header.jspx"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/settings.jspx"/>
     </definition>
     <!-- search -->
     <definition name="peoplefound.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Results"/>
+        <put-attribute name="title" value="jsps.content.search_results"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/peoplefound.jspx"/>
     </definition>
     <definition name="picturesfound.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Results"/>
+        <put-attribute name="title" value="jsps.content.search_results"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/picturesfound.jspx"/>
     </definition>
     <!-- end of search -->
     <!-- pictures related -->
     <definition name="pictureview.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Picture"/>
+        <put-attribute name="title" value="jsps.content.pictures"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/pictureview.jspx"/>
     </definition>
     <definition name="picturegrid.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Picture"/>
+        <put-attribute name="title" value="jsps.content.pictures"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/picturegrid.jspx"/>
     </definition>
     <!-- end of pictures related -->
     <!-- videos -->
     <definition name="videoslist.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Videos"/>
+        <put-attribute name="title" value="jsps.content.videos"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/videos/videoslist.jspx"/>
     </definition>
     <definition name="videoview.tiles" extends="content.page.template">

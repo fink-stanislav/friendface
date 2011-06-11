@@ -1,5 +1,9 @@
 package net.friendface.friendface.controllers.actions.videos;
 
+import net.friendface.friendface.model.entities.Video;
+import net.friendface.friendface.service.FriendfaceService;
+import net.friendface.friendface.utils.StringUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +24,13 @@ public class ShowVideo extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            Integer videoId = Integer.getInteger(req.getParameter("videoId"));
-            //Video video = FriendfaceService.getService().getVideoService().getVideoById(videoId);
-            //InputStream inputStream = video.getContent().getStream();
-            InputStream inputStream = getClass().getClassLoader().getResourceAsStream("flowplayer-700.flv");
+            Integer videoId = Integer.parseInt(
+                    StringUtils.getUrlParamValue(req.getQueryString(), "videoId")
+            );
+
+            Video video = FriendfaceService.getService().getVideoService().getVideoById(videoId);
+            InputStream inputStream = video.getContent().getStream();
+            // InputStream inputStream = getClass().getClassLoader().getResourceAsStream("flowplayer-700.flv");
             BufferedInputStream stream = new BufferedInputStream(inputStream);
 
             OutputStream outputStream = resp.getOutputStream();

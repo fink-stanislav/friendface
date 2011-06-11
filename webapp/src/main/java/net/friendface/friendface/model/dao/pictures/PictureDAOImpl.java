@@ -79,8 +79,11 @@ public class PictureDAOImpl extends EntityDAO implements PictureDAO {
         try {
             DefaultQueryParams<Album> queryParams = new DefaultQueryParams<Album>("getPicturesByAlbum");
             queryParams.setParam("album", album);
-            return queryExecutor.executeNamedQuery(queryParams, Picture.class);
-        } catch (NoResultException e) {
+            queryParams.setCurrentRecord(0);
+            queryParams.setRecordCount(1);
+            Picture result = queryExecutor.executeNamedQuery(queryParams, Picture.class);
+            return repositoryManager.retrieveContent(result, getPath(result.getAlbum()));
+        } catch (Exception e) {
             return null;
         }
     }

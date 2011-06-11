@@ -18,8 +18,8 @@ public abstract class QueryParams<T> {
 
     protected QueryParams() {
         queryParams = new HashMap<String, T>();
-        currentRecord = 1;
-        recordCount = 10;
+        currentRecord = 0;
+        recordCount = 0;
     }
 
     public T getParam(String paramName) {

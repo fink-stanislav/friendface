@@ -48,6 +48,8 @@ public class QueryExecutor {
     public <T> T executeNamedQuery(DefaultQueryParams queryParams, Class<T> entityClass) {
         TypedQuery<T> query = entityManager.createNamedQuery(queryParams.getQueryName(), entityClass);
         setupParams(query, queryParams);
+        query.setFirstResult(queryParams.getCurrentRecord());
+        query.setMaxResults(queryParams.getRecordCount());
         return query.getSingleResult();
     }
 

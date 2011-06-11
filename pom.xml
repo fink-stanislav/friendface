@@ -18,6 +18,7 @@
         <commons-codec>1.4</commons-codec>
         <commons-io>1.4</commons-io>
         <commons-collection>3.2.1</commons-collection>
+        <commons-cli>1.1</commons-cli>
         <servlet>2.5</servlet>
         <jsp>2.0</jsp>
         <slf4j>1.6.1</slf4j>

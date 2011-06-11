@@ -16,7 +16,7 @@
                 <s:text name="svf.field.title.caption"/>
             </div>
             <div>
-                <s:textfield name="videoTitle" value="%{videoTitle}" cssClass="input"/>
+                <s:textfield name="title" value="%{videoTitle}" cssClass="input"/>
             </div>
             <s:actionmessage/>
             <hr/>

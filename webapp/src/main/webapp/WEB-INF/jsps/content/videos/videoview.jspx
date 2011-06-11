@@ -34,7 +34,7 @@
                     </script>
                 </div>
                 <div class="video-title video-title-large">
-                    Video title
+                    <s:property value="%{video.getTitle()}"/>
                 </div>
             </div>
 

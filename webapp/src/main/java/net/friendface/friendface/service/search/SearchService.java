@@ -51,7 +51,10 @@ public class SearchService {
         return queryExecutor.executeSearchQuery(Picture.class, queryParams);
     }
 
-    public List<Video> searchForVideos() {
-        return Collections.emptyList();
+    public List<Video> searchForVideos(SearchQueryParams queryParams) {
+        SearchQueryExecutor queryExecutor = new SearchQueryExecutor(
+                EntityManagerProvider.getInstance().getFullTextEntityManager()
+        );
+        return queryExecutor.executeSearchQuery(Video.class, queryParams);
     }
 }

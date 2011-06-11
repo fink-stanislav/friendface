@@ -42,6 +42,17 @@ public class VideoDAOImpl extends EntityDAO implements VideoDAO {
     }
 
     @Override
+    public void addContent(Video video) {
+        perform(new Operation<Video>(video) {
+            @Override
+            public void perform() throws RepositoryException {
+                entityManager.merge(entity);
+                repositoryManager.storeContent(entity, getPath(entity));
+            }
+        });
+    }
+
+    @Override
     public void insertVideo(Video video) {
         perform(new Operation<Video>(video) {
             @Override

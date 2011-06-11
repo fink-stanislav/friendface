@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=xuggle-xuggler.jar -DgroupId=com.xuggle -DartifactId=xuggle-xuggler -Dversion=3.4.1012 -Dpackaging=jar

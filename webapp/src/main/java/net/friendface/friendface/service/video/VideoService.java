@@ -4,11 +4,9 @@ import net.friendface.friendface.model.dao.DAOFactory;
 import net.friendface.friendface.model.dao.videos.VideoDAO;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.entities.Video;
-import org.apache.jackrabbit.value.BinaryImpl;
 
 import javax.jcr.RepositoryException;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -41,10 +39,9 @@ public class VideoService {
         Video video = new Video();
         video.setUser(user);
         video.setTitle(title);
-        video.setContent(
-                new BinaryImpl(new FileInputStream(file))
-        );
+        video.setConverted(false);
         videoDAO.insertVideo(video);
+        VideoConversionHandler.runConversion(file, video, videoDAO);
     }
 
     public void removeVideo(Video video) {

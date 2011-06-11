@@ -17,6 +17,8 @@ public interface VideoDAO {
 
     Video getById(Integer id) throws RepositoryException;
 
+    void addContent(Video video);
+
     void insertVideo(Video video);
 
     void updateVideo(Video video);

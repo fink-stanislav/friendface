@@ -23,7 +23,7 @@ public class SearchQueryExecutor {
         this.fullTextEntityManager = fullTextEntityManager;
     }
 
-    public List executeSearchQuery(Class<?> entityClass, SearchQueryParams params) {
+    public List executeSearchQuery(Class<?> entityClass, SearchQueryParams<String> params) {
         QueryBuilder builder = fullTextEntityManager.getSearchFactory()
                 .buildQueryBuilder().forEntity(entityClass).get();
 

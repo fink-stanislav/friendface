@@ -5,6 +5,7 @@
     <style type="text/css">
         @import "css/list.css";
         @import "css/forms.css";
+        @import "css/images.css";
     </style>
 
     <script type="text/javascript" src="js/visibility.js"></script>
@@ -24,21 +25,39 @@
                             </s:if>
 
                             <s:if test="%{showControls}">
-                                <s:a href="#" onclick="submitForm('removeVideoForm%{#status.index}')">
-                                    <s:text name="link.remove_video.value"/>
-                                </s:a>
+                                <s:if test="%{[0].converted}">
+                                    <s:a href="#" onclick="submitForm('removeVideoForm%{#status.index}')">
+                                        <s:text name="link.remove_video.value"/>
+                                    </s:a>
+                                </s:if>
+                                <s:else>
+                                    &#160;
+                                </s:else>
                             </s:if>
                         </div>
                         <div class="list-item-content">
-                            <div class="list-item-text">
-                                <s:url var="videoUrl" value="viewVideo.action">
-                                    <s:param name="userId" value="%{userId}"/>
-                                    <s:param name="videoId" value="%{[0].id}"/>
-                                </s:url>
-                                <s:a href="%{videoUrl}">
+                            <s:if test="%{[0].converted}">
+                                <div class="frontpic frontpic-small">
+                                    <img src="images/completed.png" alt=""/>
+                                </div>
+                                <div class="list-item-text">
+                                    <s:url var="videoUrl" value="viewVideo.action">
+                                        <s:param name="userId" value="%{userId}"/>
+                                        <s:param name="videoId" value="%{[0].id}"/>
+                                    </s:url>
+                                    <s:a href="%{videoUrl}">
+                                        <s:property value="%{[0].title}"/>
+                                    </s:a>
+                                </div>
+                            </s:if>
+                            <s:else>
+                                <div class="frontpic frontpic-small">
+                                    <img src="images/waiting.gif" alt=""/>
+                                </div>
+                                <div class="list-item-text">
                                     <s:property value="%{[0].title}"/>
-                                </s:a>
-                            </div>
+                                </div>
+                            </s:else>
                         </div>
                     </div>
                 </s:iterator>
