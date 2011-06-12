@@ -2,7 +2,6 @@ package net.friendface.friendface.model.dao.user;
 
 import net.friendface.friendface.model.dao.EntityDAO;
 import net.friendface.friendface.model.dao.Operation;
-import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Identifiable;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.model.providers.RepositoryManager;

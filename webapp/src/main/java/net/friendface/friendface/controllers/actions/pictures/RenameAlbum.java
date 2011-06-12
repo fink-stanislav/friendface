@@ -1,6 +1,8 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.UserAction;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
@@ -14,6 +16,16 @@ import net.friendface.friendface.service.pictures.PicturesService;
 public class RenameAlbum extends UserAction {
     private Integer albumId;
     private String newAlbumTitle;
+
+    @Override
+    public void validate() {
+        try {
+            Validator validator = new Validator();
+            validator.notBlank(newAlbumTitle);
+        } catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
 
     @Override
     public String execute() {

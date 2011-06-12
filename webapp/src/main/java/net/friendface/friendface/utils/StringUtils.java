@@ -1,19 +1,13 @@
 package net.friendface.friendface.utils;
 
 import org.apache.jackrabbit.value.BinaryImpl;
-import sun.net.util.URLUtil;
 
 import javax.jcr.Binary;
 import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.net.URLEncoder;
-import java.nio.charset.MalformedInputException;
 import java.util.Map;
 
 import static org.apache.commons.lang.StringUtils.contains;
-import static org.apache.commons.lang.StringUtils.indexOf;
-import static org.apache.commons.lang.StringUtils.lastIndexOf;
 
 /**
  * User: S. Fink

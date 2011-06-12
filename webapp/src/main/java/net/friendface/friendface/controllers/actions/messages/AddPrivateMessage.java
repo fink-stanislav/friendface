@@ -2,6 +2,8 @@ package net.friendface.friendface.controllers.actions.messages;
 
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.user.UserUtils;
@@ -19,6 +21,20 @@ public class AddPrivateMessage extends UserAction implements SessionAware {
     private SessionHelper sessionHelper;
     private Integer receiverId;
     private String message;
+
+    @Override
+    public void validate() {
+        try {
+            Validator validator = new Validator();
+            validator.notBlank(message);
+            validator.notNull(receiverId);
+            if (receiverId.equals(0)) {
+                throw new ValidationException();
+            }
+        } catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
 
     @Override
     public String execute() {

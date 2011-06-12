@@ -27,9 +27,9 @@ public class RenameUser extends UserAction implements SessionAware {
     @Override
     public void validate() {
         try {
-            Validator validator = new Validator(2);
-            validator.notBlank(newName);
-            validator.notBlank(newSurname);
+            Validator validator = new Validator();
+            validator.validateName(newName);
+            validator.validateName(newSurname);
         } catch (ValidationException e) {
             addActionError(e.toString());
         }

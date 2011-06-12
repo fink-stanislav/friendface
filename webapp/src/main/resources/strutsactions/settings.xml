@@ -13,6 +13,10 @@
             </result>
             <result name="error" type="tiles">errorpage.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">settingsAction</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
         <action name="removeUserpic" class="net.friendface.friendface.controllers.actions.settings.RemoveUserpic">
@@ -31,6 +35,10 @@
             </result>
             <result name="error" type="tiles">errorpage.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">settingsAction</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
     </package>

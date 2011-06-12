@@ -39,6 +39,11 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">viewPictureDetails</param>
+                <param name="pictureId">${pictureId}</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
         <action name="showPicture" class="net.friendface.friendface.controllers.actions.pictures.ShowPicture">
@@ -83,6 +88,10 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="userId">${userId}</param>
+                <param name="actionName">albumList</param>
+            </result>
         </action>
 
         <action name="removeAlbum" class="net.friendface.friendface.controllers.actions.pictures.RemoveAlbum">
@@ -102,6 +111,11 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="userId">${userId}</param>
+                <param name="albumId">${albumId}</param>
+                <param name="actionName">showPictures</param>
+            </result>
         </action>
 
     </package>

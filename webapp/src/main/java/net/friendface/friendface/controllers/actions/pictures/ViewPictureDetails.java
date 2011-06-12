@@ -1,5 +1,7 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
+import net.friendface.friendface.controllers.actions.SecurityAware;
+import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
@@ -10,9 +12,10 @@ import net.friendface.friendface.service.FriendfaceService;
  * Time: 14:24
  */
 
-public class ViewPictureDetails extends UserAction {
+public class ViewPictureDetails extends UserAction implements SecurityAware {
     private Integer pictureId;
     private Picture picture;
+    private Boolean showControls;
 
     @Override
     public String execute() {
@@ -34,5 +37,14 @@ public class ViewPictureDetails extends UserAction {
 
     public Picture getPicture() {
         return picture;
+    }
+
+    public Boolean getShowControls() {
+        return showControls;
+    }
+
+    @Override
+    public void setSecuritySettings(SecuritySettings settings) {
+        showControls = settings.getEqualIds();
     }
 }

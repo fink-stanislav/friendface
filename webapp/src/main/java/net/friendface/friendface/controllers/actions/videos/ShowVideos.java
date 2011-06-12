@@ -18,6 +18,7 @@ import java.util.List;
 public class ShowVideos extends UserAction implements SecurityAware {
     private List<Video> videosList;
     private Boolean showControls;
+    private Boolean showMenu;
     private Boolean hasVideos;
 
     @Override
@@ -26,6 +27,17 @@ public class ShowVideos extends UserAction implements SecurityAware {
             User user = FriendfaceService.getService().getUserService().getById(userId);
             videosList = FriendfaceService.getService().getVideoService().getUserVideos(user);
             hasVideos = !videosList.isEmpty();
+
+            showMenu = true;
+            if (hasVideos) {
+                for (Video video : videosList) {
+                    if (!video.getConverted()) {
+                        showMenu = false;
+                        break;
+                    }
+                }
+            }
+
             return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
@@ -38,6 +50,10 @@ public class ShowVideos extends UserAction implements SecurityAware {
 
     public List<Video> getVideosList() {
         return videosList;
+    }
+
+    public Boolean getShowMenu() {
+        return showMenu;
     }
 
     public Boolean getShowControls() {

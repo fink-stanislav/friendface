@@ -11,7 +11,10 @@ import net.friendface.friendface.view.beans.WallMessageBean;
 
 import javax.jcr.RepositoryException;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 import static net.friendface.friendface.model.dao.DAOFactory.getDAOFactory;
 

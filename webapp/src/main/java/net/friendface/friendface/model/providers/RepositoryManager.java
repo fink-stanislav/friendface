@@ -82,13 +82,17 @@ public class RepositoryManager {
         getSession().save();
     }
 
-    public <T extends ContentEntity> void removeContent(T entity, String path) throws RepositoryException {
-        Node node = getNode(path);
-        Property property = node.getProperty(
-                Integer.toString(entity.getId())
-        );
-        property.remove();
-        getSession().save();
+    public <T extends ContentEntity> void removeContent(T entity, String path) {
+        try {
+            Node node = getNode(path);
+            Property property = node.getProperty(
+                    Integer.toString(entity.getId())
+            );
+            property.remove();
+            getSession().save();
+        } catch (RepositoryException e) {
+            // do nothing
+        }
     }
 
     public Node getNode(Node parent, String name) throws RepositoryException {

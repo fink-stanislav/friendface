@@ -25,10 +25,10 @@ public class AddVideo extends UserAction implements SessionAware {
 
     @Override
     public String execute() {
-        try{
+        try {
             User user = (User) sessionHelper.getFromSession(UserUtils.getUserSessionKey());
             FriendfaceService.getService().getVideoService().addVideo(user, videoTitle, videoFile);
-        return SUCCESS;
+            return SUCCESS;
         } catch (Exception e) {
             return resultAndErrorMessage(ERROR, e.getMessage());
         }
@@ -36,12 +36,11 @@ public class AddVideo extends UserAction implements SessionAware {
 
     @Override
     public void validate() {
-        try{
+        try {
             Validator validator = new Validator();
             validator.notBlank(videoTitle);
             validator.notNull(videoFile);
-        }
-        catch (ValidationException e) {
+        } catch (ValidationException e) {
             addActionError(e.toString());
         }
     }

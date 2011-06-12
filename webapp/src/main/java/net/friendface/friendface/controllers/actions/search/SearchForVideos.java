@@ -16,7 +16,7 @@ import java.util.List;
  * Time: 0:42
  */
 
-public class SearchForVideo extends UserAction implements ModelDriven {
+public class SearchForVideos extends UserAction implements ModelDriven {
     private Video video = new Video();
     private List<Video> videosFound;
     private Boolean notEmpty;

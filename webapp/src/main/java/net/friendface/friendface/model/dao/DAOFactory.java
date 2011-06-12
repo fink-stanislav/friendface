@@ -17,7 +17,7 @@ import net.friendface.friendface.model.providers.RepositoryManagerProvider;
  */
 
 public abstract class DAOFactory {
-    public abstract UserDAO getUserDAO() ;
+    public abstract UserDAO getUserDAO();
 
     public abstract FriendDAO getFriendsDAO();
 

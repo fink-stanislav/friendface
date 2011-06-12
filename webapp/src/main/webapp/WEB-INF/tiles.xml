@@ -59,6 +59,10 @@
         <put-attribute name="title" value="jsps.content.search_results"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/search/picturesfound.jspx"/>
     </definition>
+    <definition name="videosfound.tiles" extends="content.page.template">
+        <put-attribute name="title" value="jsps.content.search_results"/>
+        <put-attribute name="content" value="/WEB-INF/jsps/content/search/videosfound.jspx"/>
+    </definition>
     <!-- end of search -->
     <!-- pictures related -->
     <definition name="pictureview.tiles" extends="content.page.template">
@@ -76,13 +80,13 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/videos/videoslist.jspx"/>
     </definition>
     <definition name="videoview.tiles" extends="content.page.template">
-        <put-attribute name="title" value="View video"/>
+        <put-attribute name="title" value="jsps.content.videoview"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/videos/videoview.jspx"/>
     </definition>
     <!-- end of videos -->
     <!-- private messages -->
     <definition name="showmessages.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Messages"/>
+        <put-attribute name="title" value="jsps.content.messages"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/messages/messagelist.jspx"/>
     </definition>
     <!-- end of private messages -->
@@ -97,11 +101,11 @@
         <put-attribute name="content" value="/WEB-INF/jsps/content/friends/friends.jspx"/>
     </definition>
     <definition name="conversations.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Conversations"/>
+        <put-attribute name="title" value="jsps.content.conversations"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/messages/conversation.jspx"/>
     </definition>
     <definition name="albumList.tiles" extends="content.page.template">
-        <put-attribute name="title" value="Albums"/>
+        <put-attribute name="title" value="jsps.content.albumlist"/>
         <put-attribute name="content" value="/WEB-INF/jsps/content/pictures/albumlist.jspx"/>
     </definition>
     <definition name="search.tiles" extends="content.page.template">

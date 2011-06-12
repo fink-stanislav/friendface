@@ -27,47 +27,49 @@
                 </div>
             </div>
 
-            <s:form id="removePictureForm" action="removePicture" method="POST">
-                <s:hidden name="pictureId" value="%{pictureId}"/>
-                <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
-                <s:hidden name="albumId" value="%{picture.getAlbum().getId()}"/>
-            </s:form>
+            <s:if test="%{showControls}">
+                <s:form id="removePictureForm" action="removePicture" method="POST">
+                    <s:hidden name="pictureId" value="%{pictureId}"/>
+                    <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
+                    <s:hidden name="albumId" value="%{picture.getAlbum().getId()}"/>
+                </s:form>
 
-            <div class="horizontal-menu horizontal-menu-list">
-                <ul>
-                    <li>
-                        <s:a href="#" onclick="hideShow('rename-picture-control')">
-                            <s:text name="link.rename_picture.value"/>
-                        </s:a>
-                    </li>
-                    <li>
-                        <s:a href="#" onclick="submitForm('removePictureForm')">
-                            <s:text name="link.remove_picture.value"/>
-                        </s:a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="form-controls" id="rename-picture-control">
-                <div>
-                    <s:form id="renamePictureForm" action="renamePicture" method="POST">
-                        <s:hidden name="pictureId" value="%{pictureId}"/>
-                        <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
-
-                        <div>
-                            <s:text name="rpf.field.title.caption"/>:
-
-                            <div class="form-line">
-                                <s:textfield name="newPictureTitle"/>
-                            </div>
-                            <div>
-                                <s:submit value="%{getText('rpf.button.submit.caption')}"/>
-                                <s:reset value="%{getText('rpf.button.reset.caption')}"/>
-                            </div>
-                        </div>
-                    </s:form>
+                <div class="horizontal-menu horizontal-menu-list">
+                    <ul>
+                        <li>
+                            <s:a href="#" onclick="hideShow('rename-picture-control')">
+                                <s:text name="link.rename_picture.value"/>
+                            </s:a>
+                        </li>
+                        <li>
+                            <s:a href="#" onclick="submitForm('removePictureForm')">
+                                <s:text name="link.remove_picture.value"/>
+                            </s:a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+
+                <div class="form-controls" id="rename-picture-control">
+                    <div>
+                        <s:form id="renamePictureForm" action="renamePicture" method="POST">
+                            <s:hidden name="pictureId" value="%{pictureId}"/>
+                            <s:hidden name="userId" value="%{picture.getAlbum().getUser().getId()}"/>
+
+                            <div>
+                                <s:text name="rpf.field.title.caption"/>:
+
+                                <div class="form-line">
+                                    <s:textfield name="newPictureTitle"/>
+                                </div>
+                                <div>
+                                    <s:submit value="%{getText('rpf.button.submit.caption')}"/>
+                                    <s:reset value="%{getText('rpf.button.reset.caption')}"/>
+                                </div>
+                            </div>
+                        </s:form>
+                    </div>
+                </div>
+            </s:if>
         </div>
     </s:i18n>
 

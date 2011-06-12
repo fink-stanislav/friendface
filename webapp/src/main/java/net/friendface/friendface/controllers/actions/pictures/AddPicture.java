@@ -24,12 +24,11 @@ public class AddPicture extends UserAction {
 
     @Override
     public void validate() {
-        try{
+        try {
             Validator validator = new Validator();
             validator.notBlank(pictureTitle);
             validator.notNull(pictureFile);
-        }
-        catch (ValidationException e) {
+        } catch (ValidationException e) {
             addActionError(e.toString());
         }
     }

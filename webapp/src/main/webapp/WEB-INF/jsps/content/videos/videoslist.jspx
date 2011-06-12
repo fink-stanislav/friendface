@@ -9,6 +9,7 @@
     </style>
 
     <script type="text/javascript" src="js/visibility.js"></script>
+    <script type="text/javascript" src="js/formHandlers.js"></script>
 
     <s:i18n name="jsps.content.videos">
         <div id="list">
@@ -31,9 +32,14 @@
                                     </s:a>
                                 </s:if>
                                 <s:else>
-                                    &#160;
+                                    <s:a href="#" onclick="submitForm('removeVideoForm%{#status.index}')">
+                                        <s:text name="link.cancel.conversion"/>
+                                    </s:a>
                                 </s:else>
                             </s:if>
+                            <s:else>
+                                &#160;
+                            </s:else>
                         </div>
                         <div class="list-item-content">
                             <s:if test="%{[0].converted}">
@@ -76,36 +82,38 @@
             <s:actionerror/>
 
             <s:if test="%{showControls}">
-                <div class="horizontal-menu horizontal-menu-list">
-                    <ul>
-                        <li>
-                            <s:a href="#" onclick="hideShow('add-video-control')">
-                                <s:text name="link.add_video.value"/>
-                            </s:a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="form-controls" id="add-video-control">
-                    <div>
-                        <s:form id="addVideoForm" action="addVideo" enctype="multipart/form-data" method="POST">
-                            <s:hidden name="userId" value="%{userId}"/>
-
-                            <div>
-                                <div>
-                                    <s:file name="videoFile"/>
-                                </div>
-                                <div class="form-line">
-                                    <s:text name="avf.field.title.caption"/>:
-                                    <s:textfield name="videoTitle"/>
-                                </div>
-                                <div>
-                                    <s:submit value="%{getText('avf.button.submit.caption')}"/>
-                                    <s:reset value="%{getText('avf.button.reset.caption')}"/>
-                                </div>
-                            </div>
-                        </s:form>
+                <s:if test="%{showMenu}">
+                    <div class="horizontal-menu horizontal-menu-list">
+                        <ul>
+                            <li>
+                                <s:a href="#" onclick="hideShow('add-video-control')">
+                                    <s:text name="link.add_video.value"/>
+                                </s:a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+                    <div class="form-controls" id="add-video-control">
+                        <div>
+                            <s:form id="addVideoForm" action="addVideo" enctype="multipart/form-data" method="POST">
+                                <s:hidden name="userId" value="%{userId}"/>
+
+                                <div>
+                                    <div>
+                                        <s:file name="videoFile"/>
+                                    </div>
+                                    <div class="form-line">
+                                        <s:text name="avf.field.title.caption"/>:
+                                        <s:textfield name="videoTitle"/>
+                                    </div>
+                                    <div>
+                                        <s:submit value="%{getText('avf.button.submit.caption')}"/>
+                                        <s:reset value="%{getText('avf.button.reset.caption')}"/>
+                                    </div>
+                                </div>
+                            </s:form>
+                        </div>
+                    </div>
+                </s:if>
             </s:if>
         </div>
     </s:i18n>

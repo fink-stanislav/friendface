@@ -13,6 +13,7 @@
     <div class="searchform">
         <s:form action="searchForPeople" id="searchPeopleForm">
             <s:hidden name="userId" value="%{userId}"/>
+
             <div>
                 <s:text name="login"/>
             </div>

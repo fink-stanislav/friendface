@@ -34,5 +34,16 @@
             <result name="login" type="tiles">entrance.tiles</result>
         </action>
 
+        <action name="searchForVideos" class="net.friendface.friendface.controllers.actions.search.SearchForVideos">
+            <param name="userId">${userId}</param>
+            <result name="success" type="tiles">videosfound.tiles</result>
+            <result name="error" type="tiles">errorpage.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">search</param>
+                <param name="userId">${userId}</param>
+            </result>
+            <result name="login" type="tiles">entrance.tiles</result>
+        </action>
+
     </package>
 </struts>

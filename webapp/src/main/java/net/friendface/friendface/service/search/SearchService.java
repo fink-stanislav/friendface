@@ -10,7 +10,7 @@ import net.friendface.friendface.model.queryhandling.SearchQueryExecutor;
 import net.friendface.friendface.model.queryhandling.SearchQueryParams;
 import net.friendface.friendface.view.beans.UserBean;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import static net.friendface.friendface.service.user.UserUtils.usersToUserBeans;
@@ -55,6 +55,13 @@ public class SearchService {
         SearchQueryExecutor queryExecutor = new SearchQueryExecutor(
                 EntityManagerProvider.getInstance().getFullTextEntityManager()
         );
-        return queryExecutor.executeSearchQuery(Video.class, queryParams);
+        List<Video> found = queryExecutor.executeSearchQuery(Video.class, queryParams);
+        List<Video> result = new ArrayList<Video>(found.size());
+        for (Video video : found) {
+            if (video.getConverted()) {
+                result.add(video);
+            }
+        }
+        return result;
     }
 }

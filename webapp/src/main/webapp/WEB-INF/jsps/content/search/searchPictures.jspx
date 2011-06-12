@@ -13,6 +13,7 @@
     <div class="searchform">
         <s:form id="searchPicturesForm" action="searchForPictures">
             <s:hidden name="userId" value="%{userId}"/>
+
             <div>
                 <s:text name="spf.field.title.caption"/>
             </div>

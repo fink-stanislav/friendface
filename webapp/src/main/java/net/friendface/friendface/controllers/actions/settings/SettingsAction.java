@@ -1,7 +1,5 @@
 package net.friendface.friendface.controllers.actions.settings;
 
-import net.friendface.friendface.controllers.actions.SecurityAware;
-import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.model.entities.User;

@@ -6,6 +6,8 @@ package net.friendface.friendface.controllers.actions.pictures;
  * Time: 6:56 PM
  */
 
+import net.friendface.friendface.controllers.actions.SecurityAware;
+import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.Album;
 import net.friendface.friendface.model.entities.Picture;
@@ -15,12 +17,13 @@ import net.friendface.friendface.service.pictures.PicturesService;
 import javax.jcr.RepositoryException;
 import java.util.List;
 
-public class ShowPictures extends UserAction {
+public class ShowPictures extends UserAction implements SecurityAware {
     private List<Picture> pictureList;
     private Integer albumId;
     private String albumTitle;
     private Long pictureCount;
     private Boolean hasPictures;
+    private Boolean showControls;
 
     @Override
     public String execute() {
@@ -59,5 +62,14 @@ public class ShowPictures extends UserAction {
 
     public Boolean getHasPictures() {
         return hasPictures;
+    }
+
+    public Boolean getShowControls() {
+        return showControls;
+    }
+
+    @Override
+    public void setSecuritySettings(SecuritySettings settings) {
+        showControls = settings.getEqualIds();
     }
 }

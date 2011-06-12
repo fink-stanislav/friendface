@@ -55,64 +55,66 @@
                     </div>
                 </s:else>
 
-                <div class="horizontal-menu horizontal-menu-list">
-                    <ul>
-                        <li>
-                            <s:a href="#" onclick="hideShow('add-picture-control', 'rename-album-control')">
-                                <s:text name="link.add_picture.value"/>
-                            </s:a>
-                        </li>
-                        <li>
-                            <s:a href="#" onclick="hideShow('rename-album-control', 'add-picture-control')">
-                                <s:text name="link.rename_album.value"/>
-                            </s:a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="form-controls" id="add-picture-control">
-                    <div>
-                        <s:form id="addPictureForm" action="addPicture" method="POST" enctype="multipart/form-data">
-                            <s:hidden name="albumId" value="%{albumId}"/>
-                            <s:hidden name="userId" value="%{userId}"/>
-
-                            <div>
-                                <div>
-                                    <s:file name="pictureFile"/>
-                                </div>
-                                <div>
-                                    <s:text name="apf.field.title.caption"/>:
-                                    <s:textfield name="pictureTitle"/>
-                                </div>
-                                <br/>
-
-                                <div>
-                                    <s:submit value="%{getText('apf.button.submit.caption')}"/>
-                                    <s:reset value="%{getText('apf.button.reset.caption')}"/>
-                                </div>
-                            </div>
-                        </s:form>
+                <s:if test="%{showControls}">
+                    <div class="horizontal-menu horizontal-menu-list">
+                        <ul>
+                            <li>
+                                <s:a href="#" onclick="hideShow('add-picture-control', 'rename-album-control')">
+                                    <s:text name="link.add_picture.value"/>
+                                </s:a>
+                            </li>
+                            <li>
+                                <s:a href="#" onclick="hideShow('rename-album-control', 'add-picture-control')">
+                                    <s:text name="link.rename_album.value"/>
+                                </s:a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
 
-                <div class="form-controls" id="rename-album-control">
-                    <div>
-                        <s:form id="renameAlbumForm" action="renameAlbum" method="POST">
-                            <s:hidden name="albumId" value="%{albumId}"/>
-                            <s:hidden name="userId" value="%{userId}"/>
+                    <div class="form-controls" id="add-picture-control">
+                        <div>
+                            <s:form id="addPictureForm" action="addPicture" method="POST" enctype="multipart/form-data">
+                                <s:hidden name="albumId" value="%{albumId}"/>
+                                <s:hidden name="userId" value="%{userId}"/>
 
-                            <s:text name="raf.field.title.caption"/>:
+                                <div>
+                                    <div>
+                                        <s:file name="pictureFile"/>
+                                    </div>
+                                    <div>
+                                        <s:text name="apf.field.title.caption"/>:
+                                        <s:textfield name="pictureTitle"/>
+                                    </div>
+                                    <br/>
 
-                            <div class="form-line">
-                                <s:textfield name="newAlbumTitle"/>
-                            </div>
-                            <div>
-                                <s:submit value="%{getText('raf.button.submit.caption')}"/>
-                                <s:reset value="%{getText('raf.button.reset.caption')}"/>
-                            </div>
-                        </s:form>
+                                    <div>
+                                        <s:submit value="%{getText('apf.button.submit.caption')}"/>
+                                        <s:reset value="%{getText('apf.button.reset.caption')}"/>
+                                    </div>
+                                </div>
+                            </s:form>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="form-controls" id="rename-album-control">
+                        <div>
+                            <s:form id="renameAlbumForm" action="renameAlbum" method="POST">
+                                <s:hidden name="albumId" value="%{albumId}"/>
+                                <s:hidden name="userId" value="%{userId}"/>
+
+                                <s:text name="raf.field.title.caption"/>:
+
+                                <div class="form-line">
+                                    <s:textfield name="newAlbumTitle"/>
+                                </div>
+                                <div>
+                                    <s:submit value="%{getText('raf.button.submit.caption')}"/>
+                                    <s:reset value="%{getText('raf.button.reset.caption')}"/>
+                                </div>
+                            </s:form>
+                        </div>
+                    </div>
+                </s:if>
             </div>
         </div>
     </s:i18n>

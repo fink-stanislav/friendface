@@ -2,6 +2,8 @@ package net.friendface.friendface.controllers.actions.messages;
 
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.user.UserService;
@@ -22,6 +24,16 @@ import static net.friendface.friendface.service.user.UserUtils.getUserSessionKey
 public class AddWallMessage extends UserAction implements SessionAware {
     private String message;
     private SessionHelper sessionHelper;
+
+    @Override
+    public void validate() {
+        try {
+            Validator validator = new Validator();
+            validator.notBlank(message);
+        } catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
 
     @Override
     public String execute() {

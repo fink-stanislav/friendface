@@ -19,6 +19,10 @@
                 <param name="userId">${userId}</param>
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">userpage</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
         <action name="removeWallMessage"

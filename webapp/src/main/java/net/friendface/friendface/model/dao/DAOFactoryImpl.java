@@ -14,7 +14,6 @@ import net.friendface.friendface.model.dao.user.UserDAO;
 import net.friendface.friendface.model.dao.user.UserDAOImpl;
 import net.friendface.friendface.model.dao.videos.VideoDAO;
 import net.friendface.friendface.model.dao.videos.VideoDAOImpl;
-import net.friendface.friendface.model.entities.PrivateMessage;
 import net.friendface.friendface.model.providers.RepositoryManager;
 
 import javax.persistence.EntityManager;

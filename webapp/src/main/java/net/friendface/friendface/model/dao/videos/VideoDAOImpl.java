@@ -32,12 +32,15 @@ public class VideoDAOImpl extends EntityDAO implements VideoDAO {
     }
 
     @Override
-    public Video getById(Integer id) throws RepositoryException {
+    public Video getById(Integer id) {
+        Video video = null;
         try {
-            Video video = getById(id, Video.class);
+            video = getById(id, Video.class);
             return repositoryManager.retrieveContent(video, getPath(video));
         } catch (NoResultException e) {
             return null;
+        } catch (RepositoryException e) {
+            return video;
         }
     }
 

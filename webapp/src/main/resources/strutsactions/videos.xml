@@ -22,7 +22,10 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
-            <result name="input" type="tiles">videoslist.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">videosList</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
         <action name="removeVideo" class="net.friendface.friendface.controllers.actions.videos.RemoveVideo">
@@ -33,18 +36,21 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
-            <result name="input" type="tiles">videoslist.tiles</result>
         </action>
 
         <action name="renameVideo" class="net.friendface.friendface.controllers.actions.videos.RenameVideo">
-            <param name="userId">${userId}</param>
             <result name="success" type="redirectAction">
-                <param name="actionName">videosList</param>
+                <param name="actionName">viewVideo</param>
                 <param name="userId">${userId}</param>
+                <param name="videoId">${videoId}</param>
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
-            <result name="input" type="tiles">videoslist.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">viewVideo</param>
+                <param name="userId">${userId}</param>
+                <param name="videoId">${videoId}</param>
+            </result>
         </action>
 
     </package>

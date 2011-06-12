@@ -11,12 +11,14 @@
     </div>
 
     <div class="searchform">
-        <s:form id="searchVideosForm">
+        <s:form id="searchVideosForm" action="searchForVideos">
+            <s:hidden name="userId" value="%{userId}"/>
+
             <div>
                 <s:text name="svf.field.title.caption"/>
             </div>
             <div>
-                <s:textfield name="title" value="%{videoTitle}" cssClass="input"/>
+                <s:textfield name="title" value="%{title}" cssClass="input"/>
             </div>
             <s:actionmessage/>
             <hr/>

@@ -7,50 +7,52 @@
         @import "css/settings.css";
     </style>
 
-    <div>
-        <div class="userpic-area">
-            <div class="frontpic frontpic-large">
-                <s:url var="imageUrl" value="showUserpic.action">
-                    <s:param name="userId" value="%{userId}"/>
-                </s:url>
-                <s:url var="userUrl" value="userpage.action">
-                    <s:param name="userId" value="%{userId}"/>
-                </s:url>
-                <s:a href="%{userUrl}">
-                    <span class="ref"><img src="${imageUrl}" alt=""/></span>
-                </s:a>
-            </div>
-            <div class="userpic-controls">
-                <s:form action="addUserpic" method="POST" enctype="multipart/form-data">
-                    <div>
-                        <s:file name="pictureFile"/>
-                    </div>
-                    <div>
-                        <s:submit value="Send"/>
-                        <s:reset value="Cancel"/>
-                    </div>
-                </s:form>
-            </div>
-        </div>
-        <div class="user-rename-area">
-            <div class="user-rename-controls">
-                <s:form action="renameUser" method="POST">
-                    <div>
-                        <div><s:text name="name"/></div>
-                        <div><s:textfield name="newName" value="%{user.getUsername()}"/></div>
-
-                        <div><s:text name="surname"/></div>
-                        <div><s:textfield name="newSurname" value="%{user.getUserSurname()}"/></div>
-                    </div>
-                    <div>
+    <s:i18n name="jsps.service.settings">
+        <div>
+            <div class="userpic-area">
+                <div class="frontpic frontpic-large">
+                    <s:url var="imageUrl" value="showUserpic.action">
+                        <s:param name="userId" value="%{userId}"/>
+                    </s:url>
+                    <s:url var="userUrl" value="userpage.action">
+                        <s:param name="userId" value="%{userId}"/>
+                    </s:url>
+                    <s:a href="%{userUrl}">
+                        <span class="ref"><img src="${imageUrl}" alt=""/></span>
+                    </s:a>
+                </div>
+                <div class="userpic-controls">
+                    <s:form action="addUserpic" method="POST" enctype="multipart/form-data">
                         <div>
-                            <s:submit value="OK"/>
+                            <s:file name="pictureFile"/>
+                        </div>
+                        <div>
+                            <s:submit value="%{getText('button.send.caption')}"/>
                             <s:reset value="%{getText('cancel')}"/>
                         </div>
-                    </div>
-                </s:form>
+                    </s:form>
+                </div>
+            </div>
+            <div class="user-rename-area">
+                <div class="user-rename-controls">
+                    <s:form action="renameUser" method="POST">
+                        <div>
+                            <div><s:text name="name"/></div>
+                            <div><s:textfield name="newName" value="%{user.getUsername()}"/></div>
+
+                            <div><s:text name="surname"/></div>
+                            <div><s:textfield name="newSurname" value="%{user.getUserSurname()}"/></div>
+                        </div>
+                        <div>
+                            <div>
+                                <s:submit value="OK"/>
+                                <s:reset value="%{getText('cancel')}"/>
+                            </div>
+                        </div>
+                    </s:form>
+                </div>
             </div>
         </div>
-    </div>
+    </s:i18n>
 
 </jsp:root>

@@ -1,6 +1,5 @@
 package net.friendface.friendface.controllers.actions.settings;
 
-import net.friendface.friendface.controllers.actions.StandardAction;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
 import net.friendface.friendface.controllers.validation.ValidationException;
@@ -26,11 +25,10 @@ public class AddUserpic extends UserAction implements SessionAware {
 
     @Override
     public void validate() {
-        try{
+        try {
             Validator validator = new Validator();
             validator.notNull(pictureFile);
-        }
-        catch (ValidationException e) {
+        } catch (ValidationException e) {
             addActionError(e.toString());
         }
     }

@@ -2,6 +2,8 @@ package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.controllers.actions.helpers.SessionHelper;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.User;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.user.UserUtils;
@@ -19,6 +21,16 @@ import java.util.Map;
 public class AddAlbum extends UserAction implements SessionAware {
     private SessionHelper sessionHelper;
     private String albumTitle;
+
+    @Override
+    public void validate() {
+        try {
+            Validator validator = new Validator();
+            validator.notBlank(albumTitle);
+        } catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
 
     @Override
     public String execute() {

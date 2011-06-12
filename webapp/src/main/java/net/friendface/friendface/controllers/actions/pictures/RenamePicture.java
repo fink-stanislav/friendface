@@ -1,6 +1,8 @@
 package net.friendface.friendface.controllers.actions.pictures;
 
 import net.friendface.friendface.controllers.actions.UserAction;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.Picture;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.pictures.PicturesService;
@@ -14,6 +16,16 @@ import net.friendface.friendface.service.pictures.PicturesService;
 public class RenamePicture extends UserAction {
     private Integer pictureId;
     private String newPictureTitle;
+
+    @Override
+    public void validate() {
+        try {
+            Validator validator = new Validator();
+            validator.notBlank(newPictureTitle);
+        } catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
 
     @Override
     public String execute() {

@@ -3,7 +3,6 @@ package net.friendface.friendface.service.video;
 import net.friendface.friendface.model.dao.videos.VideoDAO;
 import net.friendface.friendface.model.entities.Video;
 import org.apache.jackrabbit.value.BinaryImpl;
-import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;

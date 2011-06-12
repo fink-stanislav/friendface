@@ -1,5 +1,7 @@
 package net.friendface.friendface.controllers.actions.videos;
 
+import net.friendface.friendface.controllers.actions.SecurityAware;
+import net.friendface.friendface.controllers.actions.SecuritySettings;
 import net.friendface.friendface.controllers.actions.UserAction;
 import net.friendface.friendface.model.entities.Video;
 import net.friendface.friendface.service.FriendfaceService;
@@ -10,9 +12,10 @@ import net.friendface.friendface.service.FriendfaceService;
  * Time: 23:25
  */
 
-public class ViewVideo extends UserAction {
+public class ViewVideo extends UserAction implements SecurityAware {
     private Integer videoId;
     private Video video;
+    private Boolean showControls;
 
     @Override
     public String execute() {
@@ -34,5 +37,14 @@ public class ViewVideo extends UserAction {
 
     public Video getVideo() {
         return video;
+    }
+
+    public Boolean getShowControls() {
+        return showControls;
+    }
+
+    @Override
+    public void setSecuritySettings(SecuritySettings settings) {
+        showControls = settings.getEqualIds();
     }
 }

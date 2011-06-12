@@ -25,6 +25,7 @@
                                     </s:url>
                                     <s:url var="imageDetailsUrl" value="viewPictureDetails.action">
                                         <s:param name="pictureId" value="%{[0].id}"/>
+                                        <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
                                     </s:url>
                                     <s:a href="%{imageDetailsUrl}">
                                         <span class="ref"><img src="${imageUrl}" alt=""/></span>
@@ -33,11 +34,7 @@
                             </div>
 
                             <div class="list-item-text">
-                                <s:url var="picUrl" value="viewPictureDetails.action">
-                                    <s:param name="userId" value="%{[0].album.getUser().getId()}"/>
-                                    <s:param name="pictureId" value="%{[0].id}"/>
-                                </s:url>
-                                <s:a href="%{picUrl}">
+                                <s:a href="%{imageDetailsUrl}">
                                     <s:text name="picture.title.caption"/>:
                                     <s:property value="%{[0].title}"/>
                                 </s:a>

@@ -77,7 +77,7 @@
                             <s:textarea id="messageTextArea" name="message" rows="" cols="" cssClass="form-textarea"/>
                         </div>
                         <div>
-                            <s:select name="receiverId" list="%{friendList}" listKey="id" listValue="username"
+                            <s:select name="receiverId" list="%{friendList}" listKey="id" listValue="loginEmail"
                                       headerKey="0" headerValue="%{getText('apmf.select.receiver')}">
                             </s:select>
                         </div>

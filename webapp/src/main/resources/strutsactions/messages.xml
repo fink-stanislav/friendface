@@ -13,7 +13,10 @@
             <result name="success" type="tiles">showmessages.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
-            <result name="input" type="tiles">showmessages.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">showConversations</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
         <action name="addPrivateMessage"
@@ -26,7 +29,10 @@
             </result>
             <result name="login" type="tiles">entrance.tiles</result>
             <result name="error" type="tiles">errorpage.tiles</result>
-            <result name="input" type="tiles">showmessages.tiles</result>
+            <result name="input" type="redirectAction">
+                <param name="actionName">showConversations</param>
+                <param name="userId">${userId}</param>
+            </result>
         </action>
 
     </package>

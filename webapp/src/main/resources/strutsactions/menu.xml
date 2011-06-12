@@ -13,7 +13,8 @@
             <result name="error" type="tiles">errorpage.tiles</result>
         </action>
 
-        <action name="showSenders" class="net.friendface.friendface.controllers.actions.messages.ShowConversations">
+        <action name="showConversations"
+                class="net.friendface.friendface.controllers.actions.messages.ShowConversations">
             <param name="userId">${userId}</param>
             <result name="success" type="tiles">conversations.tiles</result>
             <result name="login" type="tiles">entrance.tiles</result>

@@ -39,46 +39,48 @@
             </div>
 
             <div>
-                <s:form id="removeVideoForm" action="removeVideo" method="POST">
-                    <s:hidden name="videoId" value="%{videoId}"/>
-                    <s:hidden name="userId" value="%{video.getUser().getId()}"/>
-                </s:form>
+                <s:if test="%{showControls}">
+                    <s:form id="removeVideoForm" action="removeVideo" method="POST">
+                        <s:hidden name="videoId" value="%{video.getId()}"/>
+                        <s:hidden name="userId" value="%{video.getUser().getId()}"/>
+                    </s:form>
 
-                <div class="horizontal-menu horizontal-menu-list">
-                    <ul>
-                        <li>
-                            <s:a href="#" onclick="hideShow('rename-video-control')">
-                                <s:text name="link.rename_video.value"/>
-                            </s:a>
-                        </li>
-                        <li>
-                            <s:a href="#" onclick="submitForm('removeVideoForm')">
-                                <s:text name="link.remove_video.value"/>
-                            </s:a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="form-controls" id="rename-video-control">
-                    <div>
-                        <s:form id="renameVideoForm" action="renameVideo" method="POST">
-                            <s:hidden name="videoId" value="%{videoId}"/>
-                            <s:hidden name="userId" value="%{video.getUser().getId()}"/>
-
-                            <div>
-                                <s:text name="rvf.field.title.caption"/>:
-
-                                <div class="form-line">
-                                    <s:textfield name="newVideoTitle"/>
-                                </div>
-                                <div>
-                                    <s:submit value="%{getText('rvf.button.submit.caption')}"/>
-                                    <s:reset value="%{getText('rvf.button.reset.caption')}"/>
-                                </div>
-                            </div>
-                        </s:form>
+                    <div class="horizontal-menu horizontal-menu-list">
+                        <ul>
+                            <li>
+                                <s:a href="#" onclick="hideShow('rename-video-control')">
+                                    <s:text name="link.rename_video.value"/>
+                                </s:a>
+                            </li>
+                            <li>
+                                <s:a href="#" onclick="submitForm('removeVideoForm')">
+                                    <s:text name="link.remove_video.value"/>
+                                </s:a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
+
+                    <div class="form-controls" id="rename-video-control">
+                        <div>
+                            <s:form id="renameVideoForm" action="renameVideo" method="POST">
+                                <s:hidden name="videoId" value="%{video.getId()}"/>
+                                <s:hidden name="userId" value="%{video.getUser().getId()}"/>
+
+                                <div>
+                                    <s:text name="rvf.field.title.caption"/>:
+
+                                    <div class="form-line">
+                                        <s:textfield name="newVideoTitle"/>
+                                    </div>
+                                    <div>
+                                        <s:submit value="%{getText('rvf.button.submit.caption')}"/>
+                                        <s:reset value="%{getText('rvf.button.reset.caption')}"/>
+                                    </div>
+                                </div>
+                            </s:form>
+                        </div>
+                    </div>
+                </s:if>
             </div>
         </div>
     </s:i18n>

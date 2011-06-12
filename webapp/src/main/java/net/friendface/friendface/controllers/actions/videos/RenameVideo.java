@@ -1,6 +1,8 @@
 package net.friendface.friendface.controllers.actions.videos;
 
 import net.friendface.friendface.controllers.actions.UserAction;
+import net.friendface.friendface.controllers.validation.ValidationException;
+import net.friendface.friendface.controllers.validation.Validator;
 import net.friendface.friendface.model.entities.Video;
 import net.friendface.friendface.service.FriendfaceService;
 import net.friendface.friendface.service.video.VideoService;
@@ -18,6 +20,16 @@ public class RenameVideo extends UserAction {
     private String newVideoTitle;
 
     @Override
+    public void validate() {
+        try {
+            Validator validator = new Validator();
+            validator.notBlank(newVideoTitle);
+        } catch (ValidationException e) {
+            addActionError(e.toString());
+        }
+    }
+
+    @Override
     public String execute() {
         try {
             VideoService service = FriendfaceService.getService().getVideoService();
@@ -31,6 +43,10 @@ public class RenameVideo extends UserAction {
 
     public void setVideoId(Integer videoId) {
         this.videoId = videoId;
+    }
+
+    public Integer getVideoId() {
+        return videoId;
     }
 
     public void setNewVideoTitle(String newVideoTitle) {
